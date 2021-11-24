@@ -112,12 +112,24 @@ What they may not know they need however is data validation. The employee will n
 - Be familiar with it's design, so it's easily learnable.
 - Immediately tell which information is important based on visual language alone.
 
+#### Current Features
 
-#### Features
+In order to help both employee's and businesses achieve their respective goals, Llama Log in it's MVP stage will contain the following features:
 
-##### Current Features
+- A log in page upon first opening the application, instructing the user to log in with a brief description of the app alongside the log in form.
+- A familiar home page, featuring a live feed of posts made by employee's at the center, search field at the top, user name & avatar at the top right and create new post call to action button at the top of the live feed.
+- A user account management page for admins, where they're able to create, view, update or delete employee & admin accounts.
+- An error page that redirects the user back to the home page containing their live feed.
+- A search input field that allows the user to search though the titles and descriptions within previous posts using keywords.
+- Posts that the user has created can be edited, however posts created by others cannot.
+- When creating a new post, the user will decide between a work order or incident, both containing their respective input fields.
+- Data validation on all input fields, to prevent missing information that could be of use and consistent look when posts are viewed.
 
-##### Future Features
+#### Future Features
+
+The features listed below don't directly tackle the problems Llama Log is attempting to resolve, therefore they will not make it into the MVP of Llama Log. Given that they would enhance the usability of Llama Log however, they will be implemented within a future release of the application.
+
+- A database query page that allows admins to compile mass sums of data taken from posts employee's have made, which could be of use to other sectors within the business.
 
 ### Structure
 
