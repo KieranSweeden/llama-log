@@ -67,6 +67,7 @@ Below is a table containing a list of opportunities that Llama Log could potenti
 | Delete Archived Post (Admin)          |      4     |      3      |
 | Form Validation for WO's & Incidents  |      5     |      5      |
 | Admin Database Queries                |      2     |      3      |
+| Search previous posts                 |      4     |      4      |
 
 Considering that enhancing the communication between colleague's is the essential goal that Llama Log is aiming for, any opportunities that do not directly contribute to this minimum goal will be postponed for a later release of Llama Log.
 
@@ -74,8 +75,23 @@ The opportunity that stands out here in not directly contributing to Llama Log's
 
 ### Scope
 
+#### User Requirements
 
+So what would employee's say they need from Llama Log? Employee's need to be able to input information surrounding a work order/incident quickly, so they can promptly return to a task they've currently been assigned to in the workplace. An input form shouldn't contain lots of input fields, nor should it present input fields irrelevant to the employee''s current situation, an example being a work order number input field when the employee is actually attempting to log a situation involving a customer.
 
+The usefulness of Llama Log will be largely dependent on how quick the employee is able to create & read information. Therefore upon logging in, both pieces of functionality need to be present to the employee immediately.
+
+Employee's will likely be reading information in the past and providing employee's are actively using the application, the amount of information will likely build up to a point so much so, that employee's will have to scroll down continuously through vast amounts of information that's irrelevant to them. This can quickly become a tedious and slow workflow, providing a bad user experience. For this reason, a search input field should be immediately present upon logging in. This will enable employee's to promptly search for the information they're looking for.
+
+What they may not know they need however is data validation. The employee will need to insert data into all input fields within the form, in order to make the information regarding a work order/incident useful to themselves or their colleague's in the future. It's important to remember with this in mind not to overload the employee with input field's, as they may not have the time or patience to fill in every minor detail. 
+
+#### User Stories
+
+#### Features
+
+##### Current Features
+
+##### Future Features
 
 ### Structure
 
