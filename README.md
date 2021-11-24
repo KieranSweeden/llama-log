@@ -53,7 +53,9 @@ Llama Log can help businesses achieve goals such as:
 
 #### Opportunities
 
-| Opportunity                           | Importance | Feasability |
+Below is a table containing a list of opportunities that Llama Log could potentially provide:
+
+| Opportunity/Problem                   | Importance | Feasability |
 |---------------------------------------|:----------:|:-----------:|
 | Register Employee (Admin)             |      5     |      4      |
 | Log In (Admin & Employee)             |      5     |      4      |
@@ -66,13 +68,51 @@ Llama Log can help businesses achieve goals such as:
 | Form Validation for WO's & Incidents  |      5     |      5      |
 | Admin Database Queries                |      2     |      3      |
 
+Considering that enhancing the communication between colleague's is the essential goal that Llama Log is aiming for, any opportunities that do not directly contribute to this minimum goal will be postponed for a later release of Llama Log.
+
+The opportunity that stands out here in not directly contributing to Llama Log's main goal is Admin Database Queries, which is a feature that enables admins to query data within the database of posts made by colleagues, that could suggest trends in the workplace that the business can act upon. This feature will be postponed and will therefore not make it into the MVP of Llama Log.
 
 ### Scope
+
+
+
 
 ### Structure
 
 ### Skeleton
 
 ### Surface
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
+## Technology
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
+## Testing
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
+## Deployment
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
+## Credits
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
+## Acknowledgements
+
+[Return to Contents &#8679;](#Contents)
 
 <hr>
