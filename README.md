@@ -26,7 +26,7 @@ This lack of communication can lead to financial costs to the business in loggin
 
 Llama Log's goal is to improve communication between colleague's within a given work environment, allowing for better management over equipment-based work orders and incidents in the workplace.
 
-It's goal is to act as the central hub where employee's can store information regarding particular work orders and incidents. Employee's can then refer to Llama Log whenever they may need to be fully informed of a situation that's previous occured, enabling them to act upon it effectively.
+It's goal is to act as the central hub where employee's can store information regarding particular work orders and incidents. Employee's can then refer to Llama Log whenever they may need to be fully informed of a situation that's previous occured, enabling them to act upon it effectively in the present.
 
 #### The Difference
 
@@ -51,7 +51,20 @@ Llama Log can help businesses achieve goals such as:
 - Store data on the most common equipment faults in the workplace, allowing them to make better informed decisions when purchasing equipment in the future.
 - Store data regarding the most common incidents with customers, enabling the business to create relevant learning materials for colleagues regarding such incidents.
 
+#### Opportunities
 
+| Opportunity                           | Importance | Feasability |
+|---------------------------------------|:----------:|:-----------:|
+| Register Employee (Admin)             |      5     |      4      |
+| Log In (Admin & Employee)             |      5     |      4      |
+| 404 Page                              |      5     |      5      |
+| Create & Edit Post (Admin & Employee) |      5     |      5      |
+| Comment on Post (Admin & Employee)    |      3     |      3      |
+| Responsive Design                     |      3     |      4      |
+| Archive Post (Employee)               |      4     |      5      |
+| Delete Archived Post (Admin)          |      4     |      3      |
+| Form Validation for WO's & Incidents  |      5     |      5      |
+| Admin Database Queries                |      2     |      3      |
 
 
 ### Scope
