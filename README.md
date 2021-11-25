@@ -133,6 +133,48 @@ The features listed below don't directly tackle the problems Llama Log is attemp
 
 ### Structure
 
+The entry point of the application should be a log in page, as this will immediately direct the user to sign in and interact with the application. This is more inline with Llama Log's goal as an application, rather than being directed to a general home page and having to make an additional button click to another page in order to sign in to the application.
+
+#### External Pages
+
+The following pages are the only ones available whilst the user is not signed in.
+
+**index.html**
+
+- Navbar links
+    - Logo Image - Direct user to log in page
+    - Log In (Active) - Direct user to log in page
+    - About Us - Direct user to about.html page
+
+- Features
+    - A login form, where the user can input their user ID & password in order to gain access to Llama Log's functionality.
+
+**about.html**
+
+The about page will provide information regarding Llama Log, informing the user of the application's goals and how it can benefit the user's business.
+
+The about page would only be useful to those who are not adopting Llama Log within their business, therefore this page will only be available to users who are not signed in. This will also reduce the amount of elements in the navbar, reducing the visual complexity of the app, ensuring a friendly and efficient user experience for non-tech savvy users.
+
+- Navbar links
+    - Logo Image - Direct user to the log in page
+    - Log In - Direct user to the log in page
+    - About Us (Active) - Direct user to the about.html page
+
+#### Internal Pages
+
+The following pages are the only ones available whilst the user is signed in.
+
+**home.html**
+
+The home page will contain the live feed of posts made by themselves and other users. This page's design will be influenced by that sported by Facebook, as it's the page the user will find themselves within more often than others. This means it's important that this page features a familiar design, inspiring confidence within the user that they can operate the user interface, performing desired functions such as creating a post or finding a previous post.
+
+- Navbar links
+    - Logo Image - Direct user to the home page
+    - 
+
+
+
+
 ### Skeleton
 
 ### Surface
