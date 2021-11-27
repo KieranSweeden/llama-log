@@ -130,50 +130,150 @@ In order to help both employee's and businesses achieve their respective goals, 
 The features listed below don't directly tackle the problems Llama Log is attempting to resolve, therefore they will not make it into the MVP of Llama Log. Given that they would enhance the usability of Llama Log however, they will be implemented within a future release of the application.
 
 - A database query page that allows admins to compile mass sums of data taken from posts employee's have made, which could be of use to other sectors within the business.
+- Post history page, that presents the history of a post. This allows users to see previous iterations of a post if it's been edited on multiple occasions.
 
 ### Structure
 
 The entry point of the application should be a log in page, as this will immediately direct the user to sign in and interact with the application. This is more inline with Llama Log's goal as an application, rather than being directed to a general home page and having to make an additional button click to another page in order to sign in to the application.
 
+An overall and visual look of the structure & page direction of Llama Log can be found below:
+
+<img src="static/images/llama-log-sitemap.png">
+
+A more thorough walkthrough of each page can be seen below.
+
 #### External Pages
 
 The following pages are the only ones available whilst the user is not signed in.
 
-**index.html**
+<details>
+
+<summary><strong>index.html</strong></summary>
 
 - Navbar links
-    - Logo Image - Direct user to log in page
-    - Log In (Active) - Direct user to log in page
-    - About Us - Direct user to about.html page
+    - Logo Image - Directs user to log in page
+    - Log In (Active) - Informs user they're on the log in page & reloads page when clicked.
+    - About Us - Directs user to about page
 
 - Features
     - A login form, where the user can input their user ID & password in order to gain access to Llama Log's functionality.
+    - Image & brief info about the application on the left side of the form (Desktop screens only)
 
-**about.html**
+</details>
+
+<details>
+
+<summary><strong>about.html</strong></summary>
 
 The about page will provide information regarding Llama Log, informing the user of the application's goals and how it can benefit the user's business.
 
 The about page would only be useful to those who are not adopting Llama Log within their business, therefore this page will only be available to users who are not signed in. This will also reduce the amount of elements in the navbar, reducing the visual complexity of the app, ensuring a friendly and efficient user experience for non-tech savvy users.
 
 - Navbar links
-    - Logo Image - Direct user to the log in page
-    - Log In - Direct user to the log in page
-    - About Us (Active) - Direct user to the about.html page
+    - Logo Image - Directs user to the log in page
+    - Log In - Directs user to the log in page
+    - About Us (Active) - Informs user they're on the about page & reloads page when clicked.
+
+</details>
 
 #### Internal Pages
 
 The following pages are the only ones available whilst the user is signed in.
 
-**home.html**
+<details>
+
+<summary><strong>feed.html</strong></summary>
 
 The home page will contain the live feed of posts made by themselves and other users. This page's design will be influenced by that sported by Facebook, as it's the page the user will find themselves within more often than others. This means it's important that this page features a familiar design, inspiring confidence within the user that they can operate the user interface, performing desired functions such as creating a post or finding a previous post.
 
 - Navbar links
-    - Logo Image - Direct user to the home page
-    - 
+    - Logo Image - Directs user to the home page
+    - Feed (Active) - Informs user they're on the feed page & reloads page when clicked.
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) - Directs user to the manage page
 
+- Features
+    - At the top of the feed whilst below the navbar there will be two buttons, Search & Create Post. Both providing their respective functionalities with supporting icons that make it learnable.
+    - Posts presented in a live feed at the centre of the page, sorted by time of creation. Each post will present enough information so that the user can clearly identify the topic and click view post to open it fully on an isolated page (view_post.html). Having a limit to the size of a post due to the amount of text within will maintain a readable and user-friendly UX, as posts so large can be a chore to scroll down from.
+    - Posts within the live feed are also color coded, so that the posts can easily be distinguished as work orders & incidents will be given unique colors respectively. It's important however that these colors are not too vibrant & drastic, as the UI would be intense to look at resulting in a poor UX. Too many vibrant colors would also provide a playful feel to the app, which contradicts the intention of the application being used within a business context. Therefore it's important to be conservative & clinical about the choice of colors used for each category.
 
+</details>
 
+<details>
+
+<summary><strong>create_post.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) - Directs user to the manage page
+
+- Features
+    - A header that informs the user as to where they are.
+    - Page opens with two large buttons asking the user what type of post are they looking to create, work order or incident. Both category buttons featuring a less saturated shade of their respective colors, which turns to the original shade when clicked and directs the user to a create new post form that's suited to their chosen category.
+    - Form validation that's immediately present to the user, rather than informing them when attempting to submit a post.
+
+</details>
+
+<details>
+
+<summary><strong>view_post.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) - Directs user to the manage page
+
+- Features
+    - A header that informs the user as to where they are.
+    - User is able to view post in isolation from other posts & view all comments underneath.
+    - A colleague user is able to comment on the post their viewing, which can be their own or someone else's.
+    - Provided the user is the author of the post, they are able to edit the post by clicking the edit button, directing them to edit_post.html. If they're not the author of the post, the edit button will not appear.
+    - Admins are not able to edit posts that are not their own either, however they are able to archive them.
+
+</details>
+
+<details>
+
+<summary><strong>edit_post.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) - Directs user to the manage page
+
+- Features
+    - A header that informs the user as to where they are.
+    - A form presents itself to the user with all fields pre-filled with the data taken from the database.
+    - User is able to edit the post in it's entirety.
+    - Data validation is still immediately present, making sure the user doesn't insert incorrect information.
+
+</details>
+
+<details>
+
+<summary><strong>account.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account (Active) - Directs user to the manage account page
+    - Manage (Admin only) - Directs user to the manage page
+
+- Features
+    - A small card presents itself to the user, presenting the user's information.
+    - User is able to modify and update fields within their account.
+
+</details>
+
+<details>
+
+<summary><strong></strong></summary>
+
+</details>
 
 ### Skeleton
 
