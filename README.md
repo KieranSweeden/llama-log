@@ -138,7 +138,7 @@ The entry point of the application should be a log in page, as this will immedia
 
 An overall and visual look of the structure & page direction of Llama Log can be found below:
 
-<img src="static/images/llama-log-sitemap.png">
+<img src="readme/ux/llama-log-sitemap.png">
 
 A more thorough walkthrough of each page can be seen below.
 
@@ -363,9 +363,7 @@ The database for Llama Log will be hosted via [MongoDb](https://www.mongodb.com/
 
 The database schema is as follows:
 
-<img src="static/images/llama-log-db-schema.png">
-
-
+<img src="readme/ux/llama-log-db-schema.png">
 
 ### Skeleton
 
