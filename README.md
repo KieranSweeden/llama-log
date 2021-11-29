@@ -182,6 +182,21 @@ The following pages are the only ones available whilst the user is signed in.
 
 <details>
 
+<summary><strong>new_user.html</strong></summary>
+
+Navbar links will be removed at this stage within the application to reduce the chance of the user entering the application without a password.
+
+- Navbar links
+    - Logo Image - Directs user to the log in page
+
+- Features
+    - Displays a form asking the user to create a new password, with the requirements of a password clearly present.
+    - User must enter password twice to validate it's correct and no type errors were made.
+
+</details>
+
+<details>
+
 <summary><strong>feed.html</strong></summary>
 
 The home page will contain the live feed of posts made by themselves and other users. This page's design will be influenced by that sported by Facebook, as it's the page the user will find themselves within more often than others. This means it's important that this page features a familiar design, inspiring confidence within the user that they can operate the user interface, performing desired functions such as creating a post or finding a previous post.
@@ -271,7 +286,54 @@ The home page will contain the live feed of posts made by themselves and other u
 
 <details>
 
-<summary><strong></strong></summary>
+<summary><strong>manage.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) (Active) - Directs user to the manage page
+
+- Features
+    - Displays list of users to admin, each user list item featuring it's respective edit & delete button.
+    - Edit button for each list item directs the user to edit_user.html with that user's info pre-filled within a form ready for editing.
+    - Admin is able to delete account without exiting the page. Defensive UX should be in place however, making sure the user really wants to delete the user.
+    - A create new user button at the top of the list of existing user accounts, directing the user to create_user.html.
+
+
+</details>
+
+<details>
+
+<summary><strong>create_user.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) (Active) - Directs user to the manage page
+
+- Features
+    - Displays a form to the admin, where they can enter a new user's information. Password is excluded from this form, as the user will get to create that themselves when entering their e-mail.
+    - All fields within the form will be required, to ensure data is consistent within the database.
+    - Data validation will be immediately present, creating a seamless UX and not frustrating the admin when creating a new user.
+
+</details>
+
+<details>
+
+<summary><strong>edit_user.html</strong></summary>
+
+- Navbar links
+    - Logo Image - Directs user to the home page
+    - Feed - Directs user to the feed page
+    - Account - Directs user to the manage account page
+    - Manage (Admin only) (Active) - Directs user to the manage page
+
+- Features
+    - Displays the same form as the one in create_user.html, except the form is pre-filled with user information.
+    - All fields within the form will be required, to ensure data is consistent within the database.
+    - Data validation will be immediately present, creating a seamless UX and not frustrating the admin when creating a new user.
 
 </details>
 
