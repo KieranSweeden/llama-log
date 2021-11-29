@@ -337,6 +337,36 @@ The home page will contain the live feed of posts made by themselves and other u
 
 </details>
 
+#### Database Schema
+
+The database for Llama Log will be hosted via [MongoDb](https://www.mongodb.com/) and the collections within the database are:
+
+> Note: The ID field for each collection is the primary key & increments on each instance.
+
+- Users
+    - Contains personal & account oriented data regarding a user.
+    - The admin field will contain boolean values, interactivity for the user will be restricted depending on these values.
+
+- Posts
+    - Contains the text content within the post, user that wrote the post (author) and a list of comments linked to the post.
+    - Contains date_created field so posts can be sorted by date in feed page.
+    - The categories field has a many-to-one relationship with documents within the categories collection. A post can only have one category associated with it, whereas a category can have many posts associated with it.
+    - The comments field has a one-to-many relationship with documents within the comments collection. A post can have many comments, however a comment can only have one parent post.
+
+- Comments
+    - Contains the comment content itself, the author & date created.
+    - The post field has a many-to-one relationship with the _id field of posts, as a post can have many comments, whereas a comment can only have one parent post.
+    - The _id field has a many-to-one relationship with the comments field within the posts collection, as a post can have many comments, however a comment can only have one parent post.
+     
+- Categories
+    - Contains a primary id primary key field along with the name of the categories.
+
+The database schema is as follows:
+
+<img src="static/images/llama-log-db-schema.png">
+
+
+
 ### Skeleton
 
 ### Surface
@@ -346,6 +376,17 @@ The home page will contain the live feed of posts made by themselves and other u
 <hr>
 
 ## Technology
+
+### Applications
+
+The following applications were utilised during the development of Llama Log:
+
+- [Tables Generator](https://www.tablesgenerator.com/markdown_tables)
+    - Tables generator was utilised to quickly create tables within this README markdown file.
+
+- [dbdiagram.io](https://dbdiagram.io/home)
+    - dbdiagram was utilised to create entity relationship diagrams in order to clearly visualize the database structure of Llama Log & the relationship contained within it.
+
 
 [Return to Contents &#8679;](#Contents)
 
