@@ -643,7 +643,23 @@ Experimenting with [Coolors](https://coolors.co/), I came up with the following 
 
 <img src="readme/ux/llama-log-colour-scheme.png">
 
+The colours within the colour scheme all follow WCAG web accessibility guidelines as shown below:
+
+<details>
+
+<summary>Show contrast checker results</summary>
+
+<img src="readme/ux/llama-log-a11y-primary-on-white.png">
+
+<img src="readme/ux/llama-log-a11y-black-on-white.png">
+
+<img src="readme/ux/llama-log-a11y-white-on-black.png">
+
+</details>
+
 ##### Typography
+
+
 
 [Return to Contents &#8679;](#Contents)
 
