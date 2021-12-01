@@ -659,7 +659,13 @@ The colours within the colour scheme all follow WCAG web accessibility guideline
 
 ##### Typography
 
+Keeping with the conservative approach previously mentioned during the development process of this plane, Llama Log should only sport one font family. However this font family will have multiple bold variances, providing us with the ability to inform the user on the importance of content based on it's boldness, improving the visual language of the application.
 
+The font family chosen for Llama Log is [Lexend](https://fonts.google.com/specimen/Lexend?preview.text=Llama%20Log&preview.text_type=custom&query=lexend) which was created for reading proficiency purposes, tackling visual stress, helping those with dyslexia & others that struggle with reading. 
+
+<img src="readme/ux/llama-log-lexend.png">
+
+Utilising this font family along with the chosen colour scheme will aid Llama Log in being as visually accessibile as possible.
 
 [Return to Contents &#8679;](#Contents)
 
