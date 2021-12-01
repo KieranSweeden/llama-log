@@ -595,7 +595,7 @@ The database schema is as follows:
 
 <summary>View account page</summary>
 
-<img src="readme/ux/wireframes/about-desktop.png">
+<img src="readme/ux/wireframes/account-desktop.png">
 
 </details>
 
