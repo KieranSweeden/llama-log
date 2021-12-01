@@ -667,6 +667,18 @@ The font family chosen for Llama Log is [Lexend](https://fonts.google.com/specim
 
 Utilising this font family along with the chosen colour scheme will aid Llama Log in being as visually accessibile as possible.
 
+##### Imagery & Identity
+
+It's important that Llama Log is consistent with it's imagery, as it forms a part of it's identity & overall brand to those interested in or using it. A logo is therefore important for this reason.
+
+An obvious approach is taking inspiration from Facebook's logo, however this would come across fairly obvious to end users and it might negatively impact initial impressions given to end users.
+
+I decided to look into animal characteristics that relate to my application and it's goals. The chosen animal was the Llama, due to it's reputation in being a guardian for livestock animals such as sheep & chickens. This metaphorically relates to the application in how it aims to protect it's users from problematic situations within the workplace. Adding log to the end of the animal name helps wrap it all together, hence Llama Log.
+
+Combining the colour scheme, typography & identity of Llama Log, the logo will be as follows:
+
+<img src="readme/ux/llama-log-logo-text-right.png">
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
@@ -676,6 +688,9 @@ Utilising this font family along with the chosen colour scheme will aid Llama Lo
 ### Applications
 
 The following applications were utilised during the development of Llama Log:
+
+- [Affinity Designer](https://affinity.serif.com/en-gb/designer/)
+    - Affinity Designer was used to create the logo for Llama Log and export screenshots into PNG files that appear throughou the markdown files within this repo.
 
 - [Balsamiq](https://balsamiq.com/)
     - Balsamiq was utilised to create the wireframes during the skeleton plane UX development phase of Llama Log.
