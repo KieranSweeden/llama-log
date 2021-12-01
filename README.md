@@ -73,6 +73,8 @@ Considering that enhancing the communication between colleague's is the essentia
 
 The opportunity that stands out here in not directly contributing to Llama Log's main goal is Admin Database Queries, which is a feature that enables admins to query data within the database of posts made by colleagues, that could suggest trends in the workplace that the business can act upon. This feature will be postponed and will therefore not make it into the MVP of Llama Log.
 
+[Return to Contents &#8679;](#Contents)
+
 ### Scope
 
 #### User Requirements
@@ -131,6 +133,8 @@ The features listed below don't directly tackle the problems Llama Log is attemp
 
 - A database query page that allows admins to compile mass sums of data taken from posts employee's have made, which could be of use to other sectors within the business.
 - Post history page, that presents the history of a post. This allows users to see previous iterations of a post if it's been edited on multiple occasions.
+
+[Return to Contents &#8679;](#Contents)
 
 ### Structure
 
@@ -364,6 +368,8 @@ The database for Llama Log will be hosted via [MongoDb](https://www.mongodb.com/
 The database schema is as follows:
 
 <img src="readme/ux/llama-log-db-schema.png">
+
+[Return to Contents &#8679;](#Contents)
 
 ### Skeleton
 
@@ -615,8 +621,7 @@ The database schema is as follows:
 
 </details>
 
-
-
+[Return to Contents &#8679;](#Contents)
 
 ### Surface
 
