@@ -635,6 +635,9 @@ The database schema is as follows:
 
 The following applications were utilised during the development of Llama Log:
 
+- [Balsamiq](https://balsamiq.com/)
+    - Balsamiq was utilised to create the wireframes during the skeleton plane UX development phase of Llama Log.
+
 - [Tables Generator](https://www.tablesgenerator.com/markdown_tables)
     - Tables generator was utilised to quickly create tables within this README markdown file.
 
