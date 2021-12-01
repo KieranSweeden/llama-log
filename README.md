@@ -367,6 +367,255 @@ The database schema is as follows:
 
 ### Skeleton
 
+#### Wireframes
+
+##### Mobile
+
+<details>
+
+<summary>Index page (existing user)</summary>
+
+<img src="readme/ux/wireframes/index-mobile-existing-user.png">
+
+</details>
+
+<details>
+
+<summary>Index & new password page (new user)</summary>
+
+<img src="readme/ux/wireframes/index-mobile-new-user.png">
+
+</details>
+
+<details>
+
+<summary>About page</summary>
+
+<img src="readme/ux/wireframes/about-mobile.png">
+
+</details>
+
+<details>
+
+<summary>Feed page</summary>
+
+<img src="readme/ux/wireframes/feed-mobile.png">
+
+</details>
+
+<details>
+
+<summary>View post page</summary>
+
+<img src="readme/ux/wireframes/view-post-mobile.png">
+
+</details>
+
+<details>
+
+<summary>Create post page</summary>
+
+<img src="readme/ux/wireframes/create-mobile.png">
+
+</details>
+
+<details>
+
+<summary>Edit post page</summary>
+
+<img src="readme/ux/wireframes/edit-mobile.png">
+
+</details>
+
+<details>
+
+<summary>View account page</summary>
+
+<img src="readme/ux/wireframes/account-mobile.png">
+
+</details>
+
+<details>
+
+<summary>Manage Users page</summary>
+
+<img src="readme/ux/wireframes/manage-mobile.png">
+
+</details>
+
+<details>
+
+<summary>Create & edit users pages</summary>
+
+<img src="readme/ux/wireframes/create-edit-user-mobile.png">
+
+</details>
+
+##### Tablet
+
+<details>
+
+<summary>Index page (existing user)</summary>
+
+<img src="readme/ux/wireframes/index-tablet-existing-user.png">
+
+</details>
+
+<details>
+
+<summary>Index & new password page (new user)</summary>
+
+<img src="readme/ux/wireframes/index-tablet-new-user.png">
+
+</details>
+
+<details>
+
+<summary>About page</summary>
+
+<img src="readme/ux/wireframes/about-tablet.png">
+
+</details>
+
+<details>
+
+<summary>Feed page</summary>
+
+<img src="readme/ux/wireframes/feed-tablet.png">
+
+</details>
+
+<details>
+
+<summary>View post page</summary>
+
+<img src="readme/ux/wireframes/view-post-tablet.png">
+
+</details>
+
+<details>
+
+<summary>Create post page</summary>
+
+<img src="readme/ux/wireframes/create-tablet.png">
+
+</details>
+
+<details>
+
+<summary>Edit post page</summary>
+
+<img src="readme/ux/wireframes/edit-tablet.png">
+
+</details>
+
+<details>
+
+<summary>View account page</summary>
+
+<img src="readme/ux/wireframes/account-tablet.png">
+
+</details>
+
+<details>
+
+<summary>Manage Users page</summary>
+
+<img src="readme/ux/wireframes/manage-tablet.png">
+
+</details>
+
+<details>
+
+<summary>Create & edit users pages</summary>
+
+<img src="readme/ux/wireframes/create-edit-user-tablet.png">
+
+</details>
+
+##### Desktop
+
+<details>
+
+<summary>Index page (existing user)</summary>
+
+<img src="readme/ux/wireframes/index-desktop-existing-user.png">
+
+</details>
+
+<details>
+
+<summary>Index & new password page (new user)</summary>
+
+<img src="readme/ux/wireframes/index-desktop-new-user.png">
+
+</details>
+
+<details>
+
+<summary>About page</summary>
+
+<img src="readme/ux/wireframes/about-desktop.png">
+
+</details>
+
+<details>
+
+<summary>Feed page</summary>
+
+<img src="readme/ux/wireframes/feed-desktop.png">
+
+</details>
+
+<details>
+
+<summary>View post page</summary>
+
+<img src="readme/ux/wireframes/view-post-desktop.png">
+
+</details>
+
+<details>
+
+<summary>Create post page</summary>
+
+<img src="readme/ux/wireframes/create-desktop.png">
+
+</details>
+
+<details>
+
+<summary>Edit post page</summary>
+
+<img src="readme/ux/wireframes/edit-desktop.png">
+
+</details>
+
+<details>
+
+<summary>View account page</summary>
+
+<img src="readme/ux/wireframes/about-desktop.png">
+
+</details>
+
+<details>
+
+<summary>Manage Users page</summary>
+
+<img src="readme/ux/wireframes/manage-desktop.png">
+
+</details>
+
+<details>
+
+<summary>Create & edit users pages</summary>
+
+<img src="readme/ux/wireframes/create-edit-user-desktop.png">
+
+</details>
+
+
 
 
 ### Surface
