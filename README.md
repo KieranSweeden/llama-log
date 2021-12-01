@@ -625,6 +625,26 @@ The database schema is as follows:
 
 ### Surface
 
+#### Visual Language
+
+A visual language should be created & utilised within Llama Log, to convey information to the user without having to tell them the information. Making this language simple makes it learnable to the user and de-clutters the page, making the overall UX more user friendly.
+
+##### Colour
+
+Considering the target audience, Llama Log requires a conservative approach to the colour scheme to provide it with a professional appearance.
+
+The chosen primary colour for Llama Log is mix between green and blue, darkened enough to conform to WCAG guidelines. Given green's association with emotion's such as [safety & optimism](https://www.verywellmind.com/color-psychology-green-2795817) and blue's association with [stability & productivity](https://www.verywellmind.com/the-color-psychology-of-blue-2795815), this felt like a good metaphorical fit when taking Llama Log's goals into account.
+
+Experimenting with [Coolors](https://coolors.co/), I came up with the following colour scheme:
+
+- Primary: hsl(178, 75, 20)
+- Black: hsl(0, 0, 12)
+- White: hsl(0, 0, 98)
+
+<img src="readme/ux/llama-log-colour-scheme.png">
+
+##### Typography
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
@@ -643,7 +663,6 @@ The following applications were utilised during the development of Llama Log:
 
 - [dbdiagram.io](https://dbdiagram.io/home)
     - dbdiagram was utilised to create entity relationship diagrams in order to clearly visualize the database structure of Llama Log & the relationship contained within it.
-
 
 [Return to Contents &#8679;](#Contents)
 
