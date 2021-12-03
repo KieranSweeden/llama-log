@@ -719,6 +719,11 @@ The following applications were utilised during the development of Llama Log:
 
 ## Credits
 
+### Resources
+
+- [Flask: current page in request variable](https://newbedev.com/flask-current-page-in-request-variable)
+    - This post informed me of what syntax to use in order to add active classes to navbar items that reflect the current page.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
