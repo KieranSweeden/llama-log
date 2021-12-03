@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -15,46 +18,21 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                <img src="static/images/llama-log-logo-no-text.png">
+                <h1 class="nav-logo-text is-size-4">Llama Log</h1>
             </a>
-
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
+                data-target="exteral-navbar">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item">Home</a>
-                <a class="navbar-item">Documentation</a>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">More</a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">About</a>
-                        <a class="navbar-item">Jobs</a>
-                        <a class="navbar-item">Contact</a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">Report an issue</a>
-                    </div>
-                </div>
-            </div>
-
+        <div id="exteral-navbar" class="navbar-menu">
             <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light">
-                            Log in
-                        </a>
-                    </div>
-                </div>
+                <a class="navbar-item is-active has-text-right">Log In</a>
+                <a class="navbar-item has-text-right">About Us</a>
             </div>
         </div>
     </nav>
