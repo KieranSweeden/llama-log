@@ -35,6 +35,13 @@
                 {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">Log In</a>
                 <a href="{{ url_for('about') }}" class="navbar-item 
                 {% if request.url_rule.endpoint == 'about' %} is-active {% endif %} has-text-right">About Us</a>
+                <a href="{{ url_for('feed') }}" class="navbar-item 
+                {% if request.url_rule.endpoint == 'feed' %} is-active {% endif %} has-text-right">Feed</a>
+                <a href="{{ url_for('account') }}" class="navbar-item 
+                {% if request.url_rule.endpoint == 'account' %} is-active {% endif %} has-text-right">Account</a>
+                <a href="{{ url_for('manage') }}" class="navbar-item 
+                {% if request.url_rule.endpoint == 'manage' %} is-active {% endif %} has-text-right">Manage</a>
+                <a href="{{ url_for('log_in') }}" class="navbar-item has-text-right">Log Out</a>
             </div>
         </div>
     </nav>
