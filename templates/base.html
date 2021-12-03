@@ -17,7 +17,7 @@
 
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
+            <a class="navbar-item" href="{{ url_for('log_in') }}">
                 <img src="static/images/llama-log-logo-no-text.png">
                 <h1 class="nav-logo-text is-size-4">Llama Log</h1>
             </a>
@@ -31,8 +31,10 @@
 
         <div id="exteral-navbar" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item is-active has-text-right">Log In</a>
-                <a class="navbar-item has-text-right">About Us</a>
+                <a href="{{ url_for('log_in') }}" class="navbar-item 
+                {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">Log In</a>
+                <a href="{{ url_for('about') }}" class="navbar-item 
+                {% if request.url_rule.endpoint == 'about' %} is-active {% endif %} has-text-right">About Us</a>
             </div>
         </div>
     </nav>
