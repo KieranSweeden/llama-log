@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from user.user import user
 from admin.admin import admin
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import timedelta
 
 if os.path.exists("env.py"):
     import env
@@ -12,6 +13,7 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 app.register_blueprint(user, url_prefix="/user")
 app.register_blueprint(admin, url_prefix="/admin")
+app.permanent_session_lifetime = timedelta(minutes=10)
 
 # Configure app with hidden variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -43,6 +45,9 @@ def log_in():
                 # If so, add user info to current session
                 session["user"] = request.form.get("email")
 
+                # Make the session permanent for 10 minutes
+                session.permanent = True
+
                 # Redirect logged in user to feed page
                 return redirect(url_for(
                         "user.feed", username=session["user"]))
@@ -66,7 +71,9 @@ def about():
 
 @app.route("/logout")
 def log_out():
+    # Remove current user session data
     session.pop("user")
+    # Redirect user to the log in page
     return redirect(url_for("log_in"))
 
 
