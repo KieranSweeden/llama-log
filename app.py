@@ -49,13 +49,13 @@ def log_in():
                 
             else:
                 # If not, redirect user to log in page & try again
-                return redirect(url_for("login"))
+                return redirect(url_for("log_in"))
 
         # If the email entered does not exist
         elif not existing_user:
 
             # redirect user to log in page & try again
-            return redirect(url_for("login"))
+            return redirect(url_for("log_in"))
 
     return render_template("index.html")
 
@@ -63,6 +63,11 @@ def log_in():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/logout")
+def log_out():
+    session.pop("user")
+    return redirect(url_for("log_in"))
 
 
 if __name__ == "__main__":

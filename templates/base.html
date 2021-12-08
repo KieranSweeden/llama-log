@@ -34,17 +34,21 @@
 
         <div id="exteral-navbar" class="navbar-menu">
             <div class="navbar-end">
+                {% if not session.user %}
                 <a href="{{ url_for('log_in') }}" class="navbar-item 
                 {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">Log In</a>
                 <a href="{{ url_for('about') }}" class="navbar-item 
                 {% if request.url_rule.endpoint == 'about' %} is-active {% endif %} has-text-right">About Us</a>
+                {% endif %}
+                {% if session.user %}
                 <a href="{{ url_for('user.feed') }}" class="navbar-item 
                 {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">Feed</a>
                 <a href="{{ url_for('user.account') }}" class="navbar-item 
                 {% if request.url_rule.endpoint == 'user.account' %} is-active {% endif %} has-text-right">Account</a>
                 <a href="{{ url_for('admin.manage') }}" class="navbar-item 
                 {% if request.url_rule.endpoint == 'admin.manage' %} is-active {% endif %} has-text-right">Manage</a>
-                <a href="{{ url_for('log_in') }}" class="navbar-item has-text-right">Log Out</a>
+                <a href="{{ url_for('log_out') }}" class="navbar-item has-text-right">Log Out</a>
+                {% endif %}
             </div>
         </div>
     </nav>
