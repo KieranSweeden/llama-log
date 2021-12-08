@@ -1,8 +1,9 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 from flask_pymongo import PyMongo
 from user.user import user
 from admin.admin import admin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
     import env
@@ -24,8 +25,38 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/log_in")
+@app.route("/log_in", methods=["GET", "POST"])
 def log_in():
+    # If a log in attempt has been made
+    if request.method == "POST":
+
+        # Search db if entered email exists
+        existing_user = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
+
+        # If email does exist
+        if existing_user:
+
+            # Check if the passwords match
+            if check_password_hash(existing_user["password"], request.form.get("password")):
+
+                # If so, add user info to current session
+                session["user"] = request.form.get("email")
+
+                # Redirect logged in user to feed page
+                return redirect(url_for(
+                        "user.feed", username=session["user"]))
+                
+            else:
+                # If not, redirect user to log in page & try again
+                return redirect(url_for("login"))
+
+        # If the email entered does not exist
+        elif not existing_user:
+
+            # redirect user to log in page & try again
+            return redirect(url_for("login"))
+
     return render_template("index.html")
 
 

@@ -1,3 +1,46 @@
 {% extends "base.html" %}
 
 {% block title %}Log In | Llama Log{% endblock %}
+
+{% block header %} Log In {% endblock %}
+
+{% block content %}
+
+    <form method="POST" action="{{ url_for('log_in') }}">
+        <div class="field">
+            <label for="email" class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input is-success is-rounded" id="email" name="email" type="email" placeholder="Enter Your Email" value="email@address.com">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </div>
+            <p class="help is-success">This Email is correct</p>
+        </div>
+
+        <div class="field">
+            <label for="password" class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input is-success is-rounded" id="password" name="password" type="password"
+                    placeholder="Enter Your Password">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-key"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </div>
+            <p class="help is-success">This Password is correct</p>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-link">Log In</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
