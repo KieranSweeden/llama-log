@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
+from user.user import user
 from admin.admin import admin
 
 if os.path.exists("env.py"):
@@ -8,6 +9,7 @@ if os.path.exists("env.py"):
 
 # Instance of flask
 app = Flask(__name__)
+app.register_blueprint(user, url_prefix="/user")
 app.register_blueprint(admin, url_prefix="/admin")
 
 # Configure app with hidden variables
@@ -22,6 +24,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/log_in")
 def log_in():
     return render_template("index.html")
 
@@ -29,17 +32,6 @@ def log_in():
 @app.route("/about")
 def about():
     return render_template("about.html")
-
-
-@app.route("/feed")
-def feed():
-    return render_template("feed.html")
-
-
-@app.route("/account")
-def account():
-    return render_template("account.html")
-
 
 
 if __name__ == "__main__":
