@@ -11,9 +11,13 @@ if os.path.exists("env.py"):
 
 # Instance of flask
 app = Flask(__name__)
+
+# Register blueprints with app
 app.register_blueprint(user, url_prefix="/user")
 app.register_blueprint(admin, url_prefix="/admin")
-app.permanent_session_lifetime = timedelta(minutes=10)
+
+# Set 5 minute session time limit
+app.permanent_session_lifetime = timedelta(minutes=5)
 
 # Configure app with hidden variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -45,7 +49,7 @@ def log_in():
                 # If so, add user info to current session
                 session["user"] = request.form.get("email")
 
-                # Make the session permanent for 10 minutes
+                # Make the session permanent for 5 minutes
                 session.permanent = True
 
                 # Redirect logged in user to feed page
