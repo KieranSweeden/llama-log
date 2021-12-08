@@ -1,3 +1,89 @@
 {% extends "base.html" %}
 
 {% block title %}Create User | Llama Log{% endblock %}
+
+{% block header %}Create User{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for('log_in') }}">
+
+    <div class="field">
+        <label for="first_name" class="label">First Name</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="first_name" name="first_name" type="text" placeholder="Enter First Name">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="last_name" class="label">Last Name</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="last_name" name="last_name" type="text" placeholder="Enter Last Name">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="dob" class="label">Date of Birth</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="dob" name="dob" type="date" placeholder="Enter Date of Birth">
+            <span class="icon is-small is-left">
+                <i class="fas fa-calendar-alt"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="phone" class="label">Phone</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="phone" name="phone" type="number" placeholder="Enter Phone Number">
+            <span class="icon is-small is-left">
+                <i class="fas fa-phone"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="email" class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="email" name="email" type="email" placeholder="Enter Your Email">
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+        <p class="help is-success">This Email is correct</p>
+    </div>
+
+    <label class="checkbox">
+        <input id="is_admin" name="is_admin" type="checkbox">
+        Provide this user with admin credentials
+    </label>
+
+    <div class="field">
+        <div class="control is-right">
+            <button type="submit" class="button is-link"><i class="fas fa-user-plus"></i> Create User</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
