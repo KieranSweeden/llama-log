@@ -1,12 +1,14 @@
 import os
 from flask import Flask, render_template, request
 from flask_pymongo import PyMongo
+from admin.admin import admin
 
 if os.path.exists("env.py"):
     import env
 
 # Instance of flask
 app = Flask(__name__)
+app.register_blueprint(admin, url_prefix="/admin")
 
 # Configure app with hidden variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -38,10 +40,6 @@ def feed():
 def account():
     return render_template("account.html")
 
-
-@app.route("/manage")
-def manage():
-    return render_template("manage.html")
 
 
 if __name__ == "__main__":

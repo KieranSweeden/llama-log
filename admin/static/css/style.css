@@ -1,0 +1,66 @@
+:root {
+    --primary-color: hsla(178, 75%, 20%, 1);
+    --faded-primary-color: hsla(178, 75%, 20%, 0.9);
+    --white-color: hsla(0, 0%, 98%, 1);
+    --transparent-white-color: hsla(0, 0%, 98%, 0.8);
+    --transition-speed: 300ms;
+}
+
+body {
+    font-family: 'Lexend', sans-serif;
+}
+
+/* Utilities */
+
+
+/* Buttons */
+
+.button.is-primary {
+    background-color: var(--primary-color);
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.nav-logo-text {
+    color: var(--white-color);
+    margin-left: .5rem;
+}
+
+.navbar-item {
+    color: var(--transparent-white-color);
+    transition: color var(--transition-speed) ease-in-out;
+}
+
+.navbar-item.is-active {
+    font-weight: bold;
+}
+
+.navbar-link.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+a.navbar-item.is-active,
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover {
+    background-color: transparent;
+    color: var(--white-color);
+}
+
+.navbar-burger span {
+    background-color: var(--white-color);
+    transition-duration: var(--transition-speed);
+}
+
+@media screen and (max-width: 1023px) {
+    .navbar-menu {
+        background-color: var(--faded-primary-color);
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+}
