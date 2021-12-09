@@ -707,6 +707,8 @@ The following applications were utilised during the development of Llama Log:
 
 ## Testing
 
+To navigate to the testing section of this repository, [click here](TESTING.md).
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
