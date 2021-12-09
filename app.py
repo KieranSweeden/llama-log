@@ -1,8 +1,6 @@
 import os
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_pymongo import PyMongo
-from user.user import user
-from admin.admin import admin
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
 
@@ -12,17 +10,20 @@ if os.path.exists("env.py"):
 # Instance of flask
 app = Flask(__name__)
 
-# Register blueprints with app
-app.register_blueprint(user, url_prefix="/user")
-app.register_blueprint(admin, url_prefix="/admin")
-
-# Set 5 minute session time limit
-app.permanent_session_lifetime = timedelta(minutes=5)
-
 # Configure app with hidden variables
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
+# Set 5 minute session time limit
+app.permanent_session_lifetime = timedelta(minutes=5)
+
+from user.user import user
+from admin.admin import admin
+
+# Register blueprints with app
+app.register_blueprint(user, url_prefix="/user")
+app.register_blueprint(admin, url_prefix="/admin")
 
 
 # Instance of PyMongo, with flask app inserted as argument
