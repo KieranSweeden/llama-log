@@ -33,12 +33,13 @@ def create_user():
             "dob": request.form.get("dob"),
             "email": request.form.get("email"),
             "phone": request.form.get("phone"),
-            "is_admin": bool(request.form.get("is_admin"))
+            "is_admin": bool("is_admin" in request.form)
         }
 
         # Insert the new user into the user db
         mongo.db.users.insert_one(new_user)
 
+        # Redirect the user to the manage page
         return redirect(url_for("admin.manage"))
 
     return render_template("create_user.html")
