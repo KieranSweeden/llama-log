@@ -7,7 +7,10 @@ from app import mongo
 @admin.route("/")
 @admin.route("/manage")
 def manage():
-    return render_template("manage.html")
+
+    users = mongo.db.users.find()
+
+    return render_template("manage.html", users=users)
 
 
 @admin.route("/create_user", methods=["GET", "POST"])

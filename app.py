@@ -19,8 +19,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # Set 5 minute session time limit
 app.permanent_session_lifetime = timedelta(minutes=5)
 
+
 from user.user import user
 from admin.admin import admin
+
 
 # Register blueprints with app
 app.register_blueprint(user, url_prefix="/user")
