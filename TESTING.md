@@ -31,3 +31,19 @@ Once the user has entered their email, they're sent to the password page where t
 After placing prints throughout the application, I noticed that I was assuming a variable was a cursor dictionary object, when in fact it was actually a string.
 
 To get around this problem, I retrieved the document from within the password view rather than passing the document from the log_in view to the password view as a variable. From here I could retrieve the data I needed and fix the issue.
+
+#### Logo image was not loading on blueprint template pages
+
+The Llama Logo was not being loaded onto pages that are blueprint templates.
+
+This was a clear user error on my part, as the filepath value within the src attribute of the image was written as a normal filepath, not formatted in the recommended way by Flask.
+
+Once changing:
+
+> <code>src="static/images/llama-log-logo-no-text.png"</code>
+
+To:
+
+> <code>src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}"</code>
+
+The problem was solved.
