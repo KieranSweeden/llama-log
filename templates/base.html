@@ -21,7 +21,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url_for('log_in') }}">
-                <img src="static/images/llama-log-logo-no-text.png">
+                <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}">
                 <h1 class="nav-logo-text is-size-4">Llama Log</h1>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -43,7 +43,7 @@
                 {% if session.user_email %}
                     <a href="{{ url_for('user.feed', user_email=session['user_email']) }}" class="navbar-item 
                     {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">Feed</a>
-                    <a href="{{ url_for('user.account') }}" class="navbar-item 
+                    <a href="{{ url_for('user.account', user_email=session['user_email']) }}" class="navbar-item 
                     {% if request.url_rule.endpoint == 'user.account' %} is-active {% endif %} has-text-right">Account</a>
                     {% if session.user_is_admin %}
                         <a href="{{ url_for('admin.manage') }}" class="navbar-item 
