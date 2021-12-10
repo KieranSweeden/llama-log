@@ -48,7 +48,7 @@ def create_user():
 
     return render_template("create_user.html")
 
-@admin.route("/edit_user")
-def edit_user():
+@admin.route("/edit_user/<user_email>")
+def edit_user(user_email):
 
-    return render_template("edit_user.html")
+    return render_template("edit_user.html", user_email=user_email)

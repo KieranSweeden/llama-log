@@ -15,7 +15,7 @@
             </div>
         </div>
         <footer class="card-footer">
-            <a href="#" class="card-footer-item">Edit</a>
+            <a href="{{ url_for('admin.edit_user', user_email=user.email) }}" class="card-footer-item">Edit</a>
             <a href="#" class="card-footer-item">Delete</a>
         </footer>
     </div>
