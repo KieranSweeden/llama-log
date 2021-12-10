@@ -14,7 +14,7 @@
 <div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
         {% for user in users %}
-        
+            {% if user.email != session["user_email"]%}
             <div class="card m-2">
                 <div class="card-content">
                     <div class="content">
@@ -27,7 +27,7 @@
                     <a href="#" class="card-footer-item has-text-danger">Delete <i class="fas fa-trash-alt"></i></a>
                 </footer>
             </div>
-        
+            {% endif %}
         {% endfor %}
     </div>
 </div>
