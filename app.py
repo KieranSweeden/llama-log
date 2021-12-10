@@ -105,7 +105,7 @@ def password(user_email):
             # Add user info to current session
             session["user_email"] = existing_user["email"]
 
-            session["user_is_admin"] = existing_user["user_is_admin"]
+            session["user_is_admin"] = existing_user["is_admin"]
 
             # Make the session permanent for 5 minutes
             session.permanent = True
