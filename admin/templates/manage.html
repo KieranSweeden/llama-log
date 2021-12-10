@@ -7,6 +7,11 @@
 {% block content %}
 
 <div class="columns is-marginless">
+    <div class="column is-8 is-offset-2 has-text-centered">
+        <a class="button is-link" href="{{ url_for('admin.create_user') }}">Create New User</a>
+    </div>
+</div>
+<div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
         {% for user in users %}
         
