@@ -51,4 +51,9 @@ def create_user():
 @admin.route("/edit_user/<user_email>")
 def edit_user(user_email):
 
-    return render_template("edit_user.html", user_email=user_email)
+    displayed_user = mongo.db.users.find_one(
+        {"email": user_email}
+    )
+
+    return render_template("edit_user.html", displayed_user=displayed_user)
+    
