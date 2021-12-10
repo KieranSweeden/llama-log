@@ -33,7 +33,8 @@ def create_user():
             "dob": request.form.get("dob"),
             "email": request.form.get("email"),
             "phone": request.form.get("phone"),
-            "is_admin": bool("is_admin" in request.form)
+            "is_admin": bool("is_admin" in request.form),
+            "password": "none"
         }
 
         # Insert the new user into the user db

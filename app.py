@@ -74,14 +74,16 @@ def password(user_email):
             if check_password_hash(existing_user["password"], request.form.get("password")):
 
                 # If so, add user info to current session
-                session["user"] = user_email
+                session["user_email"] = user_email
+
+                session["user_is_admin"] = existing_user["is_admin"]
 
                 # Make the session permanent for 5 minutes
                 session.permanent = True
 
                 # Redirect logged in user to feed page
                 return redirect(url_for(
-                        "user.feed", username=session["user"]))
+                        "user.feed", user_email=session["user_email"]))
                 
             # If not, redirect user to log in page & try again
             return redirect(url_for("log_in"))
@@ -99,14 +101,16 @@ def password(user_email):
             mongo.db.users.update_one({"_id": existing_user["_id"]}, {"$set": {"password": hashed_password}})
 
             # Add user info to current session
-            session["user"] = existing_user["email"]
+            session["user_email"] = existing_user["email"]
+
+            session["user_is_admin"] = existing_user["user_is_admin"]
 
             # Make the session permanent for 5 minutes
             session.permanent = True
 
             # Redirect logged in user to feed page
             return redirect(url_for(
-                "user.feed", username=session["user"]))
+                "user.feed", user_email=session["user_email"]))
 
 
     return render_template("password.html", existing_user=existing_user)
@@ -119,7 +123,8 @@ def about():
 @app.route("/log_out")
 def log_out():
     # Remove current user session data
-    session.pop("user")
+    session.pop("user_email")
+    session.pop("user_is_admin")
     # Redirect user to the log in page
     return redirect(url_for("log_in"))
 
