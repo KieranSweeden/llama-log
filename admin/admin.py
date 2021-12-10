@@ -51,6 +51,11 @@ def create_user():
 @admin.route("/edit_user/<user_email>", methods=["GET", "POST"])
 def edit_user(user_email):
 
+    # Grab the user from db using the user_email
+    displayed_user = mongo.db.users.find_one(
+        {"email": user_email}
+    )
+
     # If an attempt is made to update a user
     if request.method == "POST":
 
@@ -64,13 +69,11 @@ def edit_user(user_email):
             "is_admin": bool("is_admin" in request.form)
         }
 
-        
+        # Update the user info in db with new info submitted
+        mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
 
-
-
-    displayed_user = mongo.db.users.find_one(
-        {"email": user_email}
-    )
+        # Redirect the user to the manage users page
+        return redirect(url_for("admin.manage"))
 
     return render_template("edit_user.html", displayed_user=displayed_user)
 
