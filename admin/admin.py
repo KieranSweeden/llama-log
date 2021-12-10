@@ -48,12 +48,29 @@ def create_user():
 
     return render_template("create_user.html")
 
-@admin.route("/edit_user/<user_email>")
+@admin.route("/edit_user/<user_email>", methods=["GET", "POST"])
 def edit_user(user_email):
+
+    # If an attempt is made to update a user
+    if request.method == "POST":
+
+        # Get the user info from the form
+        updated_user_info = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "dob": request.form.get("dob"),
+            "email": request.form.get("email"),
+            "phone": request.form.get("phone"),
+            "is_admin": bool("is_admin" in request.form)
+        }
+
+        
+
+
 
     displayed_user = mongo.db.users.find_one(
         {"email": user_email}
     )
 
     return render_template("edit_user.html", displayed_user=displayed_user)
-    
+
