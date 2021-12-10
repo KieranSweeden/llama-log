@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, url_for
+from flask import Blueprint, render_template, redirect, request, url_for, flash
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
 
@@ -71,6 +71,8 @@ def edit_user(user_email):
 
         # Update the user info in db with new info submitted
         mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
+
+        flash("User has been updated successfully")
 
         # Redirect the user to the manage users page
         return redirect(url_for("admin.manage"))

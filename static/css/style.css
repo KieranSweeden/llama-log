@@ -64,3 +64,10 @@ a.navbar-item:hover {
         right: 0;
     }
 }
+
+/* Flash messages */
+article.message.is-success {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+}
