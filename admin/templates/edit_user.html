@@ -81,9 +81,12 @@
         Provide this user with admin credentials
     </label>
 
-    <div class="field">
+    <div class="field is-grouped">
         <div class="control is-right">
-            <button type="submit" class="button is-link"><i class="fas fa-user-plus"></i> Create User</button>
+            <button type="submit" class="button is-link"><i class="fas fa-save"></i> Update User</button>
+        </div>
+        <div class="control">
+            <a class="button is-warning" href="{{ url_for('admin.manage')}}">Back</a>
         </div>
     </div>
 </form>
