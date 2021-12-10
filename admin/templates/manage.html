@@ -6,21 +6,26 @@
 
 {% block content %}
 
-{% for user in users %}
-
-    <div class="card">
-        <div class="card-content">
-            <div class="content">
-                <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+<div class="columns is-marginless">
+    <div class="column is-8 is-offset-2">
+        {% for user in users %}
+        
+            <div class="card m-2">
+                <div class="card-content">
+                    <div class="content">
+                        <h3 class="is-size-5">{{ user.first_name }} {{ user.last_name }}</h3>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="{{ url_for('admin.edit_user', user_email=user.email) }}" class="card-footer-item">Edit <i class="fas fa-user-edit"></i></a>
+                    <a href="#" class="card-footer-item has-text-warning-dark">Reset Password <i class="fas fa-key"></i></a>
+                    <a href="#" class="card-footer-item has-text-danger">Delete <i class="fas fa-trash-alt"></i></a>
+                </footer>
             </div>
-        </div>
-        <footer class="card-footer">
-            <a href="{{ url_for('admin.edit_user', user_email=user.email) }}" class="card-footer-item">Edit <i class="fas fa-user-edit"></i></a>
-            <a href="#" class="card-footer-item has-text-warning-dark">Reset Password <i class="fas fa-key"></i></a>
-            <a href="#" class="card-footer-item has-text-danger">Delete <i class="fas fa-trash-alt"></i></a>
-        </footer>
+        
+        {% endfor %}
     </div>
+</div>
 
-{% endfor %}
 
 {% endblock %}

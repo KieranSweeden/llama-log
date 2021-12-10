@@ -75,5 +75,6 @@ def edit_user(user_email):
         # Redirect the user to the manage users page
         return redirect(url_for("admin.manage"))
 
+    # Else open the edit user template & send user data
     return render_template("edit_user.html", displayed_user=displayed_user)
 
