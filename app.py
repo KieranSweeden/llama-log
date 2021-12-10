@@ -55,7 +55,6 @@ def log_in():
     return render_template("index.html")
 
 
-@app.route("/password", methods=["GET", "POST"])
 @app.route("/password/<user_email>", methods=["GET", "POST"])
 def password(user_email):
 
@@ -67,13 +66,15 @@ def password(user_email):
     if request.method == "POST":
 
         # If reset password is false
-        if existing_user["password_is_reset"] == False:
+        if existing_user["password"] != "none":
+
+            print("is false")
 
             # Check if the entered password matches db password
-            if check_password_hash(user_email.password, request.form.get("password")):
+            if check_password_hash(existing_user["password"], request.form.get("password")):
 
                 # If so, add user info to current session
-                session["user"] = request.form.get("email")
+                session["user"] = user_email
 
                 # Make the session permanent for 5 minutes
                 session.permanent = True
@@ -85,14 +86,20 @@ def password(user_email):
             # If not, redirect user to log in page & try again
             return redirect(url_for("log_in"))
         
+        print("is true")
+        
         # If a create password attempt has been made
         # Check both entered passwords are the same
         if request.form.get("password") == request.form.get("repeat_password"):
 
-            # If so, add the password to the relevant doc in db
-                
-            # If so, add user info to current session
-            session["user"] = request.form.get("email")
+            # Create hashed password
+            hashed_password = generate_password_hash(request.form.get("password"))
+
+            # If so, reset the password to the relevant doc in db
+            mongo.db.users.update_one({"_id": existing_user["_id"]}, {"$set": {"password": hashed_password}})
+
+            # Add user info to current session
+            session["user"] = existing_user["email"]
 
             # Make the session permanent for 5 minutes
             session.permanent = True
