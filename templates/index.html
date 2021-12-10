@@ -29,3 +29,23 @@
     </form>
 
 {% endblock %}
+
+{% block flashes %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <article class="message is-success">
+            <div class="message-header">
+                <p>Success!</p>
+                <button class="delete flash-delete" aria-label="delete"></button>
+              </div>
+            <div class="message-body">
+                <p>{{ message }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% endblock %}

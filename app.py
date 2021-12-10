@@ -1,6 +1,6 @@
 import os
 import ast
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import timedelta
@@ -127,6 +127,10 @@ def log_out():
     # Remove current user session data
     session.pop("user_email")
     session.pop("user_is_admin")
+
+    # Inform the user they've been logged out at log in page
+    flash("You have been logged out successfully")
+    
     # Redirect user to the log in page
     return redirect(url_for("log_in"))
 
