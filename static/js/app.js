@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // Enable mobile nav functionality with bulma
-
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -46,7 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  
+  // Set timer for flash messages after 5 seconds
+  let flashes = Array.from(document.getElementsByClassName("message"));
+
+  // If flashes are present on page
+  if (flashes.length > 0) {
+    // Set a 5s timer to add fade out class
+    setTimeout(() => {
+      flashes[0].classList.remove("animate__fadeInUp");
+      flashes[0].classList.add("animate__fadeOutDown");
+      // Remove flash after second of fade out
+      setTimeout(() => {
+        flashes[0].remove()
+      }, 1000)
+    }, 5000)
+  }
+
 });
 
 function unlockFormInputFields(editButton) {
