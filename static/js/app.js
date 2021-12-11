@@ -42,8 +42,12 @@ function focusFirstInputOnLoad(){
   // Target the first text input element on page
   firstInputElement = [...document.getElementsByClassName("input")][0]
 
-  // Auto focus on input element on document load
-  firstInputElement.focus()
+  // If an input element has been found
+  if (firstInputElement) {
+
+    // Auto focus on that input element on document load
+    firstInputElement.focus()
+  }
 }
 
 
