@@ -78,15 +78,6 @@
         <p class="help is-success">This Email is correct</p>
     </div>
 
-    <label class="checkbox">
-        {% if current_user.is_admin == True %}
-            <input id="is_admin" name="is_admin" type="checkbox" checked disabled>
-        {% elif current_user.is_admin == False %}
-            <input id="is_admin" name="is_admin" type="checkbox" disabled>
-        {% endif %}
-        Provide this user with admin credentials <i class="fas fa-lock"></i>
-    </label>
-
     <div class="buttons has-addons is-right">
         <button type="button" id="enable-edit" class="button is-link">Edit <i class="fas fa-user-edit"></i></button>
         <a class="button is-warning" href="{{ url_for('user.feed', user_email=session['user_email'])}}">Back <i class="fas fa-undo"></i></a>

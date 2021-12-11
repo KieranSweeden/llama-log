@@ -26,7 +26,7 @@ def account(user_email):
             "dob": request.form.get("dob"),
             "email": request.form.get("email"),
             "phone": request.form.get("phone"),
-            "is_admin": bool("is_admin" in request.form)
+            "is_admin": current_user["is_admin"]
         }
 
         # Update the user info in db with new info submitted
