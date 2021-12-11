@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
+  // Focus on first input element if found
   focusFirstInputOnLoad()
   
 });

@@ -2,13 +2,13 @@ from flask import Blueprint, render_template, redirect, request, url_for, flash
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
 
-from app import mongo
+import app
 
 @admin.route("/")
 @admin.route("/manage")
 def manage():
 
-    users = mongo.db.users.find()
+    users = app.mongo.db.users.find()
 
     return render_template("manage.html", users=users)
 
@@ -20,7 +20,7 @@ def create_user():
     if request.method == "POST":
 
         # Find if user already exists & store it
-        user_exists = True if mongo.db.users.find_one(
+        user_exists = True if app.mongo.db.users.find_one(
             {"email": request.form.get("email")}) else False
         
         # If the user does exist
@@ -41,7 +41,7 @@ def create_user():
         }
 
         # Insert the new user into the user db
-        mongo.db.users.insert_one(new_user)
+        app.mongo.db.users.insert_one(new_user)
 
         # Inform admin that new user has been created
         flash("New user has been created successfully")
@@ -73,7 +73,7 @@ def edit_user(user_email):
         }
 
         # Update the user info in db with new info submitted
-        mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
+        app.mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
 
         flash("User has been updated successfully")
 

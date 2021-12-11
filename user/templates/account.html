@@ -3,3 +3,96 @@
 {% block title %}Account | Llama Log{% endblock %}
 
 {% block header %}My Account{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for('user.account', user_email=session['user_email']) }}">
+
+    <div class="field">
+        <label for="first_name" class="label">First Name</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="first_name" name="first_name" type="text"
+                value="{{ current_user.first_name }}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="last_name" class="label">Last Name</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="last_name" name="last_name" type="text"
+                value="{{ current_user.last_name }}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="dob" class="label">Date of Birth</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-calendar-alt"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="phone" class="label">Phone</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-phone"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="email" class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}">
+            <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+        <p class="help is-success">This Email is correct</p>
+    </div>
+
+    <label class="checkbox">
+        {% if current_user.is_admin == True %}
+            <input id="is_admin" name="is_admin" type="checkbox" checked>
+        {% elif current_user.is_admin == False %}
+            <input id="is_admin" name="is_admin" type="checkbox">
+        {% endif %}
+        Provide this user with admin credentials
+    </label>
+
+    <div class="field is-grouped">
+        <div class="control is-right">
+            <button type="submit" class="button is-link">Update User <i class="fas fa-save"></i></button>
+        </div>
+        <div class="control">
+            <a class="button is-warning" href="{{ url_for('admin.manage')}}">Back <i class="fas fa-undo"></i></a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
