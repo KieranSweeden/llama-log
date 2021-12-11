@@ -25,29 +25,84 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Grab flash delete buttons on page
-  flashDeleteButtons = [...document.getElementsByClassName("flash-delete")];
+  let flashDeleteButtons = [...document.getElementsByClassName("flash-delete")];
 
   // When clicked, delete the flash message
   flashDeleteButtons.forEach(flashDeleteButton => {
     flashDeleteButton.addEventListener('click', () => {
-      flashDeleteButton.parentElement.parentElement.remove()
+      flashDeleteButton.parentElement.parentElement.remove();
     })
   })
 
   // Focus on first input element if found
-  focusFirstInputOnLoad()
+  focusFirstInputOnLoad();
+
+  // Add event listener to unlock form input fields for editing
+  let editButton = document.getElementById("enable-edit");
+
+  if (editButton){
+    editButton.addEventListener('click', (editButton) => {
+      unlockFormInputFields(editButton.target)
+    })
+  }
+
   
 });
 
+function unlockFormInputFields(editButton) {
+  // Grab form element
+  let form = [...document.getElementsByTagName("form")][0]
+  
+  // Get all input elements within form & lock icons
+  let inputElements = [...form.getElementsByTagName("input")]
+  let lockIcons = [...form.getElementsByClassName("fas fa-lock")]
+
+  // Remove disabled attribute from each input element
+  inputElements.forEach(inputElement => {
+    inputElement.removeAttribute("disabled")
+  })
+
+  // Change lock icon to unlock icon
+  lockIcons.forEach(lockIcon => {
+    lockIcon.className = "fas fa-lock-open";
+  })
+
+  // Update form button
+  changeEditButtonToSaveButton(editButton)
+}
+
+function changeEditButtonToSaveButton(editButton){
+
+  // Create save button
+  let saveButton = document.createElement("button");
+  saveButton.className = "button is-link";
+  saveButton.type = "submit";
+  saveButton.innerHTML = "Save <i class='fas fa-save'></i>"
+
+  // Ensure editButton is button & not icon
+  editButton = (editButton.nodeName == "BUTTON") ? editButton : editButton.parentElement;
+
+  // Get button sibling & parent
+  let sibling = editButton.nextElementSibling;
+  let parent = editButton.parentElement;
+
+  // Remove edit button
+  editButton.remove()
+
+  // Insert save button recently created
+  parent.insertBefore(saveButton, sibling)
+
+}
+
 function focusFirstInputOnLoad(){
   // Target the first text input element on page
-  firstInputElement = [...document.getElementsByClassName("input")][0]
+  firstInputElement = [...document.getElementsByClassName("input")][0];
 
   // If an input element has been found
   if (firstInputElement) {
 
     // Auto focus on that input element on document load
-    firstInputElement.focus()
+    firstInputElement.focus();
   }
 }
 
