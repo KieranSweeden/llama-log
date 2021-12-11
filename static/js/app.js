@@ -33,8 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
       flashDeleteButton.parentElement.parentElement.remove()
     })
   })
+
+  focusFirstInputOnLoad()
   
 });
+
+function focusFirstInputOnLoad(){
+  // Target the first text input element on page
+  firstInputElement = [...document.getElementsByClassName("input")][0]
+
+  // Auto focus on input element on document load
+  firstInputElement.focus()
+}
 
 
 
