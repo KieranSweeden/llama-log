@@ -9,10 +9,10 @@
 <form method="POST" action="{{ url_for('user.account', user_email=session['user_email']) }}">
 
     <div class="field">
-        <label for="first_name" class="label">First Name</label>
+        <label for="first_name" class="label">First Name <i class="fas fa-lock"></i></label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="first_name" name="first_name" type="text"
-                value="{{ current_user.first_name }}">
+                value="{{ current_user.first_name }}" disabled>
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -23,10 +23,10 @@
     </div>
 
     <div class="field">
-        <label for="last_name" class="label">Last Name</label>
+        <label for="last_name" class="label">Last Name <i class="fas fa-lock"></i></label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="last_name" name="last_name" type="text"
-                value="{{ current_user.last_name }}">
+                value="{{ current_user.last_name }}" disabled>
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -37,10 +37,10 @@
     </div>
 
     <div class="field">
-        <label for="dob" class="label">Date of Birth</label>
+        <label for="dob" class="label">Date of Birth <i class="fas fa-lock"></i></label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}">
-            <span class="icon is-small is-left">
+            <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}" disabled>
+            <span class="icon is-small is-left" disabled>
                 <i class="fas fa-calendar-alt"></i>
             </span>
             <span class="icon is-small is-right">
@@ -50,9 +50,10 @@
     </div>
 
     <div class="field">
-        <label for="phone" class="label">Phone</label>
+        <label for="phone" class="label">Phone <i class="fas fa-lock"></i></label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}">
+            <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}"
+                disabled>
             <span class="icon is-small is-left">
                 <i class="fas fa-phone"></i>
             </span>
@@ -63,9 +64,10 @@
     </div>
 
     <div class="field">
-        <label for="email" class="label">Email</label>
+        <label for="email" class="label">Email <i class="fas fa-lock"></i></label>
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}">
+            <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}"
+                disabled>
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
@@ -78,20 +80,16 @@
 
     <label class="checkbox">
         {% if current_user.is_admin == True %}
-            <input id="is_admin" name="is_admin" type="checkbox" checked>
+            <input id="is_admin" name="is_admin" type="checkbox" checked disabled>
         {% elif current_user.is_admin == False %}
-            <input id="is_admin" name="is_admin" type="checkbox">
+            <input id="is_admin" name="is_admin" type="checkbox" disabled>
         {% endif %}
-        Provide this user with admin credentials
+        Provide this user with admin credentials <i class="fas fa-lock"></i>
     </label>
 
-    <div class="field is-grouped">
-        <div class="control is-right">
-            <button type="submit" class="button is-link">Update User <i class="fas fa-save"></i></button>
-        </div>
-        <div class="control">
-            <a class="button is-warning" href="{{ url_for('admin.manage')}}">Back <i class="fas fa-undo"></i></a>
-        </div>
+    <div class="buttons has-addons is-right">
+        <button type="submit" class="button is-link">Edit <i class="fas fa-user-edit"></i></button>
+        <a class="button is-warning" href="{{ url_for('admin.manage')}}">Back <i class="fas fa-undo"></i></a>
     </div>
 </form>
 

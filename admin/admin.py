@@ -55,7 +55,7 @@ def create_user():
 def edit_user(user_email):
 
     # Grab the user from db using the user_email
-    displayed_user = mongo.db.users.find_one(
+    displayed_user = app.mongo.db.users.find_one(
         {"email": user_email}
     )
 
