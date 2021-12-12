@@ -52,12 +52,12 @@ def create_user():
 
     return render_template("create_user.html")
 
-@admin.route("/edit_user/<user_email>", methods=["GET", "POST"])
-def edit_user(user_email):
+@admin.route("/edit_user/<user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
 
     # Grab the user from db using the user_email
     displayed_user = app.mongo.db.users.find_one(
-        {"email": user_email}
+        {"_id": ObjectId(user_id)}
     )
 
     # If an attempt is made to update a user

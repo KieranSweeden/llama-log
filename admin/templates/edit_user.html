@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form method="POST" action="{{ url_for('admin.edit_user', user_email=displayed_user.email) }}">
+<form method="POST" action="{{ url_for('admin.edit_user', user_id=displayed_user._id) }}">
 
     <div class="field">
         <label for="first_name" class="label">First Name</label>

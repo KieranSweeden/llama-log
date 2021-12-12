@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <footer class="card-footer">
-                    <a href="{{ url_for('admin.edit_user', user_email=user.email) }}" class="card-footer-item">Edit <i class="fas fa-user-edit"></i></a>
+                    <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="card-footer-item">Edit <i class="fas fa-user-edit"></i></a>
                     <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="card-footer-item has-text-warning-dark">Reset Password <i class="fas fa-key"></i></a>
                     <a href="#" class="card-footer-item has-text-danger">Delete <i class="fas fa-trash-alt"></i></a>
                 </footer>
