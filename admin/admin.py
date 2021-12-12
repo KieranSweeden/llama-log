@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, request, url_for, flash
+from flask_pymongo import ObjectId
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
 
@@ -83,3 +84,19 @@ def edit_user(user_email):
     # Else open the edit user template & send user data
     return render_template("edit_user.html", displayed_user=displayed_user)
 
+@admin.route("/reset_password/<user_id>")
+def reset_password(user_id):
+
+    # Grab the user from db using the user_id
+    clicked_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(user_id)}
+    )
+
+    # Reset clicked user's password in db
+    app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
+
+    # Inform admin of clicked user's password deletion
+    flash(f"{clicked_user['first_name']}'s password has been reset")
+
+    # Return to admin manage page
+    return redirect(url_for("admin.manage"))
