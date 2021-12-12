@@ -84,6 +84,26 @@ def edit_user(user_id):
     # Else open the edit user template & send user data
     return render_template("edit_user.html", displayed_user=displayed_user)
 
+
+@admin.route("/delete_user/<user_id>")
+def delete_user(user_id):
+
+    # Grab the user from db using the user_id
+    clicked_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(user_id)}
+    )
+
+    # Reset clicked user's password in db
+    app.mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+
+    # Inform admin of user deletion
+    flash(f"{clicked_user['first_name']}'s account has been successfully deleted")
+
+    # Return to admin manage page
+    return redirect(url_for("admin.manage"))
+
+
+
 @admin.route("/reset_password/<user_id>")
 def reset_password(user_id):
 
