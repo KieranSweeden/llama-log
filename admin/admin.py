@@ -45,7 +45,7 @@ def create_user():
         app.mongo.db.users.insert_one(new_user)
 
         # Inform admin that new user has been created
-        flash("New user has been created successfully")
+        flash(f"{new_user['first_name']}'s profile has been created successfully")
 
         # Redirect the user to the manage page
         return redirect(url_for("admin.manage"))
