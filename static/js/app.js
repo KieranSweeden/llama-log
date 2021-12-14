@@ -23,6 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Enable dropdown buttons
+  let dropdowns = [...document.getElementsByClassName("dropdown")]
+
+  if (dropdowns.length > 0){
+    addListenerToDropdowns(dropdowns)
+  }
+
   // Grab flash delete buttons on page
   let flashDeleteButtons = [...document.getElementsByClassName("flash-delete")];
 
@@ -62,6 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+function addListenerToDropdowns(dropdowns){
+  dropdowns.forEach(dropdown => {
+    dropdown.addEventListener("click", event => {
+
+      // Grab dropdown component & toggle is-active class
+      event.target.closest(".dropdown").classList.toggle("is-active");
+
+    })
+  })
+}
 
 function unlockFormInputFields(editButton) {
   // Grab form element
