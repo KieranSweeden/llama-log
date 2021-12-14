@@ -10,9 +10,10 @@ def feed(user_email):
     return render_template("feed.html", user_email=user_email)
 
 
-@user.route("/create_post")
-def create_post():
-    return render_template("create_post.html")
+@user.route("/create_post/<category>", methods=["POST", "GET"])
+def create_post(category):
+
+    return render_template("create_post.html", category=category)
 
 
 @user.route("/account/<user_email>", methods=["POST", "GET"])

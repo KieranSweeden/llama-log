@@ -6,7 +6,9 @@
 
 {% block content %}
 
-<form method="POST" action="">
+{% if category == "work_order" %}
+
+<form method="POST" action="{{ url_for('user.create_post', category=category)}}">
 
     <div class="field">
         <label for="title" class="label">Title</label>
@@ -43,9 +45,11 @@
 
 
     <div class="buttons has-addons is-right">
-        <button type="submit" class="button is-link">Create User <i class="fas fa-user-plus"></i></button>
+        <button type="submit" class="button is-link">Submit Work Order <i class="fas fa-paper-plane"></i></button>
         <a class="button is-warning" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back <i class="fas fa-undo"></i></a>
     </div>
 </form>
+
+{% endif %}
 
 {% endblock %}
