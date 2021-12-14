@@ -16,7 +16,7 @@ def create_post(category):
     # If the user makes a post submission
     if request.method == "POST":
 
-        # Determine whether it's a word order or incident
+        # If the submission made is a work order
         if category == "work_order":
             
             # Gather up the submitted data into a dict
@@ -29,11 +29,29 @@ def create_post(category):
             # Push new work order post to database
             app.mongo.db.work_orders.insert_one(new_work_order)
 
+            # Inform user that a post has been submitted successfully
             flash("Your new work order has been successfully posted")
 
+            # Redirect user to the feed page
             return redirect(url_for("user.feed", user_email=session["user_email"]))
 
+        # Else if it's an incident
+        else:
 
+            # Gather submitted data into dict
+            # new_incident = {
+            #     "title": request.form.get("title"),
+            #     "equipment": request.form.get("equipment"),
+            #     "description": request.form.get("description")
+            # }
+            # Push new incident to database
+
+            # Inform user that a post has been submitted successfully
+
+            # Redirect user to the feed page
+            return redirect(url_for("user.feed", user_email=session["user_email"]))
+
+    # If no form submission has been made, render the create post page
     return render_template("create_post.html", category=category)
 
 

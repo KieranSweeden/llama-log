@@ -2,11 +2,15 @@
 
 {% block title %}Create New Post | Llama Log{% endblock %}
 
-{% block header %}Create New Work Order Post{% endblock %}
+{% block header %}
+    {% if category == "work_order" %}
+        Create New Work Order Post
+    {% else %}
+        Create New Incident Post
+    {% endif %}
+{% endblock %}
 
 {% block content %}
-
-{% if category == "work_order" %}
 
 <form method="POST" action="{{ url_for('user.create_post', category=category)}}">
 
@@ -23,18 +27,36 @@
         </div>
     </div>
 
-    <div class="field">
-        <label for="equipment" class="label">Equipment</label>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
-            <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
+    {% if category == "work_order" %}
+
+        <div class="field">
+            <label for="equipment" class="label">Equipment</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input is-success" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </div>
         </div>
-    </div>
+
+    {% else %}
+        
+    <div class="control">
+        <label for="was_customer_involved" class="label">Was A Customer Involved?</label>
+        <label class="radio">
+          <input type="radio" name="was_customer_involved" checked>
+          No
+        </label>
+        <label class="radio">
+          <input type="radio" name="was_customer_involved">
+          Yes
+        </label>
+      </div>
+
+    {% endif %}
 
     <div class="field">
         <label for="description" class="label">Description</label>
@@ -45,11 +67,18 @@
 
 
     <div class="buttons has-addons is-right">
-        <button type="submit" class="button is-link">Submit Work Order <i class="fas fa-paper-plane"></i></button>
+        <button type="submit" class="button is-link">
+            {% if category == "work_order" %}
+                Submit Work Order
+            {% else %}
+                Submit Incident 
+            {% endif %}
+            <i class="fas fa-paper-plane"></i>
+        </button>
         <a class="button is-warning" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back <i class="fas fa-undo"></i></a>
     </div>
+
 </form>
 
-{% endif %}
 
 {% endblock %}
