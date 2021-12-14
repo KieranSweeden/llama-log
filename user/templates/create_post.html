@@ -2,4 +2,50 @@
 
 {% block title %}Create New Post | Llama Log{% endblock %}
 
-{% block header %}Create New Post{% endblock %}
+{% block header %}Create New Work Order Post{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="">
+
+    <div class="field">
+        <label for="title" class="label">Title</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="title" name="title" type="text" placeholder="Enter Work Order Title">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="equipment" class="label">Equipment</label>
+        <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="description" class="label">Description</label>
+        <div class="control">
+          <textarea class="textarea" name="description" id="description" placeholder="Textarea"></textarea>
+        </div>
+      </div>
+
+
+    <div class="buttons has-addons is-right">
+        <button type="submit" class="button is-link">Create User <i class="fas fa-user-plus"></i></button>
+        <a class="button is-warning" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back <i class="fas fa-undo"></i></a>
+    </div>
+</form>
+
+{% endblock %}

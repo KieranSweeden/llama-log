@@ -4,10 +4,15 @@ user = Blueprint("user", __name__, static_folder="../static", template_folder="t
 
 import app
 
-@user.route("/")
+
 @user.route("/feed/<user_email>")
 def feed(user_email):
     return render_template("feed.html", user_email=user_email)
+
+
+@user.route("/create_post")
+def create_post():
+    return render_template("create_post.html")
 
 
 @user.route("/account/<user_email>", methods=["POST", "GET"])
