@@ -27,8 +27,9 @@ def create_post(category):
             }
 
             # Push new work order post to database
-
             app.mongo.db.work_orders.insert_one(new_work_order)
+
+            flash("Your new work order has been successfully posted")
 
             return redirect(url_for("user.feed", user_email=session["user_email"]))
 
