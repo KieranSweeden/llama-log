@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Enable dropdown buttons
   let dropdowns = [...document.getElementsByClassName("dropdown")]
 
+  // If dropdown buttons exist on page
   if (dropdowns.length > 0){
     addListenerToDropdowns(dropdowns)
   }
