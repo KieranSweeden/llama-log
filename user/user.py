@@ -13,6 +13,26 @@ def feed(user_email):
 @user.route("/create_post/<category>", methods=["POST", "GET"])
 def create_post(category):
 
+    # If the user makes a post submission
+    if request.method == "POST":
+
+        # Determine whether it's a word order or incident
+        if category == "work_order":
+            
+            # Gather up the submitted data into a dict
+            new_work_order = {
+                "title": request.form.get("title"),
+                "equipment": request.form.get("equipment"),
+                "description": request.form.get("description")
+            }
+
+            # Push new work order post to database
+
+            app.mongo.db.work_orders.insert_one(new_work_order)
+
+            return redirect(url_for("user.feed", user_email=session["user_email"]))
+
+
     return render_template("create_post.html", category=category)
 
 
