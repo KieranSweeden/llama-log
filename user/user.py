@@ -8,7 +8,10 @@ import app
 
 @user.route("/feed/<user_email>")
 def feed(user_email):
-    return render_template("feed.html", user_email=user_email)
+
+    posts = app.mongo.db.work_orders.find()
+
+    return render_template("feed.html", user_email=user_email, posts=posts)
 
 
 @user.route("/create_post/<category>", methods=["POST", "GET"])

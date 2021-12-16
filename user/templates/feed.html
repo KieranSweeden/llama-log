@@ -7,26 +7,45 @@
 {% block content %}
 
 <div class="columns is-marginless">
-    <div class="column is-8 is-offset-2 has-text-centered">
-        <div class="dropdown">
-            <div class="dropdown-trigger">
-              <button class="button is-link" aria-haspopup="true" aria-controls="create-post-option">
-                <span>Create New Post</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="create-post-option" role="menu">
-              <div class="dropdown-content">
-                <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order <i class="fas fa-tools"></i></a>
-                <hr class="dropdown-divider">
-                <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident <i class="fas fa-comments"></i></a>
-              </div>
-            </div>
+  <div class="column is-8 is-offset-2 has-text-centered">
+    <div class="dropdown">
+      <div class="dropdown-trigger">
+        <button class="button is-link" aria-haspopup="true" aria-controls="create-post-option">
+          <span>Create New Post</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="create-post-option" role="menu">
+        <div class="dropdown-content">
+          <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order <i class="fas fa-tools"></i></a>
+          <hr class="dropdown-divider">
+          <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident <i class="fas fa-comments"></i></a>
         </div>
+      </div>
     </div>
+  </div>
 </div>
+
+{% for post in posts %}
+  <div class="columns is-marginless">
+    <div class="column is-8 is-offset-2">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <p>{{ post.title }}</p>
+            <p>{{ post.equipment }}</p>
+            <p>{{ post.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+
 
 {% endblock %}
 
