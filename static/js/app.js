@@ -23,13 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Get Radio Buttons
+  let radioButtons = [...document.getElementsByName("was_customer_involved")];
+
+  if(radioButtons.length > 0){
+    addListenerToRadioButtons(radioButtons);
+  };
+
   // Enable dropdown buttons
-  let dropdowns = [...document.getElementsByClassName("dropdown")]
+  let dropdowns = [...document.getElementsByClassName("dropdown")];
 
   // If dropdown buttons exist on page
   if (dropdowns.length > 0){
-    addListenerToDropdowns(dropdowns)
-  }
+    addListenerToDropdowns(dropdowns);
+  };
 
   // Grab flash delete buttons on page
   let flashDeleteButtons = [...document.getElementsByClassName("flash-delete")];
@@ -64,12 +71,76 @@ document.addEventListener('DOMContentLoaded', () => {
       flashes[0].classList.add("animate__fadeOutDown");
       // Remove flash after second of fade out
       setTimeout(() => {
-        flashes[0].remove()
+        flashes[0].remove();
       }, 1000)
     }, 5000)
   }
 
 });
+
+function addListenerToRadioButtons(radioButtons) {
+  // Add click listener for each radio button
+  radioButtons.forEach(radioButton => {
+    radioButton.addEventListener("click", () => {
+      // If the radio button clicked is yes, display customer inputs to user
+      if(radioButton.parentElement.innerText === "Yes"){
+        // Display customer oriented input fields
+        displayCustomerIncidentFields();
+
+      } else {
+        // Remove customer oriented input fields
+        removeCustomerIncidentFields();
+      }
+    });
+  });
+}
+
+function displayCustomerIncidentFields(){
+
+  // Create base input field
+  let customerNameInput = document.createElement("div");
+  let customerPhoneInput = document.createElement("div");
+  customerNameInput.className = "field";
+  customerPhoneInput.className = "field";
+
+  customerNameInput.innerHTML = `
+    <label for="customer_name" class="label">Customer Name</label>
+    <div class="control has-icons-left has-icons-right">
+        <input class="input is-success" id="customer_name" name="customer_name" type="text" placeholder="Enter Customer's Full Name">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user-tag"></i>
+        </span>
+        <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+        </span>
+    </div>
+    `;
+  
+    customerPhoneInput.innerHTML = `
+      <label for="customer_phone" class="label">Customer Name</label>
+      <div class="control has-icons-left has-icons-right">
+          <input class="input is-success" id="customer_phone" name="customer_phone" type="text" placeholder="Enter Customer's Phone Number">
+          <span class="icon is-small is-left">
+            <i class="fas fa-phone"></i>
+          </span>
+          <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+          </span>
+      </div>
+    `;
+
+  // Get parent & sibling
+  let parent = [...document.getElementsByTagName("form")][0];
+  let sibling = document.getElementById("description").closest(".field");
+
+  // Insert customer input fields before description textarea
+  parent.insertBefore(customerNameInput, sibling);
+  parent.insertBefore(customerPhoneInput, sibling);
+}
+
+function removeCustomerIncidentFields(){
+  console.log("no!");
+}
 
 function addListenerToDropdowns(dropdowns){
   dropdowns.forEach(dropdown => {
@@ -77,7 +148,6 @@ function addListenerToDropdowns(dropdowns){
 
       // Grab dropdown component & toggle is-active class
       event.target.closest(".dropdown").classList.toggle("is-active");
-
     })
   })
 }
