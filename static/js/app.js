@@ -97,12 +97,15 @@ function addListenerToRadioButtons(radioButtons) {
 
 function displayCustomerIncidentFields(){
 
-  // Create base input field
+  // Create div elements
   let customerNameInput = document.createElement("div");
   let customerPhoneInput = document.createElement("div");
+
+  // Add bulma field class to each div
   customerNameInput.className = "field";
   customerPhoneInput.className = "field";
 
+  // Add html markup for customer name input field
   customerNameInput.innerHTML = `
     <label for="customer_name" class="label customer">Customer Name</label>
     <div class="control has-icons-left has-icons-right">
@@ -116,17 +119,18 @@ function displayCustomerIncidentFields(){
     </div>
     `;
   
-    customerPhoneInput.innerHTML = `
-      <label for="customer_phone" class="label customer">Customer Phone</label>
-      <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" id="customer_phone" name="customer_phone" type="text" placeholder="Enter Customer's Phone Number">
-          <span class="icon is-small is-left">
-            <i class="fas fa-phone"></i>
-          </span>
-          <span class="icon is-small is-right">
-              <i class="fas fa-check"></i>
-          </span>
-      </div>
+  // Add html markup for customer phone input field
+  customerPhoneInput.innerHTML = `
+    <label for="customer_phone" class="label customer">Customer Phone</label>
+    <div class="control has-icons-left has-icons-right">
+        <input class="input is-success" id="customer_phone" name="customer_phone" type="text" placeholder="Enter Customer's Phone Number">
+        <span class="icon is-small is-left">
+          <i class="fas fa-phone"></i>
+        </span>
+        <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+        </span>
+    </div>
     `;
 
   // Get parent & sibling
