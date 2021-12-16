@@ -104,7 +104,7 @@ function displayCustomerIncidentFields(){
   customerPhoneInput.className = "field";
 
   customerNameInput.innerHTML = `
-    <label for="customer_name" class="label">Customer Name</label>
+    <label for="customer_name" class="label customer">Customer Name</label>
     <div class="control has-icons-left has-icons-right">
         <input class="input is-success" id="customer_name" name="customer_name" type="text" placeholder="Enter Customer's Full Name">
         <span class="icon is-small is-left">
@@ -117,7 +117,7 @@ function displayCustomerIncidentFields(){
     `;
   
     customerPhoneInput.innerHTML = `
-      <label for="customer_phone" class="label">Customer Name</label>
+      <label for="customer_phone" class="label customer">Customer Phone</label>
       <div class="control has-icons-left has-icons-right">
           <input class="input is-success" id="customer_phone" name="customer_phone" type="text" placeholder="Enter Customer's Phone Number">
           <span class="icon is-small is-left">
@@ -139,7 +139,13 @@ function displayCustomerIncidentFields(){
 }
 
 function removeCustomerIncidentFields(){
-  console.log("no!");
+  // Get customer related field labels
+  let customerInputLabels = [...document.getElementsByClassName("label customer")];
+
+  // Remove fields using the labels
+  customerInputLabels.forEach(inputLabel => {
+    inputLabel.parentElement.remove()
+  })
 }
 
 function addListenerToDropdowns(dropdowns){
