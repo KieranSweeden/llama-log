@@ -123,7 +123,7 @@ function displayCustomerIncidentFields(){
   customerPhoneInput.innerHTML = `
     <label for="customer_phone" class="label customer">Customer Phone</label>
     <div class="control has-icons-left has-icons-right">
-        <input class="input is-success" id="customer_phone" name="customer_phone" type="text" placeholder="Enter Customer's Phone Number">
+        <input class="input is-success" id="customer_phone" name="customer_phone" type="number" placeholder="Enter Customer's Phone Number">
         <span class="icon is-small is-left">
           <i class="fas fa-phone"></i>
         </span>

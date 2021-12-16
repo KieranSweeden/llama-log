@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, url_for, request, flash, redirect, session
+import datetime
 
 user = Blueprint("user", __name__, static_folder="../static", template_folder="templates")
 
@@ -38,15 +39,35 @@ def create_post(category):
         # Else if it's an incident
         else:
 
-            # Gather submitted data into dict
-            # new_incident = {
-            #     "title": request.form.get("title"),
-            #     "equipment": request.form.get("equipment"),
-            #     "description": request.form.get("description")
-            # }
-            # Push new incident to database
+            # If a customer was involved
+            if ("customer_name" in request.form):
+                print("customer involved")
 
-            # Inform user that a post has been submitted successfully
+                # Gather submitted data (with customer data) into dict
+                new_incident = {
+                    "title": request.form.get("title"),
+                    "equipment": request.form.get("equipment"),
+                    "customer_name": request.form.get("customer_name"),
+                    "customer_phone": request.form.get("customer_phone"),
+                    "description": request.form.get("description"),
+                    "date_created": datetime.datetime.now()
+                }
+
+            # Else if a customer was involved
+            else:
+
+                # Gather submitted data (without customer data) into dict
+                new_incident = {
+                    "title": request.form.get("title"),
+                    "description": request.form.get("description"),
+                    "date_created": datetime.datetime.now()
+                }
+
+            # Push new incident to database
+            app.mongo.db.incidents.insert_one(new_incident)
+
+            # Inform user that an incident post has been submitted successfully
+            flash("Your new incident post has been successfully posted")
 
             # Redirect user to the feed page
             return redirect(url_for("user.feed", user_email=session["user_email"]))
