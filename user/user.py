@@ -17,6 +17,7 @@ def feed(user_email):
     for post in posts:
         author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
         post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+        post["author_id"] = str(post["author"])
 
     # render templates sending the posts
     return render_template("feed.html", user_email=user_email, posts=posts)

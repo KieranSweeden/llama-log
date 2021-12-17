@@ -126,6 +126,7 @@ def log_out():
     # Remove current user session data
     session.pop("user_email")
     session.pop("user_is_admin")
+    session.pop("user_id")
 
     # Inform the user they've been logged out at log in page
     flash("You have been logged out successfully")

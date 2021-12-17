@@ -45,14 +45,20 @@
               <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                   <a href="#" class="dropdown-item">
-                    Edit Post
-                    <i class="fas fa-edit" aria-hidden="true"></i>
+                    View Post
+                    <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
-                  <hr class="dropdown-divider">
-                  <a href="#" class="dropdown-item">
-                    Delete Post
-                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                  </a>
+                  {% if post.author_id == session["user_id"]%}
+                    <a href="#" class="dropdown-item">
+                      Edit Post
+                      <i class="fas fa-edit" aria-hidden="true"></i>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                      Delete Post
+                      <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    </a>
+                  {% endif %}
                 </div>
               </div>
             </div>
