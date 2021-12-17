@@ -10,7 +10,13 @@ import app
 @user.route("/feed/<user_email>")
 def feed(user_email):
 
-    posts = app.mongo.db.work_orders.find()
+    # Retrieve posts for feed from db
+    posts = list(app.mongo.db.work_orders.find())
+
+    # Get & full name for each post
+    for post in posts:
+        author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
+        post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
 
     return render_template("feed.html", user_email=user_email, posts=posts)
 
@@ -30,7 +36,7 @@ def create_post(category):
                 "equipment": request.form.get("equipment"),
                 "description": request.form.get("description"),
                 "date_created": datetime.datetime.now(),
-                "author" : ObjectId(session["user_id"])
+                "author": ObjectId(session["user_id"])
             }
 
             # Push new work order post to database
