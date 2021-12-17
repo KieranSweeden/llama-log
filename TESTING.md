@@ -81,6 +81,5 @@ I came across [this Stack Overflow answer](https://stackoverflow.com/a/32268274/
             post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
 
         return render_template("feed.html", user_email=user_email, posts=posts)
-
 </code>
 

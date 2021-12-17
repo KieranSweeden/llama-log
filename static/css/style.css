@@ -56,7 +56,7 @@ a.navbar-item:hover {
     transition-duration: var(--transition-speed);
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1023px){
     .navbar-menu {
         background-color: var(--faded-primary-color);
         position: absolute;
@@ -66,8 +66,17 @@ a.navbar-item:hover {
 }
 
 /* Flash messages */
+
 article.message.is-success {
     position: absolute;
     bottom: 0;
     right: 1rem;
+}
+
+/* Feed page */
+
+@media screen and (max-width: 768px){
+    .card-footer-item {
+        flex-direction: column;
+    }
 }

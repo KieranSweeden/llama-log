@@ -59,20 +59,19 @@
         </header>
         <section class="card-content">
           <div class="content">
-            <p>{{ post.equipment }}</p>
             <p>{{ post.description }}</p>
+            <span class="tag is-dark">{{ post.equipment }}</span>
           </div>
         </section>
         <footer class="card-footer">
           <div class="card-footer-item">
-            <p>By:
-              {{ post.author_name }}
-            </p>
+            <p>By: {{ post.author_name }}</p>
           </div>
           <div class="card-footer-item">
             <time class="mr-2">
               {{ post.date_created.strftime("%I") + ":" + 
-                  post.date_created.strftime("%H")}}
+                  post.date_created.strftime("%M") + 
+                  post.date_created.strftime("%p")}}
             </time>
             <p>
               {{ post.date_created.strftime("%d") + " " + 
