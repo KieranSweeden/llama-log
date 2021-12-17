@@ -59,3 +59,28 @@ When attempting this however using the code shown below, it threw a TypeError st
 An easy fix was found from Gilko's comment within [this post](https://coderedirect.com/questions/119169/typeerror-objectid-is-not-json-serializable), where the ObjectId was stored within the session as a string as shown below:
 
 > <code>session["user_id"] = str(existing_user["_id"])</code>
+
+#### Variables sent within render_template were not being displayed
+
+For each post, the author field value is the author's user ObjectId. This is so I'm able to reference the ID and add additional information for particular use cases.
+
+A use case that eventually created this bug was getting an ObjectId from a post's author field, finding the user within the user collection using this ObjectId and adding a full name field to the post dictionary by concatenating the first_name & last_name fields within the user document. After this, I noticed that posts were no longer being displayed on the page.
+
+I came across [this Stack Overflow answer](https://stackoverflow.com/a/32268274/15607265) which simply states that using the list constructor. Taking on this advice allowed me to fix this issue with the code shown below:
+
+<code>
+
+    def feed(user_email):
+
+        # Retrieve posts for feed from db
+        posts = list(app.mongo.db.work_orders.find())
+
+        # Get & full name for each post
+        for post in posts:
+            author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
+            post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+
+        return render_template("feed.html", user_email=user_email, posts=posts)
+
+</code>
+
