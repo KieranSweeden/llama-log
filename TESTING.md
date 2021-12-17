@@ -47,3 +47,15 @@ To:
 > <code>src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}"</code>
 
 The problem was solved.
+
+#### TypeError: ObjectId('') is not JSON serializable
+
+As the ObjectId field is the unique identifier for users within the MongoDb database, it made sense to store this within a flask session, enabling me the use the ID in retrieving user data.
+
+When attempting this however using the code shown below, it threw a TypeError stating it's not JSON serializable.
+
+> <code>session["user_id"] = existing_user["_id"]</code>
+
+An easy fix was found from Gilko's comment within [this post](https://coderedirect.com/questions/119169/typeerror-objectid-is-not-json-serializable), where the ObjectId was stored within the session as a string as shown below:
+
+> <code>session["user_id"] = str(existing_user["_id"])</code>
