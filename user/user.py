@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, url_for, request, flash, redirect, session
+from flask_pymongo import ObjectId
 import datetime
 
 user = Blueprint("user", __name__, static_folder="../static", template_folder="templates")
@@ -27,7 +28,9 @@ def create_post(category):
             new_work_order = {
                 "title": request.form.get("title"),
                 "equipment": request.form.get("equipment"),
-                "description": request.form.get("description")
+                "description": request.form.get("description"),
+                "date_created": datetime.datetime.now(),
+                "author" : ObjectId(session["user_id"])
             }
 
             # Push new work order post to database

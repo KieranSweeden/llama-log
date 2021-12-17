@@ -66,10 +66,8 @@ def password(user_email):
     # If a password attempt has been made
     if request.method == "POST":
 
-        # If reset password is false
+        # If the password isn't set to none
         if existing_user["password"] != "none":
-
-            print("is false")
 
             # Check if the entered password matches db password
             if check_password_hash(existing_user["password"], request.form.get("password")):
@@ -78,6 +76,8 @@ def password(user_email):
                 session["user_email"] = user_email
 
                 session["user_is_admin"] = existing_user["is_admin"]
+
+                session["user_id"] = str(existing_user["_id"])
 
                 # Make the session permanent for 5 minutes
                 session.permanent = True
