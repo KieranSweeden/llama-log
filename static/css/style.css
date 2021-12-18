@@ -75,15 +75,6 @@ article.message.is-success {
 
 /* Feed page */
 
-.add-text-overflow-cutoff {
-    /* text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden; */
-    /* word-break: break-all; */
-}
-
-
-
 @media screen and (max-width: 768px){
     .card-footer-item {
         flex-direction: column;

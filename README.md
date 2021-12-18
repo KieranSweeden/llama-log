@@ -685,6 +685,20 @@ Combining the colour scheme, typography & identity of Llama Log, the logo will b
 
 ## Technology
 
+### Languages
+
+- HTML5
+- CSS
+- JavaScript
+- Python
+
+### Frameworks & Libraries
+
+- Flask
+- PyMongo
+- Animate.css
+- Clamp.js
+
 ### Applications
 
 The following applications were utilised during the development of Llama Log:
@@ -725,6 +739,11 @@ To navigate to the testing section of this repository, [click here](TESTING.md).
 
 - [Flask: current page in request variable](https://newbedev.com/flask-current-page-in-request-variable)
     - This post informed me of what syntax to use in order to add active classes to navbar items that reflect the current page.
+
+### Code
+
+- [Clamp.js](https://github.com/josephschmitt/Clamp.js)
+    - All code within the clamp.min.js file is credited to [Joe Schmitt](https://github.com/josephschmitt) & [Ned Baldessin](https://github.com/nedbaldessin). This code was used so large amounts of text within the posts would be cutoff at a certain point, making sure the user is not overwhelmed with lots of text they may not be interested in.
 
 [Return to Contents &#8679;](#Contents)
 
