@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   var cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
 
   // If card text content exists on the page, clamp the text if too large
-  if(cardTextContent.length > 0){
+  if(cardTextContent.length > 1){
     clampText(cardTextContent);
   };
 
