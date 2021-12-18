@@ -115,8 +115,6 @@ def view_post(post_id):
         {"_id": ObjectId(post_id)}
     )
 
-    print(current_post)
-
     # Get name from user db using the post author Id
     author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(current_post["author"])})
     current_post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
@@ -124,6 +122,23 @@ def view_post(post_id):
 
     # Render view post template with fetched current post data
     return render_template("view_post.html", post=current_post)
+
+
+@user.route("/edit_post/<post_id>")
+def edit_post(post_id):
+
+    # Using post ObjectId, get full post from db
+    current_post = app.mongo.db.work_orders.find_one(
+        {"_id": ObjectId(post_id)}
+    )
+
+    if current_post == None:
+        current_post = app.mongo.db.incidents.find_one(
+        {"_id": ObjectId(post_id)}
+    )
+
+    # Render view post template with fetched current post data
+    return render_template("edit_post.html", post=current_post)
 
 
 @user.route("/delete_post/<post_id>")
