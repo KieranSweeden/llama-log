@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function clampText(cardTextContent){
+  // Clamp each text content if it exceeds 3 lines
   cardTextContent.forEach(cardTextContent => {
     $clamp(cardTextContent, {clamp: 3});
   })

@@ -33,12 +33,14 @@
     <div class="column is-8 is-offset-2">
       <article class="card">
         <header class="card-header">
-            <h3 class="card-header-title">{{ post.title }}</h3>
-            <div class="dropdown card-header-icon">
+            <h3 class="card-header-title">{{ post.title }}
+              <span class="tag is-info ml-2">Work Order</span>
+            </h3>
+            <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
                 <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span class="icon">
-                    <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                    <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
                   </span>
                 </button>
               </div>
@@ -66,7 +68,6 @@
         <section class="card-content p-4">
           <div class="content">
             <p class="add-text-overflow-cutoff">{{ post.description }}</p>
-            <span class="tag is-dark">{{ post.equipment }}</span>
           </div>
         </section>
         <footer class="card-footer">
