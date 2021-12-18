@@ -23,6 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Clamps for posts within feed
+  var cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
+
+  // If card text content exists on the page, clamp the text if too large
+  if(cardTextContent.length > 0){
+    clampText(cardTextContent);
+  };
+
   // Get Radio Buttons
   let radioButtons = [...document.getElementsByName("was_customer_involved")];
 
@@ -77,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+function clampText(cardTextContent){
+  cardTextContent.forEach(cardTextContent => {
+    $clamp(cardTextContent, {clamp: 3});
+  })
+}
 
 function addListenerToRadioButtons(radioButtons) {
   // Add click listener for each radio button
