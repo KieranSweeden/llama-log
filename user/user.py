@@ -17,6 +17,9 @@ def feed(user_email):
     # Combine both into single list
     posts = work_orders + incidents
 
+    # Sort by date
+    posts.sort(reverse=True, key=sort_by_date_created)
+
     # Get & full name for each post
     for post in posts:
         author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
@@ -25,6 +28,10 @@ def feed(user_email):
 
     # render templates sending the posts
     return render_template("feed.html", user_email=user_email, posts=posts)
+
+
+def sort_by_date_created(post):
+    return post['date_created']
 
 
 @user.route("/create_post/<category>", methods=["POST", "GET"])
