@@ -79,7 +79,7 @@ a.navbar-item:hover,
 /* Flash messages */
 
 article.message.is-success {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 1rem;
 }

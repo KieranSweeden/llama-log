@@ -78,14 +78,15 @@ def create_post(category):
                     "author": ObjectId(session["user_id"])
                 }
 
-            # Else if a customer was involved
+            # Else if a customer wasn't involved
             else:
 
                 # Gather submitted data (without customer data) into dict
                 new_incident = {
                     "title": request.form.get("title"),
                     "description": request.form.get("description"),
-                    "date_created": datetime.datetime.now()
+                    "date_created": datetime.datetime.now(),
+                    "author": ObjectId(session["user_id"])
                 }
 
             # Push new incident to database
