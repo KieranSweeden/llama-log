@@ -11,34 +11,30 @@
       <article class="card">
         <header class="card-header">
             <h3 class="card-header-title">{{ post.title }}</h3>
-            <div class="dropdown card-header-icon">
-              <div class="dropdown-trigger">
-                <button class="button is-ghost" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span class="icon">
-                    <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
-                    View Post
-                    <i class="fas fa-eye" aria-hidden="true"></i>
-                  </a>
-                  {% if post.author_id == session["user_id"]%}
-                    <a href="#" class="dropdown-item">
-                      Edit Post
-                      <i class="fas fa-edit" aria-hidden="true"></i>
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">
-                      Delete Post
-                      <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                    </a>
-                  {% endif %}
+            {% if post.author_id == session["user_id"]%}
+                <div class="dropdown card-header-icon">
+                    <div class="dropdown-trigger">
+                        <button class="button is-ghost" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span class="icon">
+                                <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">
+                            Edit Post
+                            <i class="fas fa-edit" aria-hidden="true"></i>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                            Delete Post
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
+            {% endif %}
         </header>
         <section class="card-content">
           <div class="content">

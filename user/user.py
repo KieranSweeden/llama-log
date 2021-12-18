@@ -98,6 +98,11 @@ def view_post(post_id):
         {"_id": ObjectId(post_id)}
     )
 
+    # Get name from user db using the post author Id
+    author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(current_post["author"])})
+    current_post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+    current_post["author_id"] = str(current_post["author"])
+
     # Render view post template with fetched current post data
     return render_template("view_post.html", post=current_post)
 
