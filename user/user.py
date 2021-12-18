@@ -124,8 +124,34 @@ def view_post(post_id):
     return render_template("view_post.html", post=current_post)
 
 
-@user.route("/edit_post/<post_id>")
+@user.route("/edit_post/<post_id>", methods=["POST", "GET"])
 def edit_post(post_id):
+
+    # If an update submission has been made
+    if request.method == "POST":
+
+        # If it's a work order
+        if "equipment" in request.form:
+            
+            # Gather updated data into dict
+            updated_work_order = {
+                "title": request.form.get("title"),
+                "equipment": request.form.get("equipment"),
+                "description": request.form.get("description"),
+                "date_created": datetime.datetime.now(),
+                "author": ObjectId(session["user_id"])
+            }
+
+            # Update original document in work order db
+            app.mongo.db.work_orders.update_one(
+                {"_id": ObjectId(post_id)}, 
+                {"$set": updated_work_order})
+
+            # Inform user that post has been updated
+            flash("It's been updated")
+
+            return redirect(url_for("user.view_post", post_id=post_id))
+
 
     # Using post ObjectId, get full post from db
     current_post = app.mongo.db.work_orders.find_one(
