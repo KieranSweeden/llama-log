@@ -90,6 +90,18 @@ def create_post(category):
     return render_template("create_post.html", category=category)
 
 
+@user.route("/view_post/<post_id>")
+def view_post(post_id):
+
+    # Using post ObjectId, get full post from db
+    current_post = app.mongo.db.work_orders.find_one(
+        {"_id": ObjectId(post_id)}
+    )
+
+    # Render view post template with fetched current post data
+    return render_template("view_post.html", post=current_post)
+
+
 @user.route("/account/<user_email>", methods=["POST", "GET"])
 def account(user_email):
 

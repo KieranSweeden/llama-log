@@ -44,7 +44,7 @@
               </div>
               <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">
+                  <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
                     View Post
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
