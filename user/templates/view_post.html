@@ -2,67 +2,90 @@
 
 {% block title %}View Post | Llama Log{% endblock %}
 
-{% block header %}{{ post.title }}{% endblock %}
+{% block header %}Viewing 
+
+  {% if "equipment" in post %}
+    Work Order
+  {% else %}
+    Incident
+  {% endif %}
+
+{% endblock %}
 
 {% block content %}
 
 <div class="columns is-marginless">
-    <div class="column is-8 is-offset-2">
-      <article class="card">
-        <header class="card-header">
-            <h3 class="card-header-title">{{ post.title }}</h3>
-            {% if post.author_id == session["user_id"]%}
-                <div class="dropdown card-header-icon">
-                    <div class="dropdown-trigger">
-                        <button class="button is-ghost" aria-haspopup="true" aria-controls="dropdown-menu">
-                            <span class="icon">
-                                <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">
-                            Edit Post
-                            <i class="fas fa-edit" aria-hidden="true"></i>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                            Delete Post
-                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        </header>
-        <section class="card-content">
-          <div class="content">
-            <p>{{ post.description }}</p>
-            <span class="tag is-dark">{{ post.equipment }}</span>
+  <div class="column is-8 is-offset-2">
+    <article class="card">
+      <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
+        <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
+          <h3 class="card-header-title has-text-white-bis">
+            {% if "equipment" in post %}
+                <i class="fas fa-tools ml-0 mr-2"></i>
+              {% else %}
+              <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
+              {% endif %}
+              {{ post.title }}
+            </h3>
+          </a>
+          <div class="dropdown is-right card-header-icon">
+            <div class="dropdown-trigger">
+              <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span class="icon has-text-white-bis">
+                  <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
+                  View Post
+                  <i class="fas fa-eye" aria-hidden="true"></i>
+                </a>
+                {% if post.author_id == session["user_id"]%}
+                  <a href="#" class="dropdown-item">
+                    Edit Post
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                  </a>
+                  <hr class="dropdown-divider">
+                  <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="dropdown-item">
+                    Delete Post
+                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
           </div>
-        </section>
-        <footer class="card-footer">
-          <div class="card-footer-item">
-            <p>By: {{ post.author_name }}</p>
-          </div>
-          <div class="card-footer-item">
-            <time class="mr-2">
-              {{ post.date_created.strftime("%I") + ":" + 
-                  post.date_created.strftime("%M") + 
-                  post.date_created.strftime("%p")}}
-            </time>
-            <p>
-              {{ post.date_created.strftime("%d") + " " + 
-                  post.date_created.strftime("%b") + " " + 
-                  post.date_created.strftime("%Y")}}
-            </p>
-          </div>
-        </footer>
+      </header>
+      <section class="card-content p-4">
+        <div class="content">
+          <p class="add-text-overflow-cutoff">{{ post.description }}</p>
+        </div>
+      </section>
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <p class="is-size-7">0 Comments</p>
+        </div>
+        <div class="card-footer-item">
+          <p class="is-size-7">By: {{ post.author_name }}</p>
+        </div>
+        <div class="card-footer-item">
+          <time class="mr-2 is-size-7">
+            {{ post.date_created.strftime("%I") + ":" + 
+                post.date_created.strftime("%M") + 
+                post.date_created.strftime("%p")}}
+          </time>
+          <p class="is-size-7">
+            {{ post.date_created.strftime("%d") + " " + 
+                post.date_created.strftime("%b") + " " + 
+                post.date_created.strftime("%Y")}}
+          </p>
+        </div>
+      </footer>
 
-      </article>
-    </div>
+    </article>
   </div>
+</div>
 
     <div class="columns is-marginless">
         <div class="column is-8 is-offset-2">

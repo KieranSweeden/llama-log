@@ -110,6 +110,13 @@ def view_post(post_id):
         {"_id": ObjectId(post_id)}
     )
 
+    if current_post == None:
+        current_post = app.mongo.db.incidents.find_one(
+        {"_id": ObjectId(post_id)}
+    )
+
+    print(current_post)
+
     # Get name from user db using the post author Id
     author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(current_post["author"])})
     current_post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
