@@ -38,6 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     addListenerToRadioButtons(radioButtons);
   };
 
+  // Enable navbar dropdown button
+  let navbarDropdown = document.getElementById("navbarDropdown");
+
+  if (navbarDropdown){
+    enableNavbarDropdown(navbarDropdown);
+  }
+
   // Enable dropdown buttons
   let dropdowns = [...document.getElementsByClassName("dropdown")];
 
@@ -85,6 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+function enableNavbarDropdown(navbarDropdown){
+  navbarDropdown.addEventListener("click", (event) => {
+    event.target.parentElement.classList.toggle("is-active")
+  })
+}
 
 function clampText(cardTextContent){
   // Clamp each text content if it exceeds 3 lines

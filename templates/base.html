@@ -37,20 +37,47 @@
             <div class="navbar-end">
                 {% if not session.user_email %}
                     <a href="{{ url_for('log_in') }}" class="navbar-item 
-                    {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">Log In</a>
+                    {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">
+                        Log In
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
                     <a href="{{ url_for('about') }}" class="navbar-item 
-                    {% if request.url_rule.endpoint == 'about' %} is-active {% endif %} has-text-right">About Us</a>
+                    {% if request.url_rule.endpoint == 'about' %} is-active {% endif %} has-text-right">
+                        About Us
+                        <i class="fas fa-question-circle"></i>
+                    </a>
                 {% endif %}
                 {% if session.user_email %}
                     <a href="{{ url_for('user.feed', user_email=session['user_email']) }}" class="navbar-item 
-                    {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">Feed</a>
-                    <a href="{{ url_for('user.account', user_email=session['user_email']) }}" class="navbar-item 
-                    {% if request.url_rule.endpoint == 'user.account' %} is-active {% endif %} has-text-right">Account</a>
+                    {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">
+                        Feed
+                        <i class="fas fa-folder-open"></i>
+                    </a>
                     {% if session.user_is_admin %}
                         <a href="{{ url_for('admin.manage') }}" class="navbar-item 
-                        {% if request.url_rule.endpoint == 'admin.manage' %} is-active {% endif %} has-text-right">Manage</a>
+                        {% if request.url_rule.endpoint == 'admin.manage' %} is-active {% endif %} has-text-right">
+                        Manage Users
+                        <i class="fas fa-users"></i>
+                    </a>
                     {% endif %}
-                    <a href="{{ url_for('log_out') }}" class="navbar-item has-text-right">Log Out</a>
+
+                    <div class="navbar-item has-dropdown is-hoverable" id="navbarDropdown">
+                        <a class="navbar-item has-text-right">
+                          Account
+                          <i class="fas fa-user-cog"></i>
+                        </a>
+                    
+                        <div class="navbar-dropdown is-right">
+                          <a href="{{ url_for('user.account', user_email=session['user_email']) }}" class="navbar-item has-text-right
+                          {% if request.url_rule.endpoint == 'user.account' %} is-active {% endif %} px-3">
+                            View Account
+                            <i class="fas fa-user"></i>
+                          </a>
+                          <a href="{{ url_for('log_out') }}" class="navbar-item has-text-right px-3">
+                            Log Out
+                            <i class="fas fa-sign-out-alt"></i>
+                          </a>
+                        </div>
                 {% endif %}
             </div>
         </div>
