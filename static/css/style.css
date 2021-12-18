@@ -90,6 +90,23 @@ article.message.is-success {
     width: 100%;
 }
 
+.fas.fa-ellipsis-h {
+    margin-left: 0;
+}
+
+.fas.fa-ellipsis-h::after {
+    content: '';
+    position: absolute;
+    background: hsla(0, 0%, 98%, 0.1);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+
 @media screen and (max-width: 768px){
     .card-footer-item {
         flex-direction: column;

@@ -32,7 +32,7 @@
   <div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
       <article class="card">
-        <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-warning {% endif %}">
+        <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
           <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
             <h3 class="card-header-title has-text-white-bis">
               {% if "equipment" in post %}
