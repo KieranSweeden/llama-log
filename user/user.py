@@ -107,6 +107,20 @@ def view_post(post_id):
     return render_template("view_post.html", post=current_post)
 
 
+@user.route("/delete_post/<post_id>")
+def delete_post(post_id):
+
+    print(post_id)
+
+    # Delete post utilising the post_id
+    app.mongo.db.work_orders.delete_one({"_id": ObjectId(post_id)})
+
+    # Inform user of post deletion
+    flash("Post has been deleted succesfully")
+
+    return redirect(url_for("user.feed", user_email=session["user_email"]))
+
+
 @user.route("/account/<user_email>", methods=["POST", "GET"])
 def account(user_email):
 
