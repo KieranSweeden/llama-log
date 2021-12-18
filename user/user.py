@@ -10,8 +10,12 @@ import app
 @user.route("/feed/<user_email>")
 def feed(user_email):
 
-    # Retrieve posts for feed from db
-    posts = list(app.mongo.db.work_orders.find())
+    # Retrieve work orders & incidents
+    work_orders = list(app.mongo.db.work_orders.find())
+    incidents = list(app.mongo.db.incidents.find())
+
+    # Combine both into single list
+    posts = work_orders + incidents
 
     # Get & full name for each post
     for post in posts:
@@ -60,11 +64,11 @@ def create_post(category):
                 # Gather submitted data (with customer data) into dict
                 new_incident = {
                     "title": request.form.get("title"),
-                    "equipment": request.form.get("equipment"),
                     "customer_name": request.form.get("customer_name"),
                     "customer_phone": request.form.get("customer_phone"),
                     "description": request.form.get("description"),
-                    "date_created": datetime.datetime.now()
+                    "date_created": datetime.datetime.now(),
+                    "author": ObjectId(session["user_id"])
                 }
 
             # Else if a customer was involved
@@ -116,7 +120,7 @@ def delete_post(post_id):
     app.mongo.db.work_orders.delete_one({"_id": ObjectId(post_id)})
 
     # Inform user of post deletion
-    flash("Post has been deleted succesfully")
+    flash("Post has been deleted successfully")
 
     return redirect(url_for("user.feed", user_email=session["user_email"]))
 

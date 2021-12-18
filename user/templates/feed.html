@@ -32,14 +32,18 @@
   <div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
       <article class="card">
-        <header class="card-header">
-            <h3 class="card-header-title">{{ post.title }}
-              <span class="tag is-info ml-2">Work Order</span>
-            </h3>
+        <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-warning {% endif %}">
+            <h3 class="card-header-title has-text-white-bis">
+              {% if "equipment" in post %}
+                  <i class="fas fa-tools ml-0 mr-2"></i>
+                {% else %}
+                  <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
+              {% endif %}
+              {{ post.title }}</h3>
             <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
                 <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span class="icon">
+                  <span class="icon has-text-white-bis">
                     <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
                   </span>
                 </button>
