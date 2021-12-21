@@ -85,26 +85,31 @@
 <div class="columns is-marginless">
   <div class="column is-8 is-offset-2">
     <article class="card">
-      <section class="card-content p-4">
+      <section class="card-content p-3">
         <div class="content">
-          <p class="add-text-overflow-cutoff">{{ comment.content }}</p>
+          <p>
+            {{ comment.content }}
+          </p>
         </div>
       </section>
-      <footer class="card-footer">
-        <div class="card-footer-item">
-          <p class="is-size-7">By: {{ comment.author_name }}</p>
-        </div>
-        <div class="card-footer-item">
-          <time class="mr-2 is-size-7">
-            {{ comment.date_created.strftime("%I") + ":" + 
-                comment.date_created.strftime("%M") + 
-                comment.date_created.strftime("%p")}}
-          </time>
-          <p class="is-size-7">
-            {{ comment.date_created.strftime("%d") + " " + 
-                comment.date_created.strftime("%b") + " " + 
-                comment.date_created.strftime("%Y")}}
+      <footer class="card-footer has-background-light">
+        <div class="card-footer-item has-text-left py-0">
+          <p class="has-text-info-dark">
+            <strong>{{ comment.author_name }}</strong>
+            <small>
+              {{ comment.date_created.strftime("%I") + ":" + 
+              comment.date_created.strftime("%M") + 
+              comment.date_created.strftime("%p")}}
+              {{ comment.date_created.strftime("%d") + " " + 
+              comment.date_created.strftime("%b") + " " + 
+              comment.date_created.strftime("%Y")}}
+            </small>
           </p>
+          <div class="buttons">
+            <button class="button is-ghost">
+              Edit
+            </button>
+          </div>
         </div>
       </footer>
     </article>

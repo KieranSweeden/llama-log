@@ -113,3 +113,9 @@ article.message.is-success {
         align-items: flex-start;
     }
 }
+
+/* View post page */
+
+.card-footer-item {
+    justify-content: space-between;
+}
