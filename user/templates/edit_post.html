@@ -2,7 +2,13 @@
 
 {% block title %}Edit Post | Llama Log{% endblock %}
 
-{% block header %}Edit Post{% endblock %}
+{% block header %}Edit
+    {% if "equipment" in post %}
+        Work Order
+    {% else %}
+        Incident
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 
