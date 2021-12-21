@@ -92,14 +92,15 @@ I later came to realise after reading [this post](https://matthewmoisen.com/blog
 Code can be found below:
 
 <code>
-for post_comment in post_comments:
 
-    # Grab user from db
-    author = app.mongo.db.users.find_one(
-        {"_id": ObjectId(post_comment["author"])}
-    )
+    for post_comment in post_comments:
 
-    # Add author name to post comment using author values
-    post_comment["author_name"] = f"{author['first_name']} {author['last_name']}"
+        # Grab user from db
+        author = app.mongo.db.users.find_one(
+            {"_id": ObjectId(post_comment["author"])}
+        )
+
+        # Add author name to post comment using author values
+        post_comment["author_name"] = f"{author['first_name']} {author['last_name']}"
 </code>
 

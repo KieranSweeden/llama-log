@@ -118,6 +118,9 @@ def view_post(post_id):
 
         # Push new comment data to comment db
         app.mongo.db.comments.insert_one(new_comment)
+
+        # Inform user that comment has been successfully posted
+        flash("Your comment has been successfully posted")
         
         # Redirect user to view post with new comment showing
         return redirect(url_for("user.view_post", post_id=post_id))
