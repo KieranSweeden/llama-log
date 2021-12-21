@@ -87,6 +87,16 @@
     <article class="card">
       <section class="card-content p-3">
         <div class="content">
+          <p class="has-text-grey m-0 has-text-right">
+            <small class="is-size-7">
+              {{ comment.date_created.strftime("%I") + ":" + 
+                comment.date_created.strftime("%M") + 
+                comment.date_created.strftime("%p")}}
+              {{ comment.date_created.strftime("%d") + " " + 
+              comment.date_created.strftime("%b") + " " + 
+              comment.date_created.strftime("%Y")}}
+            </small>
+          </p>
           <p>
             {{ comment.content }}
           </p>
@@ -94,22 +104,20 @@
       </section>
       <footer class="card-footer has-background-light">
         <div class="card-footer-item has-text-left py-0">
-          <p class="has-text-info-dark">
+          <p class="py-2">
             <strong>{{ comment.author_name }}</strong>
-            <small>
-              {{ comment.date_created.strftime("%I") + ":" + 
-              comment.date_created.strftime("%M") + 
-              comment.date_created.strftime("%p")}}
-              {{ comment.date_created.strftime("%d") + " " + 
-              comment.date_created.strftime("%b") + " " + 
-              comment.date_created.strftime("%Y")}}
-            </small>
           </p>
-          <div class="buttons">
-            <button class="button is-ghost">
-              Edit
-            </button>
-          </div>
+            <div class="buttons" >
+              {% if comment.author == session["user_id"] %}
+              <button class="button is-ghost m-0 px-2">
+                Edit
+              </button>
+              <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" 
+              class="button is-ghost m-0 px-2">
+                Delete
+              </a>
+              {% endif %}
+            </div>
         </div>
       </footer>
     </article>

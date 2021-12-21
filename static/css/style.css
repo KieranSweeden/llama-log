@@ -107,15 +107,12 @@ article.message.is-success {
     z-index: 4;
 }
 
-@media screen and (max-width: 768px){
-    .card-footer-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
 /* View post page */
 
 .card-footer-item {
     justify-content: space-between;
+}
+
+.buttons:last-child {
+    margin-bottom: 0;
 }

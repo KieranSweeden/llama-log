@@ -152,6 +152,9 @@ def view_post(post_id):
         # Add author name to post comment using author values
         post_comment["author_name"] = f"{author['first_name']} {author['last_name']}"
 
+        # Convert author ID to string to use for comparison within page
+        post_comment["author"] = str(post_comment["author"])
+
     # Get name from user db using the post author Id
     author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(current_post["author"])})
     current_post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
@@ -207,8 +210,6 @@ def edit_post(post_id):
 @user.route("/delete_post/<post_id>")
 def delete_post(post_id):
 
-    print(post_id)
-
     # Delete post utilising the post_id
     app.mongo.db.work_orders.delete_one({"_id": ObjectId(post_id)})
 
@@ -217,6 +218,28 @@ def delete_post(post_id):
 
     return redirect(url_for("user.feed", user_email=session["user_email"]))
 
+
+@user.route("/delete_comment/<comment_id>")
+def delete_comment(comment_id):
+
+    # Obtain comment data
+    comment = app.mongo.db.comments.find_one(
+        {"_id": ObjectId(comment_id)}
+    )
+
+    # Check the current user is the author of the comment
+    if str(comment["author"]) == session["user_id"]:
+        
+        # Delete the comment from comments db
+        app.mongo.db.comments.delete_one(
+            {"_id": ObjectId(comment_id)}
+        )
+
+        # Inform user of comment deletion
+        flash("Comment has been successfully deleted")
+
+        # Return user to view post
+        return redirect(url_for("user.view_post", post_id=comment["parent_post_id"]))
 
 @user.route("/account/<user_email>", methods=["POST", "GET"])
 def account(user_email):
