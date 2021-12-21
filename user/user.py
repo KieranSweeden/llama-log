@@ -102,8 +102,25 @@ def create_post(category):
     return render_template("create_post.html", category=category)
 
 
-@user.route("/view_post/<post_id>")
+@user.route("/view_post/<post_id>", methods=["POST", "GET"])
 def view_post(post_id):
+
+    # If a comment submission has been made
+    if request.method == "POST":
+
+        # Gather the comment data
+        new_comment = {
+            "content": request.form.get("content"),
+            "parent_post_id": ObjectId(post_id),
+            "date_created": datetime.datetime.now(),
+            "author": ObjectId(session["user_id"])
+        }
+
+        # Push new comment data to comment db
+        app.mongo.db.comments.insert_one(new_comment)
+        
+        # Redirect user to view post with new comment showing
+        return redirect(url_for("user.view_post", post_id=post_id))
 
     # Using post ObjectId, get full post from db
     current_post = app.mongo.db.work_orders.find_one(

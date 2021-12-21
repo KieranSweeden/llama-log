@@ -89,11 +89,11 @@
         </p>
       </div>
       <div class="card-content p-5">
-        <form action="">
+        <form method="POST" action="{{ url_for('user.view_post', post_id=post['_id'])}}">
           <div class="field">
-            <label class="label">Comment</label>
+            <label for="content" class="label">Comment</label>
             <div class="control">
-              <textarea class="textarea" placeholder="Write your comment here..." rows="2"></textarea>
+              <textarea class="textarea" placeholder="Write your comment here..." rows="2" id="content" name="content"></textarea>
             </div>
           </div>
 
