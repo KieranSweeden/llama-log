@@ -83,3 +83,25 @@ I came across [this Stack Overflow answer](https://stackoverflow.com/a/32268274/
         return render_template("feed.html", user_email=user_email, posts=posts)
 </code>
 
+#### TypeError index 'author' cannot be applied to Cursor instances
+
+When adding the comment feature to the application, I encountered an issue where I could not add a new key value pair to a Cursor object. In this instance, I was attempting to add an author_name key to a comment cursor object so I could display a comment's author on the page.
+
+I later came to realise after reading [this post](https://matthewmoisen.com/blog/pymongo-typeerror-index-password-cannot-be-applied-to-cursor-instances/) that this simply could not be done with cursor objects. However if I use find_one() instead of find(), this would return a document instead of a cursor object. This meant the functionality I wanted to encorporate could be done and the issue was then resolved.
+
+Code can be found below:
+
+<code>
+
+    for post_comment in post_comments:
+
+        # Grab user from db
+        author = app.mongo.db.users.find_one(
+            {"_id": ObjectId(post_comment["author"])}
+        )
+
+        # Add author name to post comment using author values
+        post_comment["author_name"] = f"{author['first_name']} {author['last_name']}"
+
+</code>
+
