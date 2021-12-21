@@ -122,15 +122,32 @@ def view_post(post_id):
         # Redirect user to view post with new comment showing
         return redirect(url_for("user.view_post", post_id=post_id))
 
-    # Using post ObjectId, get full post from db
+    # Using post ObjectId, get full post from work order db
     current_post = app.mongo.db.work_orders.find_one(
         {"_id": ObjectId(post_id)}
     )
 
+    # If post not work order, check the incidents db
     if current_post == None:
         current_post = app.mongo.db.incidents.find_one(
         {"_id": ObjectId(post_id)}
     )
+
+    # Retrieve comments related to post
+    post_comments = list(app.mongo.db.comments.find(
+        {"parent_post_id": ObjectId(post_id)}
+    ))
+
+    # Get user names for comments using author ID's
+    for post_comment in post_comments:
+
+        # Grab user from db
+        author = app.mongo.db.users.find_one(
+            {"_id": ObjectId(post_comment["author"])}
+        )
+
+        # Add author name to post comment using author values
+        post_comment["author_name"] = f"{author['first_name']} {author['last_name']}"
 
     # Get name from user db using the post author Id
     author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(current_post["author"])})
@@ -138,7 +155,7 @@ def view_post(post_id):
     current_post["author_id"] = str(current_post["author"])
 
     # Render view post template with fetched current post data
-    return render_template("view_post.html", post=current_post)
+    return render_template("view_post.html", post=current_post, post_comments=post_comments)
 
 
 @user.route("/edit_post/<post_id>", methods=["POST", "GET"])

@@ -80,6 +80,39 @@
   </div>
 </div>
 
+{% for comment in post_comments %}
+
+<div class="columns is-marginless">
+  <div class="column is-8 is-offset-2">
+    <article class="card">
+      <section class="card-content p-4">
+        <div class="content">
+          <p class="add-text-overflow-cutoff">{{ comment.content }}</p>
+        </div>
+      </section>
+      <footer class="card-footer">
+        <div class="card-footer-item">
+          <p class="is-size-7">By: {{ comment.author_name }}</p>
+        </div>
+        <div class="card-footer-item">
+          <time class="mr-2 is-size-7">
+            {{ comment.date_created.strftime("%I") + ":" + 
+                comment.date_created.strftime("%M") + 
+                comment.date_created.strftime("%p")}}
+          </time>
+          <p class="is-size-7">
+            {{ comment.date_created.strftime("%d") + " " + 
+                comment.date_created.strftime("%b") + " " + 
+                comment.date_created.strftime("%Y")}}
+          </p>
+        </div>
+      </footer>
+    </article>
+  </div>
+</div>
+
+{% endfor %}
+
 <div class="columns is-marginless">
   <div class="column is-8 is-offset-2">
     <div class="card">
