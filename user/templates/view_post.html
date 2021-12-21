@@ -76,18 +76,46 @@
           </p>
         </div>
       </footer>
-
     </article>
   </div>
 </div>
 
-    <div class="columns is-marginless">
-        <div class="column is-8 is-offset-2">
-            <div class="buttons is-right">
-                <a class="button is-warning" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
+<div class="columns is-marginless">
+  <div class="column is-8 is-offset-2">
+    <div class="card">
+      <div class="card-header">
+        <p class="card-header-title">
+          Post Comment
+        </p>
+      </div>
+      <div class="card-content p-5">
+        <form action="">
+          <div class="field">
+            <label class="label">Comment</label>
+            <div class="control">
+              <textarea class="textarea" placeholder="Write your comment here..." rows="2"></textarea>
             </div>
+          </div>
+
+          <div class="buttons has-addons is-right">
+            <button type="submit" class="button is-link">
+                Post Comment
+                <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="columns is-marginless">
+    <div class="column is-8 is-offset-2">
+        <div class="buttons is-right">
+            <a class="button is-warning" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
         </div>
     </div>
+</div>
 
 {% endblock %}
 

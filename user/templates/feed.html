@@ -33,14 +33,16 @@
     <div class="column is-8 is-offset-2">
       <article class="card">
         <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
+          <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
             <h3 class="card-header-title has-text-white-bis">
               {% if "equipment" in post %}
-                  <i class="fas fa-tools ml-0 mr-2"></i>
-                {% else %}
+                <i class="fas fa-tools ml-0 mr-2"></i>
+              {% else %}
                 <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
-                {% endif %}
-                {{ post.title }}
+              {% endif %}
+              {{ post.title }}
               </h3>
+          </a>
             <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
                 <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
