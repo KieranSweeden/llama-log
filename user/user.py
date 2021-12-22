@@ -20,11 +20,21 @@ def feed(user_email):
     # Sort by date
     posts.sort(reverse=True, key=sort_by_date_created)
 
-    # Get & full name for each post
+    # For each post
     for post in posts:
+
+        # Grab the name of the author and add it to post dict
         author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
         post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
         post["author_id"] = str(post["author"])
+
+        # Search the comments to see if any comments are linked to post
+        post_comments = list(app.mongo.db.comments.find(
+            {"parent_post_id": post["_id"]}
+        ))
+
+        # Set amount of comments to length of obtained comments
+        post["amount_of_comments"] = len(post_comments)
 
     # render templates sending the posts
     return render_template("feed.html", user_email=user_email, posts=posts)
@@ -66,7 +76,6 @@ def create_post(category):
 
             # If a customer was involved
             if ("customer_name" in request.form):
-                print("customer involved")
 
                 # Gather submitted data (with customer data) into dict
                 new_incident = {
@@ -141,6 +150,9 @@ def view_post(post_id):
         {"parent_post_id": ObjectId(post_id)}
     ))
 
+    # Calculate amount of comments linked to post
+    current_post["amount_of_comments"] = len(post_comments)
+
     # Get user names for comments using author ID's
     for post_comment in post_comments:
 
@@ -154,6 +166,7 @@ def view_post(post_id):
 
         # Convert author ID to string to use for comparison within page
         post_comment["author"] = str(post_comment["author"])
+
 
     # Get name from user db using the post author Id
     author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(current_post["author"])})

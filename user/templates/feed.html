@@ -84,7 +84,14 @@
         </section>
         <footer class="card-footer">
           <div class="card-footer-item">
-            <p class="is-size-7">0 Comments</p>
+            <p class="is-size-7">
+              {% if post.amount_of_comments > 0 %}
+                {{ post.amount_of_comments }}
+              {% else %}
+                No
+              {% endif %}
+                Comments
+            </p>
           </div>
           <div class="card-footer-item">
             <p class="is-size-7">By: {{ post.author_name }}</p>
