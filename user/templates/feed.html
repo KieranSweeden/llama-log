@@ -2,31 +2,38 @@
 
 {% block title %}Feed | Llama Log{% endblock %}
 
-{% block header %}Feed{% endblock %}
+{% block header %}
 
-{% block content %}
-
-<div class="columns is-marginless">
-  <div class="column is-8 is-offset-2 has-text-centered">
-    <div class="dropdown">
-      <div class="dropdown-trigger">
-        <button class="button is-link" aria-haspopup="true" aria-controls="create-post-option">
-          <span>Create New Post</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="create-post-option" role="menu">
-        <div class="dropdown-content">
-          <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order <i class="fas fa-tools"></i></a>
-          <hr class="dropdown-divider">
-          <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident <i class="fas fa-comments"></i></a>
+  <div class="columns is-marginless pt-3">
+    <div class="column is-5 is-offset-2">
+      <h2 class="title is-size-4">Feed</h2>
+    </div>
+    <div class="column is-3">
+        <div class="buttons is-right">
+          <div class="dropdown is-right">
+            <div class="dropdown-trigger">
+              <button class="button is-link" aria-haspopup="true" aria-controls="create-post-option">
+                <span>Create New Post</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="create-post-option" role="menu">
+              <div class="dropdown-content">
+                <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order <i class="fas fa-tools"></i></a>
+                <hr class="dropdown-divider">
+                <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident <i class="fas fa-comments"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
+
+{% endblock %}
+
+{% block content %}
 
 {% for post in posts %}
   <div class="columns is-marginless">
