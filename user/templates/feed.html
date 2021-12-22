@@ -85,12 +85,13 @@
         <footer class="card-footer">
           <div class="card-footer-item">
             <p class="is-size-7">
-              {% if post.amount_of_comments > 0 %}
-                {{ post.amount_of_comments }}
+              {% if post.amount_of_comments == 1 %}
+                1 Comment
+              {% elif post.amount_of_comments > 1 %}
+                {{ post.amount_of_comments }} Comments
               {% else %}
-                No
+                No Comments
               {% endif %}
-                Comments
             </p>
           </div>
           <div class="card-footer-item">
