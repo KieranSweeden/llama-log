@@ -3,11 +3,22 @@
 {% block title %}Create New Post | Llama Log{% endblock %}
 
 {% block header %}
-    {% if category == "work_order" %}
-        Create New Work Order Post
-    {% else %}
-        Create New Incident Post
-    {% endif %}
+    <div class="columns is-marginless pt-3">
+        <div class="column is-5 is-offset-2">
+          <h2 class="title is-size-4">
+            {% if category == "work_order" %}
+                Create Work Order Post
+            {% else %}
+                Create New Incident Post
+            {% endif %}
+          </h2>
+        </div>
+        <div class="column is-3">
+            <div class="buttons is-right">
+                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
+            </div>
+        </div>
+      </div>
 {% endblock %}
 
 {% block content %}
