@@ -83,8 +83,10 @@
         </div>
     </nav>
 
-    <header class="container has-text-centered">
-        <h2 class="title is-size-4 m-3">{% block header %}{% endblock %}</h2>
+    <header class="container is-max-desktop">
+        {% block header %}
+        
+        {% endblock %}
     </header>
 
     <main class="container is-max-desktop">

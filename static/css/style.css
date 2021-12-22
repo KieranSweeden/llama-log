@@ -116,3 +116,13 @@ article.message.is-success {
 .buttons:last-child {
     margin-bottom: 0;
 }
+
+.title {
+    line-height: 1.5;
+}
+
+@media screen and (min-width: 1024px){
+    .container {
+        max-width: 760px;
+    }
+}
