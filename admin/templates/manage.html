@@ -2,35 +2,54 @@
 
 {% block title %}Manage Users | Llama Log{% endblock %}
 
-{% block header %} Manage Users {% endblock %}
+{% block header %}
+    <div class="columns is-marginless pt-3">
+        <div class="column is-4 is-offset-2">
+            <h2 class="title is-size-4">Manage Users</h2>
+        </div>
+        <div class="column is-4">
+            <div class="buttons has-addons is-right">
+                <a class="button is-link m-0" href="{{ url_for('admin.create_user') }}">
+                    Add
+                    <i class="fas fa-user-plus"></i>
+                </a>
+                <a class="button is-warning m-0" 
+                    href="{{ url_for('user.feed', user_email=session['user_email']) }}">
+                    Feed<i class="fas fa-undo"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 {% block content %}
 
-<div class="columns is-marginless">
-    <div class="column is-8 is-offset-2 has-text-centered">
-        <a class="button is-link" href="{{ url_for('admin.create_user') }}">Create New User</a>
-    </div>
-</div>
-<div class="columns is-marginless">
-    <div class="column is-8 is-offset-2">
-        {% for user in users %}
-            {% if user.email != session["user_email"]%}
-            <div class="card m-2">
-                <div class="card-content">
-                    <div class="content">
-                        <h3 class="is-size-5">{{ user.first_name }} {{ user.last_name }}</h3>
+{% for user in users %}
+    {% if user.email != session["user_email"]%}
+        <div class="columns is-marginless">
+            <div class="column is-8 is-offset-2">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <h3 class="is-size-5">{{ user.first_name }} {{ user.last_name }}</h3>
+                        </div>
                     </div>
+                    <footer class="card-footer">
+                        <div class="card-footer-item py-1">
+                            <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="button is-ghost is-size-6">Edit <i class="fas fa-user-edit"></i></a>
+                        </div>
+                        <div class="card-footer-item py-1">
+                            <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-ghost has-text-warning-dark">Reset Password <i class="fas fa-key"></i></a>
+                        </div>
+                        <div class="card-footer-item py-1">
+                            <a href="{{ url_for('admin.delete_user', user_id=user._id) }}" class="button is-ghost has-text-danger">Delete <i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </footer>
                 </div>
-                <footer class="card-footer">
-                    <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="card-footer-item">Edit <i class="fas fa-user-edit"></i></a>
-                    <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="card-footer-item has-text-warning-dark">Reset Password <i class="fas fa-key"></i></a>
-                    <a href="{{ url_for('admin.delete_user', user_id=user._id) }}" class="card-footer-item has-text-danger">Delete <i class="fas fa-trash-alt"></i></a>
-                </footer>
             </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
+        </div>
+    {% endif %}
+{% endfor %}
 
 {% endblock %}
 
