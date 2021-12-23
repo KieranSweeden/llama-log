@@ -34,7 +34,7 @@
 {% block content %}
 
 {% for post in posts %}
-  <div class="columns is-marginless">
+  <div class="columns is-marginless animate__animated animate__fadeIn">
     <div class="column is-8 is-offset-2">
       <article class="card">
         <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
@@ -84,7 +84,7 @@
         </section>
         <footer class="card-footer">
           <div class="card-footer-item">
-            <p class="is-size-7">
+            <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="is-ghost is-size-7">
               {% if post.amount_of_comments == 1 %}
                 1 Comment
               {% elif post.amount_of_comments > 1 %}
@@ -92,7 +92,7 @@
               {% else %}
                 No Comments
               {% endif %}
-            </p>
+            </a>
           </div>
           <div class="card-footer-item">
             <p class="is-size-7">By: {{ post.author_name }}</p>
