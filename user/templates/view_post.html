@@ -127,7 +127,7 @@
           </p>
             <div class="buttons" >
               {% if comment.author == session["user_id"] %}
-              <button class="button is-ghost m-0 px-2">
+              <button class="button is-ghost edit-btn m-0 px-2">
                 Edit
               </button>
               <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" 

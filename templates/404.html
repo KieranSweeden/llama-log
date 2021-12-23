@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Oops | Llama Log{% endblock %}
+{% block title %}Error Found | Llama Log{% endblock %}
 
-{% block header %}404 Error{% endblock %}
+{% block header %}
+    <div class="columns is-marginless pt-3">
+        <div class="column is-3 is-offset-3">
+            <h2 class="title is-size-4 has-text-centered">404 Error</h2>
+        </div>
+        <div class="column is-3">
+            <div class="buttons is-right">
+                <a class="button is-warning m-0" href="{{ url_for('log_in')}}">Return to Log-In<i class="fas fa-undo"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

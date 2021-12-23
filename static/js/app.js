@@ -23,8 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Search for edit comment buttons
+  let editCommentButtons = [...document.getElementsByClassName("edit-btn")];
+
+  console.log(editCommentButtons)
+
+  // If some exist on current page, enable editing for respective comments
+  if(editCommentButtons){
+    enableEditingOfComments(editCommentButtons);
+  };
+
   // Clamps for posts within feed
-  var cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
+  let cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
 
   // If card text content exists on the page, clamp the text if too large
   if(cardTextContent.length > 1){
@@ -92,6 +102,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+function enableEditingOfComments(editCommentButtons){
+  editCommentButtons.forEach(commentButton => {
+    commentButton.addEventListener("click", (event) => {
+      displayEditCommentForm(event.target);
+    })
+  })
+}
+
+function displayEditCommentForm(commentButton){
+  // In order to display edit comment form
+  // Grab existing comment text data & comment content container
+  let commentContentContainer = commentButton.closest(".card").children[0].children[0];
+  let commentText = commentButton.closest(".card").children[0].children[0].children[1].outerText;
+
+  removeCommentContents(commentContentContainer);
+}
+
+function removeCommentContents(commentContentContainer){
+  // Remove the comment text & date/time
+  [...commentContentContainer.children].forEach(paragraphElement => {
+    paragraphElement.remove();
+  });
+}
 
 function enableNavbarDropdown(navbarDropdown){
   navbarDropdown.addEventListener("click", (event) => {
