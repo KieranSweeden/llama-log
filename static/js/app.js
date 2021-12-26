@@ -23,14 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Search for edit comment buttons
-  let editCommentButtons = [...document.getElementsByClassName("edit-btn")];
-
-  // If some exist on current page, enable editing for respective comments
-  if(editCommentButtons){
-    enableEditingOfComments(editCommentButtons);
-  };
-
   // Clamps for posts within feed
   let cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
 
@@ -100,52 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
-
-function enableEditingOfComments(editCommentButtons){
-  editCommentButtons.forEach(commentButton => {
-    commentButton.addEventListener("click", (event) => {
-      displayEditCommentForm(event.target);
-    })
-  })
-}
-
-function displayEditCommentForm(commentButton){
-  // In order to display edit comment form
-  // Grab & store existing comment text data & comment content container
-  let commentContainer = commentButton.closest(".columns");
-  let commentText = commentButton.closest(".card").children[0].children[0].children[1].outerText;
-
-  // Remove original comment container
-  commentContainer.remove();
-
-  // Adjust new comment form to edit exisiting comment form
-  changeNewCommentFormToEditForm(commentText);
-
-  // Insert original comment data into post comment field
-}
-
-function changeNewCommentFormToEditForm(originalCommentText){
-  // Grab the form & other variables needed
-  let form = document.getElementById("commentForm");
-  let formHeading = form.parentElement.previousElementSibling.firstElementChild;
-  let formTextArea = form.children[0].children[1].firstElementChild;
-  let formSubmitButton = form.children[1].firstElementChild;
-
-  // Update heading
-  formHeading.innerText = "Edit Comment";
-
-  // Insert original text
-  
-  formTextArea.value = originalCommentText;
-
-  // Change submit button
-  formSubmitButton.innerHTML = "Update Comment <i class='fas fa-save'></i>";
-
-
-  
-}
-
-
 
 function enableNavbarDropdown(navbarDropdown){
   navbarDropdown.addEventListener("click", (event) => {

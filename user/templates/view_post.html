@@ -47,7 +47,7 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">
+                  <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
                     Edit Post
                     <i class="fas fa-edit" aria-hidden="true"></i>
                   </a>
