@@ -232,6 +232,66 @@ def delete_post(post_id):
     return redirect(url_for("user.feed", user_email=session["user_email"]))
 
 
+@user.route("update_comment/<comment_id>", methods=["GET", "POST"])
+def update_comment(comment_id):
+
+    # Retrieve comment from db
+    comment = app.mongo.db.comments.find_one(
+        {"_id": ObjectId(comment_id)}
+    )
+
+    # Retrieve parent post
+    parent_post = app.mongo.db.work_orders.find_one(
+        {"_id": ObjectId(comment["parent_post_id"])}
+    )
+
+    # If an updated comment has been submitted
+    if request.method == "POST":
+
+        # Grab new comment content
+        updated_comment = {
+            "content": request.form.get("content"),
+            "date_created": datetime.datetime.now()
+        }
+
+        # Insert new comment content to existing comment in db
+        app.mongo.db.comments.update_one(
+            {"_id": ObjectId(comment_id)},
+            {"$set": {
+                "content": updated_comment["content"],
+                "date_created": updated_comment["date_created"]
+            }}
+        )
+
+        # Inform user of updated comment
+        flash("Your comment has been updated successfully!")
+
+        # Redirect user to viewing post page
+        return redirect(url_for("user.view_post", post_id=parent_post["_id"]))
+
+
+    # If not work order, check incidents
+    if not parent_post:
+        parent_post = app.mongo.db.incidents.find_one(
+            {"_id": ObjectId(comment["parent_post_id"])}
+        )
+
+    # Retrieve comments related to post
+    post_comments = list(app.mongo.db.comments.find(
+        {"parent_post_id": ObjectId(parent_post["_id"])}
+    ))
+
+    # Calculate amount of comments linked to post
+    parent_post["amount_of_comments"] = len(post_comments)
+
+    # Get name from user db using the post author Id
+    author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(parent_post["author"])})
+    parent_post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+    parent_post["author_id"] = str(parent_post["author"])
+
+    return render_template("update_comment.html", comment=comment, post=parent_post)
+
+
 @user.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
 
@@ -253,6 +313,7 @@ def delete_comment(comment_id):
 
         # Return user to view post
         return redirect(url_for("user.view_post", post_id=comment["parent_post_id"]))
+
 
 @user.route("/account/<user_email>", methods=["POST", "GET"])
 def account(user_email):
