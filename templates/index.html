@@ -12,25 +12,44 @@
 
 {% block content %}
 
-    <form method="POST" action="{{ url_for('log_in') }}">
-        <div class="field">
-            <label for="email" class="label">Email</label>
-            <div class="control has-icons-left has-icons-right">
-                <input class="input is-success" id="email" name="email" type="email" placeholder="Enter Your Email">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
+<div class="columns is-vcentered is-centered">
+    <div class="column is-flex is-justify-content-center">
+        <div id="login-box" class="box">
+            <div class="columns is-multiline">
+                <div class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+                    <figure class="image is-64x64 mb-3">
+                        <img class="is-rounded" src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}">
+                    </figure>
+                    <h3 class="is-size-5">
+                        Welcome to Llama Log
+                    </h3>
+                </div>
+                <div class="column is-12">
+                    <form method="POST" action="{{ url_for('log_in') }}">
+                        <div class="field">
+                            <label for="email" class="label">Email</label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-success" id="email" name="email" type="email" placeholder="Enter Your Email">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </div>
+                            <p class="help is-success">This Email is correct</p>
+                        </div>
+                    
+                        <div class="buttons is-right">
+                            <button type="submit" class="button is-link">Continue</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <p class="help is-success">This Email is correct</p>
         </div>
+    </div>
+</div>
 
-        <div class="buttons is-right">
-            <button type="submit" class="button is-link">Continue</button>
-        </div>
-    </form>
 
 {% endblock %}
 

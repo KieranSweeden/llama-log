@@ -8,14 +8,18 @@
 
 body {
     font-family: 'Lexend', sans-serif;
+    height: 100vh;
 }
 
 /* Utilities */
 
+main.container {
+    height: 80vh;
+}
+
 .fas {
     margin-left: .25rem;
 }
-
 
 /* Buttons */
 
@@ -83,6 +87,18 @@ article.message.is-success {
     bottom: 0;
     right: 1rem;
 }
+
+/* Login page */
+
+.columns.is-vcentered.is-centered {
+    height: 100%;
+}
+
+#login-box {
+    max-width: 30rem;
+}
+
+
 
 /* Feed page */
 
