@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Search for edit comment buttons
   let editCommentButtons = [...document.getElementsByClassName("edit-btn")];
 
-  console.log(editCommentButtons)
-
   // If some exist on current page, enable editing for respective comments
   if(editCommentButtons){
     enableEditingOfComments(editCommentButtons);
@@ -113,19 +111,41 @@ function enableEditingOfComments(editCommentButtons){
 
 function displayEditCommentForm(commentButton){
   // In order to display edit comment form
-  // Grab existing comment text data & comment content container
-  let commentContentContainer = commentButton.closest(".card").children[0].children[0];
+  // Grab & store existing comment text data & comment content container
+  let commentContainer = commentButton.closest(".columns");
   let commentText = commentButton.closest(".card").children[0].children[0].children[1].outerText;
 
-  removeCommentContents(commentContentContainer);
+  // Remove original comment container
+  commentContainer.remove();
+
+  // Adjust new comment form to edit exisiting comment form
+  changeNewCommentFormToEditForm(commentText);
+
+  // Insert original comment data into post comment field
 }
 
-function removeCommentContents(commentContentContainer){
-  // Remove the comment text & date/time
-  [...commentContentContainer.children].forEach(paragraphElement => {
-    paragraphElement.remove();
-  });
+function changeNewCommentFormToEditForm(originalCommentText){
+  // Grab the form & other variables needed
+  let form = document.getElementById("commentForm");
+  let formHeading = form.parentElement.previousElementSibling.firstElementChild;
+  let formTextArea = form.children[0].children[1].firstElementChild;
+  let formSubmitButton = form.children[1].firstElementChild;
+
+  // Update heading
+  formHeading.innerText = "Edit Comment";
+
+  // Insert original text
+  
+  formTextArea.value = originalCommentText;
+
+  // Change submit button
+  formSubmitButton.innerHTML = "Update Comment <i class='fas fa-save'></i>";
+
+
+  
 }
+
+
 
 function enableNavbarDropdown(navbarDropdown){
   navbarDropdown.addEventListener("click", (event) => {
