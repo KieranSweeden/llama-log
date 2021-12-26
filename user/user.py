@@ -245,6 +245,12 @@ def update_comment(comment_id):
         {"_id": ObjectId(comment["parent_post_id"])}
     )
 
+    # If not work order, check incidents
+    if not parent_post:
+        parent_post = app.mongo.db.incidents.find_one(
+            {"_id": ObjectId(comment["parent_post_id"])}
+        )
+
     # If an updated comment has been submitted
     if request.method == "POST":
 
@@ -268,13 +274,6 @@ def update_comment(comment_id):
 
         # Redirect user to viewing post page
         return redirect(url_for("user.view_post", post_id=parent_post["_id"]))
-
-
-    # If not work order, check incidents
-    if not parent_post:
-        parent_post = app.mongo.db.incidents.find_one(
-            {"_id": ObjectId(comment["parent_post_id"])}
-        )
 
     # Retrieve comments related to post
     post_comments = list(app.mongo.db.comments.find(
