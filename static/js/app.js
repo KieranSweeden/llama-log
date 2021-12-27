@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Grab delete comment buttons
+  let deleteCommentButtons = [...document.getElementsByClassName("delete-btn")];
+
+  // If delete comment buttons exist on page
+  if(deleteCommentButtons.length > 0){
+    // Add defensive modal event listener to delete button
+    addDeleteCommentConfirmListener(deleteCommentButtons);
+  }
+
+
   // Clamps for posts within feed
   let cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
 
@@ -92,6 +102,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+function addDeleteCommentConfirmListener(deleteCommentButtons){
+  // Add click event listener to delete comment button
+  deleteCommentButtons.forEach(deleteCommentButton => {
+    deleteCommentButton.addEventListener("click", (event) => {
+      displayConfirmDeleteModal(deleteCommentButton);
+    });
+  });
+}
+
+function displayConfirmDeleteModal(deleteCommentButton){
+  // Get id of comment using data modal attribute
+  let commentID = deleteCommentButton.dataset.modal;
+
+  // Grab modals
+  let confirmModals = [...document.getElementsByClassName("modal")];
+
+  // Filter to the target modal using the commentID
+  let targettedModal = confirmModals.filter(modal => modal.dataset.modal === commentID)[0];
+
+  // Add is-active class to display modal to user
+  targettedModal.classList.add("is-active");
+
+  // Add close modal click listeners to close buttons
+  addCloseModalListeners([...targettedModal.getElementsByClassName("close-modal")], targettedModal);
+}
+
+function addCloseModalListeners(closeButtons, openedModal){
+  // If user clicks close buttons, modal closes
+  closeButtons.forEach(closeButton => {
+    closeButton.addEventListener("click", () => {
+      openedModal.classList.remove("is-active");
+    })
+  });
+}
 
 function enableNavbarDropdown(navbarDropdown){
   navbarDropdown.addEventListener("click", (event) => {
