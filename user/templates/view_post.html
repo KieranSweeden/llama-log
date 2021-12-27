@@ -83,14 +83,10 @@
         </div>
         <div class="card-footer-item">
           <time class="mr-2 is-size-7">
-            {{ post.date_created.strftime("%I") + ":" + 
-                post.date_created.strftime("%M") + 
-                post.date_created.strftime("%p")}}
+            {{ post.date_created.strftime("%I:%M%p") }}
           </time>
           <p class="is-size-7">
-            {{ post.date_created.strftime("%d") + " " + 
-                post.date_created.strftime("%b") + " " + 
-                post.date_created.strftime("%Y")}}
+            {{ post.date_created.strftime("%d %b %Y") }}
           </p>
         </div>
       </footer>
@@ -107,12 +103,8 @@
         <div class="content">
           <p class="has-text-grey m-0 has-text-right">
             <small class="is-size-7">
-              {{ comment.date_created.strftime("%I") + ":" + 
-                comment.date_created.strftime("%M") + 
-                comment.date_created.strftime("%p")}}
-              {{ comment.date_created.strftime("%d") + " " + 
-              comment.date_created.strftime("%b") + " " + 
-              comment.date_created.strftime("%Y")}}
+              {{ comment.date_created.strftime("%I:%M%p") }}
+              {{ comment.date_created.strftime("%d %b %Y") }}
             </small>
           </p>
           <p>
