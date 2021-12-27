@@ -127,7 +127,8 @@ article.message.is-success {
     padding-top: 0;
 }
 
-.dropdown-item.delete-btn {
+.dropdown-item.delete-btn,
+.button.delete-btn {
     background-color: transparent;
     border: none;
     font-family: inherit;
