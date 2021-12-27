@@ -123,6 +123,17 @@ article.message.is-success {
     z-index: 4;
 }
 
+.dropdown-menu {
+    padding-top: 0;
+}
+
+.dropdown-item.delete-btn {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
 /* View post page */
 
 .card-footer-item {

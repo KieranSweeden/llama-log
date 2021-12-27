@@ -68,10 +68,10 @@
                       <i class="fas fa-edit" aria-hidden="true"></i>
                     </a>
                     <hr class="dropdown-divider">
-                    <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="dropdown-item">
+                    <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
                       Delete Post
                       <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                    </a>
+                    </button>
                   {% endif %}
                 </div>
               </div>
@@ -110,10 +110,27 @@
       </article>
     </div>
   </div>
+
+  <div class="modal" data-modal="{{ post._id }}">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Are You Sure?</p>
+        <button class="delete close-modal" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>Deleting a post will also remove the comments associated with it.</p>
+      </section>
+      <footer class="modal-card-foot is-justify-content-end">
+        <div class="buttons">
+          <button class="button close-modal my-0">Cancel</button>
+          <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-success my-0">Delete Post</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
 {% endfor %}
-
-
-
 
 {% endblock %}
 

@@ -18,15 +18,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # Set 5 minute session time limit
 app.permanent_session_lifetime = timedelta(minutes=5)
 
-
 from user.user import user
 from admin.admin import admin
-
 
 # Register blueprints with app
 app.register_blueprint(user, url_prefix="/user")
 app.register_blueprint(admin, url_prefix="/admin")
-
 
 # Instance of PyMongo, with flask app inserted as argument
 # so Mongo DB can communicate with flask app
@@ -47,7 +44,6 @@ def log_in():
         if existing_user:
 
             return redirect(url_for("password", user_email=existing_user["email"]))
-            
 
         # If the email entered does not exist
         # redirect user to log in page & try again

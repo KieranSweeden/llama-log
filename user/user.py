@@ -223,13 +223,39 @@ def edit_post(post_id):
 @user.route("/delete_post/<post_id>")
 def delete_post(post_id):
 
-    # Delete post utilising the post_id
-    app.mongo.db.work_orders.delete_one({"_id": ObjectId(post_id)})
+    # Check post exists
+    post_for_deletion = app.mongo.db.work_orders.find_one(
+        {"_id": ObjectId(post_id)}
+    )
 
-    # Inform user of post deletion
-    flash("Post has been deleted successfully")
+    # If it exists as a work order
+    if post_for_deletion:
+         # Delete post utilising the post_id
+        app.mongo.db.work_orders.delete_one({"_id": ObjectId(post_id)})
 
-    return redirect(url_for("user.feed", user_email=session["user_email"]))
+        # Inform user of post deletion
+        flash("Post has been deleted successfully")
+
+        return redirect(url_for("user.feed", user_email=session["user_email"]))
+
+    # If a post hasn't been found
+    elif post_for_deletion == None:
+
+        # Look through the incidents db
+        post_for_deletion = app.mongo.db.incidents.find_one(
+            {"_id": ObjectId(post_id)}
+        )
+
+        # If it does exist now
+        if post_for_deletion:
+
+            # Delete post utilising the post_id
+            app.mongo.db.incidents.delete_one({"_id": ObjectId(post_id)})
+
+            # Inform user of post deletion
+            flash("Post has been deleted successfully")
+
+            return redirect(url_for("user.feed", user_email=session["user_email"]))
 
 
 @user.route("update_comment/<comment_id>", methods=["GET", "POST"])
@@ -293,8 +319,6 @@ def update_comment(comment_id):
 
 @user.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
-
-    
 
     # Obtain comment data
     comment = app.mongo.db.comments.find_one(
