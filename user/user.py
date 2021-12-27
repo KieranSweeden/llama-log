@@ -294,6 +294,8 @@ def update_comment(comment_id):
 @user.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
 
+    
+
     # Obtain comment data
     comment = app.mongo.db.comments.find_one(
         {"_id": ObjectId(comment_id)}
