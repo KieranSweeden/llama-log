@@ -27,9 +27,12 @@
                 <div class="column is-12">
                     <form method="POST" action="{{ url_for('log_in') }}">
                         <div class="field">
-                            <label for="email" class="label">Email</label>
+                            <label for="email" class="label">Email
+                                <i class="fas fa-question-circle" id="email-tooltip"></i>
+                            </label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input is-success" id="email" name="email" type="email" placeholder="Enter Your Email">
+                                <input class="input is-success" id="email" name="email" type="email" 
+                                placeholder="Enter Your Email">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
@@ -37,7 +40,7 @@
                                     <i class="fas fa-check"></i>
                                 </span>
                             </div>
-                            <p class="help is-success">This Email is correct</p>
+                            <p class="help is-success has-text-right">This Email is correct</p>
                         </div>
                     
                         <div class="buttons is-right">
@@ -72,4 +75,17 @@
     {% endif %}
 {% endwith %}
 
+{% endblock %}
+
+{% block js %}
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- Tooltips -->
+    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
 {% endblock %}
