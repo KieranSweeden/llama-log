@@ -26,7 +26,7 @@
 <form method="POST" action="{{ url_for('user.create_post', category=category)}}">
 
     <div class="field">
-        <label for="title" class="label">Title</label>
+        <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="title" name="title" type="text" placeholder="Enter Work Order Title">
             <span class="icon is-small is-left">
@@ -41,7 +41,7 @@
     {% if category == "work_order" %}
 
         <div class="field">
-            <label for="equipment" class="label">Equipment</label>
+            <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
             <div class="control has-icons-left has-icons-right">
                 <input class="input is-success" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
                 <span class="icon is-small is-left">
@@ -56,7 +56,7 @@
     {% else %}
         
     <div class="control">
-        <label for="was_customer_involved" class="label">Was A Customer Involved?</label>
+        <label for="was_customer_involved" class="label">Was A Customer Involved?<i class="fas fa-question-circle"></i></label>
         <label class="radio">
           <input type="radio" name="was_customer_involved" checked>No
         </label>
@@ -68,7 +68,7 @@
     {% endif %}
 
     <div class="field">
-        <label for="description" class="label">Description</label>
+        <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
         <div class="control">
           <textarea class="textarea" name="description" id="description" placeholder="Textarea"></textarea>
         </div>
@@ -87,5 +87,20 @@
     </div>
 
 </form>
+
+{% endblock %}
+
+{% block js %}
+
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- Tooltips -->
+    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
 
 {% endblock %}

@@ -135,7 +135,7 @@ function displayCustomerIncidentFields(){
 
   // Add html markup for customer name input field
   customerNameInput.innerHTML = `
-    <label for="customer_name" class="label customer">Customer Name</label>
+    <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
     <div class="control has-icons-left has-icons-right">
         <input class="input is-success" id="customer_name" name="customer_name" type="text" placeholder="Enter Customer's Full Name">
         <span class="icon is-small is-left">
@@ -149,7 +149,7 @@ function displayCustomerIncidentFields(){
   
   // Add html markup for customer phone input field
   customerPhoneInput.innerHTML = `
-    <label for="customer_phone" class="label customer">Customer Phone</label>
+    <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
     <div class="control has-icons-left has-icons-right">
         <input class="input is-success" id="customer_phone" name="customer_phone" type="number" placeholder="Enter Customer's Phone Number">
         <span class="icon is-small is-left">
