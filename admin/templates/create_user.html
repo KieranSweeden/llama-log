@@ -20,7 +20,8 @@
 <form method="POST" action="{{ url_for('admin.create_user') }}">
 
     <div class="field">
-        <label for="first_name" class="label">First Name</label>
+        <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
+        </label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="first_name" name="first_name" type="text" placeholder="Enter First Name">
             <span class="icon is-small is-left">
@@ -33,7 +34,8 @@
     </div>
 
     <div class="field">
-        <label for="last_name" class="label">Last Name</label>
+        <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
+        </label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="last_name" name="last_name" type="text" placeholder="Enter Last Name">
             <span class="icon is-small is-left">
@@ -46,7 +48,8 @@
     </div>
 
     <div class="field">
-        <label for="dob" class="label">Date of Birth</label>
+        <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
+        </label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="dob" name="dob" type="date" placeholder="Enter Date of Birth">
             <span class="icon is-small is-left">
@@ -59,7 +62,8 @@
     </div>
 
     <div class="field">
-        <label for="phone" class="label">Phone</label>
+        <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
+        </label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="phone" name="phone" type="number" placeholder="Enter Phone Number">
             <span class="icon is-small is-left">
@@ -72,7 +76,8 @@
     </div>
 
     <div class="field">
-        <label for="email" class="label">Email</label>
+        <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
+        </label>
         <div class="control has-icons-left has-icons-right">
             <input class="input is-success" id="email" name="email" type="email" placeholder="Enter Your Email">
             <span class="icon is-small is-left">
@@ -86,13 +91,28 @@
     </div>
 
     <label for="is_admin" class="checkbox">
-        <input id="is_admin" name="is_admin" type="checkbox">
-        Provide this user with admin credentials
+        <input id="is_admin" name="is_admin" 
+        type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
     </label>
 
     <div class="buttons is-right">
         <button type="submit" class="button is-link">Create User<i class="fas fa-user-plus"></i></button>
     </div>
 </form>
+
+{% endblock %}
+
+{% block js %}
+
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- Tooltips -->
+    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
 
 {% endblock %}

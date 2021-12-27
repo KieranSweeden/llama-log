@@ -39,12 +39,10 @@
                     <a href="{{ url_for('log_in') }}" class="navbar-item 
                     {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">
                         Log In
-                        <i class="fas fa-sign-in-alt"></i>
                     </a>
                     <a href="{{ url_for('about') }}" class="navbar-item 
                     {% if request.url_rule.endpoint == 'about' %} is-active {% endif %} has-text-right">
                         About Us
-                        <i class="fas fa-question-circle"></i>
                     </a>
                 {% endif %}
                 {% if session.user_email %}
