@@ -94,7 +94,7 @@ def delete_user(user_id):
     )
 
     # Delete user from users db
-    # app.mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+    app.mongo.db.users.delete_one({"_id": ObjectId(user_id)})
 
     # Grab deleted user account from db
     default_deleted_user = app.mongo.db.users.find_one(
@@ -109,8 +109,16 @@ def delete_user(user_id):
         }}
     )
 
-    # Replace comments user is author of to deleted user
+    # Replace incident posts user is author of to deleted user
     app.mongo.db.incidents.update_many(
+        {"author": ObjectId(user_id)},
+        {"$set": {
+            "author": default_deleted_user["_id"]
+        }}
+    )
+
+    # Replace comments user is author to deleted user
+    app.mongo.db.comments.update_many(
         {"author": ObjectId(user_id)},
         {"$set": {
             "author": default_deleted_user["_id"]
