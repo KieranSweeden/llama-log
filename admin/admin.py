@@ -93,8 +93,30 @@ def delete_user(user_id):
         {"_id": ObjectId(user_id)}
     )
 
-    # Reset clicked user's password in db
+    # Delete user from users db
     app.mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+
+    # Grab deleted user account from db
+    default_deleted_user = app.mongo.db.users.find(
+        {"first_name": "Deleted"}
+    )
+
+    # Replace work order posts user is author of to deleted user
+    app.mongo.db.work_orders.update_many(
+        {"author": ObjectId(user_id)},
+        {"$set": {
+            "first_name": default_deleted_user["first_name"],
+            "last_name": default_deleted_user["last_name"],
+            "dob": default_deleted_user["dob"],
+            "email": default_deleted_user["email"],
+            "phone": default_deleted_user["phone"],
+            "is_admin": default_deleted_user["is_admin"],
+            "password": default_deleted_user["password"]
+        }}
+    )
+
+    # Replace comments user is author of to deleted user
+
 
     # Inform admin of user deletion
     flash(f"{clicked_user['first_name']}'s account has been successfully deleted")
