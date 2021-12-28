@@ -231,7 +231,14 @@ def delete_post(post_id):
     # If it exists as a work order
     if post_for_deletion:
          # Delete post utilising the post_id
-        app.mongo.db.work_orders.delete_one({"_id": ObjectId(post_id)})
+        app.mongo.db.work_orders.delete_one(
+            {"_id": ObjectId(post_id)}
+        )
+
+        # Delete comments that are children to post
+        app.mongo.db.comments.delete_many(
+            {"parent_post_id": ObjectId(post_id)}
+        )
 
         # Inform user of post deletion
         flash("Post has been deleted successfully")
@@ -251,6 +258,11 @@ def delete_post(post_id):
 
             # Delete post utilising the post_id
             app.mongo.db.incidents.delete_one({"_id": ObjectId(post_id)})
+
+            # Delete comments that are children to post
+            app.mongo.db.comments.delete_many(
+                {"parent_post_id": ObjectId(post_id)}
+            )
 
             # Inform user of post deletion
             flash("Post has been deleted successfully")
