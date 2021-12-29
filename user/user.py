@@ -20,6 +20,11 @@ def feed(user_email):
     # Sort by date
     posts.sort(reverse=True, key=sort_by_date_created)
 
+    # Get current user data
+    current_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(session["user_id"])}
+    )
+
     # For each post
     for post in posts:
 
@@ -37,7 +42,7 @@ def feed(user_email):
         post["amount_of_comments"] = len(post_comments)
 
     # render templates sending the posts
-    return render_template("feed.html", user_email=user_email, posts=posts)
+    return render_template("feed.html", user_email=user_email, posts=posts, user=current_user)
 
 
 def sort_by_date_created(post):
@@ -173,8 +178,13 @@ def view_post(post_id):
     current_post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
     current_post["author_id"] = str(current_post["author"])
 
+    # Get current user data
+    current_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(session["user_id"])}
+    )
+
     # Render view post template with fetched current post data
-    return render_template("view_post.html", post=current_post, post_comments=post_comments)
+    return render_template("view_post.html", post=current_post, post_comments=post_comments, user=current_user)
 
 
 @user.route("/edit_post/<post_id>", methods=["POST", "GET"])

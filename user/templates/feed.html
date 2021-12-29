@@ -62,7 +62,7 @@
                     View Post
                     <i class="fas fa-eye" aria-hidden="true"></i>
                   </a>
-                  {% if post.author_id == session["user_id"]%}
+                  {% if post.author_id == session["user_id"] or user.is_admin == True %}
                     <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
                       Edit Post
                       <i class="fas fa-edit" aria-hidden="true"></i>
@@ -106,7 +106,6 @@
             </p>
           </div>
         </footer>
-
       </article>
     </div>
   </div>

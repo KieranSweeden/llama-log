@@ -36,7 +36,7 @@
               {% endif %}
               {{ post.title }}
             </h3>
-          {% if post.author_id == session["user_id"]%}
+          {% if post.author_id == session["user_id"] or user.is_admin == True %}
           <div class="dropdown is-right card-header-icon">
             <div class="dropdown-trigger">
               <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
