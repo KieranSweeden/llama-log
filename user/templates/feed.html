@@ -53,103 +53,115 @@
 
 {% block content %}
 
-{% for post in posts %}
-  <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
-    <div class="column is-8 is-offset-2">
-      <article class="card">
-        <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
-          <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
-            <h3 class="card-header-title has-text-white-bis">
-              {% if "equipment" in post %}
-                <i class="fas fa-tools ml-0 mr-2"></i>
-              {% else %}
-                <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
-              {% endif %}
-              {{ post.title }}
-              </h3>
-          </a>
-            <div class="dropdown is-right card-header-icon">
-              <div class="dropdown-trigger">
-                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span class="icon has-text-white-bis">
-                    <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
-                    View Post
-                    <i class="fas fa-eye" aria-hidden="true"></i>
-                  </a>
-                  {% if post.author_id == session["user_id"] or user.is_admin == True %}
-                    <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
-                      Edit Post
-                      <i class="fas fa-edit" aria-hidden="true"></i>
+  {% if posts|length > 0 %}
+
+  {% for post in posts %}
+    <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
+      <div class="column is-8 is-offset-2">
+        <article class="card">
+          <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
+            <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
+              <h3 class="card-header-title has-text-white-bis">
+                {% if "equipment" in post %}
+                  <i class="fas fa-tools ml-0 mr-2"></i>
+                {% else %}
+                  <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
+                {% endif %}
+                {{ post.title }}
+                </h3>
+            </a>
+              <div class="dropdown is-right card-header-icon">
+                <div class="dropdown-trigger">
+                  <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span class="icon has-text-white-bis">
+                      <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
+                      View Post
+                      <i class="fas fa-eye" aria-hidden="true"></i>
                     </a>
-                    <hr class="dropdown-divider">
-                    <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
-                      Delete Post
-                      <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                    </button>
-                  {% endif %}
+                    {% if post.author_id == session["user_id"] or user.is_admin == True %}
+                      <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
+                        Edit Post
+                        <i class="fas fa-edit" aria-hidden="true"></i>
+                      </a>
+                      <hr class="dropdown-divider">
+                      <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
+                        Delete Post
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                      </button>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
+          </header>
+          <section class="card-content p-4">
+            <div class="content">
+              <p class="add-text-overflow-cutoff">{{ post.description }}</p>
             </div>
+          </section>
+          <footer class="card-footer">
+            <div class="card-footer-item">
+              <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="is-ghost is-size-7">
+                {% if post.amount_of_comments == 1 %}
+                  1 Comment
+                {% elif post.amount_of_comments > 1 %}
+                  {{ post.amount_of_comments }} Comments
+                {% else %}
+                  No Comments
+                {% endif %}
+              </a>
+            </div>
+            <div class="card-footer-item">
+              <p class="is-size-7">By: {{ post.author_name }}</p>
+            </div>
+            <div class="card-footer-item">
+              <time class="mr-2 is-size-7">
+                {{ post.date_created.strftime("%I:%M%p") }}
+              </time>
+              <p class="is-size-7">
+                {{ post.date_created.strftime("%d %b %Y") }}
+              </p>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </div>
+
+    <div class="modal" data-modal="{{ post._id }}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Are You Sure?</p>
+          <button class="delete close-modal" aria-label="close"></button>
         </header>
-        <section class="card-content p-4">
-          <div class="content">
-            <p class="add-text-overflow-cutoff">{{ post.description }}</p>
-          </div>
+        <section class="modal-card-body">
+          <p>Deleting a post will also remove the comments associated with it.</p>
         </section>
-        <footer class="card-footer">
-          <div class="card-footer-item">
-            <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="is-ghost is-size-7">
-              {% if post.amount_of_comments == 1 %}
-                1 Comment
-              {% elif post.amount_of_comments > 1 %}
-                {{ post.amount_of_comments }} Comments
-              {% else %}
-                No Comments
-              {% endif %}
-            </a>
-          </div>
-          <div class="card-footer-item">
-            <p class="is-size-7">By: {{ post.author_name }}</p>
-          </div>
-          <div class="card-footer-item">
-            <time class="mr-2 is-size-7">
-              {{ post.date_created.strftime("%I:%M%p") }}
-            </time>
-            <p class="is-size-7">
-              {{ post.date_created.strftime("%d %b %Y") }}
-            </p>
+        <footer class="modal-card-foot is-justify-content-end">
+          <div class="buttons">
+            <button class="button close-modal my-0">Cancel</button>
+            <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-success my-0">Delete Post</a>
           </div>
         </footer>
-      </article>
+      </div>
+    </div>
+
+  {% endfor %}
+
+{% else %}
+
+  <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
+    <div class="column is-8 is-offset-2 has-text-centered">
+        <p>Oops, it seems you have no results...</p>
     </div>
   </div>
 
-  <div class="modal" data-modal="{{ post._id }}">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Are You Sure?</p>
-        <button class="delete close-modal" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <p>Deleting a post will also remove the comments associated with it.</p>
-      </section>
-      <footer class="modal-card-foot is-justify-content-end">
-        <div class="buttons">
-          <button class="button close-modal my-0">Cancel</button>
-          <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-success my-0">Delete Post</a>
-        </div>
-      </footer>
-    </div>
-  </div>
-
-{% endfor %}
+{% endif %}
 
 {% endblock %}
 
