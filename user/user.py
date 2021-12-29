@@ -6,50 +6,160 @@ user = Blueprint("user", __name__, static_folder="../static", template_folder="t
 
 import app
 
-@user.route("/feed/<user_email>")
+@user.route("/feed/<user_email>", methods=["GET", "POST"])
 def feed(user_email):
-
-    search_filter = request.args.get("filter")
-
-    print(search_filter)
-
-    if search_filter == "something":
-        print("Search filter working")
     
+    # If a filter request has been made
+    if request.method == "GET":
 
-    # Retrieve work orders & incidents
-    work_orders = list(app.mongo.db.work_orders.find())
-    incidents = list(app.mongo.db.incidents.find())
+        # Grab the filter text the user has entered
+        search_filter = request.args.get("filter")
 
-    # Combine both into single list
-    posts = work_orders + incidents
+        if search_filter == None or search_filter == "":
 
-    # Sort by date
-    posts.sort(reverse=True, key=sort_by_date_created)
+            # Retrieve work orders & incidents
+            work_orders = list(app.mongo.db.work_orders.find())
+            incidents = list(app.mongo.db.incidents.find())
 
-    # Get current user data
-    current_user = app.mongo.db.users.find_one(
-        {"_id": ObjectId(session["user_id"])}
-    )
+            # Combine both into single list
+            posts = work_orders + incidents
 
-    # For each post
-    for post in posts:
+            # Sort by date
+            posts.sort(reverse=True, key=sort_by_date_created)
 
-        # Grab the name of the author and add it to post dict
-        author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
-        post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
-        post["author_id"] = str(post["author"])
+            # Get current user data
+            current_user = app.mongo.db.users.find_one(
+                {"_id": ObjectId(session["user_id"])}
+            )
 
-        # Search the comments to see if any comments are linked to post
-        post_comments = list(app.mongo.db.comments.find(
-            {"parent_post_id": post["_id"]}
-        ))
+            # For each post
+            for post in posts:
 
-        # Set amount of comments to length of obtained comments
-        post["amount_of_comments"] = len(post_comments)
+                # Grab the name of the author and add it to post dict
+                author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
+                post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+                post["author_id"] = str(post["author"])
 
-    # render templates sending the posts
-    return render_template("feed.html", user_email=user_email, posts=posts, user=current_user)
+                # Search the comments to see if any comments are linked to post
+                post_comments = list(app.mongo.db.comments.find(
+                    {"parent_post_id": post["_id"]}
+                ))
+
+                # Set amount of comments to length of obtained comments
+                post["amount_of_comments"] = len(post_comments)
+
+            # render templates sending the posts
+            return render_template("feed.html", user_email=user_email, posts=posts, user=current_user)
+            
+        else:
+
+            print(type(search_filter))
+            print(search_filter)
+
+            # Grab work orders & incidents
+            work_orders = list(app.mongo.db.work_orders.find())
+            incidents = list(app.mongo.db.incidents.find())
+
+            # Combine both into single list
+            posts = work_orders + incidents
+
+            print(posts)
+
+            # Create empty set to contain filtered lists
+            filtered_posts = list()
+
+            print(filtered_posts)
+
+            # Loop through each post
+            for post in posts:
+
+                # If the search term is found within the title or description of post
+                if search_filter in post["title"] or search_filter in post["description"]:
+
+                    # Add post to the filtered post list
+                    filtered_posts.append(post)
+                
+                # Grab comments associated with post
+                post_comments = list(app.mongo.db.comments.find(
+                    {"parent_post_id": ObjectId(post["_id"])}
+                ))
+
+                # Looping through the comments
+                for comment in post_comments:
+
+                    # If the search term is found within the content of comment
+                    if search_filter in comment["content"]:
+
+                        # Add post to the filtered post list
+                        filtered_posts.append(post)
+
+
+            # Remove dupicates within filtered set
+            [dict(tuple_instance) for tuple_instance in {tuple(post.items()) for post in filtered_posts}]
+
+            # Sort by date
+            filtered_posts.sort(reverse=True, key=sort_by_date_created)
+
+            # For each post
+            for post in posts:
+
+                # Grab the name of the author and add it to post dict
+                author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
+                post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+                post["author_id"] = str(post["author"])
+
+                # Search the comments to see if any comments are linked to post
+                post_comments = list(app.mongo.db.comments.find(
+                    {"parent_post_id": post["_id"]}
+                ))
+
+                # Set amount of comments to length of obtained comments
+                post["amount_of_comments"] = len(post_comments)
+            
+            # Get current user data
+            current_user = app.mongo.db.users.find_one(
+                {"_id": ObjectId(session["user_id"])}
+            )
+
+            # render templates sending the posts
+            return render_template("feed.html", user_email=user_email, posts=filtered_posts, user=current_user, search_filter=search_filter)
+
+
+    else:
+
+        # Retrieve work orders & incidents
+        work_orders = list(app.mongo.db.work_orders.find())
+        incidents = list(app.mongo.db.incidents.find())
+
+        # Combine both into single list
+        posts = work_orders + incidents
+
+        # Sort by date
+        posts.sort(reverse=True, key=sort_by_date_created)
+
+        # Get current user data
+        current_user = app.mongo.db.users.find_one(
+            {"_id": ObjectId(session["user_id"])}
+        )
+
+        # For each post
+        for post in posts:
+
+            # Grab the name of the author and add it to post dict
+            author_of_post = app.mongo.db.users.find_one({"_id": ObjectId(post["author"])})
+            post["author_name"] = str(author_of_post["first_name"] + " " + author_of_post["last_name"])
+            post["author_id"] = str(post["author"])
+
+            # Search the comments to see if any comments are linked to post
+            post_comments = list(app.mongo.db.comments.find(
+                {"parent_post_id": post["_id"]}
+            ))
+
+            # Set amount of comments to length of obtained comments
+            post["amount_of_comments"] = len(post_comments)
+
+        # render templates sending the posts
+        return render_template("feed.html", user_email=user_email, posts=posts, user=current_user)
 
 
 def sort_by_date_created(post):

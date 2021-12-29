@@ -31,18 +31,19 @@
   </div>
   <div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
-      <form action="">
+      <form method="GET" action="{{ url_for('user.feed', user_email=session['user_email']) }}">
         <div class="field has-addons">
           <div class="control is-expanded has-icons-left">
-            <input class="input is-rounded" type="text" placeholder="Search posts and comments...">
+            <input class="input is-rounded" type="text" id="filter" name="filter" 
+            placeholder="Search posts and comments..." value="{{ search_filter }}">
             <span class="icon is-small is-left">
               <i class="fas fa-search"></i>
             </span>
           </div>
           <div class="control">
-            <a class="button is-rounded is-info">
+            <button type="submit" class="button is-rounded is-info">
               Search
-            </a>
+            </button>
           </div>
         </div>
       </form>
