@@ -53,9 +53,6 @@ def feed(user_email):
             
         else:
 
-            print(type(search_filter))
-            print(search_filter)
-
             # Grab work orders & incidents
             work_orders = list(app.mongo.db.work_orders.find())
             incidents = list(app.mongo.db.incidents.find())
@@ -63,12 +60,8 @@ def feed(user_email):
             # Combine both into single list
             posts = work_orders + incidents
 
-            print(posts)
-
             # Create empty set to contain filtered lists
             filtered_posts = list()
-
-            print(filtered_posts)
 
             # Loop through each post
             for post in posts:
