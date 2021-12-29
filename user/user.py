@@ -347,8 +347,13 @@ def delete_comment(comment_id):
         {"_id": ObjectId(comment_id)}
     )
 
+    # Obtain current user data
+    current_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(session["user_id"])}
+    )
+
     # Check the current user is the author of the comment
-    if str(comment["author"]) == session["user_id"]:
+    if str(comment["author"]) == session["user_id"] or current_user["is_admin"] is True:
         
         # Delete the comment from comments db
         app.mongo.db.comments.delete_one(
