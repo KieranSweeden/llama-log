@@ -47,7 +47,8 @@ def log_in():
 
         # If the email entered does not exist
         # redirect user to log in page & try again
-            return redirect(url_for("log_in"))
+        flash("The email address you entered doesn't exist. Try again", "error")   
+        return redirect(url_for("log_in"))
 
     return render_template("index.html")
 
@@ -83,6 +84,7 @@ def password(user_email):
                         "user.feed", user_email=session["user_email"]))
                 
             # If not, redirect user to log in page & try again
+            flash("The password attempt was wrong, please try again.", "error")
             return redirect(url_for("log_in"))
         
         # If a create password attempt has been made

@@ -82,7 +82,8 @@ a.navbar-item:hover,
 
 /* Flash messages */
 
-article.message.is-success {
+article.message.is-success,
+article.message.is-danger {
     position: fixed;
     bottom: 0;
     right: 1rem;
