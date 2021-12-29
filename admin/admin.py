@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, url_for, flash
+from flask import Blueprint, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import ObjectId
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
@@ -9,8 +9,24 @@ import app
 @admin.route("/manage")
 def manage():
 
-    users = app.mongo.db.users.find()
+    # Obtain all users from user database
+    users = list(app.mongo.db.users.find())
 
+    # Get deleted user profile
+    deleted_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId("61cabfd85c981958c32d009d")}
+    )
+
+    # Get current user profile
+    current_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(session["user_id"])}
+    )
+
+    # Remove deleted user & current user account from list of users
+    users.remove(deleted_user)
+    users.remove(current_user)
+
+    # Render manage page displaying users excluding current user & deleted user
     return render_template("manage.html", users=users)
 
 

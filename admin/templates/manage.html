@@ -25,52 +25,50 @@
 {% block content %}
 
 {% for user in users %}
-    {% if user.email != session["user_email"]%}
-        <div class="columns is-marginless">
-            <div class="column is-8 is-offset-2">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="content">
-                            <h3 class="is-size-5">{{ user.first_name }} {{ user.last_name }}</h3>
-                        </div>
+    <div class="columns is-marginless">
+        <div class="column is-8 is-offset-2">
+            <div class="card">
+                <div class="card-content">
+                    <div class="content">
+                        <h3 class="is-size-5">{{ user.first_name }} {{ user.last_name }}</h3>
                     </div>
-                    <footer class="card-footer">
-                        <div class="card-footer-item py-1">
-                            <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="button is-ghost is-size-6">Edit<i class="fas fa-user-edit"></i></a>
-                        </div>
-                        <div class="card-footer-item py-1">
-                            <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-ghost has-text-warning-dark">Reset Password<i class="fas fa-key"></i></a>
-                        </div>
-                        <div class="card-footer-item py-1">
-                            <button class="button delete-btn is-ghost has-text-danger" data-modal="{{ user._id }}">Delete<i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </footer>
                 </div>
+                <footer class="card-footer">
+                    <div class="card-footer-item py-1">
+                        <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="button is-ghost is-size-6">Edit<i class="fas fa-user-edit"></i></a>
+                    </div>
+                    <div class="card-footer-item py-1">
+                        <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-ghost has-text-warning-dark">Reset Password<i class="fas fa-key"></i></a>
+                    </div>
+                    <div class="card-footer-item py-1">
+                        <button class="button delete-btn is-ghost has-text-danger" data-modal="{{ user._id }}">Delete<i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </footer>
             </div>
         </div>
+    </div>
 
-        <div class="modal" data-modal="{{ user._id }}">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-              <header class="modal-card-head">
-                <p class="modal-card-title">Are You Sure?</p>
-                <button class="delete close-modal" aria-label="close"></button>
-              </header>
-              <section class="modal-card-body">
-                <p>Deleting a user's account will mean the user can no longer sign in.</p>
-                <div class="message-body has-background-dark has-text-white">
-                    <p class="is-warning">Note: The author field of this user's posts and comments will be replaced with "Deleted User".</p>
-                </div>
-              </section>
-              <footer class="modal-card-foot is-justify-content-end">
-                <div class="buttons">
-                  <button class="button close-modal my-0">Cancel</button>
-                  <a href="{{ url_for('admin.delete_user', user_id=user._id) }}" class="button is-success my-0">Delete User</a>
-                </div>
-              </footer>
+    <div class="modal" data-modal="{{ user._id }}">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+            <p class="modal-card-title">Are You Sure?</p>
+            <button class="delete close-modal" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+            <p>Deleting a user's account will mean the user can no longer sign in.</p>
+            <div class="message-body has-background-dark has-text-white">
+                <p class="is-warning">Note: The author field of this user's posts and comments will be replaced with "Deleted User".</p>
             </div>
-          </div>
-    {% endif %}
+            </section>
+            <footer class="modal-card-foot is-justify-content-end">
+            <div class="buttons">
+                <button class="button close-modal my-0">Cancel</button>
+                <a href="{{ url_for('admin.delete_user', user_id=user._id) }}" class="button is-success my-0">Delete User</a>
+            </div>
+            </footer>
+        </div>
+        </div>
 {% endfor %}
 
 {% endblock %}
