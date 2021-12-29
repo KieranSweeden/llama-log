@@ -80,12 +80,10 @@ def password(user_email):
 
                 # Redirect logged in user to feed page
                 return redirect(url_for(
-                        "user.feed", user_email=session["user_email"]))
+                        "user.feed", user_email=session["user_email"], filter="something"))
                 
             # If not, redirect user to log in page & try again
             return redirect(url_for("log_in"))
-        
-        print("is true")
         
         # If a create password attempt has been made
         # Check both entered passwords are the same

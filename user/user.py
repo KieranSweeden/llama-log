@@ -6,9 +6,16 @@ user = Blueprint("user", __name__, static_folder="../static", template_folder="t
 
 import app
 
-
 @user.route("/feed/<user_email>")
 def feed(user_email):
+
+    search_filter = request.args.get("filter")
+
+    print(search_filter)
+
+    if search_filter == "something":
+        print("Search filter working")
+    
 
     # Retrieve work orders & incidents
     work_orders = list(app.mongo.db.work_orders.find())

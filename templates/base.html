@@ -46,7 +46,7 @@
                     </a>
                 {% endif %}
                 {% if session.user_email %}
-                    <a href="{{ url_for('user.feed', user_email=session['user_email']) }}" class="navbar-item 
+                    <a href="{{ url_for('user.feed', user_email=session['user_email'], search_filter='none') }}" class="navbar-item 
                     {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">
                         Feed
                         <i class="fas fa-folder-open"></i>
