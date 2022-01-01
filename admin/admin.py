@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, url_for, flash, session
+from flask import Blueprint, render_template, redirect, request, url_for, flash, session, abort
 from flask_pymongo import ObjectId
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
@@ -9,159 +9,193 @@ import app
 @admin.route("/manage")
 def manage():
 
-    # Obtain all users from user database
-    users = list(app.mongo.db.users.find())
+    # If the current user is not an admin
+    if session["user_is_admin"] is not True:
 
-    # Get deleted user profile
-    deleted_user = app.mongo.db.users.find_one(
-        {"_id": ObjectId("61cabfd85c981958c32d009d")}
-    )
+        # Abort & present user with forbidden reasoning
+        abort(403)
 
-    # Get current user profile
-    current_user = app.mongo.db.users.find_one(
-        {"_id": ObjectId(session["user_id"])}
-    )
+    else:
+        # Obtain all users from user database
+        users = list(app.mongo.db.users.find())
 
-    # Remove deleted user & current user account from list of users
-    users.remove(deleted_user)
-    users.remove(current_user)
+        # Get deleted user profile
+        deleted_user = app.mongo.db.users.find_one(
+            {"_id": ObjectId("61cabfd85c981958c32d009d")}
+        )
 
-    # Render manage page displaying users excluding current user & deleted user
-    return render_template("manage.html", users=users)
+        # Get current user profile
+        current_user = app.mongo.db.users.find_one(
+            {"_id": ObjectId(session["user_id"])}
+        )
+
+        # Remove deleted user & current user account from list of users
+        users.remove(deleted_user)
+        users.remove(current_user)
+
+        # Render manage page displaying users excluding current user & deleted user
+        return render_template("manage.html", users=users)
 
 
 @admin.route("/create_user", methods=["GET", "POST"])
 def create_user():
 
-    # If an attempt to create a new user has been made
-    if request.method == "POST":
+    # If the current user is not an admin
+    if session["user_is_admin"] is not True:
 
-        # Find if user already exists & store it
-        user_exists = True if app.mongo.db.users.find_one(
-            {"email": request.form.get("email")}) else False
-        
-        # If the user does exist
-        if user_exists:
-            # Redirect the user to the create user page
-            return redirect(url_for("admin.create_user"))
+        # Abort & present user with forbidden reasoning
+        abort(403)
 
-        # Else if user does not currently exist
-        # Store the new user info in a dictionary
-        new_user = {
-            "first_name": request.form.get("first_name"),
-            "last_name": request.form.get("last_name"),
-            "dob": request.form.get("dob"),
-            "email": request.form.get("email"),
-            "phone": request.form.get("phone"),
-            "is_admin": bool("is_admin" in request.form),
-            "password": "none"
-        }
+    else:
+        # If an attempt to create a new user has been made
+        if request.method == "POST":
 
-        # Insert the new user into the user db
-        app.mongo.db.users.insert_one(new_user)
+            # Find if user already exists & store it
+            user_exists = True if app.mongo.db.users.find_one(
+                {"email": request.form.get("email")}) else False
+            
+            # If the user does exist
+            if user_exists:
+                # Redirect the user to the create user page
+                return redirect(url_for("admin.create_user"))
 
-        # Inform admin that new user has been created
-        flash(f"{new_user['first_name']}'s profile has been created successfully", "success")
+            # Else if user does not currently exist
+            # Store the new user info in a dictionary
+            new_user = {
+                "first_name": request.form.get("first_name"),
+                "last_name": request.form.get("last_name"),
+                "dob": request.form.get("dob"),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "is_admin": bool("is_admin" in request.form),
+                "password": "none"
+            }
 
-        # Redirect the user to the manage page
-        return redirect(url_for("admin.manage"))
+            # Insert the new user into the user db
+            app.mongo.db.users.insert_one(new_user)
 
-    return render_template("create_user.html")
+            # Inform admin that new user has been created
+            flash(f"{new_user['first_name']}'s profile has been created successfully", "success")
+
+            # Redirect the user to the manage page
+            return redirect(url_for("admin.manage"))
+
+        return render_template("create_user.html")
 
 @admin.route("/edit_user/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
 
-    # Grab the user from db using the user_email
-    displayed_user = app.mongo.db.users.find_one(
-        {"_id": ObjectId(user_id)}
-    )
+    # If the current user is not an admin
+    if session["user_is_admin"] is not True:
 
-    # If an attempt is made to update a user
-    if request.method == "POST":
+        # Abort & present user with forbidden reasoning
+        abort(403)
+    
+    else:
+        # Grab the user from db using the user_email
+        displayed_user = app.mongo.db.users.find_one(
+            {"_id": ObjectId(user_id)}
+        )
 
-        # Get the user info from the form
-        updated_user_info = {
-            "first_name": request.form.get("first_name"),
-            "last_name": request.form.get("last_name"),
-            "dob": request.form.get("dob"),
-            "email": request.form.get("email"),
-            "phone": request.form.get("phone"),
-            "is_admin": bool("is_admin" in request.form)
-        }
+        # If an attempt is made to update a user
+        if request.method == "POST":
 
-        # Update the user info in db with new info submitted
-        app.mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
+            # Get the user info from the form
+            updated_user_info = {
+                "first_name": request.form.get("first_name"),
+                "last_name": request.form.get("last_name"),
+                "dob": request.form.get("dob"),
+                "email": request.form.get("email"),
+                "phone": request.form.get("phone"),
+                "is_admin": bool("is_admin" in request.form)
+            }
 
-        flash("User has been updated successfully", "success")
+            # Update the user info in db with new info submitted
+            app.mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
 
-        # Redirect the user to the manage users page
-        return redirect(url_for("admin.manage"))
+            flash("User has been updated successfully", "success")
 
-    # Else open the edit user template & send user data
-    return render_template("edit_user.html", displayed_user=displayed_user)
+            # Redirect the user to the manage users page
+            return redirect(url_for("admin.manage"))
+
+        # Else open the edit user template & send user data
+        return render_template("edit_user.html", displayed_user=displayed_user)
 
 
 @admin.route("/delete_user/<user_id>")
 def delete_user(user_id):
 
-    # Grab the user from db using the user_id
-    clicked_user = app.mongo.db.users.find_one(
-        {"_id": ObjectId(user_id)}
-    )
+    # If the current user is not an admin
+    if session["user_is_admin"] is not True:
 
-    # Delete user from users db
-    app.mongo.db.users.delete_one({"_id": ObjectId(user_id)})
+        # Abort & present user with forbidden reasoning
+        abort(403)
+    
+    else:
+        # Grab the user from db using the user_id
+        clicked_user = app.mongo.db.users.find_one(
+            {"_id": ObjectId(user_id)}
+        )
 
-    # Grab deleted user account from db
-    default_deleted_user = app.mongo.db.users.find_one(
-        {"first_name": "Deleted"}
-    )
+        # Delete user from users db
+        app.mongo.db.users.delete_one({"_id": ObjectId(user_id)})
 
-    # Replace work order posts user is author of to deleted user
-    app.mongo.db.work_orders.update_many(
-        {"author": ObjectId(user_id)},
-        {"$set": {
-            "author": default_deleted_user["_id"]
-        }}
-    )
+        # Grab deleted user account from db
+        default_deleted_user = app.mongo.db.users.find_one(
+            {"first_name": "Deleted"}
+        )
 
-    # Replace incident posts user is author of to deleted user
-    app.mongo.db.incidents.update_many(
-        {"author": ObjectId(user_id)},
-        {"$set": {
-            "author": default_deleted_user["_id"]
-        }}
-    )
+        # Replace work order posts user is author of to deleted user
+        app.mongo.db.work_orders.update_many(
+            {"author": ObjectId(user_id)},
+            {"$set": {
+                "author": default_deleted_user["_id"]
+            }}
+        )
 
-    # Replace comments user is author to deleted user
-    app.mongo.db.comments.update_many(
-        {"author": ObjectId(user_id)},
-        {"$set": {
-            "author": default_deleted_user["_id"]
-        }}
-    )
+        # Replace incident posts user is author of to deleted user
+        app.mongo.db.incidents.update_many(
+            {"author": ObjectId(user_id)},
+            {"$set": {
+                "author": default_deleted_user["_id"]
+            }}
+        )
 
-    # Inform admin of user deletion
-    flash(f"{clicked_user['first_name']}'s account has been successfully deleted", "success")
+        # Replace comments user is author to deleted user
+        app.mongo.db.comments.update_many(
+            {"author": ObjectId(user_id)},
+            {"$set": {
+                "author": default_deleted_user["_id"]
+            }}
+        )
 
-    # Return to admin manage page
-    return redirect(url_for("admin.manage"))
+        # Inform admin of user deletion
+        flash(f"{clicked_user['first_name']}'s account has been successfully deleted", "success")
 
+        # Return to admin manage page
+        return redirect(url_for("admin.manage"))
 
 
 @admin.route("/reset_password/<user_id>")
 def reset_password(user_id):
 
-    # Grab the user from db using the user_id
-    clicked_user = app.mongo.db.users.find_one(
-        {"_id": ObjectId(user_id)}
-    )
+    # If the current user is not an admin
+    if session["user_is_admin"] is not True:
 
-    # Reset clicked user's password in db
-    app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
+        # Abort & present user with forbidden reasoning
+        abort(403)
+    
+    else:
+        # Grab the user from db using the user_id
+        clicked_user = app.mongo.db.users.find_one(
+            {"_id": ObjectId(user_id)}
+        )
 
-    # Inform admin of clicked user's password deletion
-    flash(f"{clicked_user['first_name']}'s password has been reset", "success")
+        # Reset clicked user's password in db
+        app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
 
-    # Return to admin manage page
-    return redirect(url_for("admin.manage"))
+        # Inform admin of clicked user's password deletion
+        flash(f"{clicked_user['first_name']}'s password has been reset", "success")
+
+        # Return to admin manage page
+        return redirect(url_for("admin.manage"))
