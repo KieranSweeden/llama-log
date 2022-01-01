@@ -61,7 +61,7 @@ def create_user():
         app.mongo.db.users.insert_one(new_user)
 
         # Inform admin that new user has been created
-        flash(f"{new_user['first_name']}'s profile has been created successfully")
+        flash(f"{new_user['first_name']}'s profile has been created successfully", "success")
 
         # Redirect the user to the manage page
         return redirect(url_for("admin.manage"))
@@ -92,7 +92,7 @@ def edit_user(user_id):
         # Update the user info in db with new info submitted
         app.mongo.db.users.update_one({"_id": displayed_user["_id"]}, {"$set": updated_user_info})
 
-        flash("User has been updated successfully")
+        flash("User has been updated successfully", "success")
 
         # Redirect the user to the manage users page
         return redirect(url_for("admin.manage"))
@@ -142,7 +142,7 @@ def delete_user(user_id):
     )
 
     # Inform admin of user deletion
-    flash(f"{clicked_user['first_name']}'s account has been successfully deleted")
+    flash(f"{clicked_user['first_name']}'s account has been successfully deleted", "success")
 
     # Return to admin manage page
     return redirect(url_for("admin.manage"))
@@ -161,7 +161,7 @@ def reset_password(user_id):
     app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
 
     # Inform admin of clicked user's password deletion
-    flash(f"{clicked_user['first_name']}'s password has been reset")
+    flash(f"{clicked_user['first_name']}'s password has been reset", "success")
 
     # Return to admin manage page
     return redirect(url_for("admin.manage"))

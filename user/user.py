@@ -181,7 +181,7 @@ def create_post(category):
             app.mongo.db.work_orders.insert_one(new_work_order)
 
             # Inform user that a post has been submitted successfully
-            flash("Your new work order has been successfully posted")
+            flash("Your new work order has been successfully posted", "success")
 
             # Redirect user to the feed page
             return redirect(url_for("user.feed", user_email=session["user_email"]))
@@ -217,7 +217,7 @@ def create_post(category):
             app.mongo.db.incidents.insert_one(new_incident)
 
             # Inform user that an incident post has been submitted successfully
-            flash("Your new incident post has been successfully posted")
+            flash("Your new incident post has been successfully posted", "success")
 
             # Redirect user to the feed page
             return redirect(url_for("user.feed", user_email=session["user_email"]))
@@ -244,7 +244,7 @@ def view_post(post_id):
         app.mongo.db.comments.insert_one(new_comment)
 
         # Inform user that comment has been successfully posted
-        flash("Your comment has been successfully posted")
+        flash("Your comment has been successfully posted", "success")
         
         # Redirect user to view post with new comment showing
         return redirect(url_for("user.view_post", post_id=post_id))
@@ -321,7 +321,7 @@ def edit_post(post_id):
                 {"$set": updated_work_order})
 
             # Inform user that post has been updated
-            flash("It's been updated")
+            flash("Your post has been updated", "success")
 
             return redirect(url_for("user.view_post", post_id=post_id))
 
@@ -361,7 +361,7 @@ def delete_post(post_id):
         )
 
         # Inform user of post deletion
-        flash("Post has been deleted successfully")
+        flash("Post has been deleted successfully", "success")
 
         return redirect(url_for("user.feed", user_email=session["user_email"]))
 
@@ -385,7 +385,7 @@ def delete_post(post_id):
             )
 
             # Inform user of post deletion
-            flash("Post has been deleted successfully")
+            flash("Post has been deleted successfully", "success")
 
             return redirect(url_for("user.feed", user_email=session["user_email"]))
 
@@ -428,7 +428,7 @@ def update_comment(comment_id):
         )
 
         # Inform user of updated comment
-        flash("Your comment has been updated successfully!")
+        flash("Your comment has been updated successfully!", "success")
 
         # Redirect user to viewing post page
         return redirect(url_for("user.view_post", post_id=parent_post["_id"]))
@@ -471,7 +471,7 @@ def delete_comment(comment_id):
         )
 
         # Inform user of comment deletion
-        flash("Comment has been successfully deleted")
+        flash("Comment has been successfully deleted", "success")
 
         # Return user to view post
         return redirect(url_for("user.view_post", post_id=comment["parent_post_id"]))
@@ -499,7 +499,7 @@ def account(user_email):
         # Update the user info in db with new info submitted
         app.mongo.db.users.update_one({"_id": current_user["_id"]}, {"$set": updated_user_info})
 
-        flash("Your account has been updated successfully!")
+        flash("Your account has been updated successfully!", "success")
 
         # Redirect the user to the manage users page
         return redirect(url_for("user.account", user_email=session["user_email"]))

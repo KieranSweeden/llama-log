@@ -47,7 +47,8 @@ def log_in():
 
         # If the email entered does not exist
         # redirect user to log in page & try again
-        flash("The email address you entered doesn't exist. Try again", "error")   
+        flash("The email address you entered doesn't exist. Please try again", "error")
+
         return redirect(url_for("log_in"))
 
     return render_template("index.html")
@@ -69,8 +70,7 @@ def password(user_email):
             # Check if the entered password matches db password
             if check_password_hash(existing_user["password"], request.form.get("password")):
 
-                # If so, add user info to current session
-                session["user_email"] = user_email
+                session["user_email"] = existing_user["email"]
 
                 session["user_is_admin"] = existing_user["is_admin"]
 
@@ -81,11 +81,12 @@ def password(user_email):
 
                 # Redirect logged in user to feed page
                 return redirect(url_for(
-                        "user.feed", user_email=session["user_email"]))
+                        "user.feed", user_email=existing_user["email"]))
                 
-            # If not, redirect user to log in page & try again
+            # If not, redirect user to password page & inform user of error
             flash("The password attempt was wrong, please try again.", "error")
-            return redirect(url_for("log_in"))
+            
+            return redirect(url_for("password", user_email=existing_user["email"]))
         
         # If a create password attempt has been made
         # Check both entered passwords are the same
@@ -110,6 +111,15 @@ def password(user_email):
             # Redirect logged in user to feed page
             return redirect(url_for(
                 "user.feed", user_email=session["user_email"]))
+        
+        # Else if the passwords do not match
+        elif request.form.get("password") != request.form.get("repeat_password"):
+
+            # Inform the user of this
+            flash("The passwords entered do not match, please try again.")
+
+            # Redirect the user to create password page
+            return redirect(url_for("password", user_email=existing_user["email"]))
 
 
     return render_template("password.html", existing_user=existing_user)
@@ -119,6 +129,7 @@ def password(user_email):
 def about():
     return render_template("about.html")
 
+
 @app.route("/log_out")
 def log_out():
     # Remove current user session data
@@ -127,7 +138,7 @@ def log_out():
     session.pop("user_id")
 
     # Inform the user they've been logged out at log in page
-    flash("You have been logged out successfully")
+    flash("You have been logged out successfully", "success")
     
     # Redirect user to the log in page
     return redirect(url_for("log_in"))
