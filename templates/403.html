@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Page Not Found | Llama Log{% endblock %}
+{% block title %}User Forbidden | Llama Log{% endblock %}
 
 {% block content %}
 
@@ -19,8 +19,8 @@
             </div>
             <div class="columns is-marginless pt-3">
                 <div class="column has-text-centered">
-                    <h2 class="title is-size-4">The page could not be found.</h2>
-                    <p class="subtitle is-size-5">Error code: 404</p>
+                    <h2 class="title is-size-4">You're forbidden from accessing this page. Please sign in or check your log in credentials.</h2>
+                    <p class="subtitle is-size-5">Error code: 403</p>
                     <div class="buttons is-centered">
                         <a class="button is-warning m-0" href="{{ url_for('log_in')}}">Return to Log-In<i class="fas fa-undo"></i></a>
                     </div>

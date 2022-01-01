@@ -36,9 +36,9 @@ def log_in():
     # If an email has been entered
     if request.method == "POST":
 
-        # Search db if entered email exists
+        # Try searching db if entered email exists
         existing_user = mongo.db.users.find_one(
-            {"email": request.form.get("email").lower()})
+                {"email": request.form.get("email").lower()})
 
         # If email does exist
         if existing_user:
@@ -95,7 +95,7 @@ def password(user_email):
             # Create hashed password
             hashed_password = generate_password_hash(request.form.get("password"))
 
-            # If so, reset the password to the relevant doc in db
+            # If so, try updating the password with the user's newly created one
             mongo.db.users.update_one({"_id": existing_user["_id"]}, {"$set": {"password": hashed_password}})
 
             # Add user info to current session
@@ -144,7 +144,17 @@ def log_out():
     return redirect(url_for("log_in"))
 
 
+@app.errorhandler(403)
+def not_found(error):
+    return render_template("404.html")
+
+
 @app.errorhandler(404)
+def not_found(error):
+    return render_template("404.html")
+
+
+@app.errorhandler(500)
 def not_found(error):
     return render_template("404.html")
 

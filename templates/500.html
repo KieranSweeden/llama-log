@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Page Not Found | Llama Log{% endblock %}
+{% block title %}Cannot Be Accessed | Llama Log{% endblock %}
 
 {% block content %}
 
@@ -19,8 +19,8 @@
             </div>
             <div class="columns is-marginless pt-3">
                 <div class="column has-text-centered">
-                    <h2 class="title is-size-4">The page could not be found.</h2>
-                    <p class="subtitle is-size-5">Error code: 404</p>
+                    <h2 class="title is-size-4">Unfortunately, this page cannot be accessed at this time. Please try again in the future.</h2>
+                    <p class="subtitle is-size-5">Error code: 500</p>
                     <div class="buttons is-centered">
                         <a class="button is-warning m-0" href="{{ url_for('log_in')}}">Return to Log-In<i class="fas fa-undo"></i></a>
                     </div>
