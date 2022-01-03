@@ -2,7 +2,6 @@ import os
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import timedelta
 
 if os.path.exists("env.py"):
     import env
@@ -14,9 +13,6 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
-# Set 5 minute session time limit
-app.permanent_session_lifetime = timedelta(minutes=5)
 
 from user.user import user
 from admin.admin import admin
@@ -75,9 +71,6 @@ def password(user_email):
                 session["user_is_admin"] = existing_user["is_admin"]
 
                 session["user_id"] = str(existing_user["_id"])
-
-                # Make the session permanent for 5 minutes
-                session.permanent = True
 
                 # Redirect logged in user to feed page
                 return redirect(url_for(
