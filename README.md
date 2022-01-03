@@ -715,6 +715,9 @@ The following applications were utilised during the development of Llama Log:
 - [dbdiagram.io](https://dbdiagram.io/home)
     - dbdiagram was utilised to create entity relationship diagrams in order to clearly visualize the database structure of Llama Log & the relationship contained within it.
 
+- [Real Favicon Generator](https://realfavicongenerator.net/)
+    -  Real Favicon Generator was used to create the favicon used for this application.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
