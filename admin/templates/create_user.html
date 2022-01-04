@@ -16,89 +16,106 @@
 {% endblock %}
 
 {% block content %}
+<div class="columns is-marginless">
+    <div class="column is-8 is-offset-2">
+        <form method="POST" action="{{ url_for('admin.create_user') }}">
 
-<form method="POST" action="{{ url_for('admin.create_user') }}">
+            <div class="field">
+                <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
+                </label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" id="first_name" name="first_name" 
+                    type="text" placeholder="Enter First Name" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+                <p class="help is-danger has-text-right"></p>
+            </div>
 
-    <div class="field">
-        <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
-        </label>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="first_name" name="first_name" type="text" placeholder="Enter First Name">
-            <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
-        </div>
+            <div class="field">
+                <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
+                </label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" id="last_name" name="last_name" 
+                    type="text" placeholder="Enter Last Name" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+                <p class="help is-danger has-text-right"></p>
+            </div>
+
+            <div class="field">
+                <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
+                </label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" id="dob" name="dob" type="date" placeholder="Enter Date of Birth" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-calendar-alt"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+                <p class="help is-danger has-text-right"></p>
+            </div>
+
+            <div class="field">
+                <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
+                </label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" id="phone" name="phone" type="number" placeholder="Enter Phone Number" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-phone"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+                <p class="help is-danger has-text-right"></p>
+            </div>
+
+            <div class="field">
+                <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
+                </label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input" id="email" name="email" type="email" placeholder="Enter Your Email" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </div>
+                <p class="help is-danger has-text-right"></p>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label for="is_admin" class="checkbox">
+                        <input id="is_admin" name="is_admin" 
+                        type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <div class="buttons is-right">
+                        <button type="submit" class="button is-link">Create User<i class="fas fa-user-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-
-    <div class="field">
-        <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
-        </label>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="last_name" name="last_name" type="text" placeholder="Enter Last Name">
-            <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
-        </label>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="dob" name="dob" type="date" placeholder="Enter Date of Birth">
-            <span class="icon is-small is-left">
-                <i class="fas fa-calendar-alt"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
-        </label>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="phone" name="phone" type="number" placeholder="Enter Phone Number">
-            <span class="icon is-small is-left">
-                <i class="fas fa-phone"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
-        </div>
-    </div>
-
-    <div class="field">
-        <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
-        </label>
-        <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" id="email" name="email" type="email" placeholder="Enter Your Email">
-            <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-            </span>
-            <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-            </span>
-        </div>
-        <p class="help is-success">This Email is correct</p>
-    </div>
-
-    <label for="is_admin" class="checkbox">
-        <input id="is_admin" name="is_admin" 
-        type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
-    </label>
-
-    <div class="buttons is-right">
-        <button type="submit" class="button is-link">Create User<i class="fas fa-user-plus"></i></button>
-    </div>
-</form>
+</div>
 
 {% endblock %}
 
@@ -114,5 +131,8 @@
 
     <!-- Tooltips -->
     <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
+
+    <!-- Form -->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 
 {% endblock %}
