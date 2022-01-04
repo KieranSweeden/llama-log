@@ -694,10 +694,14 @@ Combining the colour scheme, typography & identity of Llama Log, the logo will b
 
 ### Frameworks & Libraries
 
-- Flask
-- PyMongo
-- Animate.css
-- Clamp.js
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+- [Bulma.io](https://bulma.io/)
+- [Google Fonts](https://fonts.google.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [PyMongo](https://flask-pymongo.readthedocs.io/en/latest/)
+- [Animate.css](https://animate.style/)
+- [tippy.js](https://atomiks.github.io/tippyjs/)
+- [clamp.js](https://github.com/josephschmitt/Clamp.js/)
 
 ### Applications
 
@@ -717,6 +721,21 @@ The following applications were utilised during the development of Llama Log:
 
 - [Real Favicon Generator](https://realfavicongenerator.net/)
     -  Real Favicon Generator was used to create the favicon used for this application.
+
+- [Heroku](https://www.heroku.com)
+    - Heroku was used as a deployment platform for Llama Log. This allows user's to view a live & deployed version of Llama Log.
+
+- [MongoDB Atlas](https://www.mongodb.com)
+    - MongoDB Atlas was used as a database platform to store data utilised by Llama Log.
+
+- [GitPod](https://www.gitpod.io/)
+    - GitPod was utilised as a the IDE for Llama Log.
+
+- [Am I Responsive?](http://ami.responsivedesign.is/)
+    - Am I Responsive was utilised in order to capture an image of the Llama Log front page on multiple screens at once.
+
+- [GitHub](https://github.com/)
+    - GitHub was used as a version control platform.
 
 [Return to Contents &#8679;](#Contents)
 

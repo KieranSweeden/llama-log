@@ -31,20 +31,22 @@ function testEmail(inputField){
     inputField.setCustomValidity('');
 
     // Check current validity
-    let currentValidity = inputField.checkValidity();
+    let isValid = inputField.checkValidity();
 
-    if(currentValidity){
+    if(isValid){
         // If Valid, clear error message
         updateFormErrorMessage(inputField, "");
-        // & present success colours
-        updateFieldBorder(inputField, "valid");
-        updateStatusIcon(inputField, "valid");
-    } else if (!currentValidity){
+        // present success border color
+        updateFieldBorder(inputField, true);
+        // present success icon
+        updateStatusIcon(inputField, true);
+    } else if (!isValid){
         // If invalid, display error message
         updateFormErrorMessage(inputField, "Please enter a valid email.");
-        // & present error colours
-        updateFieldBorder(inputField, "invalid");
-        updateStatusIcon(inputField, "invalid");
+        // present error border colour
+        updateFieldBorder(inputField, false);
+        //  present error icon
+        updateStatusIcon(inputField, false);
     }
 }
 
@@ -56,26 +58,27 @@ function updateFormErrorMessage(inputField, message){
     errorMessageElement.textContent = message;
 }
 
-function updateFieldBorder(inputField, status){
+function updateFieldBorder(inputField, isValid){
 
     // Clear input class
     inputField.className = "input";
 
-    if(status === "invalid"){
+     // Set input border colour based on validitity
+    if(isValid === false){
         inputField.classList.add("is-danger");
-    } else if (status === "valid"){
+    } else if (isValid === true){
         inputField.classList.add("is-success");
     }
 }
 
-function updateStatusIcon(inputField, status){
+function updateStatusIcon(inputField, isValid){
     // Grab status icon within field
     let statusIcon = [...inputField.parentElement.getElementsByTagName("span")][1].firstElementChild;
 
     // Set icon type & it's color based on validity
-    if(status === "invalid"){
+    if(isValid === false){
         statusIcon.className = "fas fa-exclamation-triangle has-text-danger";
-    } else if (status === "valid"){
+    } else if (isValid === true){
         statusIcon.className = "fas fa-check has-text-success";
     }
 }
