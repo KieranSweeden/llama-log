@@ -48,6 +48,40 @@ function addListeners(inputFields){
     });
 }
 
+function updateProgressBar(){
+    // Grab progress bar
+    let progressBar = [...document.getElementsByClassName("progress")][0];
+
+    // Grab all fields
+    let inputFields = [...document.getElementsByTagName("input")];
+
+    // Filter out checkbox
+    inputFields.pop();
+
+    // Init empty array to store valid input fields
+    let validFields = [];
+
+    // Loop through each required field on page
+    inputFields.forEach(inputField => {
+        // Check input's validity
+        let isValid = inputField.checkValidity();
+
+        // If input is valid & input is not already included
+        if (isValid && !validFields.includes(inputField)){
+            // Insert input field into valid fields array
+            validFields.push(inputField);
+        } else if (!isValid && validFields.includes(inputField)){
+            validFields.pop(inputField);
+        }
+    });
+
+    // Determine the percentage of valid fields
+    let percentageOfValidFields = (validFields.length / inputFields.length) * 100;
+
+    // Set value attribute of progress bar to percentage
+    progressBar.setAttribute("value", percentageOfValidFields);
+}
+
 function testPhone(inputField){
     // Create UK phone number based regex
     // Regex code taken from https://stackoverflow.com/a/66516460/15607265
@@ -56,11 +90,15 @@ function testPhone(inputField){
     // Store test result
     let isValid = phoneRegex.test(inputField.value);
 
+    // Update field design based on validity
     if(isValid){
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
         updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.")
     }
+
+    // Update progress bar
+    updateProgressBar();
 }
 
 function setDateOfBirthLimits(inputField){
@@ -102,6 +140,9 @@ function testDate(inputField){
     } else if (!isValid){
         updateFieldDesignToError(inputField, "User should be between 16 & 80 years old.")
     }
+
+    // Update progress bar
+    updateProgressBar();
 }
 
 function testName(inputField){
@@ -120,6 +161,9 @@ function testName(inputField){
         // If user input is invalid, display error styling & message
         updateFieldDesignToError(inputField, "Please enter a valid name.");
     }
+
+    // Update progress bar
+    updateProgressBar();
 }
 
 function testEmail(inputField){
@@ -136,6 +180,9 @@ function testEmail(inputField){
         // If invalid, display error styling & message
         updateFieldDesignToError(inputField, "Please enter a valid email.");
     }
+
+    // Update progress bar
+    updateProgressBar();
 }
 
 function updateFieldDesignToSuccess(inputField){
