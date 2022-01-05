@@ -80,6 +80,25 @@ function updateProgressBar(){
 
     // Set value attribute of progress bar to percentage
     progressBar.setAttribute("value", percentageOfValidFields);
+
+    // If percentage is 100, enable the user to submit
+    if (percentageOfValidFields === 100){
+        updateFormButton(true);
+    } else {
+        updateFormButton(false)
+    }
+}
+
+function updateFormButton(toBeEnabled){
+    // Grab buttons
+    let submitButton = [...document.getElementsByClassName("button")].filter(button => button.getAttribute("type") === "submit")[0];
+
+    // If submit button is to be enabled, remove disabled attribute
+    if (toBeEnabled) {
+        submitButton.disabled = false;
+    } else if (!toBeEnabled) {
+        submitButton.disabled = true;
+    }
 }
 
 function testPhone(inputField){
