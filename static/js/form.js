@@ -38,8 +38,29 @@ function addListeners(inputFields){
                 inputField.addEventListener("change", (event) => {
                     testDate(event.target);
                 });
+                break;
+            case "phone":
+                inputField.addEventListener("change", (event) => {
+                    testPhone(event.target);
+                });
+                break;
         }
     });
+}
+
+function testPhone(inputField){
+    // Create UK phone number based regex
+    // Regex code taken from https://stackoverflow.com/a/66516460/15607265
+    let phoneRegex = new RegExp(/^((\+44)|(0)) ?\d{4} ?\d{6}$/);
+
+    // Store test result
+    let isValid = phoneRegex.test(inputField.value);
+
+    if(isValid){
+        updateFieldDesignToSuccess(inputField);
+    } else if (!isValid){
+        updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.")
+    }
 }
 
 function setDateOfBirthLimits(inputField){
