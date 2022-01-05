@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, url_for, flash, session, abort
 from flask_pymongo import ObjectId
-from ast import literal_eval
+import ast
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
 
