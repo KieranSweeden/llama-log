@@ -4,6 +4,7 @@ from flask_pymongo import ObjectId
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
 
 import app
+import ast
 
 @admin.route("/")
 @admin.route("/manage")
@@ -93,8 +94,19 @@ def create_user(previous):
 
             # Redirect the user to the manage page
             return redirect(url_for("admin.manage"))
+        
+        # If a previous attempt was made
+        if(previous):
 
-        return render_template("create_user.html")
+            # Convert string to dictionary to send to template
+            previous_dict = ast.literal_eval(previous)
+            
+            # Render template with previously inserted info
+            return render_template("create_user.html", previous=previous_dict)
+        
+        else:
+            # Render template with previously entered info left undefined
+            return render_template("create_user.html", previous=previous)
 
 @admin.route("/edit_user/<user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
