@@ -156,6 +156,13 @@ article.message.is-danger {
     }
 }
 
+/* Form styling */
+
+/* Was taken from https://codepen.io/AKGD/pen/Bmxpdb */
+.progress::-webkit-progress-value {
+    transition: width 0.5s ease;
+  }
+
 /* Tippy theme */
 
 .tippy-box[data-theme~='llama-log'] {

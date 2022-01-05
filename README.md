@@ -770,6 +770,9 @@ To navigate to the testing section of this repository, [click here](TESTING.md).
 - [Name Regular Expression Pattern](https://stackoverflow.com/a/46665046/15607265)
     - The regex pattern used to validate the user's name input was taken from Wiktor's answer to [this Stack Overflow question](https://stackoverflow.com/a/46665046/15607265).
 
+- [CSS Progress Bar code](https://codepen.io/AKGD/pen/Bmxpdb)
+    - The code to allow bulma progress bar transitions was taken from [this CodePen project](https://codepen.io/AKGD/pen/Bmxpdb).
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
