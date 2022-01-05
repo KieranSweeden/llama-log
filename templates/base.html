@@ -94,6 +94,51 @@
         {% endblock %}
     </main>
 
+    <footer class="footer has-background-grey-dark">
+        <div class="content has-text-centered has-text-white">
+            <div class="columns">
+                <div class="column">
+                    <h6 class="is-size-4 has-text-white">About</h6>
+                    <p>Llama Log allows it's users to efficiently communicate to one another regarding work orders and incidents within the workplace.</p>
+                    <p>Due to it's familiar look to social media platforms, colleagues can be confident in utilising Llama Log in order to resolve work-related problems.</p>
+                </div>
+                <div class="column is-flex is-justify-content-center is-align-items-center">
+                    <figure class="image is-32x32">
+                        <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}">
+                    </figure>
+                </div>
+                <div class="column">
+                    <h6 class="is-size-4 has-text-white">Social Links</h6>
+                    <p>Keep up to date with Llama Log</p>
+                    <div class="columns">
+                        <div class="column is-1 is-offset-4">
+                            <a href="https://www.facebook.com/" rel="noopener noreferrer" class="has-text-white">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                        <div class="column is-1">
+                            <a href="https://twitter.com/" rel="noopener noreferrer" class="has-text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="column is-1">
+                            <a href="https://www.linkedin.com/" rel="noopener noreferrer" class="has-text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <div class="column is-1">
+                            <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer" class="has-text-white">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Copyright &copy; 2022</p>
+            <p>All Rights Reserved</p>
+        </div>
+    </footer>
+
     {% block flashes %}
 
     {% endblock %}
