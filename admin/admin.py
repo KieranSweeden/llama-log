@@ -37,8 +37,9 @@ def manage():
         return render_template("manage.html", users=users)
 
 
-@admin.route("/create_user", methods=["GET", "POST"])
-def create_user():
+@admin.route("/create_user", defaults={"previous": None}, methods=["GET", "POST"])
+@admin.route("/create_user/<previous>", methods=["GET", "POST"])
+def create_user(previous):
 
     # If the current user is not an admin
     if session["user_is_admin"] is not True:
@@ -56,8 +57,21 @@ def create_user():
             
             # If the user does exist
             if user_exists:
+                
+                # Grab previously entered data
+                previous = {
+                    "first_name": request.form.get("first_name"),
+                    "last_name": request.form.get("last_name"),
+                    "dob": request.form.get("dob"),
+                    "phone": request.form.get("phone"),
+                    "is_admin": bool("is_admin" in request.form)
+                }
+
+                # Inform admin that user already exists
+                flash("This email is already in use, please create a different one.", "error")
+
                 # Redirect the user to the create user page
-                return redirect(url_for("admin.create_user"))
+                return redirect(url_for("admin.create_user", previous=previous))
 
             # Else if user does not currently exist
             # Store the new user info in a dictionary
