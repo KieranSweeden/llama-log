@@ -767,6 +767,9 @@ To navigate to the testing section of this repository, [click here](TESTING.md).
 - [Clamp.js](https://github.com/josephschmitt/Clamp.js)
     - All code within the clamp.min.js file is credited to [Joe Schmitt](https://github.com/josephschmitt) & [Ned Baldessin](https://github.com/nedbaldessin). This code was used so large amounts of text within the posts would be cutoff at a certain point, making sure the user is not overwhelmed with lots of text they may not be interested in.
 
+- [Name Regular Expression Pattern](https://stackoverflow.com/a/46665046/15607265)
+    - The regex pattern used to validate the user's name input was taken from Wiktor's answer to [this Stack Overflow question](https://stackoverflow.com/a/46665046/15607265).
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
