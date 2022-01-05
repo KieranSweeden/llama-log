@@ -111,8 +111,10 @@ function testPhone(inputField){
 
     // Update field design based on validity
     if(isValid){
+        inputField.setCustomValidity("");
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
+        inputField.setCustomValidity("Please enter a UK based number containing 11 digits.");
         updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.")
     }
 
@@ -174,9 +176,11 @@ function testName(inputField){
 
     // Update input field design based on user input result
     if(isValid){
+        inputField.setCustomValidity("");
         // If user input is valid, ensure error message is clear
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
+        inputField.setCustomValidity("Please enter a valid name.");
         // If user input is invalid, display error styling & message
         updateFieldDesignToError(inputField, "Please enter a valid name.");
     }
@@ -193,9 +197,12 @@ function testEmail(inputField){
     let isValid = inputField.checkValidity();
 
     if(isValid){
-        // If Valid, clear error message
+        // If Valid
+        inputField.setCustomValidity("");
+        // clear error message
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
+        inputField.setCustomValidity("Please enter a valid email.");
         // If invalid, display error styling & message
         updateFieldDesignToError(inputField, "Please enter a valid email.");
     }
@@ -207,8 +214,10 @@ function testEmail(inputField){
 function updateFieldDesignToSuccess(inputField){
     // Ensure error message is clear
     updateFormErrorMessage(inputField, "");
+
     // present success border color
     updateFieldBorder(inputField, true);
+
     // present success icon
     updateStatusIcon(inputField, true);
 }
@@ -216,8 +225,10 @@ function updateFieldDesignToSuccess(inputField){
 function updateFieldDesignToError(inputField, message){
     // Display error message
     updateFormErrorMessage(inputField, message);
+
     // present error border colour
     updateFieldBorder(inputField, false);
+
     //  present error icon
     updateStatusIcon(inputField, false);
 }
@@ -231,7 +242,6 @@ function updateFormErrorMessage(inputField, message){
 }
 
 function updateFieldBorder(inputField, isValid){
-
     // Clear input class
     inputField.className = "input";
 
