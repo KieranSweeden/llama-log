@@ -32,13 +32,60 @@ function addListeners(inputFields){
                     testName(event.target);
                 });
                 break;
+            case "dob":
+                // Set max limit to today's date - 16 years
+                setDateOfBirthLimits(inputField);
+                inputField.addEventListener("change", (event) => {
+                    testDate(event.target);
+                });
         }
     });
 }
 
+function setDateOfBirthLimits(inputField){
+    // Create variables that will store date
+    let today, day, month, year;
+
+    // Store max date of birth a user can be
+    today = new Date();
+    day = today.getDate();
+    month = today.getMonth() + 1;
+    year = today.getFullYear(); // User needs to be 16 and over
+
+    // Add a 0 before number if day in double digits
+    if (day < 10){
+        day = "0" + day;
+    }
+
+    // Add a 0 before number if month in double digits
+    if(month < 10){
+        month = "0" + month;
+    }
+
+    // Set max & min date of birth limit
+    let minLimit = (year - 80) + "-" + month + "-" + day;
+    let maxLimit = (year - 16) + "-" + month + "-" + day;
+
+    // Grab date min & max attribute of input field and set it to date limit
+    inputField.setAttribute("min", minLimit);
+    inputField.setAttribute("max", maxLimit);
+}
+
+function testDate(inputField){
+    // Check validity of user input
+    let isValid = inputField.checkValidity();
+
+    // Depending on validity, update fields design
+    if(isValid){
+        updateFieldDesignToSuccess(inputField);
+    } else if (!isValid){
+        updateFieldDesignToError(inputField, "User should be between 16 & 80 years old.")
+    }
+}
+
 function testName(inputField){
     // Store name specific regex
-    // regex taken from https://stackoverflow.com/a/46665046/15607265
+    // Regex code taken from https://stackoverflow.com/a/46665046/15607265
     let nameRegex = new RegExp(/^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/, "i");
 
     // Store test result of user's input
