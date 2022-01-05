@@ -762,6 +762,9 @@ To navigate to the testing section of this repository, [click here](TESTING.md).
 - [Flask: current page in request variable](https://newbedev.com/flask-current-page-in-request-variable)
     - This post informed me of what syntax to use in order to add active classes to navbar items that reflect the current page.
 
+- [3 Ways to Convert String to Dictionary in Python](https://favtutor.com/blogs/string-to-dict-python)
+    - This article was where I found out how to use the ast.literal.eval() method, which converts strings to dictionaries.
+
 ### Code
 
 - [Clamp.js](https://github.com/josephschmitt/Clamp.js)

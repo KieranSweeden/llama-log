@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, redirect, request, url_for, flash, session, abort
 from flask_pymongo import ObjectId
+from ast import literal_eval
 
 admin = Blueprint("admin", __name__, static_folder="../static", template_folder="templates")
 
 import app
-import ast
 
 @admin.route("/")
 @admin.route("/manage")
