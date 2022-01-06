@@ -97,43 +97,43 @@
     <footer class="footer has-background-grey-dark">
         <div class="content has-text-white">
             <div class="columns">
-                <div class="column is-justify-content-center is-align-items-center is-flex-direction-column">
-                    <h6 class="is-size-4 has-text-white">About</h6>
-                    <p>Llama Log allows it's users to efficiently communicate to one another regarding work orders and incidents within the workplace.</p>
-                    <p>Be more productive, efficient & together using Llama Log.</p>
+                <div class="column is-flex is-flex-direction-column">
+                    <h6 class="is-size-4 has-text-white has-text-centered has-text-left-tablet">About</h6>
+                    <p class="has-text-centered has-text-left-tablet">Llama Log allows it's users to efficiently communicate with eachother regarding work orders and incidents within the workplace.</p>
+                    <p class="has-text-centered has-text-left-tablet">Be more productive, efficient & together using Llama Log.</p>
                 </div>
-                <div class="column is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
-                    <figure class="image is-32x32">
-                        <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}">
-                    </figure>
-                    <p>Copyright &copy; 2022</p>
-                    <p>All Rights Reserved</p>
-                </div>
-                <div class="column is-flex is-justify-content-center is-align-items-end is-flex-direction-column">
-                    <h6 class="is-size-4 has-text-white">Social Links</h6>
-                    <p>Keep up to date with Llama Log</p>
-                    <div class="columns">
-                        <div class="column is-3">
+                <div class="column is-flex is-flex-direction-column is-justify-content-center">
+                    <h6 class="is-size-4 has-text-white has-text-centered">Social Links</h6>
+                    <p class="has-text-centered">Keep up to date with Llama Log</p>
+                    <div class="is-flex is-justify-content-center">
+                        <div class="mx-4">
                             <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </div>
-                        <div class="column is-3">
+                        <div class="mx-4">
                             <a href="https://twitter.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </div>
-                        <div class="column is-3">
+                        <div class="mx-4">
                             <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
-                        <div class="column is-3">
+                        <div class="mx-4">
                             <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer" target="_blank" class="has-text-white">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
                     </div>
+                </div>
+                <div class="column is-flex is-flex-direction-column is-justify-content-center">
+                        <figure class="image is-32x32 is-rounded mx-0 mb-3">
+                            <img src="{{ url_for('static', filename='images/llama-log-logo-white-transparent.png')}}">
+                        </figure>
+                        <p>Copyright &copy; 2022</p>
+                        <p>All Rights Reserved</p>
                 </div>
             </div>
         </div>

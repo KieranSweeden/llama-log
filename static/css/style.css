@@ -14,7 +14,7 @@ body {
 /* Utilities */
 
 main.container {
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .fas,
@@ -135,6 +135,13 @@ article.message.is-danger {
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px){
+    .card-footer .card-footer-item {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 /* View post page */
 
 .card-footer-item {
@@ -160,6 +167,18 @@ article.message.is-danger {
 /* Was taken from https://codepen.io/AKGD/pen/Bmxpdb */
 .progress::-webkit-progress-value {
     transition: width 0.5s ease;
+}
+
+/* Footer styling */
+
+.footer .content .columns .column:last-child {
+    align-items: center;
+}
+
+@media screen and (min-width: 768px){
+    .footer .content .columns .column:last-child {
+        align-items: flex-end;
+    }
 }
 
 /* Modal styling */
