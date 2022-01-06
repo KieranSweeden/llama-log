@@ -4,11 +4,13 @@
 
 {% block header %}
     <div class="columns is-marginless pt-3">
-        <div class="column is-4 is-offset-2">
-            <h2 class="title is-size-4">Manage Users</h2>
+        <div class="column is-12">
+            <h2 class="title is-size-4 has-text-centered">Manage Users</h2>
         </div>
-        <div class="column is-4">
-            <div class="buttons has-addons is-right">
+    </div>
+    <div class="columns is-marginless pt-3">
+        <div class="column is-12">
+            <div class="buttons has-addons is-centered">
                 <a class="button is-link m-0" href="{{ url_for('admin.create_user') }}">
                     Add
                     <i class="fas fa-user-plus"></i>

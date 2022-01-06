@@ -4,11 +4,14 @@
 
 {% block header %}
   <div class="columns is-marginless pt-3">
-    <div class="column is-5 is-offset-2">
-      <h2 class="title is-size-4">Feed</h2>
+    <div class="column is-12">
+      <h2 class="title is-size-4 has-text-centered">Feed</h2>
     </div>
-    <div class="column is-3">
-        <div class="buttons is-right">
+  </div>
+
+  <div class="columns is-marginless pt-3">
+    <div class="column is-12">
+        <div class="buttons is-centered">
           <div class="dropdown is-right">
             <div class="dropdown-trigger">
               <button class="button is-link" aria-haspopup="true" aria-controls="create-post-option">
@@ -29,6 +32,7 @@
         </div>
     </div>
   </div>
+
   <div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
       <form method="GET" action="{{ url_for('user.feed', user_email=session['user_email']) }}">
