@@ -17,7 +17,8 @@ main.container {
     height: 80vh;
 }
 
-.fas {
+.fas,
+.far {
     margin-left: .25rem;
 }
 
