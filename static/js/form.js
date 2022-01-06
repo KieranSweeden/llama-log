@@ -11,6 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
         addListeners(inputFields);
     }
 
+    // Grab progress bar
+    let progressBar = [...document.getElementsByTagName("progress")][0];
+
+    // If progress bar exists
+    if (progressBar) {
+        // Assess the amount of valid fields on page & update
+        updateProgressBar();
+    }
+
 });
 
 function addListeners(inputFields){
