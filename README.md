@@ -751,6 +751,54 @@ To navigate to the testing section of this repository, [click here](TESTING.md).
 
 ## Deployment
 
+Considering this project features back-end technology, a GitHub pages would not be a suitable option in regards to hosting the project online. Due to this, [Heroku](https://www.heroku.com) was utilised as it's an online platform that supports the back-end technologies which are listed within the [technology heading](#Technology).
+
+### Deployment Procedure
+
+The deployment procedure was as follows:
+
+1. Create a requirements file, requirements.txt is the industry standard naming convention for this file. Use the <code>pip3 freeze --local > {filename}</code> command to create this file, insert the dependencies your application requires within it and store it within your current repository.
+    ```
+    pip3 freeze --local > requirements.txt
+    ```
+
+2. Create a procfile, this file informs Heroku as to what processes should be executed when opening the application. This file should be simply named "Procfile" and nothing else, as Heroku will be looking for a file simply named "Procfile. Use the <code>Echo</code> git command to insert "web: python app.py" into a file named "Procfile".
+    ```
+    git echo web: python app.py > Procfile
+    ```
+
+3. <code>git commit</code> & </code><code>git push</code> these files into a chosen GitHub repository. Heroku will access your application from this remote repository, not the repository stored within your local machine.
+
+4. Log in to Heroku and create a new app by clicking the "New" button on the top right within your personal Heroku dashboard & selecting "Create New App".
+
+5. Give your new Heroku app a name that's unique, select the region you're within and click "Create App".
+
+6. Click Deploy and within the deployment method section, select GitHub.
+
+7. Assuming you're signed in with your GitHub account, search for the remote repository you recently created that holds the Procfile & requirements text file and connect to it using the "Connect" button. Once connected, it's important to not click "Enable Automatic Deploys" at this time. This is due to the fact that we have not setup any environment variables, which is what we'll do next.
+
+8. To add environment variables, first click the "Settings" tab within the horizontal tab menu and navigate to the "Config Vars" section of this tab. Click the "Config Vars" button and you will see input fields ready to store your environment variables. Here you can insert your variable keys with their values as such:
+    ```
+    IP - "0.0.0.0"
+    PORT - "5000"
+    SECRET_KEY - <your unique & secret key>
+    MONGO_URI - <your unique MongoDB URI string>
+    MONGO_DBNAME - <your unique MongoDB database name>
+    ```
+
+9. Once you're environment variables are stored, head back to the "Deploy" tab and click the "Enable Automatic Deploys" button that I previously mentioned.
+
+10. Once Enable Automatic Deploys is enabled, you can then click "Deploy Branch" ensuring that the branch selected in the dropdown is the one you want to deploy to Heroku.
+
+11. Once deployed, Heroku will inform you that it has been successfully deployed and from here you can view the app by selecting the "Open App" button located within the top right of the page.
+
+
+### Fork this Repository
+
+### Clone this Repository
+
+
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
