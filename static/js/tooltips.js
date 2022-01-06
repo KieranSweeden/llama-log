@@ -61,6 +61,15 @@ function getTooltipDescription(type, currentPage){
             "Email": "The user will need an email to sign in.",
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
         };
+    } else if (currentPage.includes("edit_user")) {
+        tooltipDescriptions = {
+            "First Name": "The user's first name will be attached to the user's posts & comments.",
+            "Last Name": "The user's last name will be attached to the user's posts & comments.",
+            "Date of Birth": "The user's Date of Birth will not be publicly available as it's for data collection purposes only.",
+            "Phone": "The user's phone number will only be accessed for emergency purposes.",
+            "Email": "The user will need an email to sign in.",
+            "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
+        };
     } else if (currentPage.includes("log_in")){
         tooltipDescriptions = {
             "Email": "Use the email given to you by an Admin to sign in." 
