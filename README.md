@@ -887,6 +887,11 @@ To clone this GitHub repository (or your previously forked copy), do as follows:
 
 ## Acknowledgements
 
+I'd like to thank:
+
+- Code Institute for the course content and the support throughout.
+- My mentor Sammy Dartnall for being supportive, enthusiastic & a tremendous helping hand throughout the development of this project.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
