@@ -29,25 +29,41 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
-    # If an email has been entered
-    if request.method == "POST":
 
-        # Try searching db if entered email exists
-        existing_user = mongo.db.users.find_one(
-                {"email": request.form.get("email").lower()})
+    # If user is already signed in
+    if session.get("user_id"):
 
-        # If email does exist
-        if existing_user:
+        # Inform user that they've been redirected
+        flash("You've been redirected to your feed as you're already signed in.", "success")
 
-            return redirect(url_for("password", user_email=existing_user["email"]))
+        # Redirect the user to the feed page
+        return redirect(url_for("user.feed", user_email=session["user_email"]))
+    
+    else:
 
-        # If the email entered does not exist
-        # redirect user to log in page & try again
-        flash("The email address you entered doesn't exist. Please try again", "error")
+        # If an email has been entered
+        if request.method == "POST":
 
-        return redirect(url_for("log_in"))
+            # Try searching db if entered email exists
+            existing_user = mongo.db.users.find_one(
+                    {"email": request.form.get("email").lower()})
 
-    return render_template("index.html")
+            # If email does exist
+            if existing_user:
+
+                return redirect(url_for("password", user_email=existing_user["email"]))
+
+            # If the email entered does not exist
+            # redirect user to log in page & try again
+            flash("The email address you entered doesn't exist. Please try again", "error")
+
+            return redirect(url_for("log_in"))
+
+            # Otherwise...
+        else:
+
+                # Render the log in page
+                return render_template("index.html")
 
 
 @app.route("/password/<user_email>", methods=["GET", "POST"])
