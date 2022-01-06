@@ -81,7 +81,7 @@ def password(user_email):
     else:
         # Find the user info via the entered email
         existing_user = mongo.db.users.find_one(
-            {"email": user_email}) 
+            {"email": user_email})
 
         # If a password attempt has been made
         if request.method == "POST":
@@ -139,8 +139,6 @@ def password(user_email):
 
                 # Redirect the user to create password page
                 return redirect(url_for("password", user_email=existing_user["email"]))
-
-        print(existing_user)
 
         return render_template("password.html", existing_user=existing_user)
 

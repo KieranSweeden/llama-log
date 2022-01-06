@@ -83,7 +83,7 @@ def create_user(previous):
                 "email": request.form.get("email"),
                 "phone": request.form.get("phone"),
                 "is_admin": bool("is_admin" in request.form),
-                "password": "none"
+                "password": None
             }
 
             # Insert the new user into the user db
@@ -220,8 +220,24 @@ def reset_password(user_id):
         # Reset clicked user's password in db
         app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
 
-        # Inform admin of clicked user's password deletion
-        flash(f"{clicked_user['first_name']}'s password has been reset", "success")
+        # See whether the deleted user is the current user
+        if session["user_id"] == str(clicked_user["_id"]):
 
-        # Return to admin manage page
-        return redirect(url_for("admin.manage"))
+            # Clear session variables
+            session.pop("user_email")
+            session.pop("user_is_admin")
+            session.pop("user_id")
+            
+            # If so, inform current user their password has been reset
+            flash("Your password has been reset", "success")
+
+            # Then redirect user to create new password page
+            return redirect(url_for("password", user_email=clicked_user["email"]))
+
+        # If not, inform admin that selected user's password has been reset
+        else:
+            # Inform admin of clicked user's password deletion
+            flash(f"{clicked_user['first_name']}'s password has been reset", "success")
+
+            # Return to admin manage page
+            return redirect(url_for("admin.manage"))
