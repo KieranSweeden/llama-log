@@ -100,8 +100,6 @@ article.message.is-danger {
     max-width: 30rem;
 }
 
-
-
 /* Feed page */
 
 .header-link {
@@ -162,7 +160,18 @@ article.message.is-danger {
 /* Was taken from https://codepen.io/AKGD/pen/Bmxpdb */
 .progress::-webkit-progress-value {
     transition: width 0.5s ease;
-  }
+}
+
+/* Modal styling */
+.modal-card {
+    padding: 0 12px;
+}
+
+@media screen and (min-width: 769px){
+    .modal-card, .modal-content {
+        width: 506.6px;
+    }
+}
 
 /* Tippy theme */
 
