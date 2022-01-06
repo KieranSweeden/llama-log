@@ -795,9 +795,66 @@ The deployment procedure was as follows:
 
 ### Fork this Repository
 
+Forking this repository allows you to have your personal copy of this repository, enabling you to make your own changes to the application and not change the original repository in the process.
+
+To fork this GitHub repository, do as follows:
+
+1. Ensure you're logged in to GitHub and navigate to [this repository](https://github.com/KieranSweeden/llama-log).
+
+2. At the top right of the repository, you'll find a "Fork" button which is between the "Unwatch" & "Star" button. Click the "Fork" button.
+
+3. You should now have your own copy of this repository within your GitHub account.
+
 ### Clone this Repository
 
+Cloning a repository provides benefits similar to Forking, however cloning is most often utilised when attempting to create a copy of a repository within a local machine. 
 
+To clone this GitHub repository (or your previously forked copy), do as follows:
+
+1. Ensure you're logged in to GitHub and navigate to [this repository](https://github.com/KieranSweeden/llama-log) or your own forked copy of this repository.
+
+2. Click the "Code" dropdown button which is located above where the README is presented and press the copy to clipboard button (or highlight & copy/paste the URL provided). At this point make sure HTTPS is selected (it should be as it's the default setting).
+
+3. Open the terminal within your IDE, ensuring it's a Git Bash terminal and that the current location in which you're at is the location you'd like to store your personal copy of the repository.
+
+4. Within the terminal, type the <code>Git clone</code> command alongside the url you recently copied to clipboard. The command should look like such (provided the URL you copied is this repo and not your forked copy):
+    ```
+    git clone https://github.com/KieranSweeden/llama-log.git
+    ```
+
+5. Press enter and you should notice processes being made within the terminal informing you that the repo is being cloned. Once this is done, you should notice the files and folders appear within your IDE project.
+
+> The next few steps assume you already have a MongoDB account containing a cluster & database. If you have not got an account or have not set up a cluster/database, look at [Get Started with Atlas](https://docs.atlas.mongodb.com/getting-started/) to get you up and running.
+
+6. Use the <code>git touch</code> within the terminal to create an <code>env.py</code>. Within this file you will store the environment variables. The code within the <code>env.py</code> file should look as follows (with the bracketed variables being replaced by your own variables):
+    ```
+    import os
+
+    # Server related variables
+    os.environ.setdefault("IP", "0.0.0.0")
+    os.environ.setdefault("PORT", "5000")
+
+    # Secret key variable
+    os.environ.setdefault("SECRET_KEY", {Your unique secret key})
+
+    # MongoDB related variables
+    os.environ.setdefault("MONGO_URI", {Your unique mongo URI})
+    os.environ.setdefault("MONGO_DBNAME", {Your unique mongo database})
+    ```
+> It's important at this stage that the env.py is listed within your .gitignore file, otherwise the sensitive information will be publicly avialable. 
+
+7. From here we can now install the libraries & packages that Llama Log depends on. We do this by typing in the following:
+    ```
+    pip3 install -r requirements.txt
+    ```
+
+8. After pressing enter, you should see that the libaries & packages are being installed and you will be informed when this is completed.
+
+9. Once the dependencies have been installed, you can run the app by typing in the following within the terminal:
+    ```
+    python3 app.py
+    ```
+> To view the application, you should enter [https://0.0.0.0:5000/](https://0.0.0.0:5000/) within the URL field of your chosen browser (assuming 0.0.0.0 is your IP variable and 5000 is your port variable).
 
 [Return to Contents &#8679;](#Contents)
 
