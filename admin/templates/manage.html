@@ -35,13 +35,13 @@
                 </div>
                 <footer class="card-footer">
                     <div class="card-footer-item py-1">
-                        <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="button is-ghost is-size-7">Edit<i class="fas fa-user-edit"></i></a>
+                        <a href="{{ url_for('admin.edit_user', user_id=user._id) }}" class="button is-ghost is-size-6">Edit<i class="fas fa-user-edit"></i></a>
                     </div>
                     <div class="card-footer-item py-1 is-hidden-mobile">
-                        <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-ghost has-text-warning-dark is-size-7">Reset Password<i class="fas fa-key"></i></a>
+                        <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-ghost has-text-warning-dark is-size-6">Reset Password<i class="fas fa-key"></i></a>
                     </div>
                     <div class="card-footer-item py-1">
-                        <button class="button delete-btn is-ghost has-text-danger is-size-7" data-modal="{{ user._id }}">Delete<i class="fas fa-trash-alt"></i></button>
+                        <button class="button delete-btn is-ghost has-text-danger is-size-6" data-modal="{{ user._id }}">Delete<i class="fas fa-trash-alt"></i></button>
                     </div>
                 </footer>
             </div>

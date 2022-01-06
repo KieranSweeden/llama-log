@@ -87,7 +87,7 @@ def password(user_email):
         if request.method == "POST":
 
             # If the password isn't set to none
-            if existing_user["password"] != "none":
+            if existing_user["password"] != None:
 
                 # Check if the entered password matches db password
                 if check_password_hash(existing_user["password"], request.form.get("password")):
@@ -140,6 +140,7 @@ def password(user_email):
                 # Redirect the user to create password page
                 return redirect(url_for("password", user_email=existing_user["email"]))
 
+        print(existing_user)
 
         return render_template("password.html", existing_user=existing_user)
 

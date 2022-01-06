@@ -4,13 +4,16 @@
 
 {% block header %} 
     <div class="columns is-marginless pt-3">
-        <div class="column is-5 is-offset-2">
-        <h2 class="title is-size-4">
-            Edit {{ displayed_user.first_name}}'s Profile
-        </h2>
+        <div class="column is-12">
+            <h2 class="title is-size-4 has-text-centered">
+                Edit {{ displayed_user.first_name}}'s Profile
+            </h2>
         </div>
-        <div class="column is-3">
-            <div class="buttons is-right">
+    </div>
+    <div class="columns is-marginless pt-3">
+        <div class="column is-12">
+            <div class="buttons has-addons is-centered">
+                <a href="{{ url_for('admin.reset_password', user_id=displayed_user['_id']) }}" class="button is-danger is-size-6 m-0">Reset Password<i class="fas fa-key"></i></a>
                 <a class="button is-warning m-0" href="{{ url_for('admin.manage', user_email=session['user_email'])}}">Manage<i class="fas fa-undo"></i></a>
             </div>
         </div>
@@ -111,7 +114,7 @@
     
                 <div class="field">
                     <div class="control">
-                        <div class="buttons is-right">
+                        <div class="buttons is-centered">
                             <button type="submit" class="button is-link" disabled>Update User<i class="far fa-save"></i></button>
                         </div>
                     </div>
