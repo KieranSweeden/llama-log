@@ -18,113 +18,115 @@
 {% block content %}
 <div class="columns is-marginless">
     <div class="column is-8 is-offset-2">
-        <form method="POST" action="{{ url_for('admin.create_user') }}">
-            <div class="field">
-                <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
-                </label>
-                <div class="control has-icons-left has-icons-right">
-                        <input class="input" id="first_name" name="first_name" 
-                        type="text" placeholder="Enter First Name" required value="{{ previous['first_name']|default('') }}">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i></i>
-                    </span>
+        <div class="box">
+            <form method="POST" action="{{ url_for('admin.create_user') }}">
+                <div class="field">
+                    <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
+                    </label>
+                    <div class="control has-icons-left has-icons-right">
+                            <input class="input" id="first_name" name="first_name" 
+                            type="text" placeholder="Enter First Name" required value="{{ previous['first_name']|default('') }}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger has-text-right"></p>
                 </div>
-                <p class="help is-danger has-text-right"></p>
-            </div>
-
-            <div class="field">
-                <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
-                </label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input" id="last_name" name="last_name" 
-                    type="text" placeholder="Enter Last Name" required value="{{ previous['last_name']|default('') }}">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i></i>
-                    </span>
+    
+                <div class="field">
+                    <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
+                    </label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="last_name" name="last_name" 
+                        type="text" placeholder="Enter Last Name" required value="{{ previous['last_name']|default('') }}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger has-text-right"></p>
                 </div>
-                <p class="help is-danger has-text-right"></p>
-            </div>
-
-            <div class="field">
-                <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
-                </label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input" id="dob" name="dob" type="date" placeholder="Enter Date of Birth" required value="{{ previous['dob']|default('') }}">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-calendar-alt"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i></i>
-                    </span>
+    
+                <div class="field">
+                    <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
+                    </label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="dob" name="dob" type="date" placeholder="Enter Date of Birth" required value="{{ previous['dob']|default('') }}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-calendar-alt"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger has-text-right"></p>
                 </div>
-                <p class="help is-danger has-text-right"></p>
-            </div>
-
-            <div class="field">
-                <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
-                </label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input" id="phone" name="phone" type="tel" placeholder="Enter Phone Number" required value="{{ previous['phone']|default('') }}">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-phone"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i></i>
-                    </span>
+    
+                <div class="field">
+                    <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
+                    </label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="phone" name="phone" type="tel" placeholder="Enter Phone Number" required value="{{ previous['phone']|default('') }}">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger has-text-right"></p>
                 </div>
-                <p class="help is-danger has-text-right"></p>
-            </div>
-
-            <div class="field">
-                <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
-                </label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input" id="email" name="email" type="email" placeholder="Enter Your Email" required>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i></i>
-                    </span>
+    
+                <div class="field">
+                    <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
+                    </label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" id="email" name="email" type="email" placeholder="Enter Your Email" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger has-text-right"></p>
                 </div>
-                <p class="help is-danger has-text-right"></p>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <label for="is_admin" class="checkbox">
-                        {% if previous is undefined %}
-                            <input id="is_admin" name="is_admin" 
-                            type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
-                        {% elif previous is defined %}
-                            {% if previous["is_admin"] is true %}
-                                <input id="is_admin" name="is_admin" 
-                                type="checkbox" class="mr-1" checked>Provide this user with admin credentials<i class="fas fa-question-circle"></i>
-                            {% else %}
+    
+                <div class="field">
+                    <div class="control">
+                        <label for="is_admin" class="checkbox">
+                            {% if previous is undefined %}
                                 <input id="is_admin" name="is_admin" 
                                 type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
+                            {% elif previous is defined %}
+                                {% if previous["is_admin"] is true %}
+                                    <input id="is_admin" name="is_admin" 
+                                    type="checkbox" class="mr-1" checked>Provide this user with admin credentials<i class="fas fa-question-circle"></i>
+                                {% else %}
+                                    <input id="is_admin" name="is_admin" 
+                                    type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    </label>
-                </div>
-            </div>
-
-            <progress class="progress is-primary" value="0" max="100">15%</progress>
-
-            <div class="field">
-                <div class="control">
-                    <div class="buttons is-right">
-                        <button type="submit" class="button is-link" disabled>Create User<i class="fas fa-user-plus"></i></button>
+                        </label>
                     </div>
                 </div>
-            </div>
-        </form>
+    
+                <progress class="progress is-primary" value="0" max="100">15%</progress>
+    
+                <div class="field">
+                    <div class="control">
+                        <div class="buttons is-right">
+                            <button type="submit" class="button is-link" disabled>Create User<i class="fas fa-user-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
