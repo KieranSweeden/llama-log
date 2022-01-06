@@ -22,75 +22,75 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="columns is-marginless pt-3">
-    <div class="column is-8 is-offset-2">
-        <form method="POST" action="{{ url_for('user.create_post', category=category)}}">
-            <div class="field">
-                <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" id="title" name="title" type="text" placeholder="Enter Work Order Title">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </div>
-            </div>
-
-            {% if category == "work_order" %}
-
-                <div class="field">
-                    <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input is-success" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+    <div class="columns is-marginless pt-3">
+        <div class="column is-8 is-offset-2">
+            <div class="box">
+                <form method="POST" action="{{ url_for('user.create_post', category=category)}}">
+                    <div class="field">
+                        <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" id="title" name="title" type="text" placeholder="Enter Work Order Title">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-
-            {% else %}
-                
-            <div class="control">
-                <label for="was_customer_involved" class="label">Was A Customer Involved?<i class="fas fa-question-circle"></i></label>
-                <label class="radio">
-                <input type="radio" name="was_customer_involved" checked>No
-                </label>
-                <label class="radio">
-                <input type="radio" name="was_customer_involved">Yes
-                </label>
-            </div>
-
-            {% endif %}
-
-            <div class="field">
-                <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
-                <div class="control">
-                <textarea class="textarea" name="description" id="description" placeholder="Textarea"></textarea>
-                </div>
-            </div>
-
-
-            <div class="buttons has-addons is-right">
-                <button type="submit" class="button is-link">
+    
                     {% if category == "work_order" %}
-                        Submit Work Order
+    
+                        <div class="field">
+                            <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input is-success" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                            </div>
+                        </div>
+    
                     {% else %}
-                        Submit Incident 
+                        
+                    <div class="control">
+                        <label for="was_customer_involved" class="label">Was A Customer Involved?<i class="fas fa-question-circle"></i></label>
+                        <label class="radio">
+                        <input type="radio" name="was_customer_involved" checked>No
+                        </label>
+                        <label class="radio">
+                        <input type="radio" name="was_customer_involved">Yes
+                        </label>
+                    </div>
+    
                     {% endif %}
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+    
+                    <div class="field">
+                        <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
+                        <div class="control">
+                        <textarea class="textarea" name="description" id="description" placeholder="Textarea"></textarea>
+                        </div>
+                    </div>
+    
+    
+                    <div class="buttons has-addons is-right">
+                        <button type="submit" class="button is-link">
+                            {% if category == "work_order" %}
+                                Submit Work Order
+                            {% else %}
+                                Submit Incident 
+                            {% endif %}
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+    
+                </form>
             </div>
-
-        </form>
+        </div>
     </div>
-</div>
-
 {% endblock %}
 
 {% block js %}
