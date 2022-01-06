@@ -84,11 +84,17 @@
                       View Post
                       <i class="fas fa-eye" aria-hidden="true"></i>
                     </a>
-                    {% if post.author_id == session["user_id"] or user.is_admin == True %}
+                    {% if post.author_id == session["user_id"] %}
                       <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
                         Edit Post
                         <i class="fas fa-edit" aria-hidden="true"></i>
                       </a>
+                      <hr class="dropdown-divider">
+                      <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
+                        Delete Post
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                      </button>
+                    {% else %}
                       <hr class="dropdown-divider">
                       <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
                         Delete Post
