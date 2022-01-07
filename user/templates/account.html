@@ -25,77 +25,85 @@
             <div class="box">
                 <form method="POST" action="{{ url_for('user.account', user_email=session['user_email']) }}">
                     <div class="field">
-                        <label for="first_name" class="label">First Name <i class="fas fa-lock"></i></label>
+                        <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
                             <input class="input is-success" id="first_name" name="first_name" type="text"
-                                value="{{ current_user.first_name }}" disabled>
+                                value="{{ current_user.first_name }}">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
         
                     <div class="field">
-                        <label for="last_name" class="label">Last Name <i class="fas fa-lock"></i></label>
+                        <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
                             <input class="input is-success" id="last_name" name="last_name" type="text"
-                                value="{{ current_user.last_name }}" disabled>
+                                value="{{ current_user.last_name }}">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
         
                     <div class="field">
-                        <label for="dob" class="label">Date of Birth <i class="fas fa-lock"></i></label>
+                        <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}" disabled>
-                            <span class="icon is-small is-left" disabled>
+                            <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}">
+                            <span class="icon is-small is-left">
                                 <i class="fas fa-calendar-alt"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
         
                     <div class="field">
-                        <label for="phone" class="label">Phone <i class="fas fa-lock"></i></label>
+                        <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}"
-                                disabled>
+                            <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-phone"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
         
                     <div class="field">
-                        <label for="email" class="label">Email <i class="fas fa-lock"></i></label>
+                        <label for="email" class="label">Email<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}"
-                                disabled>
+                            <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
-                        <p class="help is-success">This Email is correct</p>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
+
+                    <progress class="progress is-primary" value="0" max="100"></progress>
         
-                    <div class="buttons has-addons is-right">
-                        <button type="button" id="enable-edit" class="button is-link">Edit <i class="fas fa-user-cog"></i></button>
+                    <div class="field">
+                        <div class="control">
+                            <div class="buttons is-right">
+                                <button type="submit" class="button is-link">Update <i class="fas fa-save"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -148,5 +156,23 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
+
+{% endblock %}
+
+{% block js %}
+
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- Tooltips -->
+    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
+
+    <!-- Form -->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 
 {% endblock %}

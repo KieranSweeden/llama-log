@@ -7,8 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // If input fields exist
     if (inputFields.length > 0){
+
         // Add event listeners for each form
         addListeners(inputFields);
+
+        // As long as page is not add new user page
+        let currentPage = window.location.pathname;
+
+        // If the page is the account page
+        if(currentPage.includes("account") || currentPage.includes("edit_user")){
+            // Asses the validity of fields on load
+            assessValidityOnLoad(inputFields);
+        }
     }
 
     // Grab progress bar
@@ -21,6 +31,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+function assessValidityOnLoad(inputFields){
+    // Assess the validity for each input field
+    inputFields.forEach(inputField => {
+        switch(inputField.id){
+            case "email":
+                testEmail(inputField);
+                break;
+            case "first_name":
+                testName(inputField);
+                break;
+            case "last_name":
+                testName(inputField);
+                break;
+            case "dob":
+                testDate(inputField);
+                break;
+            case "phone":
+                testPhone(inputField);
+                break;
+        }
+    })
+}
 
 function addListeners(inputFields){
     // Loop through input fields & attach relevant listeners

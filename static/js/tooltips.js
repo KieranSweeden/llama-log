@@ -58,7 +58,7 @@ function getTooltipDescription(type, currentPage){
             "Last Name": "The user's last name will be attached to the user's posts & comments.",
             "Date of Birth": "The user's Date of Birth will not be publicly available as it's for data collection purposes only.",
             "Phone": "The user's phone number will only be accessed for emergency purposes.",
-            "Email": "The user will need an email to sign in.",
+            "Email": "The user will need an email to sign in to Llama Log.",
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
         };
     } else if (currentPage.includes("edit_user")) {
@@ -67,8 +67,16 @@ function getTooltipDescription(type, currentPage){
             "Last Name": "The user's last name will be attached to the user's posts & comments.",
             "Date of Birth": "The user's Date of Birth will not be publicly available as it's for data collection purposes only.",
             "Phone": "The user's phone number will only be accessed for emergency purposes.",
-            "Email": "The user will need an email to sign in.",
+            "Email": "The user will need an email to sign in to Llama Log.",
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
+        };
+    } else if (currentPage.includes("account")) {
+        tooltipDescriptions = {
+            "First Name": "Your first name will be attached to the user's posts & comments.",
+            "Last Name": "Your last name will be attached to the user's posts & comments.",
+            "Date of Birth": "Your Date of Birth will not be publicly available as it's for data collection purposes only.",
+            "Phone": "Your phone number will only be accessed for emergency purposes.",
+            "Email": "You will need an email to sign in to Llama Log."
         };
     } else if (currentPage.includes("log_in")){
         tooltipDescriptions = {
