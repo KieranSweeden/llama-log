@@ -22,7 +22,7 @@
 
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ url_for('log_in') }}">
+            <a class="navbar-item" href="{{ url_for('user.feed', user_email=session['user_email']) if session['user_id'] else url_for('log_in') }}">
                 <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}">
                 <h1 class="nav-logo-text is-size-4">Llama Log</h1>
             </a>
