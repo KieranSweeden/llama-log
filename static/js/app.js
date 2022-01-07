@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     addDeleteCommentConfirmListener(deleteCommentButtons);
   }
 
+  let resetCommentButtons = [...document.getElementsByClassName("reset-btn")];
+
+  // If reset comment buttons exist on page
+  if(resetCommentButtons.length > 0){
+    // Add defensive modal event listener for reset button
+    addResetCommentConfirmListener(resetCommentButtons);
+  }
 
   // Clamps for posts within feed
   let cardTextContent = [...document.getElementsByClassName("add-text-overflow-cutoff")];
@@ -102,6 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+function addResetCommentConfirmListener(resetCommentButtons){
+  // Add click event listener to reset comment button
+  resetCommentButtons.forEach(resetCommentButton => {
+    resetCommentButton.addEventListener("click", (event) => {
+      displayConfirmResetModal(resetCommentButton);
+    });
+  });
+}
+
 function addDeleteCommentConfirmListener(deleteCommentButtons){
   // Add click event listener to delete comment button
   deleteCommentButtons.forEach(deleteCommentButton => {
@@ -110,6 +126,24 @@ function addDeleteCommentConfirmListener(deleteCommentButtons){
     });
   });
 }
+
+function displayConfirmResetModal(resetCommentButton){
+  // Get id of comment using data modal attribute
+  let commentID = resetCommentButton.dataset.modal;
+
+  // Grab modals
+  let confirmModals = [...document.getElementsByClassName("modal")];
+
+  // Filter to the target modal using the commentID
+  let targettedModal = confirmModals.filter(modal => modal.dataset.modal === commentID)[0];
+
+  // Add is-active class to display modal to user
+  targettedModal.classList.add("is-active");
+
+  // Add close modal click listeners to close buttons
+  addCloseModalListeners([...targettedModal.getElementsByClassName("close-modal")], targettedModal);
+}
+
 
 function displayConfirmDeleteModal(deleteCommentButton){
   // Get id of comment using data modal attribute
