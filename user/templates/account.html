@@ -13,7 +13,7 @@
         <div class="column is-12">
             <div class="buttons has-addons is-centered">
                 <button class="button reset-btn is-danger is-size-6 m-0" data-modal="reset-{{ current_user._id }}">Reset Password<i class="fas fa-key"></i></button>
-                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
+                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Feed<i class="fas fa-undo"></i></a>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
 
 {% block content %}
 <main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
-    <div class="columns is-marginless pt-3">
+    <div class="columns is-marginless pt-3 animate__animated animate__fadeIn">
         <div class="column is-8 is-offset-2">
             <div class="box">
                 <form method="POST" action="{{ url_for('user.account', user_email=session['user_email']) }}">
