@@ -12,32 +12,37 @@
 
 {% endblock %}
 
-{% block content %}
+{% block header %}
+    <div class="columns is-marginless pt-3">
+        <div class="column is-half is-offset-3 has-text-centered">
+            <h2 class="title is-size-4">Oops, something went wrong.</h2>
+        </div>
+    </div>
+{% endblock %}
 
-    <div class="columns is-vcentered is-centered">
-        <div class="column is-flex is-justify-content-center">
-            <div id="login-box" class="box">
-                <div class="columns is-multiline">
-                    <div class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
-                        <figure class="image is-64x64 mb-3">
-                            <img class="is-rounded" src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}">
-                        </figure>
-                        <h2 class="title is-size-5">
-                            Oops, something went wrong.
-                        </h2>
+{% block content %}
+    <main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
+        <div class="columns is-vcentered is-centered">
+            <div class="column is-flex is-justify-content-center">
+                <div id="login-box" class="box">
+                    <div class="columns is-multiline">
+                        <div class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+                            <figure class="image is-64x64 mb-3">
+                                <img class="is-rounded" src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}">
+                            </figure>
+                        </div>
                     </div>
-                </div>
-                <div class="columns is-marginless pt-3">
-                    <div class="column has-text-centered">
-                        <h2 class="title is-size-4">You're forbidden from accessing this page. Please sign in or check your log in credentials.</h2>
-                        <p class="subtitle is-size-5">Error code: 403</p>
-                        <div class="buttons is-centered">
-                            <a class="button is-warning m-0" href="{{ url_for('log_in')}}">Return to Log-In<i class="fas fa-undo"></i></a>
+                    <div class="columns is-marginless pt-3">
+                        <div class="column has-text-centered">
+                            <h2 class="title is-size-4">You're forbidden from accessing this page. Please sign in or check your log in credentials.</h2>
+                            <p class="subtitle is-size-5">Error code: 403</p>
+                            <div class="buttons is-centered">
+                                <a class="button is-warning m-0" href="{{ url_for('log_in')}}">Return to Log-In<i class="fas fa-undo"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </main>
 {% endblock %}

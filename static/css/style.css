@@ -13,8 +13,16 @@ body {
 
 /* Utilities */
 
+header.container {
+    min-height: 15vh;
+}
+
 main.container {
-    min-height: 85vh;
+    min-height: 80vh;
+}
+
+main.container .columns {
+    min-height: 100%;
 }
 
 .fas,

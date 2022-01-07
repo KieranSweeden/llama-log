@@ -12,48 +12,47 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="columns is-vcentered is-centered">
-    <div class="column is-flex is-justify-content-center">
-        <div id="login-box" class="box">
-            <div class="columns is-multiline">
-                <div class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
-                    <figure class="image is-64x64 mb-3">
-                        <img class="is-rounded" src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}">
-                    </figure>
-                    <h3 class="is-size-5">
-                        Welcome to Llama Log
-                    </h3>
-                </div>
-                <div class="column is-12">
-                    <form method="POST" action="{{ url_for('log_in') }}">
-                        <div class="field">
-                            <label for="email" class="label">Email<i class="fas fa-question-circle" id="email-tooltip"></i>
-                            </label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input is-success" id="email" name="email" type="email" 
-                                placeholder="Enter Your Email">
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                <span class="icon is-small is-right">
-                                    <i class="fas fa-check"></i>
-                                </span>
+<main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
+    <div class="columns is-centered animate__animated animate__fadeIn">
+        <div class="column is-flex is-justify-content-center">
+            <div id="login-box" class="box">
+                <div class="columns is-multiline">
+                    <div class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+                        <figure class="image is-64x64 mb-3">
+                            <img class="is-rounded" src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}">
+                        </figure>
+                        <h3 class="is-size-5">
+                            Welcome to Llama Log
+                        </h3>
+                    </div>
+                    <div class="column is-12">
+                        <form method="POST" action="{{ url_for('log_in') }}">
+                            <div class="field">
+                                <label for="email" class="label">Email<i class="fas fa-question-circle" id="email-tooltip"></i>
+                                </label>
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="input is-success" id="email" name="email" type="email" 
+                                    placeholder="Enter Your Email">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </div>
+                                <p class="help is-success has-text-right">This Email is correct</p>
                             </div>
-                            <p class="help is-success has-text-right">This Email is correct</p>
-                        </div>
-                    
-                        <div class="buttons is-right">
-                            <button type="submit" class="button is-link">Continue</button>
-                        </div>
-                    </form>
+                        
+                            <div class="buttons is-right">
+                                <button type="submit" class="button is-link">Continue</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
+</main>
 {% endblock %}
 
 {% block flashes %}
