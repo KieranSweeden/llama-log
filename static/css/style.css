@@ -40,6 +40,10 @@ main.container > .columns {
     width: 100%;
 }
 
+.help {
+    height: 0.5rem;
+}
+
 .fas,
 .far {
     margin-left: .25rem;

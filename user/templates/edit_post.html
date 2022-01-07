@@ -33,15 +33,16 @@
                     <div class="field">
                         <label for="title" class="label">Title</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" id="title" name="title" type="text" 
+                            <input class="input" id="title" name="title" type="text" 
                             placeholder="Enter Work Order Title" value="{{ post.title }}">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
     
                     {% if "equipment" in post %}
@@ -49,15 +50,16 @@
                         <div class="field">
                             <label for="equipment" class="label">Equipment</label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input is-success" id="equipment" name="equipment" type="text" 
+                                <input class="input" id="equipment" name="equipment" type="text" 
                                 placeholder="Enter Equipment" value="{{ post.equipment }}">
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
                                 <span class="icon is-small is-right">
-                                    <i class="fas fa-check"></i>
+                                    <i></i>
                                 </span>
                             </div>
+                            <p class="help is-danger has-text-right"></p>
                         </div>
     
                     {% else %}
@@ -65,29 +67,31 @@
                     <div class="field">
                         <label for="customer_name" class="label customer">Customer Name</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" id="customer_name" name="customer_name" type="text" 
+                            <input class="input" id="customer_name" name="customer_name" type="text" 
                             placeholder="Enter Customer's Full Name" value="{{ post.customer_name }}">
                             <span class="icon is-small is-left">
                             <i class="fas fa-user-tag"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
     
                     <div class="field">
                         <label for="customer_phone" class="label customer">Customer Phone</label>
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-success" id="customer_phone" name="customer_phone" type="number" 
+                            <input class="input" id="customer_phone" name="customer_phone" type="tel" 
                             placeholder="Enter Customer's Phone Number" value="{{ post.customer_phone }}">
                             <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fas fa-check"></i>
+                                <i></i>
                             </span>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
     
                     {% endif %}
@@ -98,11 +102,12 @@
                         <textarea class="textarea" name="description" id="description" 
                         placeholder="Textarea">{{ post.description }}</textarea>
                         </div>
+                        <p class="help is-danger has-text-right"></p>
                     </div>
     
     
-                    <div class="buttons has-addons is-right">
-                        <button type="submit" class="button is-link">Update
+                    <div class="buttons is-right">
+                        <button type="submit" class="button is-link my-1 mx-0">Update
                             {% if "equipment" in post %}
                                 Work Order
                             {% else %}

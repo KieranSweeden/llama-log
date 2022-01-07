@@ -178,11 +178,14 @@ function enableNavbarDropdown(navbarDropdown){
 }
 
 function clampText(cardTextContent){
-  // Clamp each text content if it exceeds 3 lines
+  // Clamp each text content
   cardTextContent.forEach(cardTextContent => {
+    // If it's a span within a heading
     if(cardTextContent.tagName === "SPAN"){
+      // Clamp it down to 1 line
       $clamp(cardTextContent, {clamp: 1});
     } else {
+      // Else clamp it down to 3 as it'll be description text
       $clamp(cardTextContent, {clamp: 3});
     }
   })

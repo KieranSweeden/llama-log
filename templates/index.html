@@ -31,20 +31,20 @@
                                 <label for="email" class="label">Email<i class="fas fa-question-circle" id="email-tooltip"></i>
                                 </label>
                                 <div class="control has-icons-left has-icons-right">
-                                    <input class="input is-success" id="email" name="email" type="email" 
+                                    <input class="input" id="email" name="email" type="email" 
                                     placeholder="Enter Your Email">
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
                                     <span class="icon is-small is-right">
-                                        <i class="fas fa-check"></i>
+                                        <i></i>
                                     </span>
                                 </div>
-                                <p class="help is-success has-text-right">This Email is correct</p>
+                                <p class="help is-danger has-text-right"></p>
                             </div>
                         
                             <div class="buttons is-right">
-                                <button type="submit" class="button is-link">Continue</button>
+                                <button type="submit" class="button is-link my-1 mx-0">Continue</button>
                             </div>
                         </form>
                     </div>
@@ -92,4 +92,7 @@
 
     <!-- Tooltips -->
     <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
+
+    <!-- Form -->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 {% endblock %}
