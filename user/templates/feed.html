@@ -98,7 +98,7 @@
                         Delete Post
                         <i class="fas fa-trash-alt" aria-hidden="true"></i>
                       </button>
-                    {% elif session["is_admin"] == True %}
+                    {% elif session["user_is_admin"] == True %}
                       <hr class="dropdown-divider">
                       <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
                         Delete Post
