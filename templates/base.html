@@ -59,10 +59,35 @@
                         Account
                     </a>
 
-                    <div class="buttons is-right">
-                        <a href="{{ url_for('log_out') }}" class="button navbar-item is-white has-text-right mb-0">
+                    <div class="buttons is-right mb-0">
+                        <a href="{{ url_for('log_out') }}" class="button navbar-item is-white has-text-right mb-0 px-3">
                             Log Out
                         </a>
+                    </div>
+
+                    <div class="columns my-1 mx-0 is-hidden-tablet">
+                        <div class="column is-half is-flex is-justify-content-center is-align-items-center">
+                                <div class="mx-5">
+                                    <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </div>
+                                <div class="mx-5">
+                                    <a href="https://twitter.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                                <div class="mx-5">
+                                    <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                                <div class="mx-5">
+                                    <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer" target="_blank" class="has-text-white">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                        </div>
                     </div>
                 {% endif %}
             </div>
