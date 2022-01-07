@@ -143,11 +143,6 @@ def password(user_email):
         return render_template("password.html", existing_user=existing_user)
 
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-
 @app.route("/log_out")
 def log_out():
     # Remove current user session data
