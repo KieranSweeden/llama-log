@@ -205,39 +205,32 @@ def delete_user(user_id):
 @admin.route("/reset_password/<user_id>")
 def reset_password(user_id):
 
-    # If the current user is not an admin
-    if session["user_is_admin"] is not True:
+    # Grab the user from db using the user_id
+    clicked_user = app.mongo.db.users.find_one(
+        {"_id": ObjectId(user_id)}
+    )
 
-        # Abort & present user with forbidden reasoning
-        abort(403)
-    
+    # Reset clicked user's password in db
+    app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
+
+    # See whether the deleted user is the current user
+    if session["user_id"] == str(clicked_user["_id"]):
+
+        # Clear session variables
+        session.pop("user_email")
+        session.pop("user_is_admin")
+        session.pop("user_id")
+        
+        # If so, inform current user their password has been reset
+        flash("Your password has been reset", "success")
+
+        # Then redirect user to create new password page
+        return redirect(url_for("password", user_email=clicked_user["email"]))
+
+    # If not, inform admin that selected user's password has been reset
     else:
-        # Grab the user from db using the user_id
-        clicked_user = app.mongo.db.users.find_one(
-            {"_id": ObjectId(user_id)}
-        )
+        # Inform admin of clicked user's password deletion
+        flash(f"{clicked_user['first_name']}'s password has been reset", "success")
 
-        # Reset clicked user's password in db
-        app.mongo.db.users.update_one({"_id": clicked_user["_id"]}, {"$set": {"password": None}})
-
-        # See whether the deleted user is the current user
-        if session["user_id"] == str(clicked_user["_id"]):
-
-            # Clear session variables
-            session.pop("user_email")
-            session.pop("user_is_admin")
-            session.pop("user_id")
-            
-            # If so, inform current user their password has been reset
-            flash("Your password has been reset", "success")
-
-            # Then redirect user to create new password page
-            return redirect(url_for("password", user_email=clicked_user["email"]))
-
-        # If not, inform admin that selected user's password has been reset
-        else:
-            # Inform admin of clicked user's password deletion
-            flash(f"{clicked_user['first_name']}'s password has been reset", "success")
-
-            # Return to admin manage page
-            return redirect(url_for("admin.manage"))
+        # Return to admin manage page
+        return redirect(url_for("admin.manage"))

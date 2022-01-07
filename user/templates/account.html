@@ -12,7 +12,7 @@
     <div class="columns is-marginless pt-3">
         <div class="column is-12">
             <div class="buttons has-addons is-centered">
-                <a href="{{ url_for('admin.reset_password', user_id=current_user._id) }}" class="button is-danger is-size-6 m-0">Reset Password<i class="fas fa-key"></i></a>
+                <button class="button reset-btn is-danger is-size-6 m-0" data-modal="reset-{{ current_user._id }}">Reset Password<i class="fas fa-key"></i></button>
                 <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
             </div>
         </div>
@@ -20,87 +20,109 @@
 {% endblock %}
 
 {% block content %}
-<div class="columns is-marginless pt-3">
-    <div class="column is-8 is-offset-2">
-        <div class="box">
-            <form method="POST" action="{{ url_for('user.account', user_email=session['user_email']) }}">
-                <div class="field">
-                    <label for="first_name" class="label">First Name <i class="fas fa-lock"></i></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input is-success" id="first_name" name="first_name" type="text"
-                            value="{{ current_user.first_name }}" disabled>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+    <div class="columns is-marginless pt-3">
+        <div class="column is-8 is-offset-2">
+            <div class="box">
+                <form method="POST" action="{{ url_for('user.account', user_email=session['user_email']) }}">
+                    <div class="field">
+                        <label for="first_name" class="label">First Name <i class="fas fa-lock"></i></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" id="first_name" name="first_name" type="text"
+                                value="{{ current_user.first_name }}" disabled>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-    
-                <div class="field">
-                    <label for="last_name" class="label">Last Name <i class="fas fa-lock"></i></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input is-success" id="last_name" name="last_name" type="text"
-                            value="{{ current_user.last_name }}" disabled>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+        
+                    <div class="field">
+                        <label for="last_name" class="label">Last Name <i class="fas fa-lock"></i></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" id="last_name" name="last_name" type="text"
+                                value="{{ current_user.last_name }}" disabled>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-    
-                <div class="field">
-                    <label for="dob" class="label">Date of Birth <i class="fas fa-lock"></i></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}" disabled>
-                        <span class="icon is-small is-left" disabled>
-                            <i class="fas fa-calendar-alt"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+        
+                    <div class="field">
+                        <label for="dob" class="label">Date of Birth <i class="fas fa-lock"></i></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" id="dob" name="dob" type="date" value="{{ current_user.dob }}" disabled>
+                            <span class="icon is-small is-left" disabled>
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-    
-                <div class="field">
-                    <label for="phone" class="label">Phone <i class="fas fa-lock"></i></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}"
-                            disabled>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-phone"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+        
+                    <div class="field">
+                        <label for="phone" class="label">Phone <i class="fas fa-lock"></i></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" id="phone" name="phone" type="number" value="{{ current_user.phone }}"
+                                disabled>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
                     </div>
-                </div>
-    
-                <div class="field">
-                    <label for="email" class="label">Email <i class="fas fa-lock"></i></label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}"
-                            disabled>
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+        
+                    <div class="field">
+                        <label for="email" class="label">Email <i class="fas fa-lock"></i></label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" id="email" name="email" type="email" value="{{ current_user.email }}"
+                                disabled>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <p class="help is-success">This Email is correct</p>
                     </div>
-                    <p class="help is-success">This Email is correct</p>
-                </div>
-    
-                <div class="buttons has-addons is-right">
-                    <button type="button" id="enable-edit" class="button is-link">Edit <i class="fas fa-user-cog"></i></button>
-                </div>
-            </form>
+        
+                    <div class="buttons has-addons is-right">
+                        <button type="button" id="enable-edit" class="button is-link">Edit <i class="fas fa-user-cog"></i></button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="modal" data-modal="reset-{{ current_user._id }}">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+            <p class="modal-card-title">Are You Sure?</p>
+            <button class="delete close-modal" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+            <p>Resetting your password will require you to create a new one.</p>
+                <div class="message-body has-background-dark has-text-white">
+                    <p class="is-warning">Resetting your password will redirect you to the log in page.</p>
+                </div>
+            </section>
+            <footer class="modal-card-foot is-justify-content-end">
+            <div class="buttons">
+                <button class="button close-modal my-0">Cancel</button>
+                <a href="{{ url_for('admin.reset_password', user_id=current_user._id) }}" class="button is-danger is-size-6 m-0">Reset Password<i class="fas fa-key"></i></a>
+            </div>
+            </footer>
+        </div>
+    </div>
 {% endblock %}
 
 {% block flashes %}
