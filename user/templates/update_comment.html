@@ -19,109 +19,111 @@
 {% endblock %}
 
 {% block content %}
-
-<div class="columns is-marginless animate__animated animate__fadeIn">
-  <div class="column is-8 is-offset-2">
-    <article class="card">
-      <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
-          <h3 class="card-header-title has-text-white-bis">
-            {% if "equipment" in post %}
-                <i class="fas fa-tools ml-0 mr-2"></i>
-              {% else %}
-              <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
-              {% endif %}
-              {{ post.title }}
-            </h3>
-          {% if post.author_id == session["user_id"]%}
-          <div class="dropdown is-right card-header-icon">
-            <div class="dropdown-trigger">
-              <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
-                <span class="icon has-text-white-bis">
-                  <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-              <div class="dropdown-content">
-                  <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
-                    Edit Post
-                    <i class="fas fa-edit" aria-hidden="true"></i>
-                  </a>
-                  <hr class="dropdown-divider">
-                  <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="dropdown-item">
-                    Delete Post
-                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                  </a>
+<main class="container is-max-desktop">
+  <div class="columns is-marginless animate__animated animate__fadeIn">
+    <div class="column is-8 is-offset-2">
+      <article class="card">
+        <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
+            <h3 class="card-header-title has-text-white-bis">
+              {% if "equipment" in post %}
+                  <i class="fas fa-tools ml-0 mr-2"></i>
+                {% else %}
+                <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
+                {% endif %}
+                {{ post.title }}
+              </h3>
+            {% if post.author_id == session["user_id"]%}
+            <div class="dropdown is-right card-header-icon">
+              <div class="dropdown-trigger">
+                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span class="icon has-text-white-bis">
+                    <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                    <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
+                      Edit Post
+                      <i class="fas fa-edit" aria-hidden="true"></i>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="dropdown-item">
+                      Delete Post
+                      <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            {% endif %}
-      </header>
-      <section class="card-content p-4">
-        <div class="content">
-          <p class="add-text-overflow-cutoff">{{ post.description }}</p>
-        </div>
-      </section>
-      <footer class="card-footer">
-        <div class="card-footer-item">
-          <p class="is-size-7">
-            {% if post["amount_of_comments"] == 1 %}
-              1 Comment
-            {% elif post["amount_of_comments"] > 1 %}
-              {{ post["amount_of_comments"] }} Comments
-            {% else %}
-              No Comments
-            {% endif %}
-          </p>
-        </div>
-        <div class="card-footer-item">
-          <p class="is-size-7">By: {{ post.author_name }}</p>
-        </div>
-        <div class="card-footer-item">
-          <time class="mr-2 is-size-7">
-            {{ post.date_created.strftime("%I") + ":" + 
-                post.date_created.strftime("%M") + 
-                post.date_created.strftime("%p")}}
-          </time>
-          <p class="is-size-7">
-            {{ post.date_created.strftime("%d") + " " + 
-                post.date_created.strftime("%b") + " " + 
-                post.date_created.strftime("%Y")}}
-          </p>
-        </div>
-      </footer>
-    </article>
+              {% endif %}
+        </header>
+        <section class="card-content p-4">
+          <div class="content">
+            <p class="add-text-overflow-cutoff">{{ post.description }}</p>
+          </div>
+        </section>
+        <footer class="card-footer">
+          <div class="card-footer-item">
+            <p class="is-size-7">
+              {% if post["amount_of_comments"] == 1 %}
+                1 Comment
+              {% elif post["amount_of_comments"] > 1 %}
+                {{ post["amount_of_comments"] }} Comments
+              {% else %}
+                No Comments
+              {% endif %}
+            </p>
+          </div>
+          <div class="card-footer-item">
+            <p class="is-size-7">By: {{ post.author_name }}</p>
+          </div>
+          <div class="card-footer-item">
+            <time class="mr-2 is-size-7">
+              {{ post.date_created.strftime("%I") + ":" + 
+                  post.date_created.strftime("%M") + 
+                  post.date_created.strftime("%p")}}
+            </time>
+            <p class="is-size-7">
+              {{ post.date_created.strftime("%d") + " " + 
+                  post.date_created.strftime("%b") + " " + 
+                  post.date_created.strftime("%Y")}}
+            </p>
+          </div>
+        </footer>
+      </article>
+    </div>
   </div>
-</div>
-
-<div class="columns is-marginless animate__animated animate__fadeIn">
-  <div class="column is-8 is-offset-2">
-    <div class="card">
-      <div class="card-header">
-        <p class="card-header-title">
-          Update Comment
-        </p>
-      </div>
-      <div class="card-content p-5">
-        <form id="commentForm" method="POST" action="{{ url_for('user.update_comment', comment_id=comment['_id'])}}">
-          <div class="field">
-            <label for="content" class="label">Comment</label>
-            <div class="control">
-              <textarea class="textarea" placeholder="Update your comment here..." rows="2" 
-              name="content">{{ comment['content'] }}</textarea>
+  
+  <div class="columns is-marginless animate__animated animate__fadeIn">
+    <div class="column is-8 is-offset-2">
+      <div class="card">
+        <div class="card-header">
+          <p class="card-header-title">
+            Update Comment
+          </p>
+        </div>
+        <div class="card-content p-5">
+          <form id="commentForm" method="POST" action="{{ url_for('user.update_comment', comment_id=comment['_id'])}}">
+            <div class="field">
+              <label for="content" class="label">Comment</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Update your comment here..." rows="2" 
+                name="content">{{ comment['content'] }}</textarea>
+              </div>
             </div>
-          </div>
-
-          <div class="buttons has-addons is-right">
-            <button type="submit" class="button is-link">
-                Update Comment
-                <i class="fas fa-save"></i>
-            </button>
-          </div>
-        </form>
+  
+            <div class="buttons has-addons is-right">
+              <button type="submit" class="button is-link">
+                  Update Comment
+                  <i class="fas fa-save"></i>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>
+
 
 {% endblock %}

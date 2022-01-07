@@ -21,8 +21,23 @@ main.container {
     min-height: 80vh;
 }
 
-main.container .columns {
+main.container > .columns {
     min-height: 100%;
+    width: 100%;
+}
+
+.columns.is-multiline .column {
+    width: 464px;
+}
+
+@media screen and (max-width: 567px){
+    .columns.is-multiline .column {
+        width: 100%;
+    }
+}
+
+.column > form {
+    width: 100%;
 }
 
 .fas,
@@ -104,7 +119,7 @@ article.message.is-danger {
     height: 100%;
 }
 
-#login-box {
+#center-box {
     max-width: 30rem;
 }
 
