@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
         inputFields.push([...document.getElementsByTagName("textarea")][0]);
     }
 
+    console.log(inputFields);
+
     if (inputFields.length >= 1){
 
         // Add event listeners for each form
@@ -19,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentPage = window.location.pathname;
 
         // If the page is the account or edit user page
-        if(currentPage.includes("account") || currentPage.includes("edit_user") || currentPage.includes("log_in") || currentPage.includes("edit_post")){
+        if(currentPage.includes("account") || currentPage.includes("edit_user") || currentPage.includes("log_in") || currentPage.includes("edit_post") || currentPage.includes("update_comment")){
             // Asses the validity of fields on load
             assessValidityOnLoad(inputFields);
         }
@@ -62,13 +64,6 @@ function assessValidityOnLoad(inputFields){
             case "description":
                 testTextLimit(inputField);
                 break;
-            case "title":
-                case "equipment":
-                case "customer_name":
-                case "customer_phone":
-                case "description":
-                    testTextLimit(inputField);
-                    break;
             case "was_customer_involved":
                 inputField.addEventListener("change", updateProgressBar);
                 break;
