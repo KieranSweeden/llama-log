@@ -93,17 +93,17 @@ function getTooltipDescription(type, currentPage){
 
         if (formType === "Work Order"){
             tooltipDescriptions = {
-                "Title": "Provide a brief description of the work order.", 
-                "Equipment": "Insert what equipment the work order is regarding.", 
-                "Description": "Provide a description of the work order, including as much detail as possible." 
+                "Title": "Provide a brief title for the work order post. (Limit: 50 Characters)", 
+                "Equipment": "Insert what equipment the work order is for. (Limit: 50 Characters)", 
+                "Description": "Provide a detailed description of the work order. (Limit: 500 Characters)" 
             };
         } else if (formType === "Incident"){
             tooltipDescriptions = {
-                "Title": "Provide a brief description of the incident.", 
+                "Title": "Provide a brief title for the incident post. (Limit: 50 Characters)", 
                 "Was A Customer Involved?": "If a customer was involved in any way, select yes.",
-                "Customer Name": "Insert the customer's full name",
+                "Customer Name": "Insert the customer's full name. (Limit: 50 Characters)",
                 "Customer Phone": "Insert the customer's phone number, so we're able to contact them if necessary.",
-                "Description": "Provide a description of the incident, including as much detail as possible." 
+                "Description": "Provide a detailed description of the incident. (Limit: 500 Characters)" 
             };
         }
     }

@@ -34,7 +34,7 @@
                             <div class="field">
                                 <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
                                 <div class="control has-icons-left has-icons-right">
-                                    <input class="input" id="title" name="title" type="text" placeholder="Enter Work Order Title">
+                                    <input class="input" id="title" name="title" type="text" placeholder="Enter title" minlength="10" maxlength="50" required>
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
                                     </span>
@@ -50,7 +50,7 @@
                                 <div class="field">
                                     <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
                                     <div class="control has-icons-left has-icons-right">
-                                        <input class="input" id="equipment" name="equipment" type="text" placeholder="Enter Equipment">
+                                        <input class="input" id="equipment" name="equipment" type="text" placeholder="Enter equipment" minlength="5" maxlength="30" required>
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
                                         </span>
@@ -78,22 +78,29 @@
                             <div class="field">
                                 <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
                                 <div class="control">
-                                <textarea class="textarea" name="description" id="description" placeholder="Textarea"></textarea>
+                                    <textarea class="textarea" name="description" id="description" 
+                                    placeholder="Provide a description of the problem" minlength="10" maxlength="500" rows="3" required></textarea>
                                 </div>
                                 <p class="help is-danger has-text-right"></p>
                             </div>
-            
-            
-                            <div class="buttons is-right">
-                                <button type="submit" class="button is-link my-1 mx-0">
-                                    {% if category == "work_order" %}
-                                        Submit Work Order
-                                    {% else %}
-                                        Submit Incident 
-                                    {% endif %}
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
+
+                            <progress class="progress is-primary" value="0" max="100"></progress>
+
+                            <div class="field">
+                                <div class="control">
+                                    <div class="buttons is-right">
+                                        <button type="submit" class="button is-link my-1 mx-0">
+                                            {% if category == "work_order" %}
+                                                Submit Work Order
+                                            {% else %}
+                                                Submit Incident 
+                                            {% endif %}
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
+            
                         </form>
                     </div>
                 </div>

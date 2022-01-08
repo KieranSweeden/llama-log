@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Grab input fields within form
     let inputFields = [...document.getElementsByTagName("input")];
 
+    // If a text area exists, add it to input fields array
+    if ([...document.getElementsByTagName("textarea")][0]){
+        inputFields.push([...document.getElementsByTagName("textarea")][0]);
+    }
+
     if (inputFields.length >= 1){
 
         // Add event listeners for each form
@@ -64,10 +69,6 @@ function addListeners(inputFields){
                 });
                 break;
             case "first_name":
-                inputField.addEventListener("change", (event) => {
-                    testName(event.target);
-                });
-                break;
             case "last_name":
                 inputField.addEventListener("change", (event) => {
                     testName(event.target);
@@ -95,8 +96,33 @@ function addListeners(inputFields){
                     testRepeatPassword(event.target);
                 });
                 break;
+            case "title":
+            case "equipment":
+            case "description":
+                inputField.addEventListener("input", (event) => {
+                    testTextLimit(event.target);
+                });
+                break;
         }
     });
+}
+
+function testTextLimit(inputField){
+    if (inputField.checkValidity()) {
+        inputField.setCustomValidity("");
+        // If user input is valid, ensure error message is clear
+        updateFieldDesignToSuccess(inputField);
+    } else {
+        inputField.setCustomValidity("");
+        // If user input is valid, ensure error message is clear
+        updateFieldDesignToError(inputField, "Please provide more detail.");
+    }
+
+    // If a progress bar exists on the page
+    if ([...document.getElementsByTagName("progress")][0]){
+        // Update progress bar
+        updateProgressBar();
+    }
 }
 
 function updateProgressBar(){
@@ -106,8 +132,15 @@ function updateProgressBar(){
     // Grab all fields
     let inputFields = [...document.getElementsByTagName("input")];
 
-    // Filter out checkbox
-    inputFields.pop();
+    // If a text area exists, add it to input fields array
+    if ([...document.getElementsByTagName("textarea")][0]){
+        inputFields.push([...document.getElementsByTagName("textarea")][0]);
+    }
+
+    if(inputFields.at(-1).type === "checkbox"){
+        // Filter out checkbox
+        inputFields.pop();
+    }
 
     // Init empty array to store valid input fields
     let validFields = [];
@@ -125,7 +158,7 @@ function updateProgressBar(){
             validFields.pop(inputField);
         }
     });
-
+    
     // Determine the percentage of valid fields
     let percentageOfValidFields = (validFields.length / inputFields.length) * 100;
 
@@ -310,9 +343,7 @@ function testPassword(inputField, inputFields){
             updateFormButton(true);
         }
         
-
     } else if (!isValid){
-
         // If invalid, display error styling & message
         updateFieldDesignToError(inputField, "Input is empty, please enter a password.");
 
@@ -330,21 +361,23 @@ function testRepeatPassword(inputField) {
     // Grab first password creation attempt
     let firstPasswordInput = [...document.getElementsByTagName("input")][0];
 
+    // If passwords match
     if (inputField.value === firstPasswordInput.value){
         // clear error message
         updateFieldDesignToSuccess(inputField);
 
+        // Enable form submission
         updateFormButton(true);        
 
     } else if (inputField.value !== firstPasswordInput.value){
-        // If invalid, display error styling & message
+        // Else if passwords do not match
+
+        // display error styling & message
         updateFieldDesignToError(inputField, "The passwords must match.");
 
         // Disable form submission
         updateFormButton(false);
     }
-
-
 }
 
 function updateFieldDesignToSuccess(inputField){
@@ -354,8 +387,10 @@ function updateFieldDesignToSuccess(inputField){
     // present success border color
     updateFieldBorder(inputField, true);
 
-    // present success icon
-    updateStatusIcon(inputField, true);
+    if (inputField.tagName !== "TEXTAREA"){
+        // present success icon
+        updateStatusIcon(inputField, true);
+    }
 }
 
 function updateFieldDesignToError(inputField, message){
@@ -365,8 +400,10 @@ function updateFieldDesignToError(inputField, message){
     // present error border colour
     updateFieldBorder(inputField, false);
 
-    //  present error icon
-    updateStatusIcon(inputField, false);
+    if (inputField.tagName !== "TEXTAREA"){
+        //  present error icon
+        updateStatusIcon(inputField, false);
+    }
 }
 
 function updateFormErrorMessage(inputField, message){
@@ -378,8 +415,12 @@ function updateFormErrorMessage(inputField, message){
 }
 
 function updateFieldBorder(inputField, isValid){
-    // Clear input class
-    inputField.className = "input";
+    // Clear classes to base bulma classes
+    if (inputField.tagName === "INPUT"){
+        inputField.className = "input";
+    } else if (inputField.tagName === "TEXTAREA"){
+        inputField.className = "textarea";
+    }
 
      // Set input border colour based on validitity
     if(isValid === false){

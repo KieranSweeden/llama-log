@@ -222,12 +222,12 @@ function displayCustomerIncidentFields(){
   customerNameInput.innerHTML = `
     <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
     <div class="control has-icons-left has-icons-right">
-        <input class="input is-success" id="customer_name" name="customer_name" type="text" placeholder="Enter Customer's Full Name">
+        <input class="input" id="customer_name" name="customer_name" type="text" placeholder="Enter customer's full name" required>
         <span class="icon is-small is-left">
           <i class="fas fa-user-tag"></i>
         </span>
         <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
+            <i></i>
         </span>
     </div>
     `;
@@ -236,12 +236,12 @@ function displayCustomerIncidentFields(){
   customerPhoneInput.innerHTML = `
     <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
     <div class="control has-icons-left has-icons-right">
-        <input class="input is-success" id="customer_phone" name="customer_phone" type="number" placeholder="Enter Customer's Phone Number">
+        <input class="input" id="customer_phone" name="customer_phone" type="tel" placeholder="Enter customer's phone number" required>
         <span class="icon is-small is-left">
           <i class="fas fa-phone"></i>
         </span>
         <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
+            <i></i>
         </span>
     </div>
     `;
