@@ -226,7 +226,13 @@ article.message.is-danger {
     }
 }
 
-/* Tippy theme */
+/* Tippy styling & theme */
+
+@media screen and (max-width: 567px){
+    [data-tippy-root] {
+        max-width: 12rem;
+    }
+}
 
 .tippy-box[data-theme~='llama-log'] {
     background-color: var(--primary-color);
