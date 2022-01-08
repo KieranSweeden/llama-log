@@ -206,7 +206,7 @@
           <div class="card-content p-5">
             <form id="commentForm" method="POST" action="{{ url_for('user.view_post', post_id=post['_id'])}}">
               <div class="field">
-                <label for="content" class="label">Comment</label>
+                <label for="content" class="label">Comment<i class="fas fa-question-circle"></i></label>
                 <div class="control">
                   <textarea class="textarea" placeholder="Write your comment here..." rows="2" id="content" name="content"></textarea>
                 </div>
@@ -251,5 +251,23 @@
       {% endfor %}
   {% endif %}
 {% endwith %}
+
+{% endblock %}
+
+{% block js %}
+
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- Tooltips -->
+    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
+
+    <!-- Form -->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 
 {% endblock %}

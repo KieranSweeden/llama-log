@@ -106,6 +106,10 @@ function getTooltipDescription(type, currentPage){
                 "Description": "Provide a detailed description of the incident. (Limit: 500 Characters)" 
             };
         }
+    } else if (currentPage.includes("view_post")){
+        tooltipDescriptions = {
+            "Comment": "Insert a comment to the post currently being viewed. (Limit: 250 Character)"
+        };
     }
 
     // Return tooltip description associated with type given
