@@ -209,7 +209,7 @@ article.message.is-danger {
     align-items: center;
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 769px){
     .footer .content .columns .column:last-child {
         align-items: flex-end;
     }
