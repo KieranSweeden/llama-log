@@ -56,7 +56,7 @@ function getTooltipDescription(type, currentPage){
         tooltipDescriptions = {
             "First Name": "The user's first name will be attached to the user's posts & comments.",
             "Last Name": "The user's last name will be attached to the user's posts & comments.",
-            "Date of Birth": "The user's Date of Birth will not be publicly available as it's for data collection purposes only.",
+            "Date of Birth": "The user's date of birth will not be publicly available as it's for data collection purposes only.",
             "Phone": "The user's phone number will only be accessed for emergency purposes.",
             "Email": "The user will need an email to sign in to Llama Log.",
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
@@ -65,7 +65,7 @@ function getTooltipDescription(type, currentPage){
         tooltipDescriptions = {
             "First Name": "The user's first name will be attached to the user's posts & comments.",
             "Last Name": "The user's last name will be attached to the user's posts & comments.",
-            "Date of Birth": "The user's Date of Birth will not be publicly available as it's for data collection purposes only.",
+            "Date of Birth": "The user's date of birth will not be publicly available as it's for data collection purposes only.",
             "Phone": "The user's phone number will only be accessed for emergency purposes.",
             "Email": "The user will need an email to sign in to Llama Log.",
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
@@ -74,13 +74,13 @@ function getTooltipDescription(type, currentPage){
         tooltipDescriptions = {
             "First Name": "Your first name will be attached to the user's posts & comments.",
             "Last Name": "Your last name will be attached to the user's posts & comments.",
-            "Date of Birth": "Your Date of Birth will not be publicly available as it's for data collection purposes only.",
+            "Date of Birth": "Your date of birth will not be publicly available as it's for data collection purposes only.",
             "Phone": "Your phone number will only be accessed for emergency purposes.",
             "Email": "You will need an email to sign in to Llama Log."
         };
     } else if (currentPage.includes("log_in")){
         tooltipDescriptions = {
-            "Email": "Use the email given to you by an Admin to sign in." 
+            "Email": "Use the email given to you by an admin to sign in." 
         };
     } else if (currentPage.includes("password")){
         tooltipDescriptions = {
