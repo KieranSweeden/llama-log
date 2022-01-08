@@ -205,15 +205,17 @@
           </div>
           <div class="card-content p-5">
             <form id="commentForm" method="POST" action="{{ url_for('user.view_post', post_id=post['_id'])}}">
+
               <div class="field">
                 <label for="content" class="label">Comment<i class="fas fa-question-circle"></i></label>
                 <div class="control">
-                  <textarea class="textarea" placeholder="Write your comment here..." rows="2" id="content" name="content"></textarea>
+                  <textarea class="textarea" placeholder="Write your comment here..." minlength="5" maxlength="250" rows="2" id="content" name="content" required></textarea>
                 </div>
+                <p class="help is-danger has-text-right"></p>
               </div>
     
-              <div class="buttons has-addons is-right">
-                <button type="submit" class="button is-link my-1 mx-0">
+              <div class="buttons is-right">
+                <button type="submit" class="button is-link my-1 mx-0" disabled>
                     Post Comment
                     <i class="fas fa-paper-plane"></i>
                 </button>

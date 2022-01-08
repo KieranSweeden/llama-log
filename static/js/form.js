@@ -118,8 +118,9 @@ function addListeners(inputFields){
             case "customer_name":
             case "customer_phone":
             case "description":
+            case "content":
                 inputField.addEventListener("input", (event) => {
-                    testTextLimit(event.target);
+                    testTextLimit(event.target, inputFields);
                 });
                 break;
             case "was_customer_involved":
@@ -129,15 +130,24 @@ function addListeners(inputFields){
     });
 }
 
-function testTextLimit(inputField){
+function testTextLimit(inputField, inputFields){
     if (inputField.checkValidity()) {
         inputField.setCustomValidity("");
         // If user input is valid, ensure error message is clear
         updateFieldDesignToSuccess(inputField);
+
+        // If there is only one input, enable form button
+        if (inputFields.length === 1){
+            updateFormButton(true);
+        }
     } else {
         inputField.setCustomValidity("");
         // If user input is valid, ensure error message is clear
         updateFieldDesignToError(inputField, "Please provide more detail.");
+        // If there is only one input, enable form button
+        if (inputFields.length === 1){
+            updateFormButton(false);
+        }
     }
 
     // If a progress bar exists on the page
