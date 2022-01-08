@@ -44,22 +44,32 @@ def log_in():
         # If an email has been entered
         if request.method == "POST":
 
-            # Try searching db if entered email exists
-            existing_user = mongo.db.users.find_one(
-                    {"email": request.form.get("email").lower()})
+            # If an input field was not entered
+            if request.form.get("email") == "":
 
-            # If email does exist
-            if existing_user:
+                # Inform user that input field was empty
+                flash("Email input was empty, please enter an email", "error")
 
-                return redirect(url_for("password", user_email=existing_user["email"]))
+                # Redirect user back to log in page
+                return redirect(url_for("log_in"))
+            
+            else:
+                # Try searching db if entered email exists
+                existing_user = mongo.db.users.find_one(
+                        {"email": request.form.get("email").lower()})
 
-            # If the email entered does not exist
-            # redirect user to log in page & try again
-            flash("The email address you entered doesn't exist. Please try again", "error")
+                # If email does exist
+                if existing_user:
 
-            return redirect(url_for("log_in"))
+                    return redirect(url_for("password", user_email=existing_user["email"]))
 
-            # Otherwise...
+                # If the email entered does not exist
+                # redirect user to log in page & try again
+                flash("The email address you entered doesn't exist. Please try again", "error")
+
+                return redirect(url_for("log_in"))
+
+        # Otherwise...
         else:
 
                 # Render the log in page
@@ -86,12 +96,49 @@ def password(user_email):
         # If a password attempt has been made
         if request.method == "POST":
 
-            # If the password isn't set to none
-            if existing_user["password"] != None:
+            # If user entered empty field
+            if request.form.get("password") == "":
 
-                # Check if the entered password matches db password
-                if check_password_hash(existing_user["password"], request.form.get("password")):
+                # Inform user that input field was empty
+                flash("The password input was empty, please enter your password", "error")
 
+                # Redirect user back to log in page
+                return redirect(url_for("password", user_email=existing_user["email"]))
+
+            else:
+
+                # If the password isn't set to none
+                if existing_user["password"] != None:
+
+                    # Check if the entered password matches db password
+                    if check_password_hash(existing_user["password"], request.form.get("password")):
+
+                        session["user_email"] = existing_user["email"]
+
+                        session["user_is_admin"] = existing_user["is_admin"]
+
+                        session["user_id"] = str(existing_user["_id"])
+
+                        # Redirect logged in user to feed page
+                        return redirect(url_for(
+                                "user.feed", user_email=existing_user["email"]))
+                        
+                    # If not, redirect user to password page & inform user of error
+                    flash("The password attempt was wrong, please try again.", "error")
+                    
+                    return redirect(url_for("password", user_email=existing_user["email"]))
+                
+                # If a create password attempt has been made
+                # Check both entered passwords are the same
+                if request.form.get("password") == request.form.get("repeat_password"):
+
+                    # Create hashed password
+                    hashed_password = generate_password_hash(request.form.get("password"))
+
+                    # If so, try updating the password with the user's newly created one
+                    mongo.db.users.update_one({"_id": existing_user["_id"]}, {"$set": {"password": hashed_password}})
+
+                    # Add user info to current session
                     session["user_email"] = existing_user["email"]
 
                     session["user_is_admin"] = existing_user["is_admin"]
@@ -100,45 +147,16 @@ def password(user_email):
 
                     # Redirect logged in user to feed page
                     return redirect(url_for(
-                            "user.feed", user_email=existing_user["email"]))
-                    
-                # If not, redirect user to password page & inform user of error
-                flash("The password attempt was wrong, please try again.", "error")
+                        "user.feed", user_email=session["user_email"]))
                 
-                return redirect(url_for("password", user_email=existing_user["email"]))
-            
-            # If a create password attempt has been made
-            # Check both entered passwords are the same
-            if request.form.get("password") == request.form.get("repeat_password"):
+                # Else if the passwords do not match
+                elif request.form.get("password") != request.form.get("repeat_password"):
 
-                # Create hashed password
-                hashed_password = generate_password_hash(request.form.get("password"))
+                    # Inform the user of this
+                    flash("The passwords entered do not match, please try again.")
 
-                # If so, try updating the password with the user's newly created one
-                mongo.db.users.update_one({"_id": existing_user["_id"]}, {"$set": {"password": hashed_password}})
-
-                # Add user info to current session
-                session["user_email"] = existing_user["email"]
-
-                session["user_is_admin"] = existing_user["is_admin"]
-
-                session["user_id"] = str(existing_user["_id"])
-
-                # Make the session permanent for 5 minutes
-                session.permanent = True
-
-                # Redirect logged in user to feed page
-                return redirect(url_for(
-                    "user.feed", user_email=session["user_email"]))
-            
-            # Else if the passwords do not match
-            elif request.form.get("password") != request.form.get("repeat_password"):
-
-                # Inform the user of this
-                flash("The passwords entered do not match, please try again.")
-
-                # Redirect the user to create password page
-                return redirect(url_for("password", user_email=existing_user["email"]))
+                    # Redirect the user to create password page
+                    return redirect(url_for("password", user_email=existing_user["email"]))
 
         return render_template("password.html", existing_user=existing_user)
 
