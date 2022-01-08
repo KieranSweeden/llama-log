@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Grab input fields within form
     let inputFields = [...document.getElementsByTagName("input")];
 
-    // If input fields exist
-    if (inputFields.length > 0){
+    if (inputFields.length >= 1){
 
         // Add event listeners for each form
         addListeners(inputFields);
@@ -14,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // As long as page is not add new user page
         let currentPage = window.location.pathname;
 
-        // If the page is the account page
+        // If the page is the account or edit user page
         if(currentPage.includes("account") || currentPage.includes("edit_user")){
             // Asses the validity of fields on load
             assessValidityOnLoad(inputFields);
@@ -61,7 +60,7 @@ function addListeners(inputFields){
         switch(inputField.id){
             case "email":
                 inputField.addEventListener("input", (event) => {
-                    testEmail(event.target);
+                    testEmail(event.target, inputFields);
                 });
                 break;
             case "first_name":
@@ -160,8 +159,11 @@ function testPhone(inputField){
         updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.")
     }
 
-    // Update progress bar
-    updateProgressBar();
+    // If a progress bar exists on the page
+    if ([...document.getElementsByTagName("progress")][0]){
+        // Update progress bar
+        updateProgressBar();
+    }
 }
 
 function setDateOfBirthLimits(inputField){
@@ -204,8 +206,11 @@ function testDate(inputField){
         updateFieldDesignToError(inputField, "User should be between 16 & 80 years old.")
     }
 
-    // Update progress bar
-    updateProgressBar();
+    // If a progress bar exists on the page
+    if ([...document.getElementsByTagName("progress")][0]){
+        // Update progress bar
+        updateProgressBar();
+    }
 }
 
 function testName(inputField){
@@ -227,11 +232,14 @@ function testName(inputField){
         updateFieldDesignToError(inputField, "Please enter a valid name.");
     }
 
-    // Update progress bar
-    updateProgressBar();
+    // If a progress bar exists on the page
+    if ([...document.getElementsByTagName("progress")][0]){
+        // Update progress bar
+        updateProgressBar();
+    }
 }
 
-function testEmail(inputField){
+function testEmail(inputField, inputFields){
     // Ensure old message is cleared
     inputField.setCustomValidity('');
 
@@ -243,14 +251,30 @@ function testEmail(inputField){
         inputField.setCustomValidity("");
         // clear error message
         updateFieldDesignToSuccess(inputField);
+        
+        // If input is the only one on the page
+        if (inputFields.length === 1){
+            // Enable the form button
+            updateFormButton(true);
+        }
+
     } else if (!isValid){
         inputField.setCustomValidity("Please enter a valid email.");
         // If invalid, display error styling & message
         updateFieldDesignToError(inputField, "Please enter a valid email.");
+
+        // If input is the only one on the page
+        if (inputFields.length === 1){
+            // Disable the form button
+            updateFormButton(false);
+        }
     }
 
-    // Update progress bar
-    updateProgressBar();
+    // If a progress bar exists on the page
+    if ([...document.getElementsByTagName("progress")][0]){
+        // Update progress bar
+        updateProgressBar();
+    }
 }
 
 function updateFieldDesignToSuccess(inputField){
