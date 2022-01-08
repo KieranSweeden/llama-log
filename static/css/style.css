@@ -113,8 +113,15 @@ a.navbar-item:hover,
 article.message.is-success,
 article.message.is-danger {
     position: fixed;
-    bottom: 0;
+    bottom: -0.5rem;
     right: 1rem;
+}
+
+@media screen and (max-width: 576px){
+    article.message.is-success,
+    article.message.is-danger {
+    left: 1rem;
+}
 }
 
 /* Login page */
@@ -213,7 +220,7 @@ article.message.is-danger {
     padding: 0 12px;
 }
 
-@media screen and (min-width: 769px){
+@media screen and (min-width: 768px){
     .modal-card, .modal-content {
         width: 506.6px;
     }
