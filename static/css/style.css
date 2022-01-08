@@ -2,6 +2,7 @@
     --primary-color: hsla(178, 75%, 20%, 1);
     --faded-primary-color: hsla(178, 75%, 20%, 0.9);
     --white-color: hsla(0, 0%, 98%, 1);
+    --danger-color: hsla(354, 70%, 25%, 1);
     --transparent-white-color: hsla(0, 0%, 98%, 0.8);
     --transition-speed: 300ms;
 }
@@ -53,6 +54,18 @@ main.container > .columns {
 
 .button.is-primary {
     background-color: var(--primary-color);
+}
+
+.button.is-link {
+    background-color: var(--primary-color);
+}
+
+.button.is-link:disabled {
+    background-color: var(--faded-primary-color);
+}
+
+.button.is-warning {
+    background-color: #e9c46a;
 }
 
 /* Navbar */
@@ -201,6 +214,11 @@ article.message.is-danger {
 /* Was taken from https://codepen.io/AKGD/pen/Bmxpdb */
 .progress::-webkit-progress-value {
     transition: width 0.5s ease;
+}
+
+progress[value]::-webkit-progress-value {
+    background: var(--primary-color);
+
 }
 
 /* Footer styling */
