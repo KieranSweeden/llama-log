@@ -98,10 +98,15 @@ function addListeners(inputFields){
                 break;
             case "title":
             case "equipment":
+            case "customer_name":
+            case "customer_phone":
             case "description":
                 inputField.addEventListener("input", (event) => {
                     testTextLimit(event.target);
                 });
+                break;
+            case "was_customer_involved":
+                inputField.addEventListener("change", updateProgressBar);
                 break;
         }
     });
@@ -131,6 +136,18 @@ function updateProgressBar(){
 
     // Grab all fields
     let inputFields = [...document.getElementsByTagName("input")];
+
+    // Attempt to grab customer involved container
+    let customerInvolvedContainer = document.getElementById("customer-involved-fields");
+
+    // If customer involved fields exists & are hidden, remove them from the input fields
+    if (customerInvolvedContainer){
+        if (customerInvolvedContainer.classList.contains("is-hidden")){
+            inputFields = inputFields.filter(inputField => inputField.id === "title" || inputField.id === "description")
+        } else {
+            inputFields = inputFields.filter(inputField => inputField.id === "title" || inputField.id === "description" || inputField.id === "customer_name" || inputField.id === "customer_phone")
+        }
+    }
 
     // If a text area exists, add it to input fields array
     if ([...document.getElementsByTagName("textarea")][0]){

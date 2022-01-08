@@ -198,14 +198,10 @@ function addListenerToRadioButtons(radioButtons) {
       // If the radio button clicked is yes, display customer inputs to user
       if(radioButton.parentElement.innerText === "Yes"){
         // Display customer oriented input fields
-        // displayCustomerIncidentFields();
-
         displayCustomerIncidentFields();
 
       } else {
         // Remove customer oriented input fields
-        // removeCustomerIncidentFields();
-
         removeCustomerIncidentFields();
       }
     });
