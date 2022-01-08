@@ -88,8 +88,8 @@
           </div>
         </section>
         <footer class="card-footer">
-          <div class="card-footer-item">
-            <p class="is-size-7">
+          <div class="card-footer-item is-justify-content-center is-align-items-center">
+            <p class="is-size-7 is-text-primary">
               {% if post["amount_of_comments"] == 1 %}
                 1 Comment
               {% elif post["amount_of_comments"] > 1 %}
@@ -99,7 +99,7 @@
               {% endif %}
             </p>
           </div>
-          <div class="card-footer-item">
+          <div class="card-footer-item is-justify-content-center is-align-items-center">
             <p class="is-size-7">By: {{ post.author_name }}</p>
           </div>
           <div class="card-footer-item">
@@ -152,7 +152,7 @@
             </div>
           </section>
           <footer class="card-footer has-background-light">
-            <div class="card-footer-item has-text-left py-0">
+            <div class="card-footer-item has-text-left py-0 ">
               <p class="py-2">
                 <strong>{{ comment.author_name }}</strong>
               </p>
@@ -178,7 +178,7 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Are you sure?</p>
+          <p class="modal-card-title"><i class="fas fa-exclamation-triangle"></i>Are you sure?</p>
           <button class="delete close-modal" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
@@ -186,8 +186,8 @@
         </section>
         <footer class="modal-card-foot is-justify-content-end">
           <div class="buttons">
-            <button class="button close-modal my-0">Cancel</button>
-            <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" class="button is-success my-0">Delete Comment</a>
+            <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
+            <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" class="button is-danger my-0">Delete Comment</a>
           </div>
         </footer>
       </div>

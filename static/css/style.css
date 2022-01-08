@@ -65,7 +65,16 @@ main.container > .columns {
 }
 
 .button.is-warning {
-    background-color: #e9c46a;
+    background-color: hsla(51, 80%, 60%, 1);
+    font-weight: bold;
+}
+
+.button.is-info {
+    background-color: hsla(213, 50%, 56%, 1);
+}
+
+.button.is-danger {
+    background-color: var(--danger-color);
 }
 
 /* Navbar */
@@ -153,6 +162,19 @@ article.message.is-danger {
     width: 100%;
 }
 
+header.has-background-work-order {
+    background-color: var(--primary-color);
+}
+
+header.has-background-info {
+    background-color: hsla(213, 50%, 56%, 1);
+}
+
+.is-text-primary {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
 .fas.fa-ellipsis-h {
     margin-left: 0;
 }
@@ -234,6 +256,15 @@ progress[value]::-webkit-progress-value {
 }
 
 /* Modal styling */
+
+header.modal-card-head {
+    background-color: var(--primary-color);
+}
+
+header.modal-card-head .modal-card-title {
+    color: var(--white-color);
+}
+
 .modal-card {
     padding: 0 12px;
 }

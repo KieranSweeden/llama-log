@@ -14,7 +14,7 @@
         <div class="buttons is-centered">
           <div class="dropdown is-right">
             <div class="dropdown-trigger">
-              <button class="button is-link" aria-haspopup="true" aria-controls="create-post-option">
+              <button class="button is-primary" aria-haspopup="true" aria-controls="create-post-option">
                 <span>Create New Post</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -41,11 +41,11 @@
             <input class="input is-rounded" type="text" id="filter" name="filter" 
             placeholder="Search posts and comments..." value="{{ search_filter }}">
             <span class="icon is-small is-left">
-              <i class="fas fa-search"></i>
+              <i class="fas fa-search is-text-primary"></i>
             </span>
           </div>
           <div class="control">
-            <button type="submit" class="button is-rounded is-info">
+            <button type="submit" class="button is-rounded is-primary">
               Search
             </button>
           </div>
@@ -65,7 +65,7 @@
         <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
           <div class="column is-8 is-offset-2">
             <article class="card">
-              <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
+              <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-work-order {% endif %}">
                 <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
                   <h3 class="card-header-title has-text-white">
                     {% if "equipment" in post %}
@@ -119,8 +119,8 @@
                 </div>
               </section>
               <footer class="card-footer">
-                <div class="card-footer-item">
-                  <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="is-ghost is-size-7">
+                <div class="card-footer-item is-justify-content-center is-align-items-center">
+                  <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="is-ghost is-size-7 is-text-primary">
                     {% if post.amount_of_comments == 1 %}
                       1 Comment
                     {% elif post.amount_of_comments > 1 %}
@@ -130,7 +130,7 @@
                     {% endif %}
                   </a>
                 </div>
-                <div class="card-footer-item">
+                <div class="card-footer-item is-justify-content-center is-align-items-center">
                   <p class="is-size-7">By: {{ post.author_name }}</p>
                 </div>
                 <div class="card-footer-item">
