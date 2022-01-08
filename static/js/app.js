@@ -198,10 +198,14 @@ function addListenerToRadioButtons(radioButtons) {
       // If the radio button clicked is yes, display customer inputs to user
       if(radioButton.parentElement.innerText === "Yes"){
         // Display customer oriented input fields
+        // displayCustomerIncidentFields();
+
         displayCustomerIncidentFields();
 
       } else {
         // Remove customer oriented input fields
+        // removeCustomerIncidentFields();
+
         removeCustomerIncidentFields();
       }
     });
@@ -209,60 +213,19 @@ function addListenerToRadioButtons(radioButtons) {
 }
 
 function displayCustomerIncidentFields(){
+  // Grab customer involved field container
+  let customerFieldsContainer = document.getElementById("customer-involved-fields");
 
-  // Create div elements
-  let customerNameInput = document.createElement("div");
-  let customerPhoneInput = document.createElement("div");
-
-  // Add bulma field class to each div
-  customerNameInput.className = "field";
-  customerPhoneInput.className = "field";
-
-  // Add html markup for customer name input field
-  customerNameInput.innerHTML = `
-    <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
-    <div class="control has-icons-left has-icons-right">
-        <input class="input" id="customer_name" name="customer_name" type="text" placeholder="Enter customer's full name" required>
-        <span class="icon is-small is-left">
-          <i class="fas fa-user-tag"></i>
-        </span>
-        <span class="icon is-small is-right">
-            <i></i>
-        </span>
-    </div>
-    `;
-  
-  // Add html markup for customer phone input field
-  customerPhoneInput.innerHTML = `
-    <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
-    <div class="control has-icons-left has-icons-right">
-        <input class="input" id="customer_phone" name="customer_phone" type="tel" placeholder="Enter customer's phone number" required>
-        <span class="icon is-small is-left">
-          <i class="fas fa-phone"></i>
-        </span>
-        <span class="icon is-small is-right">
-            <i></i>
-        </span>
-    </div>
-    `;
-
-  // Get parent & sibling
-  let parent = [...document.getElementsByTagName("form")][0];
-  let sibling = document.getElementById("description").closest(".field");
-
-  // Insert customer input fields before description textarea
-  parent.insertBefore(customerNameInput, sibling);
-  parent.insertBefore(customerPhoneInput, sibling);
+  // Remove is-hidden class so fields are displayed to user
+  customerFieldsContainer.classList.remove("is-hidden");
 }
 
 function removeCustomerIncidentFields(){
-  // Get customer related field labels
-  let customerInputLabels = [...document.getElementsByClassName("label customer")];
+  // Grab customer involved field container
+  let customerFieldsContainer = document.getElementById("customer-involved-fields");
 
-  // Remove fields using the labels
-  customerInputLabels.forEach(inputLabel => {
-    inputLabel.parentElement.remove()
-  })
+  // Add is-hidden class so fields are displayed to user
+  customerFieldsContainer.classList.add("is-hidden");
 }
 
 function addListenerToDropdowns(dropdowns){

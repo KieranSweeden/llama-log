@@ -62,16 +62,51 @@
                                 </div>
             
                             {% else %}
-                                
-                            <div class="control">
-                                <label for="was_customer_involved" class="label">Was A Customer Involved?<i class="fas fa-question-circle"></i></label>
-                                <label class="radio">
-                                <input type="radio" name="was_customer_involved" checked>No
-                                </label>
-                                <label class="radio">
-                                <input type="radio" name="was_customer_involved">Yes
-                                </label>
+                            
+                            <div class="field">
+                                <div class="control">
+                                    <label for="was_customer_involved" class="label">Was A Customer Involved?<i class="fas fa-question-circle"></i></label>
+                                    <label class="radio">
+                                        <input type="radio" name="was_customer_involved" checked>No
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="was_customer_involved">Yes
+                                    </label>
+                                </div>
                             </div>
+
+                            <div id="customer-involved-fields" class="is-hidden">
+                                <div class="field">
+                                    <div class="control">
+                                        <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
+                                         <div class="control has-icons-left has-icons-right">
+                                             <input class="input" id="customer_name" name="customer_name" type="text" placeholder="Enter customer's full name" required>
+                                             <span class="icon is-small is-left">
+                                               <i class="fas fa-user-tag"></i>
+                                             </span>
+                                             <span class="icon is-small is-right">
+                                                 <i></i>
+                                             </span>
+                                         </div>
+                                    </div>
+                                </div>
+    
+                                <div class="field">
+                                    <div class="control">
+                                        <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
+                                        <div class="control has-icons-left has-icons-right">
+                                            <input class="input" id="customer_phone" name="customer_phone" type="tel" placeholder="Enter customer's phone number" required>
+                                            <span class="icon is-small is-left">
+                                            <i class="fas fa-phone"></i>
+                                            </span>
+                                            <span class="icon is-small is-right">
+                                                <i></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
             
                             {% endif %}
             
