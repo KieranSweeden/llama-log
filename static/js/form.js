@@ -50,9 +50,6 @@ function assessValidityOnLoad(inputFields){
             case "phone":
                 testPhone(inputField);
                 break;
-            case "password":
-                testPassword(inputField);
-                break;
         }
     })
 }
@@ -90,8 +87,13 @@ function addListeners(inputFields){
                 break;
             case "password":
                 inputField.addEventListener("input", (event) => {
-                    testPassword(event.target);
-                })
+                    testPassword(event.target, inputFields);
+                });
+                break;
+            case "repeat_password":
+                inputField.addEventListener("input", (event) => {
+                    testRepeatPassword(event.target);
+                });
                 break;
         }
     });
@@ -292,7 +294,7 @@ function testEmail(inputField, inputFields){
     }
 }
 
-function testPassword(inputField){
+function testPassword(inputField, inputFields){
     // Ensure old message is cleared
     inputField.setCustomValidity('');
 
@@ -302,18 +304,47 @@ function testPassword(inputField){
     if (isValid){
         // clear error message
         updateFieldDesignToSuccess(inputField);
+
+        if (inputFields.length === 1) {
+            // Enable form submission
+            updateFormButton(true);
+        }
         
-        // Enable form submission
-        updateFormButton(true);
 
     } else if (!isValid){
 
         // If invalid, display error styling & message
         updateFieldDesignToError(inputField, "Input is empty, please enter a password.");
 
+        if (inputFields.length === 1) {
+            // Disable form submission
+            updateFormButton(false);
+        }
+    }
+}
+
+function testRepeatPassword(inputField) {
+    // Ensure old message is cleared
+    inputField.setCustomValidity('');
+
+    // Grab first password creation attempt
+    let firstPasswordInput = [...document.getElementsByTagName("input")][0];
+
+    if (inputField.value === firstPasswordInput.value){
+        // clear error message
+        updateFieldDesignToSuccess(inputField);
+
+        updateFormButton(true);        
+
+    } else if (inputField.value !== firstPasswordInput.value){
+        // If invalid, display error styling & message
+        updateFieldDesignToError(inputField, "The passwords must match.");
+
         // Disable form submission
         updateFormButton(false);
     }
+
+
 }
 
 function updateFieldDesignToSuccess(inputField){
