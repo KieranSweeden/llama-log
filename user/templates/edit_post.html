@@ -31,10 +31,10 @@
             <div class="box">
                 <form method="POST" action="{{ url_for('user.edit_post', post_id=post['_id'])}}">
                     <div class="field">
-                        <label for="title" class="label">Title</label>
+                        <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
                             <input class="input" id="title" name="title" type="text" 
-                            placeholder="Enter Work Order Title" value="{{ post.title }}">
+                            placeholder="Enter Work Order Title" value="{{ post.title }}" minlength="5" maxlength="30" required>
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
@@ -48,10 +48,10 @@
                     {% if "equipment" in post %}
     
                         <div class="field">
-                            <label for="equipment" class="label">Equipment</label>
+                            <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
                             <div class="control has-icons-left has-icons-right">
                                 <input class="input" id="equipment" name="equipment" type="text" 
-                                placeholder="Enter Equipment" value="{{ post.equipment }}">
+                                placeholder="Enter Equipment" value="{{ post.equipment }}" minlength="5" maxlength="30" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
@@ -65,10 +65,10 @@
                     {% else %}
                         
                     <div class="field">
-                        <label for="customer_name" class="label customer">Customer Name</label>
+                        <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
                             <input class="input" id="customer_name" name="customer_name" type="text" 
-                            placeholder="Enter Customer's Full Name" value="{{ post.customer_name }}">
+                            placeholder="Enter Customer's Full Name" value="{{ post.customer_name }}" required>
                             <span class="icon is-small is-left">
                             <i class="fas fa-user-tag"></i>
                             </span>
@@ -80,10 +80,10 @@
                     </div>
     
                     <div class="field">
-                        <label for="customer_phone" class="label customer">Customer Phone</label>
+                        <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left has-icons-right">
                             <input class="input" id="customer_phone" name="customer_phone" type="tel" 
-                            placeholder="Enter Customer's Phone Number" value="{{ post.customer_phone }}">
+                            placeholder="Enter Customer's Phone Number" value="{{ post.customer_phone }}" required>
                             <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                             </span>
@@ -97,28 +97,52 @@
                     {% endif %}
     
                     <div class="field">
-                        <label for="description" class="label">Description</label>
+                        <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
                         <div class="control">
                         <textarea class="textarea" name="description" id="description" 
-                        placeholder="Textarea">{{ post.description }}</textarea>
+                            placeholder="Provide a description of the problem" 
+                            minlength="10" maxlength="500" rows="3" required>{{ post.description }}</textarea>
                         </div>
                         <p class="help is-danger has-text-right"></p>
                     </div>
+
+                    <progress class="progress is-primary" value="0" max="100"></progress>
     
-    
-                    <div class="buttons is-right">
-                        <button type="submit" class="button is-link my-1 mx-0">Update
-                            {% if "equipment" in post %}
-                                Work Order
-                            {% else %}
-                                Incident 
-                            {% endif %}
-                            <i class="fas fa-save"></i>
-                        </button>
+                    <div class="field">
+                        <div class="control">
+                            <div class="buttons is-right">
+                                <button type="submit" class="button is-link my-1 mx-0">Update
+                                    {% if "equipment" in post %}
+                                        Work Order
+                                    {% else %}
+                                        Incident 
+                                    {% endif %}
+                                    <i class="fas fa-save"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block js %}
+
+    <!-- Development -->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+    <!-- Production -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <!-- Tooltips -->
+    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
+
+    <!-- Form -->
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+
 {% endblock %}

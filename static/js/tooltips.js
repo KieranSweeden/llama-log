@@ -86,7 +86,7 @@ function getTooltipDescription(type, currentPage){
         tooltipDescriptions = {
             "Password": "Enter the password you've previously created to sign in." 
         };
-    } else if (currentPage.includes("create_post")){
+    } else if (currentPage.includes("create_post") || currentPage.includes("edit_post")){
 
         // Find out if form is an incident or work order using text contents within heading
         let formType = ([...document.getElementsByTagName("h2")][0].innerText.includes("Work Order")) ? "Work Order" : "Incident";

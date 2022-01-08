@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentPage = window.location.pathname;
 
         // If the page is the account or edit user page
-        if(currentPage.includes("account") || currentPage.includes("edit_user") || currentPage.includes("log_in")){
+        if(currentPage.includes("account") || currentPage.includes("edit_user") || currentPage.includes("log_in") || currentPage.includes("edit_post")){
             // Asses the validity of fields on load
             assessValidityOnLoad(inputFields);
         }
@@ -54,6 +54,23 @@ function assessValidityOnLoad(inputFields){
                 break;
             case "phone":
                 testPhone(inputField);
+                break;
+            case "title":
+            case "equipment":
+            case "customer_name":
+            case "customer_phone":
+            case "description":
+                testTextLimit(inputField);
+                break;
+            case "title":
+                case "equipment":
+                case "customer_name":
+                case "customer_phone":
+                case "description":
+                    testTextLimit(inputField);
+                    break;
+            case "was_customer_involved":
+                inputField.addEventListener("change", updateProgressBar);
                 break;
         }
     })
