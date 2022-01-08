@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentPage = window.location.pathname;
 
         // If the page is the account or edit user page
-        if(currentPage.includes("account") || currentPage.includes("edit_user")){
+        if(currentPage.includes("account") || currentPage.includes("edit_user") || currentPage.includes("log_in")){
             // Asses the validity of fields on load
             assessValidityOnLoad(inputFields);
         }
@@ -36,7 +36,7 @@ function assessValidityOnLoad(inputFields){
     inputFields.forEach(inputField => {
         switch(inputField.id){
             case "email":
-                testEmail(inputField);
+                testEmail(inputField, inputFields);
                 break;
             case "first_name":
                 testName(inputField);
@@ -49,6 +49,9 @@ function assessValidityOnLoad(inputFields){
                 break;
             case "phone":
                 testPhone(inputField);
+                break;
+            case "password":
+                testPassword(inputField);
                 break;
         }
     })
@@ -84,6 +87,11 @@ function addListeners(inputFields){
                 inputField.addEventListener("change", (event) => {
                     testPhone(event.target);
                 });
+                break;
+            case "password":
+                inputField.addEventListener("input", (event) => {
+                    testPassword(event.target);
+                })
                 break;
         }
     });
@@ -246,7 +254,14 @@ function testEmail(inputField, inputFields){
     // Check current validity
     let isValid = inputField.checkValidity();
 
-    if(isValid){
+    if(inputField.value === ""){
+        // If input is the only one on the page
+        if (inputFields.length === 1){
+            // Disable the form button
+            updateFormButton(false);
+        }
+
+    } else if (isValid){
         // If Valid
         inputField.setCustomValidity("");
         // clear error message
@@ -274,6 +289,30 @@ function testEmail(inputField, inputFields){
     if ([...document.getElementsByTagName("progress")][0]){
         // Update progress bar
         updateProgressBar();
+    }
+}
+
+function testPassword(inputField){
+    // Ensure old message is cleared
+    inputField.setCustomValidity('');
+
+    // Check current validity
+    let isValid = inputField.checkValidity();
+
+    if (isValid){
+        // clear error message
+        updateFieldDesignToSuccess(inputField);
+        
+        // Enable form submission
+        updateFormButton(true);
+
+    } else if (!isValid){
+
+        // If invalid, display error styling & message
+        updateFieldDesignToError(inputField, "Input is empty, please enter a password.");
+
+        // Disable form submission
+        updateFormButton(false);
     }
 }
 
