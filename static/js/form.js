@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         inputFields.push([...document.getElementsByTagName("textarea")][0]);
     }
 
-    console.log(inputFields);
-
     if (inputFields.length >= 1){
 
         // Add event listeners for each form

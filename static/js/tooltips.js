@@ -80,11 +80,13 @@ function getTooltipDescription(type, currentPage){
         };
     } else if (currentPage.includes("log_in")){
         tooltipDescriptions = {
-            "Email": "Use the email given to you by an admin to sign in." 
+            "Email": "Use the email given to you by an admin to sign in. (For accessor: Credentials are found in project submission)",
+            "Llama Log": "Llama Log is an application that enables colleagues to communicate efficiently & effectively through the use of posts and comments."
         };
     } else if (currentPage.includes("password")){
         tooltipDescriptions = {
-            "Password": "Enter the password you've previously created to sign in." 
+            "Password": "Enter the password you've previously created to sign in.",
+            "Llama Log": "Llama Log is an application that enables colleagues to communicate efficiently & effectively through the use of posts and comments."
         };
     } else if (currentPage.includes("create_post") || currentPage.includes("edit_post")){
 
