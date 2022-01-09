@@ -8,9 +8,9 @@
       <h2 class="title is-size-4 has-text-centered">
         Viewing 
         {% if "equipment" in post %}
-          Work Order
+          Work Order<i class="fas fa-question-circle is-size-5"></i>
         {% else %}
-          Incident
+          Incident<i class="fas fa-question-circle is-size-5"></i>
         {% endif %}
       </h2>
     </div>
@@ -87,7 +87,7 @@
             {% if "equipment" in post %}
               <p class="is-size-7 mb-0">
                 <i>
-                    Equipment: {{ post.equipment }}
+                    Equipment:
                 </i>
               </p>
               <p class="mb-2">
