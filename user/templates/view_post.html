@@ -130,7 +130,7 @@
         </section>
         <footer class="card-footer">
           <div class="card-footer-item is-justify-content-center is-align-items-center">
-            <p class="is-size-7 is-text-primary">
+            <p class="is-size-7">
               {% if post["amount_of_comments"] == 1 %}
                 1 Comment
               {% elif post["amount_of_comments"] > 1 %}
@@ -190,6 +190,12 @@
                   {{ comment.date_created.strftime("%I:%M%p") }}
                   {{ comment.date_created.strftime("%d %b %Y") }}
                 </small>
+              </p>
+              <hr class="my-2">
+              <p class="is-size-7 mb-1">
+                <i>
+                  Comment:
+                </i>
               </p>
               <p>
                 {{ comment.content }}
