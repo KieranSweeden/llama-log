@@ -115,7 +115,6 @@ Looking at the console after clicking the submit form button provided these erro
     An invalid form control with name="customer_name" is not focusable
 
     An invalid form control with name="customer_phone" is not focusable
-
 </code>
 
 I later found [this Stack Overflow post](https://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable) where another user encountered this issue. Although a few of the answers were not applicable to my own problem, [an answer further down the page](https://stackoverflow.com/a/23215333/15607265) by Ankit Sharma provided a light bulb moment.
@@ -133,7 +132,6 @@ An example of the Javascript code is below (this is the code for when fields are
     customerInvolvedFields.forEach(inputField => {
         inputField.required = true;
     });
-
 </code>
 
 #### Bulma dropdown menu sizing issue
@@ -152,7 +150,6 @@ The code that achieved the desired result is below:
     left: -1.5rem;
     right: -1.5rem;
 }
-
 </code>
 
 <hr>
