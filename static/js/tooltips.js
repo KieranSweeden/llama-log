@@ -48,11 +48,11 @@ function insertTooltipStylingAndContent(tooltips){
 }
 
 function getTooltipDescription(type, currentPage){
-
     // Create empty object to store descriptions
     let tooltipDescriptions = {};
 
     if (currentPage.includes("create_user")){
+        // For create new user form
         tooltipDescriptions = {
             "First Name": "The user's first name will be attached to the user's posts & comments.",
             "Last Name": "The user's last name will be attached to the user's posts & comments.",
@@ -62,6 +62,7 @@ function getTooltipDescription(type, currentPage){
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
         };
     } else if (currentPage.includes("edit_user")) {
+        // For edit user form
         tooltipDescriptions = {
             "First Name": "The user's first name will be attached to the user's posts & comments.",
             "Last Name": "The user's last name will be attached to the user's posts & comments.",
@@ -71,6 +72,7 @@ function getTooltipDescription(type, currentPage){
             "Provide this user with admin credentials": "If checked, this user will be able to edit/delete all posts, comments & user accounts."
         };
     } else if (currentPage.includes("account")) {
+        // For account page
         tooltipDescriptions = {
             "First Name": "Your first name will be attached to the user's posts & comments.",
             "Last Name": "Your last name will be attached to the user's posts & comments.",
@@ -79,11 +81,13 @@ function getTooltipDescription(type, currentPage){
             "Email": "You will need an email to sign in to Llama Log."
         };
     } else if (currentPage.includes("log_in")){
+        // For log in page if user visits it rather than default routed to it
         tooltipDescriptions = {
             "Email": "Use the email given to you by an admin to sign in. (For accessor: Credentials are found in project submission)",
             "Llama Log": "Llama Log is an application that enables colleagues to communicate efficiently & effectively through the use of posts and comments."
         };
     } else if (currentPage.includes("password")){
+        // For password page
         tooltipDescriptions = {
             "Password": "Enter the password you've previously created to sign in.",
             "Llama Log": "Llama Log is an application that enables colleagues to communicate efficiently & effectively through the use of posts and comments."
@@ -94,12 +98,14 @@ function getTooltipDescription(type, currentPage){
         let formType = ([...document.getElementsByTagName("h2")][0].innerText.includes("Work Order")) ? "Work Order" : "Incident";
 
         if (formType === "Work Order"){
+            // For work order forms
             tooltipDescriptions = {
                 "Title": "Provide a brief title for the work order post. (Limit: 50 Characters)", 
                 "Equipment": "Insert what equipment the work order is for. (Limit: 50 Characters)", 
                 "Description": "Provide a detailed description of the work order. (Limit: 500 Characters)" 
             };
         } else if (formType === "Incident"){
+            // For incident forms
             tooltipDescriptions = {
                 "Title": "Provide a brief title for the incident post. (Limit: 50 Characters)", 
                 "Was A Customer Involved?": "If a customer was involved in any way, select yes.",
@@ -109,8 +115,15 @@ function getTooltipDescription(type, currentPage){
             };
         }
     } else if (currentPage.includes("view_post") || currentPage.includes("update_comment")){
+        // For pages containing comments
         tooltipDescriptions = {
             "Comment": "Insert a comment to the post currently being viewed. (Limit: 250 Character)"
+        };
+    } else {
+        // For default log in route when opening application
+        tooltipDescriptions = {
+            "Email": "Use the email given to you by an admin to sign in. (For accessor: Credentials are found in project submission)",
+            "Llama Log": "Llama Log is an application that enables colleagues to communicate efficiently & effectively through the use of posts and comments."
         };
     }
 
