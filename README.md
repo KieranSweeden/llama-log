@@ -6,7 +6,51 @@ Llama Log is a CRUD web application that provides colleague's the ability to kee
 
 [Link to deployment of Llama Log](https://llama-log.herokuapp.com/).
 
+<hr>
+
 ## Contents
+
+* [UX Design](#ux-design)
+    + [Strategy](#strategy)
+        - [The Problem](#the-problem)
+        - [The Costs](#the-costs)
+        - [The Solution](#the-solution)
+        - [The Difference](#the-difference)
+        - [User Goals](#user-goals)
+        - [Business Goals](#business-goals)
+        - [Opportunities](#opportunities)
+    + [Scope](#scope)
+        - [User Requirements](#user-requirements)
+        - [User Stories](#user-stories)
+        - [Current Features](#current-features)
+        - [Future Features](#future-features)
+    + [Structure](#structure)
+        - [External Pages](#external-pages)
+        - [Internal Pages](#internal-pages)
+        - [Database Schema](#database-schema)
+    + [Skeleton](#skeleton)
+        - [Wireframes](#wireframes)
+            * [Mobile](#mobile)
+            * [Tablet](#tablet)
+            * [Desktop](#desktop)
+    + [Surface](#surface)
+        - [Visual Language](#visual-language)
+            * [Colour](#colour)
+            * [Typography](#typography)
+            * [Imagery & Identity](#imagery---identity)
+* [Technology](#technology)
+    + [Languages](#languages)
+    + [Frameworks & Libraries](#frameworks---libraries)
+    + [Applications](#applications)
+* [Testing](#testing)
+* [Deployment](#deployment)
+    + [Deployment Procedure](#deployment-procedure)
+    + [Fork this Repository](#fork-this-repository)
+    + [Clone this Repository](#clone-this-repository)
+* [Credits](#credits)
+    + [Resources](#resources)
+    + [Code](#code)
+* [Acknowledgements](#acknowledgements)
 
 <hr>
 
@@ -742,6 +786,9 @@ The following applications were utilised during the development of Llama Log:
 
 - [Regexr](https://regexr.com/)
     - Regexr was utilised to test regular expressions utilised by Llama Log.
+
+- [GitHub Wiki TOC generator](https://ecotrust-canada.github.io/markdown-toc/)
+    - This table of contents generator was used to create a table of contents for this README.md and the TESING.md file.
 
 [Return to Contents &#8679;](#Contents)
 
