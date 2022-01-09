@@ -136,6 +136,27 @@ An example of the Javascript code is below (this is the code for when fields are
 
 </code>
 
+#### Bulma dropdown menu sizing issue
+
+After user testing was done, I immediately started integrating ways to communicate better the difference between a Work Order & an Incident.
+
+The one I was happy with was simply adding some partially faded text next to the Work Order & Incident labels within the dropdown menu. However the problem this provided was that the dropdown was partially being displayed outside of the viewport on smaller mobile devices due to it's width being increased and it starting alongside the dropdown trigger button. The desired result for this would be to center the dropdown menu underneath the dropdown trigger.
+
+I struggled to find a way in order to achieve this, however after viewing [this Stack Overflow answer](https://stackoverflow.com/a/48285817/15607265), it gave the idea to use left & right CSS properties with negative values in order to achieve the desired result.
+
+The code that achieved the desired result is below:
+
+<code>
+
+    .dropdown .dropdown-menu {
+    left: -1.5rem;
+    right: -1.5rem;
+}
+
+</code>
+
+<hr>
+
 ## User Testing
 
 To test the user friendliness of Llama Log, I gave a family member (whom I will call tester within this chapter) a series of tasks to complete. While they were attempting to complete said tasks, I assessed how they interacted with Llama Log, in order to see how effective the UI is.
