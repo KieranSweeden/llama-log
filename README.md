@@ -4,7 +4,7 @@
 
 -- Am I Responsive image demonstrating app responsiveness
 
--- Link to heroku deployment of application
+[Link to deployment of Llama Log]().
 
 ## Contents
 
@@ -869,6 +869,9 @@ To clone this GitHub repository (or your previously forked copy), do as follows:
 
 - [3 Ways to Convert String to Dictionary in Python](https://favtutor.com/blogs/string-to-dict-python)
     - This article was where I found out how to use the ast.literal.eval() method, which converts strings to dictionaries.
+
+- [The HTML5 progress Element](https://css-tricks.com/html5-progress-element/)
+    - This CSS Tricks article was tremendously helpful in understanding how to style the progress bar for various browsers.
 
 ### Code
 
