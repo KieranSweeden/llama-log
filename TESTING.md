@@ -136,3 +136,37 @@ An example of the Javascript code is below (this is the code for when fields are
 
 </code>
 
+## User Testing
+
+To test the user friendliness of Llama Log, I gave a family member (whom I will call tester within this chapter) a series of tasks to complete. While they were attempting to complete said tasks, I assessed how they interacted with Llama Log, in order to see how effective the UI is.
+
+The tester happens to be a line manager within their place of work. I believe this makes their opinion significantly more valuable, as they often have to assist fellow colleagues in operating productivity programs & hardware equipment within the workplace.
+
+Similar to a colleague being given an email in order to sign in by their line manager or administrator of some kind, I gave the tester an email for them to sign in with. When signed in with their own password, they're then tasked in completing the following:
+
+- Create an incident post.
+- Update the existing post.
+- Comment on an existing post.
+- Edit the comment they previously made.
+- Delete the comment they previously made.
+- Update their mobile number within their account.
+- Reset their password & create a new one.
+- Find posts that relate to a fridge within the workplace.
+
+I was pleased to find that in terms of completing these tasks, the tester had no problem with them. They did however raise some interesting & useful concerns.
+
+- One was the lack of clarity between Work Orders & Incidents. The tester believed the lines were blurred between the two and as a user, it was hard to decide which option to go for. An example they provided was the case in which a customer falls into an appliance such as a product fridge and breaks the glass. A work order will need to be made as a piece of equipment is broken, however it also involves a customer.
+
+    - Taking this advice onboard, I got added some additional text for each option within the "Create New Post" dropdown list. Making it clear that work orders relate to equipment and incidents are staff & customer related.
+
+- Another minor concern was the icon used to signify an incident. Originally it was two speech bubbles colliding, which has a conversational feel which incidents do often initiate. The tester disagreed and preferred the idea of using an exclamation mark contained within a circle. They believed the exclamation mark related to the idea of incidents more than the original speech bubble icon.
+
+    - I took this advice onboard and changed the icon for signifying an incident to an exclamation mark. Upon looking at the final result in looking at the feed page & incident post as a whole, I believe this to the correct option.
+
+- A feature the tester assumed that would be integrated was an archive, where posts can be put away and looked at when needed in the future. This was on the agenda for future releases and their assumption is a clear indicator that this feature is worth integrating within a future release of Llama Log.
+
+To conclude, despite the tester not being involved within the industry that Llama Log is targetting, their advice & experience with Llama Log was tremendously useful. It made clear that some of my assumptions regarding how comfortable the end user would be in interacting with Llama Log were wrong. This meant adding further guidance with the use of tooltips & error messages would be vital in providing confidence for the end user when using Llama Log. 
+
+
+
+
