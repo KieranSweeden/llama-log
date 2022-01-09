@@ -936,6 +936,9 @@ To clone this GitHub repository (or your previously forked copy), do as follows:
 - [Form Validation Part II - JS and the Constraint Validation API Video](https://www.youtube.com/watch?v=D9JHizCAx8U)
     - This video by [Steve Griffith](https://www.youtube.com/channel/UCTBGXCJHORQjivtgtMsmkAQ) was really useful as it simplified the Constraint Validation API. This made me comfortable in using the API and motivated me to further my understanding by looking at the MDN Web Docs webpages regarding it.
 
+- [The backslash is redundant between brackets (E502)](https://www.flake8rules.com/rules/E502.html)
+    -  This provided great use as during the testing procedures, I encountered an issue where pep8 wanted lines less than 80 characters without backslashes due to redundancy. Using the method provided below, I was able to fix the minor issue.
+
 - [Flask Documentation](https://flask.palletsprojects.com/en/2.0.x/)
     - Flask's own documentation was particularly useful in furthering my understanding of using methods within HTML templates using Jinja's syntax.
 
