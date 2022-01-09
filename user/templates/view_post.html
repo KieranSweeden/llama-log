@@ -36,9 +36,9 @@
                   <i class="fas fa-tools ml-0 mr-2"></i>
                 {% else %}
                 <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
-                {% endif %}
-                {{ post.title }}
-              </h3>
+              {% endif %}
+              {{ post.title }}
+            </h3>
             {% if post.author_id == session["user_id"] %}
             <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
@@ -84,6 +84,26 @@
         </header>
         <section class="card-content p-4">
           <div class="content">
+            {% if "equipment" in post %}
+              <p class="is-size-7">
+                <i>
+                    Equipment: {{ post.equipment }}
+                </i>
+              </p>
+            {% else %}
+              {% if "customer_name" in post %}
+                <p class="is-size-7 mb-2">
+                  <i>
+                    Customer: {{ post.customer_name }}
+                  </i>
+                </p>
+                <p class="is-size-7 mb-2">
+                  <i>
+                    Phone: {{post.customer_phone}}
+                  </i>
+                </p>
+              {% endif %}
+            {% endif %}
             <p class="add-text-overflow-cutoff">{{ post.description }}</p>
           </div>
         </section>

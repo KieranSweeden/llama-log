@@ -212,6 +212,14 @@ function displayCustomerIncidentFields(){
   // Grab customer involved field container
   let customerFieldsContainer = document.getElementById("customer-involved-fields");
 
+  // Grab customer involved input fields
+  let customerInvolvedFields = [...customerFieldsContainer.getElementsByTagName("input")];
+
+  // Add required attribute to each input field
+  customerInvolvedFields.forEach(inputField => {
+    inputField.required = true;
+  });
+
   // Remove is-hidden class so fields are displayed to user
   customerFieldsContainer.classList.remove("is-hidden");
 }
@@ -219,6 +227,14 @@ function displayCustomerIncidentFields(){
 function removeCustomerIncidentFields(){
   // Grab customer involved field container
   let customerFieldsContainer = document.getElementById("customer-involved-fields");
+
+  // Grab customer involved input fields
+  let customerInvolvedFields = [...customerFieldsContainer.getElementsByTagName("input")];
+
+  // Add required attribute to each input field
+  customerInvolvedFields.forEach(inputField => {
+    inputField.required = false;
+  });
 
   // Add is-hidden class so fields are displayed to user
   customerFieldsContainer.classList.add("is-hidden");
