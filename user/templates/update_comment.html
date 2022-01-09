@@ -78,32 +78,47 @@
         <section class="card-content p-4">
           <div class="content">
             {% if "equipment" in post %}
-              <p class="is-size-7">
+              <p class="is-size-7 mb-0">
                 <i>
                     Equipment: {{ post.equipment }}
                 </i>
               </p>
+              <p class="mb-2">
+                {{ post.equipment }}
+              </p>
             {% else %}
               {% if post["customer_name"] != "" %}
-                <p class="is-size-7 mb-2">
+                <p class="is-size-7 mb-0">
                   <i>
-                    Customer: {{ post.customer_name }}
+                    Customer:
                   </i>
                 </p>
-                <p class="is-size-7 mb-2">
+                <p class="mb-2">
+                    {{ post.customer_name }}
+                </p>
+                <p class="is-size-7 mb-0">
                   <i>
-                    Phone: {{post.customer_phone}}
+                    Phone:
                   </i>
+                </p>
+                <p class="mb-2">
+                  {{post.customer_phone}}
                 </p>
                 {% else %}
-                <p class="is-size-7 mb-2">
+                <p class="is-size-7 mb-0">
                   <i>
                     No Customers Involved
                   </i>
                 </p>
               {% endif %}
             {% endif %}
-            <p class="add-text-overflow-cutoff">{{ post.description }}</p>
+            <hr>
+            <p class="is-size-7 mb-0">
+              <i>
+                Description:
+              </i>
+            </p>
+            <p>{{ post.description }}</p>
           </div>
         </section>
         <footer class="card-footer">
