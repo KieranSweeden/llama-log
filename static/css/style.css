@@ -1,6 +1,6 @@
 :root {
     --primary-color: hsla(178, 75%, 20%, 1);
-    --faded-primary-color: hsla(178, 75%, 20%, 0.85);
+    --faded-primary-color: hsla(178, 75%, 20%, 0.9);
     --white-color: hsla(0, 0%, 98%, 1);
     --danger-color: hsla(354, 70%, 25%, 1);
     --faded-danger-color: hsla(354, 70%, 25%, 0.9);
@@ -52,7 +52,7 @@ main.container > .columns {
 }
 
 .message-danger {
-    background-color: var(--danger-color);
+    background-color: var(--faded-danger-color);
 }
 
 /* Buttons */
