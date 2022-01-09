@@ -30,7 +30,7 @@
   <div class="columns is-marginless animate__animated animate__fadeIn">
     <div class="column is-8 is-offset-2">
       <article class="card">
-        <header class="card-header {% if 'equipment' in post %} has-background-link {% else %} has-background-success {% endif %}">
+        <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-work-order {% endif %}">
             <h3 class="card-header-title has-text-white-bis">
               {% if "equipment" in post %}
                   <i class="fas fa-tools ml-0 mr-2"></i>
@@ -102,7 +102,7 @@
           <div class="card-footer-item is-justify-content-center is-align-items-center">
             <p class="is-size-7">By: {{ post.author_name }}</p>
           </div>
-          <div class="card-footer-item">
+          <div class="card-footer-item column-mobile">
             <time class="mr-2 is-size-7">
               {{ post.date_created.strftime("%I:%M%p") }}
             </time>
@@ -119,22 +119,26 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Are You Sure?</p>
+          <p class="modal-card-title"><i class="fas fa-exclamation-triangle"></i>Are You Sure?</p>
           <button class="delete close-modal" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
-          <p>Deleting a post will also remove the comments associated with it.</p>
+          <p>The content within this post could be valuable to you or colleague's during future workplace problems.</p>
+          <hr>
+          <div class="message-body message-danger has-text-white">
+            <p><i class="fas fa-exclamation-triangle"></i>Deleting a post will also remove the comments associated with it.</p>
+          </div>
         </section>
         <footer class="modal-card-foot is-justify-content-end">
           <div class="buttons">
-            <button class="button close-modal my-0">Cancel</button>
-            <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-success my-0">Delete Post</a>
+            <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
+            <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-danger my-0">Delete Post<i class="fas fa-trash-alt"></i></a>
           </div>
         </footer>
       </div>
     </div>
+
     {% for comment in post_comments %}
-    
     <div class="columns is-marginless animate__animated animate__fadeIn">
       <div class="column is-8 is-offset-2">
         <article class="card">
@@ -187,7 +191,7 @@
         <footer class="modal-card-foot is-justify-content-end">
           <div class="buttons">
             <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
-            <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" class="button is-danger my-0">Delete Comment</a>
+            <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" class="button is-danger my-0">Delete Comment<i class="fas fa-trash-alt"></i></a>
           </div>
         </footer>
       </div>

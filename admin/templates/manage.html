@@ -55,19 +55,20 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                <p class="modal-card-title">Are You Sure?</p>
+                <p class="modal-card-title"><i class="fas fa-exclamation-triangle"></i>Are You Sure?</p>
                 <button class="delete close-modal" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
                 <p>When this user's password is reset, they will have to create a new one when they next sign in.</p>
-                    <div class="message-body has-background-dark has-text-white">
-                        <p class="is-warning">It's important to notify the user of this change.</p>
+                <hr>
+                    <div class="message-body message-danger has-text-white">
+                        <p><i class="fas fa-exclamation-triangle"></i>It's important to notify the user of this change, as they'll need to create a new password.</p>
                     </div>
                 </section>
                 <footer class="modal-card-foot is-justify-content-end">
                 <div class="buttons">
-                    <button class="button close-modal my-0">Cancel</button>
-                    <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-warning my-0">Reset Password<i class="fas fa-key"></i></a>
+                    <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
+                    <a href="{{ url_for('admin.reset_password', user_id=user._id) }}" class="button is-danger my-0">Reset Password<i class="fas fa-key"></i></a>
                 </div>
                 </footer>
             </div>
@@ -77,19 +78,20 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                <p class="modal-card-title">Are You Sure?</p>
+                <p class="modal-card-title"><i class="fas fa-exclamation-triangle"></i>Are You Sure?</p>
                 <button class="delete close-modal" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                <p>Deleting a user's account will mean the user can no longer sign in.</p>
-                <div class="message-body has-background-dark has-text-white">
-                    <p class="is-warning">Note: The author field of this user's posts and comments will be replaced with "Deleted User".</p>
+                <p>Deleting a user's account is permanent meaning the user would no longer be able to sign in.</p>
+                <hr>
+                <div class="message-body message-danger has-text-white">
+                    <p><i class="fas fa-exclamation-triangle"></i>The author field within this user's posts and comments will be replaced with "Deleted User".</p>
                 </div>
                 </section>
                 <footer class="modal-card-foot is-justify-content-end">
                 <div class="buttons">
-                    <button class="button close-modal my-0">Cancel</button>
-                    <a href="{{ url_for('admin.delete_user', user_id=user._id) }}" class="button is-success my-0">Delete User</a>
+                    <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
+                    <a href="{{ url_for('admin.delete_user', user_id=user._id) }}" class="button is-danger my-0">Delete User<i class="fas fa-trash-alt"></i></a>
                 </div>
                 </footer>
             </div>
