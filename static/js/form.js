@@ -60,7 +60,7 @@ function assessValidityOnLoad(inputFields){
             case "equipment":
             case "customer_name":
             case "description":
-                testTextLimit(inputField);
+                testTextLimit(inputField, inputFields);
                 break;
             case "was_customer_involved":
                 inputField.addEventListener("change", updateProgressBar);
@@ -124,6 +124,7 @@ function addListeners(inputFields){
 }
 
 function testTextLimit(inputField, inputFields){
+
     if (inputField.checkValidity()) {
         inputField.setCustomValidity("");
         // If user input is valid, ensure error message is clear

@@ -30,7 +30,7 @@
   <div class="columns is-marginless animate__animated animate__fadeIn">
     <div class="column is-8 is-offset-2">
       <article class="card">
-        <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-work-order {% endif %}">
+        <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-incident {% endif %}">
             <h3 class="card-header-title has-text-white-bis">
               {% if "equipment" in post %}
                   <i class="fas fa-tools ml-0 mr-2"></i>
@@ -84,6 +84,15 @@
         </header>
         <section class="card-content p-4">
           <div class="content">
+            <p class="is-size-7 mb-0 has-text-right">
+              <i>
+                {% if "equipment" in post %}
+                  Work Order
+                {% else %}
+                  Incident
+                {% endif %}
+              </i>
+            </p>
             {% if "equipment" in post %}
               <p class="is-size-7 mb-0">
                 <i>

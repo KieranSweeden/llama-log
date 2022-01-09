@@ -47,7 +47,7 @@
             </span>
           </div>
           <div class="control">
-            <button type="submit" class="button is-rounded is-info">
+            <button type="submit" class="button is-rounded is-primary">
               Search
             </button>
           </div>
@@ -67,7 +67,7 @@
         <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
           <div class="column is-8 is-offset-2">
             <article class="card">
-              <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-work-order {% endif %}">
+              <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-incident {% endif %}">
                 <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
                   <h3 class="card-header-title has-text-white">
                     {% if "equipment" in post %}
@@ -117,6 +117,15 @@
               </header>
               <section class="card-content p-4">
                 <div class="content">
+                  <p class="is-size-7 mb-0 has-text-right">
+                    <i>
+                      {% if "equipment" in post %}
+                        Work Order
+                      {% else %}
+                        Incident
+                      {% endif %}
+                    </i>
+                  </p>
                   <p class="add-text-overflow-cutoff">{{ post.description }}</p>
                 </div>
               </section>
