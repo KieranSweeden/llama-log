@@ -1,8 +1,9 @@
 :root {
     --primary-color: hsla(178, 75%, 20%, 1);
-    --faded-primary-color: hsla(178, 75%, 20%, 0.9);
+    --faded-primary-color: hsla(178, 75%, 20%, 0.85);
     --white-color: hsla(0, 0%, 98%, 1);
     --danger-color: hsla(354, 70%, 25%, 1);
+    --faded-danger-color: hsla(354, 70%, 25%, 0.9);
     --transparent-white-color: hsla(0, 0%, 98%, 0.8);
     --transition-speed: 300ms;
 }
@@ -81,6 +82,19 @@ main.container > .columns {
     background-color: var(--danger-color);
 }
 
+/* Input styling */
+
+.is-success.input:active,
+.is-success.input:focus,
+.is-success.is-active.input,
+.is-success.is-active.textarea,
+.is-success.is-focused.input,
+.is-success.is-focused.textarea,
+.is-success.textarea:active,
+.is-success.textarea:focus {
+    box-shadow: 0 0 0 .125em var(--primary-color);
+}
+
 /* Navbar */
 
 .navbar,
@@ -141,6 +155,30 @@ article.message.is-danger {
     position: fixed;
     bottom: -0.5rem;
     right: 1rem;
+}
+
+article.message.is-success {
+    background-color: var(--faded-primary-color);
+}
+
+article.message.is-success .message-header {
+    background-color: var(--primary-color);
+}
+
+article.message.is-success .message-body {
+    color: var(--white-color);
+}
+
+article.message.is-danger {
+    background-color: var(--faded-danger-color);
+}
+
+article.message.is-danger .message-header {
+    background-color: var(--danger-color);
+}
+
+article.message.is-danger .message-body {
+    color: var(--white-color);
 }
 
 @media screen and (max-width: 576px){
