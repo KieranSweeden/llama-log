@@ -873,6 +873,9 @@ To clone this GitHub repository (or your previously forked copy), do as follows:
 - [The HTML5 progress Element](https://css-tricks.com/html5-progress-element/)
     - This CSS Tricks article was tremendously helpful in understanding how to style the progress bar for various browsers.
 
+- [Add a property to a JavaScript object using a variable as the name?](https://stackoverflow.com/questions/695050/add-a-property-to-a-javascript-object-using-a-variable-as-the-name)
+    - No code was directly taken from this source, however the idea concept [found here](https://stackoverflow.com/a/695053/15607265) proved to be useful in finding a way to add a tooltip for the edit user title.
+
 ### Code
 
 - [Clamp.js](https://github.com/josephschmitt/Clamp.js)
