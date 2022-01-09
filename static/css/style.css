@@ -2,8 +2,11 @@
     --primary-color: hsla(178, 75%, 20%, 1);
     --faded-primary-color: hsla(178, 75%, 20%, 0.9);
     --white-color: hsla(0, 0%, 98%, 1);
-    --danger-color: hsla(354, 70%, 25%, 1);
-    --faded-danger-color: hsla(354, 70%, 25%, 0.9);
+    --black-color: hsla(0, 0%, 12%, 1);
+    --danger-color: hsla(353, 56%, 40%, 1);
+    --faded-danger-color: hsla(353, 56%, 40%, 0.9);
+    --warning-color: hsla(51, 100%, 56%, 1);
+    --faded-warning-color: hsla(51, 100%, 56%, 0.75);
     --work-order-color: hsla(241, 27%, 44%, 1);
     --incident-color: hsla(197, 100%, 32%, 1);
     --transparent-white-color: hsla(0, 0%, 98%, 0.8);
@@ -13,6 +16,7 @@
 body {
     font-family: 'Lexend', sans-serif;
     height: 100vh;
+    color: var(--black-color);
 }
 
 /* Utilities */
@@ -48,6 +52,10 @@ main.container > .columns {
     height: 0.5rem;
 }
 
+p.help.is-danger {
+    color: var(--danger-color);
+}
+
 .fas,
 .far {
     margin-left: .25rem;
@@ -58,6 +66,10 @@ main.container > .columns {
 }
 
 /* Buttons */
+
+button {
+    font-family: 'Lexend', sans-serif;
+}
 
 .button.is-primary {
     background-color: var(--primary-color);
@@ -72,9 +84,16 @@ main.container > .columns {
 }
 
 .button.is-warning {
-    background-color: hsla(51, 80%, 60%, 1);
-    font-weight: bold;
+    background-color: var(--warning-color);
+    color: var(--black-color);
 }
+
+.button.is-warning:active,
+.button.is-warning:hover {
+    background-color: var(--faded-warning-color);
+    color: var(--black-color);
+}
+
 
 .button.is-info {
     background-color: hsla(213, 50%, 56%, 1);
@@ -82,19 +101,22 @@ main.container > .columns {
 
 .button.is-danger {
     background-color: var(--danger-color);
+    color: var(--white-color);
 }
 
-/* Input styling */
+.button.is-danger:active,
+.button.is-danger:hover {
+    background-color: var(--faded-danger-color);
+    color: var(--white-color);
+}
 
-.is-success.input:active,
-.is-success.input:focus,
-.is-success.is-active.input,
-.is-success.is-active.textarea,
-.is-success.is-focused.input,
-.is-success.is-focused.textarea,
-.is-success.textarea:active,
-.is-success.textarea:focus {
-    box-shadow: 0 0 0 .125em var(--primary-color);
+.button.is-link.is-active,
+.button.is-link:active,
+.button.is-link:hover,
+.button.is-primary:hover,
+.button.is-primary:active {
+    color: var(--white-color);
+    background-color: var(--faded-primary-color);
 }
 
 /* Navbar */
@@ -289,6 +311,18 @@ header.has-background-info {
 progress[value]::-webkit-progress-value {
     background: var(--primary-color);
 
+}
+
+.is-danger.input {
+    border-color: var(--danger-color);
+}
+
+i.has-text-danger {
+    color: var(--danger-color) !important;
+}
+
+i.has-text-success {
+    color: var(--primary-color) !important;
 }
 
 /* Footer styling */

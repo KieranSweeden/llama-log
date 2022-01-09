@@ -84,7 +84,7 @@
         </header>
         <section class="card-content p-4">
           <div class="content">
-            <p class="is-size-7 mb-0 has-text-right">
+            <p class="is-size-7 mb-1 has-text-right">
               <i>
                 {% if "equipment" in post %}
                   Work Order
@@ -221,10 +221,10 @@
                     <a href="{{ url_for('user.update_comment', comment_id=comment._id) }}" class="button is-ghost edit-btn m-0 px-2">
                       Edit
                     </a>
-                    <button class="button delete-btn is-ghost m-0 px-2" data-modal="{{ comment._id }}">
+                    <button class="button delete-btn has-text-danger-dark is-ghost m-0 px-2" data-modal="{{ comment._id }}">
                       Delete</button>
                   {% elif comment.author != session["user_id"] and user.is_admin == True %}
-                    <button class="button delete-btn is-ghost m-0 px-2" data-modal="{{ comment._id }}">
+                    <button class="button delete-btn has-text-danger-dark is-ghost m-0 px-2" data-modal="{{ comment._id }}">
                       Delete</button>
                   {% endif %}
                 </div>
