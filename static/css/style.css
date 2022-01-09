@@ -224,6 +224,11 @@ article.message.is-danger .message-body {
 
 /* Feed page */
 
+.dropdown .dropdown-menu {
+    left: -1.5rem;
+    right: -1.5rem;
+}
+
 .header-link {
     width: 100%;
 }

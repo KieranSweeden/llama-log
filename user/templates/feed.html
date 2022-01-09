@@ -14,7 +14,7 @@
   <div class="columns is-marginless pt-3">
     <div class="column is-12">
         <div class="buttons is-centered">
-          <div class="dropdown is-right">
+          <div class="dropdown">
             <div class="dropdown-trigger">
               <button class="button is-primary" aria-haspopup="true" aria-controls="create-post-option">
                 <span>Create New Post</span>
@@ -25,9 +25,9 @@
             </div>
             <div class="dropdown-menu" id="create-post-option" role="menu">
               <div class="dropdown-content">
-                <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order<i class="fas fa-tools"></i></a>
+                <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order<i class="fas fa-tools"></i><span class="has-text-grey"> (Equipment)</span></a>
                 <hr class="dropdown-divider">
-                <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident<i class="fas fa-exclamation-circle"></i></a>
+                <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident<i class="fas fa-exclamation-circle"></i><span class="has-text-grey"> (Staff, Customers)</span></a>
               </div>
             </div>
           </div>
