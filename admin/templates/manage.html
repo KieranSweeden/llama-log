@@ -34,6 +34,13 @@
                     <div class="card-content">
                         <div class="content">
                             <h3 class="is-size-5">{{ user.first_name }} {{ user.last_name }}</h3>
+                            <p class="is-size-6"><i>
+                                {% if user["is_admin"] == True %}
+                                    Administrator
+                                {% else %}
+                                    Colleague
+                                {% endif %}
+                            </i></p>
                         </div>
                     </div>
                     <footer class="card-footer">
