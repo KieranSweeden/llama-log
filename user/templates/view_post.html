@@ -91,7 +91,7 @@
                 </i>
               </p>
             {% else %}
-              {% if "customer_name" in post %}
+              {% if post["customer_name"] != "" %}
                 <p class="is-size-7 mb-2">
                   <i>
                     Customer: {{ post.customer_name }}
@@ -100,6 +100,12 @@
                 <p class="is-size-7 mb-2">
                   <i>
                     Phone: {{post.customer_phone}}
+                  </i>
+                </p>
+                {% else %}
+                <p class="is-size-7 mb-2">
+                  <i>
+                    No Customers Involved
                   </i>
                 </p>
               {% endif %}

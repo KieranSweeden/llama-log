@@ -53,12 +53,12 @@ function assessValidityOnLoad(inputFields){
                 testDate(inputField);
                 break;
             case "phone":
+            case "customer_phone":
                 testPhone(inputField);
                 break;
             case "title":
             case "equipment":
             case "customer_name":
-            case "customer_phone":
             case "description":
                 testTextLimit(inputField);
                 break;
@@ -92,7 +92,8 @@ function addListeners(inputFields){
                 });
                 break;
             case "phone":
-                inputField.addEventListener("change", (event) => {
+            case "customer_phone":
+                inputField.addEventListener("input", (event) => {
                     testPhone(event.target);
                 });
                 break;
@@ -109,7 +110,6 @@ function addListeners(inputFields){
             case "title":
             case "equipment":
             case "customer_name":
-            case "customer_phone":
             case "description":
             case "content":
                 inputField.addEventListener("input", (event) => {

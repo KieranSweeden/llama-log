@@ -120,9 +120,9 @@ Looking at the console after clicking the submit form button provided these erro
 
 I later found [this Stack Overflow post](https://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable) where another user encountered this issue. Although a few of the answers were not applicable to my own problem, [an answer further down the page](https://stackoverflow.com/a/23215333/15607265) by Ankit Sharma provided a light bulb moment.
 
-It then came to me that although the input fields were hidden from the user, they were still present within the DOM and required in order to submit the form. To fix this issue, I wrote some Javascript that removed & added the required attribute to these inputs dynamically depending on the status of the customer involved radio buttons.
+It then came to me that although the input fields were hidden from the user, they were still present within the DOM and were required in order to submit the form. To fix this issue, I wrote some Javascript that removed & added the required attribute to these inputs dynamically depending on the status of the customer involved radio buttons.
 
-An example of the Javascript code is below (this is the code for when fields are enabled, the code for disabling is the same but reversed):
+An example of the Javascript code is below (this is the code for when fields are enabled, the code for disabling is the same but reversed where required = false):
 
 <code>
 
