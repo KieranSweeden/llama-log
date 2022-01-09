@@ -183,7 +183,29 @@ I was pleased to find that in terms of completing these tasks, the tester had no
 
 - A feature the tester assumed that would be integrated was an archive, where posts can be put away and looked at when needed in the future. This was on the agenda for future releases and their assumption is a clear indicator that this feature is worth integrating within a future release of Llama Log.
 
-To conclude, despite the tester not being involved within the industry that Llama Log is targetting, their advice & experience with Llama Log was tremendously useful. It made clear that some of my assumptions regarding how comfortable the end user would be in interacting with Llama Log were wrong. This meant adding further guidance with the use of tooltips & error messages would be vital in providing confidence for the end user when using Llama Log. 
+To conclude, despite the tester not being involved within the industry that Llama Log is targetting, their advice & experience with Llama Log was tremendously useful. It made clear that some of my assumptions regarding how comfortable the end user would be in interacting with Llama Log were wrong. This meant adding further guidance with the use of tooltips & error messages would be vital in providing confidence for the end user when using Llama Log.
+
+## File Validation
+
+Below are all the validation procedures taken for each Python, JavaScript, CSS & HTML files.
+
+### Python Files
+
+The validator used in order to validate Llama Log's python files was [PEP8 online](http://pep8online.com/).
+
+- app.py 🗸
+
+    - The main error & warning codes given by the validator regarding the app.py file were relating to trailing whitespace & lines being too long.
+    - However one unique problem I had encountered was an E711 error, where PEP8 prefers the use of "is not" rather than "!=". After changing "!=" to "is not" within the code, the problem was resolved.
+    <img src="readme/testing/validator-python-app.png">
+
+
+### JavaScript Files
+
+
+### CSS File
+
+### HTML Template Files
 
 
 
