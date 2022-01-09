@@ -131,8 +131,11 @@ In order to help both employee's and businesses achieve their respective goals, 
 
 The features listed below don't directly tackle the problems Llama Log is attempting to resolve, therefore they will not make it into the MVP of Llama Log. Given that they would enhance the usability of Llama Log however, they will be implemented within a future release of the application.
 
+- The About Us page was unfortunately exempt from making it to the initial release of Llama Log due to time contraints and not being of major importance to the application's functionality. Considering this is a major part of information current users & potential users of the features & usefulness of Llama Log, this should be integrated into Llama Log when possible.
+- Add an additional "search by date" filter within the feed page.
 - A database query page that allows admins to compile mass sums of data taken from posts employee's have made, which could be of use to other sectors within the business.
 - Post history page, that presents the history of a post. This allows users to see previous iterations of a post if it's been edited on multiple occasions.
+- A post archive, where general users are able to look at posts within the companies past and clear the current feed of potentially irrelevant posts.
 
 [Return to Contents &#8679;](#Contents)
 
@@ -737,6 +740,9 @@ The following applications were utilised during the development of Llama Log:
 - [GitHub](https://github.com/)
     - GitHub was used as a version control platform.
 
+- [Regexr](https://regexr.com/)
+    - Regexr was utilised to test regular expressions utilised by Llama Log.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
@@ -875,6 +881,27 @@ To clone this GitHub repository (or your previously forked copy), do as follows:
 
 - [Add a property to a JavaScript object using a variable as the name?](https://stackoverflow.com/questions/695050/add-a-property-to-a-javascript-object-using-a-variable-as-the-name)
     - No code was directly taken from this source, however the idea concept [found here](https://stackoverflow.com/a/695053/15607265) proved to be useful in finding a way to add a tooltip for the edit user title.
+
+- [Flask Tutorials](https://www.youtube.com/playlist?list=PLzMcBGfZo4-n4vJJybUVV3Un_NFS5EOgX)
+    - This playlist of video's were really useful in furthering my understanding of how Flask works and how to deploy it using Heroku. Despite finding the Code Institute course material useful, seeing another programmer's take on the framework gave additional context and furthered my understanding of it.
+    - This playlist also introduced me to concept of Blueprint's within Flask, that weren't present within the Code Institute materal. I found this to be useful as I was able to seperate files based on how they related to one another.
+
+- [Form Validation Part II - JS and the Constraint Validation API Video](https://www.youtube.com/watch?v=D9JHizCAx8U)
+    - This video by [Steve Griffith](https://www.youtube.com/channel/UCTBGXCJHORQjivtgtMsmkAQ) was really useful as it simplified the Constraint Validation API. This made me comfortable in using the API and motivated me to further my understanding by looking at the MDN Web Docs webpages regarding it.
+
+- [Flask Documentation](https://flask.palletsprojects.com/en/2.0.x/)
+    - Flask's own documentation was particularly useful in furthering my understanding of using methods within HTML templates using Jinja's syntax.
+
+- [MDN Web Docs](https://developer.mozilla.org/en-US/)
+    - MDN Web Docs were very useful in providing plenty of examples in how to use data structures & methods unique to them, which helped solve many problems I had with Llama Log.
+    - Particularly their [selection of pages targetting the Contraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation) were really useful in understanding how validation works within forms.
+
+- [Stack Overflow](https://stackoverflow.com/)
+    - Stack Overflow was tremendously useful in finding solutions to the problems I was having during the developement of Llama Log. Although a lot of the solutions provided weren't directly implemented within Llama Log, their general philosophy in tackling the problem aided in me in providing solutions to my own problems during the developement of Llama Log.
+
+- [W3Schools](https://www.w3schools.com/)
+    - W3Schools was exceptionally useful during moments where I was attempting to further my understanding of functionality within Python. Their pages regarding the PyMongo library were especially most useful, as they have pages soley dedicated to each of the CRUD functions utilised within PyMongo.
+    - They were also very useful in explaining Python & Javascipt syntax in a simple manner, during times where I was attempting to further my understanding of core concepts within each language to tackle particular problems with Llama Log.
 
 ### Code
 
