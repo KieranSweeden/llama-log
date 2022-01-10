@@ -268,7 +268,14 @@ The validator used in order to validate Llama Log's HTML template files was the 
         <img src="readme/testing/validator-html-index.png">
 
 
-- password.html
+- password.html (Create New Password)
+
+- password.html (Enter Existing Password)
+
+    - Intitial validation results only provided 1 error, that being a messing alt attribute for an image which was prompty added.
+    - Addressing this minor issue provided a successful result.
+
+        <img src="">
 
 #### Internal Pages
 
