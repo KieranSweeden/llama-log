@@ -315,9 +315,18 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
         <img src="readme/testing/validator-html-view-post.png">
 
-- edit_post.html
+- edit_post.html 🗸
 
-- update_comment.html
+    - Intial validation results provided no errors or warnings, therefore resulting in a successful result.
+
+        <img src="readme/testing/validator-html-edit-post.png">
+
+- update_comment.html 🗸
+
+    - Initial validation results provided one error, where a textarea had contained 2 rows attributes, one being 2 and another being 3. Given the intention was 3, the rows="2" was promptly removed and fixed the problem.
+    - Addressing this attribute resulted in a successful result.
+
+        <img src="readme/testing/validator-html-update-comment.png">
 
 #### Admin Oriented Pages
 
