@@ -302,7 +302,6 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
         <img src="readme/testing/validator-html-feed.png">
 
-
 - create_post.html 🗸
 
     - Intial validation results provided no errors or warnings, therefore resulting in a successful result.
@@ -330,11 +329,26 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 #### Admin Oriented Pages
 
-- manage.html
+- manage.html 🗸
 
-- create_user.html
+    - Intitial validation results provided multiple warnings, where section elements did not contain a header element which was promptly fixed.
+    - Addressing this header issue resulted in a successful result.
 
-- edit_user.html
+        <img src="readme/testing/validator-html-manage.png">
+
+- create_user.html 🗸
+
+    - Initial validation results provided a single error, which related to date input element contained a placeholder, which is not allowed. This was promptly fixed after removing this placeholder.
+    - Addressing this header issue resulted in a successful result.
+
+        <img src="readme/testing/validator-html-create-user.png">
+
+- edit_user.html 🗸
+
+    - Prior to validating this file, I addressed the headings within section elements as I was aware that this was a recurring error.
+    - Initial validation results after this quick fix resulted in a successful result.
+
+        <img src="readme/testing/validator-html-edit-user.png">
 
 #### Error Pages
 
