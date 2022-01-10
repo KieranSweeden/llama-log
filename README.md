@@ -398,23 +398,19 @@ The database for Llama Log will be hosted via [MongoDb](https://www.mongodb.com/
     - Contains personal & account oriented data regarding a user.
     - The admin field will contain boolean values, interactivity for the user will be restricted depending on these values.
 
-- Posts
-    - Contains the text content within the post, user that wrote the post (author) and a list of comments linked to the post.
-    - Contains date_created field so posts can be sorted by date in feed page.
-    - The categories field has a many-to-one relationship with documents within the categories collection. A post can only have one category associated with it, whereas a category can have many posts associated with it.
-    - The comments field has a one-to-many relationship with documents within the comments collection. A post can have many comments, however a comment can only have one parent post.
+- Incidents & Work Orders
+    - Each containing a title, description & user that wrote the post (author).
+    - Contains date_created field so posts could be sorted by date in feed page at a later release.
+    - Incidents will contain a customer name & phone field if a customer has been involved in particular incident.
+    - Work orders will contain an equipment field so a particular piece of equipment is specified within a work order.
 
 - Comments
     - Contains the comment content itself, the author & date created.
-    - The post field has a many-to-one relationship with the _id field of posts, as a post can have many comments, whereas a comment can only have one parent post.
-    - The _id field has a many-to-one relationship with the comments field within the posts collection, as a post can have many comments, however a comment can only have one parent post.
-     
-- Categories
-    - Contains a primary id primary key field along with the name of the categories.
+    - The parent_post_id field has a many-to-one relationship with the _id field of incidents & work orders, as a post can have many comments, whereas a comment can only have one parent post.
 
 The database schema is as follows:
 
-<img src="readme/ux/llama-log-db-schema.png">
+<img src="readme/ux/llama-log-db-diagram.png">
 
 [Return to Contents &#8679;](#Contents)
 
