@@ -303,9 +303,17 @@ The validator used in order to validate Llama Log's HTML template files was the 
         <img src="readme/testing/validator-html-feed.png">
 
 
-- create_post.html
+- create_post.html 🗸
 
-- view-post.html
+    - Intial validation results provided no errors or warnings, therefore resulting in a successful result.
+
+        <img src="readme/testing/validator-html-create-post.png">
+
+- view-post.html 🗸
+
+    - Intial validation results provided no errors or warnings, therefore resulting in a successful result.
+
+        <img src="readme/testing/validator-html-view-post.png">
 
 - edit_post.html
 
