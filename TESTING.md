@@ -8,6 +8,33 @@ To navigate back to the README file, [click here](README.md)
 
 <hr>
 
+## User Stories
+
+**As an Employee using Llama Log, I'd expect to:**
+
+- Be prompted to create a password when I first log in.
+- Immediately see the live feed of posts when logging into the app.
+- Quickly be able to create a new post when logging into the app.
+- Be given an input form that's relevant to my current situation when creating a post.
+- Quickly search for previous posts using a search field.
+- Edit a post I've previously made.
+- Archive posts I've previously made.
+- Have a basic avatar image linked to my icon to personalise my account.
+
+**As an Admin, I'd expect Llama Log to enable me in:**
+
+- Creating new employee & admin user accounts.
+- Deleting employee & admin user accounts.
+- Editing all fields relating to an employee account (except password).
+- Completely deleting posts that employee's have archived.
+
+**As a user of Llama Log, I'd expect to:**
+
+- Log in to the app promptly.
+- Immediately know what the app is about prior to logging in.
+- Be familiar with it's design, so it's easily learnable.
+- Immediately tell which information is important based on visual language alone.
+
 ## Bugs
 
 ### Fixed
