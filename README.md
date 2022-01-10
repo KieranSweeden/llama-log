@@ -180,6 +180,7 @@ The features listed below don't directly tackle the problems Llama Log is attemp
 - A database query page that allows admins to compile mass sums of data taken from posts employee's have made, which could be of use to other sectors within the business.
 - Post history page, that presents the history of a post. This allows users to see previous iterations of a post if it's been edited on multiple occasions.
 - A post archive, where general users are able to look at posts within the companies past and clear the current feed of potentially irrelevant posts.
+- Provide functionality to add customer involved field to incident even if during creation, a customer name & phone was not provided and therefore not saved in database.
 
 [Return to Contents &#8679;](#Contents)
 
