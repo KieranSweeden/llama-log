@@ -51,7 +51,7 @@
                             <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
                             <div class="control has-icons-left has-icons-right">
                                 <input class="input" id="equipment" name="equipment" type="text" 
-                                placeholder="Enter Equipment" value="{{ post.equipment }}" minlength="5" maxlength="30" required>
+                                placeholder="Enter equipment" value="{{ post.equipment }}" minlength="5" maxlength="30" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
@@ -64,35 +64,39 @@
     
                     {% else %}
                         
-                    <div class="field">
-                        <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="customer_name" name="customer_name" type="text" 
-                            placeholder="Enter Customer's Full Name" value="{{ post.customer_name }}" required>
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-user-tag"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-    
-                    <div class="field">
-                        <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="customer_phone" name="customer_phone" type="tel" 
-                            placeholder="Enter Customer's Phone Number" value="{{ post.customer_phone }}" required>
-                            <span class="icon is-small is-left">
-                            <i class="fas fa-phone"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
+                        {% if post["customer_name"] %}
+                        
+                            <div class="field">
+                                <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="input" id="customer_name" name="customer_name" type="text" 
+                                    placeholder="Enter customer's full name" value="{{ post.customer_name }}" required>
+                                    <span class="icon is-small is-left">
+                                    <i class="fas fa-user-tag"></i>
+                                    </span>
+                                    <span class="icon is-small is-right">
+                                        <i></i>
+                                    </span>
+                                </div>
+                                <p class="help is-danger has-text-right"></p>
+                            </div>
+            
+                            <div class="field">
+                                <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="input" id="customer_phone" name="customer_phone" type="tel" 
+                                    placeholder="Enter customer's phone number" value="{{ post.customer_phone }}" required>
+                                    <span class="icon is-small is-left">
+                                    <i class="fas fa-phone"></i>
+                                    </span>
+                                    <span class="icon is-small is-right">
+                                        <i></i>
+                                    </span>
+                                </div>
+                                <p class="help is-danger has-text-right"></p>
+                            </div>
+
+                        {% endif %}
     
                     {% endif %}
     
