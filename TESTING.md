@@ -268,13 +268,13 @@ The validator used in order to validate Llama Log's HTML template files was the 
         <img src="readme/testing/validator-html-index.png">
 
 
-- password.html (Create New Password)
+- password.html (Create New Password) 🗸
 
     - Intial validation results provided no errors or warnings, therefore resulting in a successful result.
 
         <img src="readme/testing/validator-html-password-create.png">
 
-- password.html (Enter Existing Password)
+- password.html (Enter Existing Password) 🗸
 
     - Intitial validation results only provided 1 error, that being a messing alt attribute for an image which was prompty added.
     - Addressing this minor issue provided a successful result.
@@ -283,9 +283,25 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 #### Internal Pages
 
-- account.html
+- account.html 🗸
 
-- feed.html
+    - Initial validation results only provided 1 warning, referring to the lack of a heading within a section element contained within a modal.
+    - Considering the modal template was utilised throughout multiple pages, I added a heading within all of these modals within various pages, so this isn't a recurring issue during the validation process.
+    - Addressing the heading issue provided a successful result.
+
+        <img src="readme/testing/validator-html-account.png">
+
+
+- feed.html 🗸
+
+    - Initial validation results provided various warnings and errors, which I believe to be exaggerated given they often refer to an individual post, where multiple of said post results in duplicate errors.
+    - One of which was a lack of heading within a section element which was promptly fixed.
+    - Another was a time element's text content not being within the correct format.
+    - The error was referring to multiple dropdown-oriented elements having the same ID attribute values. This was promptly fixed by concatenating unique post data on top of the id to keep the ID's seperate from one another. Considering this was going to persist over a few other pages, I addressed this issue within the other pages too.
+    - Addressing these provided a successful result.
+
+        <img src="readme/testing/validator-html-feed.png">
+
 
 - create_post.html
 
