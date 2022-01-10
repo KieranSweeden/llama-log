@@ -191,7 +191,7 @@ Below are all the validation procedures taken for each Python, JavaScript, CSS &
 
 ### Python Files
 
-The validator used in order to validate Llama Log's python files was [PEP8 online](http://pep8online.com/).
+The validator used in order to validate Llama Log's python files was the [PEP8 online](http://pep8online.com/) validator.
 
 - app.py 🗸
 
@@ -213,8 +213,37 @@ The validator used in order to validate Llama Log's python files was [PEP8 onlin
     
 ### JavaScript Files
 
+The validator used in order to validate Llama Log's JavaScript files was the [JSHint](https://jshint.com/) validator.
+
+
+- app.js 🗸
+
+    - Initial validation results given by JSHint were mostly minor syntax errors, most of which relating to missing & unnecessary semicolons.
+    - There were also leftover variables referring to functions that were eventually removed from the application.
+    - The only warnings provided are undefined variables, both of which are utilised by the clamp.min.js file so are therefore important and necessary.
+    <img src="readme/testing/validator-js-app.png">
+
+
+- form.js 🗸
+
+    - Intial validation results given by JSHint were entirely minor syntax errors, all being missing semicolons.
+    <img src="readme/testing/validator-js-app.png">
+
+- tooltips.js 🗸
+
+    - Intial validation results given by JSHint were entirely minor syntax errors, all being either missing or unecessary semicolons.
+    - There is one warning however relating to an undefined variable named tippy. This variable is a method provided by the tippy.js JavaScript library for tooltips, which is important and necessary for the application.
+    <img src="readme/testing/validator-js-tooltips.png">
+
 
 ### CSS File
+
+The validator used in order to validate Llama Log's style.css file was the [W3C's CSS Validation Service](https://jigsaw.w3.org/css-validator/) validator.
+
+- style.css 🗸
+
+    - Fortunately, there were no errors given by the CSS validator. It did provide 2 warnings however, both relating to the webkit vendor prefix selectors for the progress bars.
+    <img src="readme/testing/validator-style-css.png">
 
 ### HTML Template Files
 

@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if(radioButtons.length > 0){
         addCustomerInvolvedPopups(radioButtons, tooltips);
     }
-})
+});
 
 function addCustomerInvolvedPopups(radioButtons, tooltips){
     // Add click event listener to each radio button
     radioButtons.forEach(radioButton => {
         radioButton.addEventListener("click", (event) => {
             insertTooltipStylingAndContent(tooltips);
-        })
-    })
+        });
+    });
 }
 
 
@@ -158,4 +158,4 @@ function getTooltipDescription(type, currentPage){
 
     // Return tooltip description associated with type given
     return tooltipDescriptions[type];
-};
+}

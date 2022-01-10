@@ -45,14 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // If card text content exists on the page, clamp the text if too large
   if(cardTextContent.length > 1){
     clampText(cardTextContent);
-  };
+  }
 
   // Get Radio Buttons
   let radioButtons = [...document.getElementsByName("was_customer_involved")];
 
   if(radioButtons.length > 0){
     addListenerToRadioButtons(radioButtons);
-  };
+  }
 
   // Enable navbar dropdown button
   let navbarDropdown = document.getElementById("navbarDropdown");
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // If dropdown buttons exist on page
   if (dropdowns.length > 0){
     addListenerToDropdowns(dropdowns);
-  };
+  }
 
   // Grab flash delete buttons on page
   let flashDeleteButtons = [...document.getElementsByClassName("flash-delete")];
@@ -76,20 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
   flashDeleteButtons.forEach(flashDeleteButton => {
     flashDeleteButton.addEventListener('click', () => {
       flashDeleteButton.parentElement.parentElement.remove();
-    })
-  })
+    });
+  });
 
   // Focus on first input element if found
   focusFirstInputOnLoad();
-
-  // Add event listener to unlock form input fields for editing
-  let editButton = document.getElementById("enable-edit");
-
-  if (editButton){
-    editButton.addEventListener('click', (editButton) => {
-      unlockFormInputFields(editButton.target)
-    })
-  }
 
   // Set timer for flash messages after 5 seconds
   let flashes = Array.from(document.getElementsByClassName("message"));
@@ -103,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Remove flash after second of fade out
       setTimeout(() => {
         flashes[0].remove();
-      }, 1000)
-    }, 5000)
+      }, 1000);
+    }, 5000);
   }
 
 });
@@ -167,14 +158,14 @@ function addCloseModalListeners(closeButtons, openedModal){
   closeButtons.forEach(closeButton => {
     closeButton.addEventListener("click", () => {
       openedModal.classList.remove("is-active");
-    })
+    });
   });
 }
 
 function enableNavbarDropdown(navbarDropdown){
   navbarDropdown.addEventListener("click", (event) => {
-    event.target.parentElement.classList.toggle("is-active")
-  })
+    event.target.parentElement.classList.toggle("is-active");
+  });
 }
 
 function clampText(cardTextContent){
@@ -188,7 +179,7 @@ function clampText(cardTextContent){
       // Else clamp it down to 3 as it'll be description text
       $clamp(cardTextContent, {clamp: 3});
     }
-  })
+  });
 }
 
 function addListenerToRadioButtons(radioButtons) {
@@ -246,13 +237,13 @@ function addListenerToDropdowns(dropdowns){
 
       // Grab dropdown component & toggle is-active class
       event.target.closest(".dropdown").classList.toggle("is-active");
-    })
-  })
+    });
+  });
 }
 
 function focusFirstInputOnLoad(){
   // Target the first text input element on page
-  firstInputElement = [...document.getElementsByClassName("input")][0];
+  let firstInputElement = [...document.getElementsByClassName("input")][0];
 
   // If an input element has been found
   if (firstInputElement) {

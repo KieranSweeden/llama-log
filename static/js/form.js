@@ -66,7 +66,7 @@ function assessValidityOnLoad(inputFields){
                 inputField.addEventListener("change", updateProgressBar);
                 break;
         }
-    })
+    });
 }
 
 function addListeners(inputFields){
@@ -164,9 +164,9 @@ function updateProgressBar(){
     // If customer involved fields exists & are hidden, remove them from the input fields
     if (customerInvolvedContainer){
         if (customerInvolvedContainer.classList.contains("is-hidden")){
-            inputFields = inputFields.filter(inputField => inputField.id === "title" || inputField.id === "description")
+            inputFields = inputFields.filter(inputField => inputField.id === "title" || inputField.id === "description");
         } else {
-            inputFields = inputFields.filter(inputField => inputField.id === "title" || inputField.id === "description" || inputField.id === "customer_name" || inputField.id === "customer_phone")
+            inputFields = inputFields.filter(inputField => inputField.id === "title" || inputField.id === "description" || inputField.id === "customer_name" || inputField.id === "customer_phone");
         }
     }
 
@@ -207,7 +207,7 @@ function updateProgressBar(){
     if (percentageOfValidFields === 100){
         updateFormButton(true);
     } else {
-        updateFormButton(false)
+        updateFormButton(false);
     }
 }
 
@@ -237,7 +237,7 @@ function testPhone(inputField){
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
         inputField.setCustomValidity("Please enter a UK based number containing 11 digits.");
-        updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.")
+        updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.");
     }
 
     // If a progress bar exists on the page
@@ -284,7 +284,7 @@ function testDate(inputField){
     if(isValid){
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
-        updateFieldDesignToError(inputField, "User should be between 16 & 80 years old.")
+        updateFieldDesignToError(inputField, "User should be between 16 & 80 years old.");
     }
 
     // If a progress bar exists on the page
