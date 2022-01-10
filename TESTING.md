@@ -277,7 +277,7 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 <details>
 
-<summary>View Validation Results</summary>
+<summary>View External HTML Validation Results</summary>
 
 - index.html (Log-In Page) 🗸
 
@@ -308,7 +308,7 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 <details>
 
-<summary>View Validation Results</summary>
+<summary>View Internal HTML Validation Results</summary>
 
 - account.html 🗸
 
@@ -360,7 +360,7 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 <details>
 
-<summary>View Validation Results</summary>
+<summary>View Admin Oriented HTML Validation Results</summary>
 
 - manage.html 🗸
 

@@ -790,6 +790,18 @@ The following applications were utilised during the development of Llama Log:
 - [GitHub Wiki TOC generator](https://ecotrust-canada.github.io/markdown-toc/)
     - This table of contents generator was used to create a table of contents for this README.md and the TESING.md file.
 
+- [W3C's Markup Validation Service](https://validator.w3.org/)
+    - The W3C's HTML Markup Validation Service was utilised as a validator for the HTML files within this application.
+
+- [W3C's CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+    - The W3C's CSS Validation Service was utilised as a validator for the CSS files within this application.
+
+- [JSHint](https://jshint.com/)
+    - JSHint was utilised as a validator for the JavaScript files within this application.
+
+- [PEP8 online](http://pep8online.com/)
+    - PEP8 Online was utilised as a validator for the Python files within this application.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
