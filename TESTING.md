@@ -197,19 +197,22 @@ The validator used in order to validate Llama Log's python files was the [PEP8 o
 
     - The main error & warning codes given by the validator regarding the app.py file were relating to trailing whitespace & lines being too long.
     - However one unique problem I had encountered was an E711 error, where PEP8 prefers the use of "is not" rather than "!=". After changing "!=" to "is not" within the code, the problem was resolved.
-    <img src="readme/testing/validator-python-app.png">
+        
+        <img src="readme/testing/validator-python-app.png">
 
 - user.py 🗸
 
     - Like the previous file, user.py mainly contained errors relating to trailing whitespace & lines being too long.
     - One issue that did arise however was that a module level import was not at the top of the file. This problem relates to circular dependencies where the poisition of imports matter in making the application work. A simple and easy example to explain can be found [here](https://stackoverflow.com/a/62303448/15607265). At this time, this issue cannot be addressed due to time constraints and given that fixing this would not enhance the usability of Llama Log, I don't believe it's important for the time being as changing it would crash the entire application.
     - Another issue that came to light was assigning an f string to a variable over multiple lines. This was eventually fixed after reading [this article](https://careerkarma.com/blog/python-f-string/) with the use of parenthesis.
-    <img src="readme/testing/validator-python-user.png">
+        
+        <img src="readme/testing/validator-python-user.png">
 
 - admin.py 🗸
 
     - The admin python file's validation results were nearly identical to the results given by the user python file's validation, where the import app statement isn't present at the top of the file and it's mostly trailing whitespace and lines being too long.
-    <img src="readme/testing/validator-python-admin.png">
+        
+        <img src="readme/testing/validator-python-admin.png">
     
 ### JavaScript Files
 
@@ -221,19 +224,22 @@ The validator used in order to validate Llama Log's JavaScript files was the [JS
     - Initial validation results given by JSHint were mostly minor syntax errors, most of which relating to missing & unnecessary semicolons.
     - There were also leftover variables referring to functions that were eventually removed from the application.
     - The only warnings provided are undefined variables, both of which are utilised by the clamp.min.js file so are therefore important and necessary.
-    <img src="readme/testing/validator-js-app.png">
+        
+        <img src="readme/testing/validator-js-app.png">
 
 
 - form.js 🗸
 
     - Intial validation results given by JSHint were entirely minor syntax errors, all being missing semicolons.
-    <img src="readme/testing/validator-js-app.png">
+        
+        <img src="readme/testing/validator-js-app.png">
 
 - tooltips.js 🗸
 
     - Intial validation results given by JSHint were entirely minor syntax errors, all being either missing or unecessary semicolons.
     - There is one warning however relating to an undefined variable named tippy. This variable is a method provided by the tippy.js JavaScript library for tooltips, which is important and necessary for the application.
-    <img src="readme/testing/validator-js-tooltips.png">
+        
+        <img src="readme/testing/validator-js-tooltips.png">
 
 
 ### CSS File
@@ -243,7 +249,8 @@ The validator used in order to validate Llama Log's style.css file was the [W3C'
 - style.css 🗸
 
     - Fortunately, there were no errors given by the CSS validator. It did provide 2 warnings however, both relating to the webkit vendor prefix selectors for the progress bars.
-    <img src="readme/testing/validator-style-css.png">
+        
+        <img src="readme/testing/validator-style-css.png">
 
 ### HTML Template Files
 
