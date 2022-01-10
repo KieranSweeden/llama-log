@@ -20,10 +20,10 @@
 
 <body>
 
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url_for('user.feed', user_email=session['user_email']) if session['user_id'] else url_for('log_in') }}">
-                <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}">
+                <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}" alt="The Llama Log logo">
                 <h1 class="nav-logo-text is-size-4">Llama Log</h1>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -143,7 +143,7 @@
                 <hr class="is-hidden-tablet">
                 <div class="column is-flex is-flex-direction-column is-justify-content-center">
                         <figure class="image is-32x32 is-rounded mx-0 mb-4">
-                            <img src="{{ url_for('static', filename='images/llama-log-logo-white-transparent.png')}}">
+                            <img src="{{ url_for('static', filename='images/llama-log-logo-white-transparent.png')}}" alt="The Llama Log logo">
                         </figure>
                         <p>Copyright &copy; 2022</p>
                         <p>All Rights Reserved</p>

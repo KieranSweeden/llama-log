@@ -254,6 +254,52 @@ The validator used in order to validate Llama Log's style.css file was the [W3C'
 
 ### HTML Template Files
 
+The validator used in order to validate Llama Log's HTML template files was the [W3C's Markup Validation Service](https://validator.w3.org/) validator.
+
+In order to validate the HTML files within this project, the URL was given to the validator rather than a copy of the entire syntax within the page.
+
+#### External Pages
+
+- index.html (Log-In Page) 🗸
+
+    - Intial validation results included 1 warning & 3 errors.
+    - The warning was referring to including a navigation role attribute within the navbar. This was prompty fixed. Given this was within the base template, this would've persisted across all pages so it's good to remove this.
+    - The errors were referring to the lack of an alt attribute for the images within the page. This was the case for images within the base template & index.html itself.
+
+
+- password.html
+
+#### Internal Pages
+
+- account.html
+
+- feed.html
+
+- create_post.html
+
+- view-post.html
+
+- edit_post.html
+
+- update_comment.html
+
+#### Admin Oriented Pages
+
+- manage.html
+
+- create_user.html
+
+- edit_user.html
+
+#### Error Pages
+
+- 403.html
+
+- 404.html
+
+- 500.html
+
+
 
 
 
