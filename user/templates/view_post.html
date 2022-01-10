@@ -42,13 +42,13 @@
             {% if post.author_id == session["user_id"] %}
             <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
-                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
+                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu-{{ post._id }}">
                   <span class="icon has-text-white-bis">
                     <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
                   </span>
                 </button>
               </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-menu" id="dropdown-menu-{{ post._id }}" role="menu">
                 <div class="dropdown-content">
                     <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
                       Edit Post
@@ -84,7 +84,7 @@
         </header>
         <section class="card-content p-4">
           <div class="content">
-            <p class="is-size-7 mb-1 has-text-right">
+            <h4 class="is-size-7 mb-1 has-text-right">
               <i>
                 {% if "equipment" in post %}
                   Work Order
@@ -92,7 +92,7 @@
                   Incident
                 {% endif %}
               </i>
-            </p>
+            </h4>
             {% if "equipment" in post %}
               <p class="is-size-7 mb-0">
                 <i>
@@ -153,9 +153,9 @@
             <p class="is-size-7">By: {{ post.author_name }}</p>
           </div>
           <div class="card-footer-item column-mobile">
-            <time class="mr-2 is-size-7">
+            <p class="mr-2 is-size-7">
               {{ post.date_created.strftime("%I:%M%p") }}
-            </time>
+            </p>
             <p class="is-size-7">
               {{ post.date_created.strftime("%d %b %Y") }}
             </p>
