@@ -258,6 +258,10 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 #### External Pages
 
+<details>
+
+<summary>View Validation Results</summary>
+
 - index.html (Log-In Page) 🗸
 
     - Intial validation results included 1 warning & 3 errors.
@@ -281,7 +285,13 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
         <img src="readme/testing/validator-html-password-existing.png">
 
+</details>
+
 #### Internal Pages
+
+<details>
+
+<summary>View Validation Results</summary>
 
 - account.html 🗸
 
@@ -327,7 +337,13 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
         <img src="readme/testing/validator-html-update-comment.png">
 
+</details>
+
 #### Admin Oriented Pages
+
+<details>
+
+<summary>View Validation Results</summary>
 
 - manage.html 🗸
 
@@ -349,6 +365,8 @@ The validator used in order to validate Llama Log's HTML template files was the 
     - Initial validation results after this quick fix resulted in a successful result.
 
         <img src="readme/testing/validator-html-edit-user.png">
+
+</details>
 
 #### Error Pages
 
