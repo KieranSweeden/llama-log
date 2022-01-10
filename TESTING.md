@@ -193,6 +193,10 @@ Below are all the validation procedures taken for each Python, JavaScript, CSS &
 
 The validator used in order to validate Llama Log's python files was the [PEP8 online](http://pep8online.com/) validator.
 
+<details>
+
+<summary>View Python Validation Results</summary>
+
 - app.py 🗸
 
     - The main error & warning codes given by the validator regarding the app.py file were relating to trailing whitespace & lines being too long.
@@ -213,10 +217,16 @@ The validator used in order to validate Llama Log's python files was the [PEP8 o
     - The admin python file's validation results were nearly identical to the results given by the user python file's validation, where the import app statement isn't present at the top of the file and it's mostly trailing whitespace and lines being too long.
         
         <img src="readme/testing/validator-python-admin.png">
+
+</details>
     
 ### JavaScript Files
 
 The validator used in order to validate Llama Log's JavaScript files was the [JSHint](https://jshint.com/) validator.
+
+<details>
+
+<summary>View JavaScript Validation Results</summary>
 
 
 - app.js 🗸
@@ -241,16 +251,23 @@ The validator used in order to validate Llama Log's JavaScript files was the [JS
         
         <img src="readme/testing/validator-js-tooltips.png">
 
+</details>
 
 ### CSS File
 
 The validator used in order to validate Llama Log's style.css file was the [W3C's CSS Validation Service](https://jigsaw.w3.org/css-validator/) validator.
+
+<details>
+
+<summary>View CSS Validation Result</summary>
 
 - style.css 🗸
 
     - Fortunately, there were no errors given by the CSS validator. It did provide 2 warnings however, both relating to the webkit vendor prefix selectors for the progress bars.
         
         <img src="readme/testing/validator-style-css.png">
+
+</details>
 
 ### HTML Template Files
 
