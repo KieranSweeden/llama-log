@@ -44,6 +44,7 @@ def log_in():
 
         # Redirect the user to the feed page
         return redirect(url_for("user.feed", user_email=session["user_email"]))
+
     else:
         # If an email has been entered
         if request.method == "POST":
