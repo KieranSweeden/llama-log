@@ -141,15 +141,15 @@ What they may not know they need however is data validation. The employee will n
 - Be given an input form that's relevant to my current situation when creating a post.
 - Quickly search for previous posts using a search field.
 - Edit a post I've previously made.
-- Archive posts I've previously made.
-- Have a basic avatar image linked to my icon to personalise my account.
+- Delete posts I've previously made.
 
 **As an Admin, I'd expect Llama Log to enable me in:**
 
 - Creating new employee & admin user accounts.
 - Deleting employee & admin user accounts.
 - Editing all fields relating to an employee account (except password).
-- Completely deleting posts that employee's have archived.
+- Deleting posts that employee's have previously created.
+- Deleting posts that former employee's have previously created.
 
 **As a user of Llama Log, I'd expect to:**
 
