@@ -70,8 +70,17 @@ To navigate back to the README file, [click here](README.md)
 
 </details>
 
+<details>
 
-- Be given an input form that's relevant to my current situation when creating a post.
+<summary>Be given an input form that's relevant to my current situation when creating a post.</summary>
+
+- When creating a new post, the input form's fields are relevant to the current situation.
+
+    <img src="readme/user-stories/user-story-create-incident-empty.png">
+
+    <img src="readme/user-stories/user-story-create-work-order-empty.png">
+
+</details>
 - Quickly search for previous posts using a search field.
 - Edit a post I've previously made.
 - Delete posts I've previously made.
