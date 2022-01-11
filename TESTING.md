@@ -234,23 +234,103 @@ To navigate back to the README file, [click here](README.md)
 
 <summary>Log in to the app promptly.</summary>
 
+- When loading up Llama Log, the first page is the log in page where the log in form is front & centre. The application also auto focuses onto the input field, saving the user any additional time it would take to focus on the input.
+
+    <img src="readme/user-stories/user-story-employee-log-in.png">
+
+- The password is nearly identical to the log in page, this saves the user any time in getting familiar with the page as they'll know exactly what to do and where things are within the page. This page also includes the auto focus which saves the user time when logging in.
+
+    <img src="readme/user-stories/user-story-employee-password.png">
+    
 </details>
 
 <details>
 
 <summary>Immediately know what the app is about prior to logging in.</summary>
 
+- On load, the user is greeted with the following paragraph that provides a brief description of what Llama Log is about.
+
+    <img src="readme/user-stories/user-story-log-in-text.png">
+
+- Further information can be found within the footer of every page, including the log in page that the user first sees.
+
+    <img src="readme/user-stories/user-story-footer-info.png">
+
 </details>
 
 <details>
 
-<summary>- Be familiar with it's design, so it's easily learnable.</summary>
+<summary>Be familiar with it's design, so it's easily learnable.</summary>
+
+- The navigation bar is consistent and therefore easily learnable throughout multiple pages.
+
+    <img src="readme/user-stories/user-story-employee-log-in.png">
+
+    <img src="readme/user-stories/user-story-manage-users.png">
+
+- It also collapses to the hamburger design for mobile devices, following traditional UI conventions, making the interface easily learnable for the end user.
+
+    <img src="readme/user-stories/user-story-nav-mobile-closed.png">
+
+    <img src="readme/user-stories/user-story-nav-mobile-open.png">
+
+- The feed page is designed in such a way that resembles a live feed design sported by the likes of Facebook, Twitter, LinkedIn etc. This makes it easily understood.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- Buttons that add a particular "item" such as an incident, comment, comment or user sport for the primary green colour.
+
+    <img src="readme/user-stories/user-story-button-green-comment.png">
+
+    <img src="readme/user-stories/user-story-button-green-feed.png">
+
+    <img src="readme/user-stories/user-story-buttons-manage.png">
+
+- Buttons that relate to going back a page sport the yellow warning colour.
+
+    <img src="readme/user-stories/user-story-buttons-manage.png">
+
+    <img src="readme/user-stories/user-story-button-yellow-post.png">
+
+    <img src="readme/user-stories/user-story-button-yellow-account.png">
+
+    <img src="readme/user-stories/user-story-button-yellow-modal.png">
+
+- Buttons that relate to the deletion of a particular item sport a red danger colour.
+
+    <img src="readme/user-stories/user-story-button-yellow-modal.png">
+
+    <img src="readme/user-stories/user-story-button-red-manage.png">
+
+- These examples in conjuction with one another enable the web application to be easily to learn.
 
 </details>
 
 <details>
 
 <summary>Immediately tell which information is important based on visual language alone.</summary>
+
+- Headers are presented consistently at the top of all pages. This immediately informs them what pages they're on and ensures they're never lost within the application.
+
+    <img src="readme/user-stories/user-story-login-header.png">
+
+    <img src="readme/user-stories/user-story-feed-header.png">
+
+    <img src="readme/user-stories/user-story-account-header.png">
+
+- Buttons most likely important to user is presented immediately to the user without being overwhelming, an example being the cards within the manage users page.
+
+    <img src="readme/user-stories/user-story-manage-user-card.png">
+
+- Some information is hidden from the user unless they are directly interested in that information. An example being customer's information within incident posts. It's not useful the average gaze throughout the feed, so it's removed for simplicity purposes and provides extra importance to info that is shown to the user.
+
+- Notice how the customer fields are hidden to the user on the feed page.
+
+    <img src="readme/user-stories/user-story-incident-feed-post.png">
+
+- Now look at the same incident being viewed purposefully.
+
+    <img src="readme/user-stories/user-story-incident-view-post.png">
 
 </details>
 
