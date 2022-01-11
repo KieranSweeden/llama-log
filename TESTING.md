@@ -241,7 +241,6 @@ To navigate back to the README file, [click here](README.md)
 - The password is nearly identical to the log in page, this saves the user any time in getting familiar with the page as they'll know exactly what to do and where things are within the page. This page also includes the auto focus which saves the user time when logging in.
 
     <img src="readme/user-stories/user-story-employee-password.png">
-
     
 </details>
 
@@ -249,11 +248,61 @@ To navigate back to the README file, [click here](README.md)
 
 <summary>Immediately know what the app is about prior to logging in.</summary>
 
+- On load, the user is greeted with the following paragraph that provides a brief description of what Llama Log is about.
+
+    <img src="readme/user-stories/user-story-log-in-text.png">
+
+- Further information can be found within the footer of every page, including the log in page that the user first sees.
+
+    <img src="readme/user-stories/user-story-footer-info.png">
+
 </details>
 
 <details>
 
-<summary>- Be familiar with it's design, so it's easily learnable.</summary>
+<summary>Be familiar with it's design, so it's easily learnable.</summary>
+
+- The navigation bar is consistent and therefore easily learnable throughout multiple pages.
+
+    <img src="readme/user-stories/user-story-employee-log-in.png">
+
+    <img src="">
+
+- It also collapses to the hamburger design for mobile devices, following traditional UI conventions, making the interface easily learnable for the end user.
+
+    <img src="readme/user-stories/user-story-nav-mobile-closed.png">
+
+    <img src="readme/user-stories/user-story-nav-mobile-open.png">
+
+- The feed page is designed in such a way that resembles a live feed design sported by the likes of Facebook, Twitter, LinkedIn etc. This makes it easily understood.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- Buttons that add a particular "item" such as an incident, comment, comment or user sport for the primary green colour.
+
+    <img src="readme/user-stories/user-story-button-green-comment.png">
+
+    <img src="readme/user-stories/user-story-button-green-feed.png">
+
+    <img src="readme/user-stories/user-story-buttons-manage.png">
+
+- Buttons that relate to going back a page sport the yellow warning colour.
+
+    <img src="readme/user-stories/user-story-buttons-manage.png">
+
+    <img src="readme/user-stories/user-story-button-yellow-post.png">
+
+    <img src="readme/user-stories/user-story-button-yellow-account.png">
+
+    <img src="readme/user-stories/user-story-button-yellow-modal.png">
+
+- Buttons that relate to the deletion of a particular item sport a red danger colour.
+
+    <img src="readme/user-stories/user-story-button-yellow-modal.png">
+
+    <img src="readme/user-stories/user-story-button-red-manage.png">
+
+- These examples in conjuction with one another enable the web application to be easily to learn.
 
 </details>
 
