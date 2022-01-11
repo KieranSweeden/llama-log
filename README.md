@@ -2,7 +2,7 @@
 
 Llama Log is a CRUD web application that provides colleague's the ability to keep a log of equipment work orders & staff/customer related incidents within the workplace. Llama Log's goal is to help colleague's tackle these issues, enabling them to be more productive & efficient when on shift, decreasing various costs the business may have in the long run.
 
--- Am I Responsive image demonstrating app responsiveness
+<img src="readme/llama-log-responsive.png">
 
 [Link to deployment of Llama Log](https://llama-log.herokuapp.com/).
 
