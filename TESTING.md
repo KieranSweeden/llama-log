@@ -132,27 +132,127 @@ To navigate back to the README file, [click here](README.md)
 
 </details>
 
+**As an Admin, I'd expect Llama Log to enable me in:**
+
 <details>
 
-<summary></summary>
+<summary>Creating new employee & admin user accounts.</summary>
+
+- When signed in & arriving on the feed page, admins can manage user accounts by navigating to the "Manage Users" link in the top navbar.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- Once arriving on the manage users page, the admin is presented with a list of users with clear buttons referring to what they can do with the accounts.
+
+    <img src="readme/user-stories/user-story-manage-users.png">
+
+- An add user account is at the top of the page, similar to the post page where creating a new post is at the top of it's respective page. Clicking this button directs the user to a create new user form.
+
+    <img src="readme/user-stories/user-story-create-user.png">
+
+- Provided all fields are filled (except the admin checkbox which is optional), the user is able to create a new account. Once created, they'll be redirected to the manage page with a message informing them of the created profile.
+
+    <img src="readme/user-stories/user-story-create-user-successful.png">
 
 </details>
 
+<details>
 
-**As an Admin, I'd expect Llama Log to enable me in:**
+<summary>Deleting employee & admin user accounts.</summary>
 
-- Creating new employee & admin user accounts.
-- Deleting employee & admin user accounts.
-- Editing all fields relating to an employee account (except password).
-- Deleting posts that employee's have previously created.
-- Deleting posts that former employee's have previously created.
+- When signed in and navigated to the manage users page, the admin is able to delete users directly from the manage page. The delete button is located within the card footer of each respective user account.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- Following defensive programming conventions, an "are you sure?" modal is presented to the admin regarding the deletion of the user. This also informs the admin that posts & comments made by the user will persist but will be put under a "Deleted User" alias.
+
+    <img src="readme/user-stories/user-story-delete-user-modal.png">
+
+- Provided the admin is sure and presses the delete the button, the user account will then be deleted, the posts & comments made by that user will transition to the deleted user alias and the admin will be informed of this deletion after being directed to the manage users page.
+
+    <img src="readme/user-stories/user-story-delete-user-confirmed.png">
+
+</details>
+
+<details>
+
+<summary>Editing all fields relating to an employee account (except password).</summary>
+
+- When signed in and navigated to the manage users page, the admin is able to edit user accounts directly from the manage page. The edit button is located within the card footer of each respective user account.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- When clicking this button, it opens an edit form similar to the create user form which is filled with the user's account data.
+
+    <img src="readme/user-stories/user-story-edit-user-form.png">
+
+- Provided all fields are filled (except the admin checkbox with is optional), the admin is able to update the user. On submission, the admin will be redirected to the manage users page with a message informing them that the user's account has been updated.
+
+    <img src="readme/user-stories/user-story-edit-user-success.png">
+
+</details>
+
+<details>
+
+<summary>Deleting posts that employee's have previously created.</summary>
+
+- From the feed page, the admin is able to delete other user's posts. This can be done using the conventional three dots dropdown button which provides a delete option.
+
+    <img src="readme/user-stories/user-story-delete-post-admin.png">
+
+- Following defensive programming conventions, clicking the delete button opens a modal confirming that the admin is sure they want to delete the post.
+
+    <img src="readme/user-stories/user-story-delete-post-admin-modal.png">
+
+- Clicking the delete button will delete the post & comments associated with it, redirect the admin to the feed page and inform them of the deletion.
+
+    <img src="readme/user-stories/user-story-delete-post-admin-success.png">
+
+</details>
+
+<details>
+
+<summary>Deleting posts that former employee's have previously created.</summary>
+
+- From the feed page, the admin is able to delete deleted user's posts. This can be done using the conventional three dots dropdown button which provides a delete option.
+
+    <img src="readme/user-stories/user-story-deleted-user-post-options.png">
+
+- Similar to regular posts and following defensive programming conventions, the admin is presented a modal that makes sure that they want to delete the deleted user's post.
+
+    <img src="readme/user-stories/user-story-delete-post-admin-modal.png">
+
+- Clicking the delete button will delete the deleted user's post & comments associated with it, redirect the admin to the feed page and inform them of the deletion.
+
+    <img src="readme/user-stories/user-story-delete-post-admin-success.png">
+
+</details>
 
 **As a user of Llama Log, I'd expect to:**
 
-- Log in to the app promptly.
-- Immediately know what the app is about prior to logging in.
-- Be familiar with it's design, so it's easily learnable.
-- Immediately tell which information is important based on visual language alone.
+<details>
+
+<summary>Log in to the app promptly.</summary>
+
+</details>
+
+<details>
+
+<summary>Immediately know what the app is about prior to logging in.</summary>
+
+</details>
+
+<details>
+
+<summary>- Be familiar with it's design, so it's easily learnable.</summary>
+
+</details>
+
+<details>
+
+<summary>Immediately tell which information is important based on visual language alone.</summary>
+
+</details>
 
 ## Bugs
 
