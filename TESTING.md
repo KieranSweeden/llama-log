@@ -1,6 +1,8 @@
 # Llama Log Testing
 
-> insert image here
+This file contains all of the testing procedures undertaken during the development of Llama Log.
+
+<img src="readme/llama-log-responsive.png">
 
 To navigate back to the README file, [click here](README.md)
 
