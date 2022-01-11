@@ -629,6 +629,12 @@ def account(user_email):
                 "is_admin": current_user["is_admin"]
             }
 
+            # If the user's email has been changed
+            if updated_user_info["email"] != current_user["email"]:
+
+                # Update email in session
+                session["user_email"] = updated_user_info["email"]
+
             # Update the user info in db with new info submitted
             app.mongo.db.users.update_one({"_id": current_user["_id"]},
                                         {"$set": updated_user_info})
