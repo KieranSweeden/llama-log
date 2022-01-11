@@ -30,8 +30,47 @@ To navigate back to the README file, [click here](README.md)
 
 </details>
 
-- Immediately see the live feed of posts when logging into the app.
-- Quickly be able to create a new post when logging into the app.
+<details>
+
+<summary>Immediately see the live feed of posts when logging into the app.</summary>
+
+- When logging in, the user is immediately directed to the feed page. The user is also immediately directed to the feed from the log in page if a session still remains within the browser.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+</details>
+
+<details>
+
+<summary>Quickly be able to create a new post when logging into the app.</summary>
+
+- When logged in and viewing the feed page, a create new post is above all the posts previously made.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- Clicking this provides an option to create a new incident or work order post.
+
+    <img src="readme/user-stories/user-story-create-post-feed.png">
+
+- Selecting an option directs the user to a create new post form that presents fields that directly relate to their chosen category of post.
+
+    <img src="readme/user-stories/user-story-create-work-order-empty.png">
+
+    <img src="readme/user-stories/user-story-create-incident-empty.png">
+
+- From here they can submit their post provided they enter all fields.
+
+    <img src="readme/user-stories/user-story-create-incident-progress.png">
+
+    <img src="readme/user-stories/user-story-create-incident-completed.png">
+
+- When submitted, user is redirected to feed where they can see their post and is given message to state how message has been sent.
+
+    <img src="readme/user-stories/user-story-create-incident-successful.png">
+
+</details>
+
+
 - Be given an input form that's relevant to my current situation when creating a post.
 - Quickly search for previous posts using a search field.
 - Edit a post I've previously made.
