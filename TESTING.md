@@ -234,6 +234,15 @@ To navigate back to the README file, [click here](README.md)
 
 <summary>Log in to the app promptly.</summary>
 
+- When loading up Llama Log, the first page is the log in page where the log in form is front & centre. The application also auto focuses onto the input field, saving the user any additional time it would take to focus on the input.
+
+    <img src="readme/user-stories/user-story-employee-log-in.png">
+
+- The password is nearly identical to the log in page, this saves the user any time in getting familiar with the page as they'll know exactly what to do and where things are within the page. This page also includes the auto focus which saves the user time when logging in.
+
+    <img src="readme/user-stories/user-story-employee-password.png">
+
+    
 </details>
 
 <details>
