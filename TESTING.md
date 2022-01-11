@@ -719,6 +719,54 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 - 500.html
 
+## Defensive Programming
+
+Following standard security conventions, a python file containing sensitive environment variables is hidden from this repository. This is achieved by adding the file name to the .gitignore file.
+
+Interal pages within the web application require a session within the web browser. Without this, the user is considered forbidden from accessing the web application and is redirected to the appropriate error message informing them of this. Within this error message, there's a link to redirect the user to the log in page.
+
+This functionality is also applied to users who are not administrators. Any attempt to access the admin oriented pages whilst not being an admin will produce a forbidden error.
+
+## Testing Functionality
+
+The test procedure undertaken mainly focused on the CRUD functionalities & user feedback when using the application. However, the design and layout of the application was also accessed, in order to find visual bugs.
+
+The testing spreadsheet used to test Llama Log can be found [here](https://docs.google.com/spreadsheets/d/1SXklniT6aiyQOdub6iv8LPJcEH9exj1sZnazYNQNC1U/edit?usp=sharing).
+
+Llama was developed using Google Chrome & it's Dev Tools. Despite using this browser for development, I thought it was safe to apply the same test methodologies used on other browsers to Google Chrome, to solidify it's functionality.
+
+### Software
+
+The following browsers were used to test Llama Log:
+
+**Desktop**
+
+- Google Chrome
+- Microsoft Edge
+- Mozilla Firefox
+
+**Mobile & Tablet**
+
+- Google Chrome
+- Safari
+- Mozilla Firefox
+
+### Hardware
+
+The hardware used to test Llama Log was the following:
+
+**Desktop**
+
+- Dell XPS 15" Laptop
+
+**Tablet**
+
+- Apple iPad
+
+**Mobile**
+
+- Apple iPhone 13 Pro Max
+
 
 
 
