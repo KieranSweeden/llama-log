@@ -81,9 +81,63 @@ To navigate back to the README file, [click here](README.md)
     <img src="readme/user-stories/user-story-create-work-order-empty.png">
 
 </details>
-- Quickly search for previous posts using a search field.
-- Edit a post I've previously made.
-- Delete posts I've previously made.
+
+<details>
+
+<summary>Quickly search for previous posts using a search field.</summary>
+
+- When logging in, a search bar is present at the top of the posts so it's clearly visible to the user.
+
+    <img src="readme/user-stories/user-story-employee-feed-posts.png">
+
+- Typing in a search term within the field & pressing enter provides the user with a filtered list of posts.
+
+    <img src="readme/user-stories/user-story-search-posts.png">
+
+</details>
+
+<details>
+
+<summary>Edit a post I've previously made.</summary>
+
+- To edit posts, Llama Log follows UX conventions in using the three dots to give the user an indication of "more options". Clicking this provides additional options, one of which being editing a post.
+
+    <img src="readme/user-stories/user-story-post-options.png">
+
+- Clicking this takes the user to a form similar to the create post one, presenting the fields relevant to that particular post.
+
+    <img src="readme/user-stories/user-story-edit-post.png">
+
+- Provided the user maintains that all fields are given, they can then submit and the post will be updated. The user will be redirected to the feed page with a message informing them of the update.
+
+    <img src="readme/user-stories/user-story-edit-post-completed.png">
+
+</details>
+
+<details>
+
+<summary>Delete posts I've previously made.</summary>
+
+- Similar to edit posts, clicking the conventional three dots will provide additional options relating to a particular post. One of these options is deleting the post.
+
+    <img src="readme/user-stories/user-story-post-options.png">
+
+- Selecting the delete post option, following defensive programming conventions, displays a modal to make sure the user is sure they want to delete the particular post.
+
+    <img src="readme/user-stories/user-story-delete-post-modal.png">
+
+- The user is free to cancel using the provided x and cancel buttons. However if they're sure of the deletion, they can confirm using the delete button. This will delete the post & inform them whilst redirecting them to the feed page.
+
+    <img src="readme/user-stories/user-story-delete-post-confirmed.png">
+
+</details>
+
+<details>
+
+<summary></summary>
+
+</details>
+
 
 **As an Admin, I'd expect Llama Log to enable me in:**
 
