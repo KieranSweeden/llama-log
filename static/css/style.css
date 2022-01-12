@@ -314,6 +314,7 @@ header.has-background-info {
 }
 
 progress[value]::-webkit-progress-value,
+progress.progress::-webkit-progress-bar,
 progress.progress::-moz-progress-bar {
     background: var(--primary-color);
 
