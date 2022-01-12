@@ -805,11 +805,25 @@ Although these results were not terrible, they were not ideal. Some of the issue
 
 - Another issue was that headers were not in sequentially-descending order. This was fixed by making the headings the correct number and applying bulma text size classes to them to revert them back to how they previously looked.
 
-- Another minor issue was present regarding the post buttons not having an appropriate label attached to them.
+- Another minor issue was present regarding the post buttons not having an appropriate label attached to them. This was fixed for all pages featuring this dropdown.
 
 **SEO**
 
 - One of the issues raised with SEO was the lack of a meta tag within the head of the HTML document. This was prompty fixed as only the base template file needed to be changed.
+
+- The last issue relating to SEO was relating to a robots.txt file, which I am unsure of and do not have the appropriate amount of understanding of this to fix it. Post-submission this may be something to look into.
+
+**Post Fixes**
+
+After completing some of these tasks, I ended up with a promising Lighthouse result, as shown below:
+
+<details>
+
+<summary>Post Fix Lighthouse Results<summary>
+
+<img src="readme/a11y-performance/post-fixes-lighthouse.png">
+
+</details>
 
 ## Known Bugs
 
