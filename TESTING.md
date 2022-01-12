@@ -789,11 +789,23 @@ Although these results were not terrible, they were not ideal. Some of the issue
 
 - Another issue raised was the lack of height & width attribute given to image elements. This was addressed throughout all pages as I knew these attributes were not applied to all image elements.
 
+- It was later found out that an anonymous chrome session found no problem in fetching the bulma css files. It is my assumption that perhaps extensions running within my browser affected the performance of Llama Log at the time. When extensions are not present, Llama Log performs well as shown below:
+
+    <details>
+
+    <summary>Anonymous Session Results With Fixes So Far</summary>
+
+    <img src="readme/a11y-performance/anon-lighthouse-results.png">
+
+    </details>
+
 **Accessibility**
 
-- Another issue was relating to the alt text for social media links within the footer of the page. This was promptly fixed using aria-labels, as adding text within the link elements would degrade the visuals of the footer.
+- One issue was relating to the alt text for social media links within the footer of the page. This was promptly fixed using aria-labels, as adding text within the link elements would degrade the visuals of the footer.
 
 - Another issue was that headers were not in sequentially-descending order. This was fixed by making the headings the correct number and applying bulma text size classes to them to revert them back to how they previously looked.
+
+- Another minor issue was present regarding the post buttons not having an appropriate label attached to them.
 
 **SEO**
 

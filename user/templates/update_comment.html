@@ -37,7 +37,8 @@
             {% if post.author_id == session["user_id"]%}
             <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
-                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu-{{ post._id }}">
+                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu-{{ post._id }}"
+                aria-label="Open extra post options">
                   <span class="icon has-text-white-bis">
                     <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
                   </span>
