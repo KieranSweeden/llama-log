@@ -23,7 +23,8 @@
                             class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
                             <figure class="image is-64x64 mb-3">
                                 <img class="is-rounded"
-                                    src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}">
+                                    src="{{ url_for('static', filename='images/llama-log-logo-no-text.png') }}"
+                                    alt="The Llama Log logo" height="25" width="25">
                             </figure>
                         </div>
                         <div class="column has-text-centered">
@@ -31,8 +32,15 @@
                                 again in the future.</h3>
                             <p class="subtitle is-size-5">Error code: 500</p>
                             <div class="buttons is-centered">
-                                <a class="button is-warning m-0" href="{{ url_for('log_in')}}">Return to Log-In<i
-                                        class="fas fa-undo"></i></a>
+                                {% if session["user_id"] %}
+                                    <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email'])}}">
+                                        Return to Feed<i class="fas fa-undo"></i>
+                                    </a>
+                                {% else %}
+                                    <a class="button is-warning m-0" href="{{ url_for('log_in')}}">
+                                        Return to Log-In<i class="fas fa-undo"></i>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

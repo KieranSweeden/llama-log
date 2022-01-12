@@ -799,6 +799,9 @@ The following applications were utilised during the development of Llama Log:
 - [PEP8 online](http://pep8online.com/)
     - PEP8 Online was utilised as a validator for the Python files within this application.
 
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse)
+    - Google Chrome's in-built Lighthouse tool was utilised to test the accessibility of Llama Log.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>

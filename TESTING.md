@@ -767,6 +767,38 @@ The hardware used to test Llama Log was the following:
 
 - Apple iPhone 13 Pro Max
 
+## Accessibility & Performance
+
+To test the accessibility & Performance of Llama Log, I used Google Chrome's [Lighthouse](https://developers.google.com/web/tools/lighthouse) tool.
+
+The initial result for the feed page was as follows:
+
+<details>
+
+<summary>Intial Lighthouse Results</summary>
+
+<img src="readme/a11y-performance/initial-lighthouse.png">
+
+</details>
+
+Although these results were not terrible, they were not ideal. Some of the issues Lighthouse raised were as follows:
+
+**Performance**
+
+- A fair amount of the issues were relating to the minified Bulma css file, the time it was taking to receive the file was considerably long and therefore a problem. This cannot be addressed at this moment due to time constraints.
+
+- Another issue raised was the lack of height & width attribute given to image elements. This was addressed throughout all pages as I knew these attributes were not applied to all image elements.
+
+**Accessibility**
+
+- Another issue was relating to the alt text for social media links within the footer of the page. This was promptly fixed using aria-labels, as adding text within the link elements would degrade the visuals of the footer.
+
+- Another issue was that headers were not in sequentially-descending order. This was fixed by making the headings the correct number and applying bulma text size classes to them to revert them back to how they previously looked.
+
+## Known Bugs
+
+- Although the progress bar does work for Firefox desktop users, it does not animate & transition to it's desination, nor is the color the intended color.
+
 
 
 
