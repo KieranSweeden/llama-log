@@ -49,8 +49,18 @@ def manage():
             users.remove(deleted_user)
             users.remove(current_user)
 
+            # Sort users by last name
+            users.sort(key=sort_by_last_name)
+
             # Render manage page displaying users exc. current & deleted user
             return render_template("manage.html", users=users)
+
+
+def sort_by_last_name(user):
+
+    """Sorts users by last name"""
+
+    return user['last_name']
 
 
 @admin.route("/create_user",
