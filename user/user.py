@@ -59,7 +59,7 @@ def feed(user_email):
                         author_of_post["last_name"])
                     post["author_id"] = str(post["author"])
 
-                    # Search the comments to see if any comments are linked to post
+                    # Search comments to find children comments to post
                     post_comments = list(app.mongo.db.comments.find(
                         {"parent_post_id": post["_id"]}
                     ))
@@ -69,9 +69,9 @@ def feed(user_email):
 
                 # render templates sending the posts
                 return render_template("feed.html",
-                                    user_email=user_email,
-                                    posts=posts,
-                                    user=current_user)
+                                       user_email=user_email,
+                                       posts=posts,
+                                       user=current_user)
 
             else:
 
@@ -105,7 +105,7 @@ def feed(user_email):
                     # Looping through the comments
                     for comment in post_comments:
 
-                        # If the search term is found within the content of comment
+                        # If search term is found within comment content
                         if search_filter in comment["content"]:
 
                             # Add post to the filtered post list
@@ -120,11 +120,16 @@ def feed(user_email):
                     # Grab the name of the author and add it to post dict
                     author_of_post = app.mongo.db.users.find_one(
                         {"_id": ObjectId(post["author"])})
+
+                    # Concatenate name & add to post author name
                     post["author_name"] = str(author_of_post["first_name"] +
-                                            " " + author_of_post["last_name"])
+                                              " " +
+                                              author_of_post["last_name"])
+
+                    # Add author id to post
                     post["author_id"] = str(post["author"])
 
-                    # Search the comments to see if any comments are linked to post
+                    # Search comments to see if any are linked to post
                     post_comments = list(app.mongo.db.comments.find(
                         {"parent_post_id": post["_id"]}
                     ))
@@ -139,10 +144,10 @@ def feed(user_email):
 
                 # render templates sending the posts
                 return render_template("feed.html",
-                                    user_email=user_email,
-                                    posts=filtered_posts,
-                                    user=current_user,
-                                    search_filter=search_filter)
+                                       user_email=user_email,
+                                       posts=filtered_posts,
+                                       user=current_user,
+                                       search_filter=search_filter)
 
         else:
 
@@ -167,8 +172,13 @@ def feed(user_email):
                 # Grab the name of the author and add it to post dict
                 author_of_post = app.mongo.db.users.find_one(
                     {"_id": ObjectId(post["author"])})
+
+                # Concatenate full name & add to post
                 post["author_name"] = str(author_of_post["first_name"] +
-                                        " " + author_of_post["last_name"])
+                                          " " +
+                                          author_of_post["last_name"])
+
+                # Add author id to post
                 post["author_id"] = str(post["author"])
 
                 # Search the comments to see if any comments are linked to post
@@ -181,9 +191,9 @@ def feed(user_email):
 
             # render templates sending the posts
             return render_template("feed.html",
-                                user_email=user_email,
-                                posts=posts,
-                                user=current_user)
+                                   user_email=user_email,
+                                   posts=posts,
+                                   user=current_user)
 
 
 def sort_by_date_created(post):
@@ -205,7 +215,7 @@ def create_post(category):
     if "user_id" not in session:
 
         abort(403)
-    
+
     else:
 
         # If the user makes a post submission
@@ -228,7 +238,7 @@ def create_post(category):
 
                 # Inform user that a post has been submitted successfully
                 flash("Your new work order has been "
-                    "successfully posted", "success")
+                      "successfully posted", "success")
 
                 # Redirect user to the feed page
                 return redirect(url_for("user.feed",
@@ -264,9 +274,9 @@ def create_post(category):
                 # Push new incident to database
                 app.mongo.db.incidents.insert_one(new_incident)
 
-                # Inform user that an incident post has been submitted successfully
+                # Inform user that incident submission was successful
                 flash("Your new incident post has "
-                    "been successfully posted", "success")
+                      "been successfully posted", "success")
 
                 # Redirect user to the feed page
                 return redirect(url_for("user.feed",
@@ -288,7 +298,7 @@ def view_post(post_id):
     if "user_id" not in session:
 
         abort(403)
-    
+
     else:
 
         # If a comment submission has been made
@@ -340,7 +350,7 @@ def view_post(post_id):
 
             # Add author name to post comment using author values
             post_comment["author_name"] = (f"{author['first_name']} "
-                                        f"{author['last_name']}")
+                                           f"{author['last_name']}")
 
             # Convert author ID to string to use for comparison within page
             post_comment["author"] = str(post_comment["author"])
@@ -348,8 +358,13 @@ def view_post(post_id):
         # Get name from user db using the post author Id
         author_of_post = app.mongo.db.users.find_one(
             {"_id": ObjectId(current_post["author"])})
-        current_post["author_name"] = str(author_of_post["first_name"] + " " +
-                                        author_of_post["last_name"])
+
+        # Concatenate name and add to current post
+        current_post["author_name"] = str(author_of_post["first_name"] +
+                                          " " +
+                                          author_of_post["last_name"])
+
+        # Add author id to current post
         current_post["author_id"] = str(current_post["author"])
 
         # Get current user data
@@ -359,9 +374,9 @@ def view_post(post_id):
 
         # Render view post template with fetched current post data
         return render_template("view_post.html",
-                            post=current_post,
-                            post_comments=post_comments,
-                            user=current_user)
+                               post=current_post,
+                               post_comments=post_comments,
+                               user=current_user)
 
 
 @user.route("/edit_post/<post_id>", methods=["POST", "GET"])
@@ -376,7 +391,7 @@ def edit_post(post_id):
     if "user_id" not in session:
 
         abort(403)
-    
+
     else:
 
         # If an update submission has been made
@@ -409,6 +424,7 @@ def edit_post(post_id):
             {"_id": ObjectId(post_id)}
         )
 
+        # If no work orders are found, check the incidents
         if current_post is None:
             current_post = app.mongo.db.incidents.find_one(
                 {"_id": ObjectId(post_id)}
@@ -478,6 +494,7 @@ def delete_post(post_id):
                 # Inform user of post deletion
                 flash("Post has been deleted successfully", "success")
 
+                # Redirect user to feed page
                 return redirect(url_for("user.feed",
                                         user_email=session["user_email"]))
 
@@ -494,7 +511,7 @@ def update_comment(comment_id):
     if "user_id" not in session:
 
         abort(403)
-    
+
     else:
 
         # Retrieve comment from db
@@ -550,12 +567,16 @@ def update_comment(comment_id):
         author_of_post = app.mongo.db.users.find_one(
             {"_id": ObjectId(parent_post["author"])})
         parent_post["author_name"] = str(author_of_post["first_name"] +
-                                        " " + author_of_post["last_name"])
+                                         " " +
+                                         author_of_post["last_name"])
+
+        # Add parent post author id to parent post
         parent_post["author_id"] = str(parent_post["author"])
 
+        # Render update comment page
         return render_template("update_comment.html",
-                            comment=comment,
-                            post=parent_post)
+                               comment=comment,
+                               post=parent_post)
 
 
 @user.route("/delete_comment/<comment_id>")
@@ -615,10 +636,12 @@ def account(user_email):
 
     else:
 
+        # Grab current user
         current_user = app.mongo.db.users.find_one(
             {"email": user_email}
         )
 
+        # If account form update request is made
         if request.method == "POST":
 
             # Get the user info from the form
@@ -639,12 +662,14 @@ def account(user_email):
 
             # Update the user info in db with new info submitted
             app.mongo.db.users.update_one({"_id": current_user["_id"]},
-                                        {"$set": updated_user_info})
+                                          {"$set": updated_user_info})
 
+            # Inform user account update was successful
             flash("Your account has been updated successfully!", "success")
 
             # Redirect the user to the manage users page
             return redirect(url_for("user.account",
                                     user_email=session["user_email"]))
 
+        # Render the account page
         return render_template("account.html", current_user=current_user)

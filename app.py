@@ -127,6 +127,7 @@ def password(user_email):
                     if check_password_hash(existing_user["password"],
                                            request.form.get("password")):
 
+                        # Add variables to session
                         session["user_email"] = existing_user["email"]
 
                         session["user_is_admin"] = existing_user["is_admin"]
@@ -141,6 +142,7 @@ def password(user_email):
                     flash("The password attempt was wrong, "
                           "please try again.", "error")
 
+                    # Render the password page with error message
                     return redirect(url_for("password",
                                     user_email=existing_user["email"]))
 
@@ -181,6 +183,7 @@ def password(user_email):
                     return redirect(url_for("password",
                                     user_email=existing_user["email"]))
 
+        # Render the password in normal fashion
         return render_template("password.html", existing_user=existing_user)
 
 
