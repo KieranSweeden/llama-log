@@ -175,6 +175,8 @@ function updateProgressBar(){
         inputFields.push([...document.getElementsByTagName("textarea")][0]);
     }
 
+    // Did originally use .at(), reverted to older method for compatability reasons
+    // If checkbox is the last one within the array
     if(inputFields[inputFields.length - 1] === "checkbox"){
         // Filter out checkbox
         inputFields.pop();
