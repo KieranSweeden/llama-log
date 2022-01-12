@@ -795,6 +795,10 @@ Although these results were not terrible, they were not ideal. Some of the issue
 
 - Another issue was that headers were not in sequentially-descending order. This was fixed by making the headings the correct number and applying bulma text size classes to them to revert them back to how they previously looked.
 
+**SEO**
+
+- One of the issues raised with SEO was the lack of a meta tag within the head of the HTML document. This was prompty fixed as only the base template file needed to be changed.
+
 ## Known Bugs
 
 - Although the progress bar does work for Firefox desktop users, it does not animate & transition to it's desination, nor is the color the intended color.
