@@ -318,7 +318,7 @@ progress[value]::-webkit-progress-value {
 
 }
 
-progress::-moz-progress-bar {
+progress.progress::-moz-progress-bar {
     background: var(--primary-color);
 }
 
