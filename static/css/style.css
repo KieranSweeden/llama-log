@@ -308,21 +308,19 @@ header.has-background-info {
 
 /* Form styling */
 
-progress.progress {
-    -webkit-appearance: none; /* Needed for WebKit/Blink */
-}
-
 /* Was taken from https://codepen.io/AKGD/pen/Bmxpdb */
 .progress::-webkit-progress-value {
     transition: width 0.5s ease;
+    background: var(--primary-color);
 }
 
 progress[value]::-webkit-progress-value,
-progress.progress::-webkit-progress-bar,
 progress.progress::-moz-progress-bar {
     background: var(--primary-color);
-
+    transition: width 0.5s ease;
 }
+
+
 
 .is-danger.input {
     border-color: var(--danger-color);
