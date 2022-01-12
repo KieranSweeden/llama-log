@@ -478,6 +478,16 @@ The code that achieved the desired result is below:
 }
 </code>
 
+#### Progress bar was not increasing in value within Safari & Mobile browsers
+
+A problem that was occuring on Safari & mobile browsers was that the progress bar was not increasing in value when the user was inputting data.
+
+It was found when running Safari through [LambdaTest](https://www.lambdatest.com/) that an error was occuring. This error was providing the error "inputFields.at is not a function", despite this function working on Chrome & Firefox browsers.
+
+In this particular instance, I was trying to get the last element within the inputFields array by typing <code>inputFields.at(-1)</code> as what's demonstrated [here](https://stackoverflow.com/a/3216041/15607265).
+
+Given that the newer method didn't work, I reverted back to the older method using .length which solved the problem.
+
 <hr>
 
 ## User Testing
@@ -827,7 +837,7 @@ After completing some of these tasks, I ended up with a promising Lighthouse res
 
 ## Known Bugs
 
-- Although the progress bar does work for Firefox desktop users, it does not animate & transition to it's desination, nor is the color the intended color.
+- Progress bar does not smoothly transition, nor does it sport the intended color on Firefox browsers.
 
 
 
