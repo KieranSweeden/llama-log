@@ -318,6 +318,10 @@ progress[value]::-webkit-progress-value {
 
 }
 
+progress::-moz-progress-bar {
+    background: var(--primary-color);
+}
+
 .is-danger.input {
     border-color: var(--danger-color);
 }
