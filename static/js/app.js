@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addDeleteCommentConfirmListener(deleteCommentButtons);
   }
 
+  // Grab reset comment buttons
   let resetCommentButtons = [...document.getElementsByClassName("reset-btn")];
 
   // If reset comment buttons exist on page
@@ -250,6 +251,11 @@ function focusFirstInputOnLoad(){
 
     // Auto focus on that input element on document load
     firstInputElement.focus();
+
+    // Code taken from https://stackoverflow.com/a/2345915/15607265
+    let inputValue = firstInputElement.value; //store the value of the input element
+    firstInputElement.value = ''; //clear the value of the element
+    firstInputElement.value = inputValue; //set that value back.  
   }
 }
 

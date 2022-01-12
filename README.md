@@ -973,6 +973,9 @@ To clone this GitHub repository (or your previously forked copy), do as follows:
 - [CSS Progress Bar code](https://codepen.io/AKGD/pen/Bmxpdb)
     - The code to allow bulma progress bar transitions was taken from [this CodePen project](https://codepen.io/AKGD/pen/Bmxpdb).
 
+- [Push cursor to end of input value when focusing](https://stackoverflow.com/a/2345915/15607265)
+    - The code to place the cursor at the end of an input's value when auto-focusing was taking from [this Stack Overflow answer](https://stackoverflow.com/a/2345915/15607265).
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
