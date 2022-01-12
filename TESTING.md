@@ -819,7 +819,7 @@ After completing some of these tasks, I ended up with a promising Lighthouse res
 
 <details>
 
-<summary>Post Fix Lighthouse Results<summary>
+<summary>Post Fix Lighthouse Results</summary>
 
 <img src="readme/a11y-performance/post-fixes-lighthouse.png">
 

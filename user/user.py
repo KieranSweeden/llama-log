@@ -82,15 +82,15 @@ def feed(user_email):
                 # Combine both into single list
                 posts = work_orders + incidents
 
-                # Create empty set to contain filtered lists
+                # Create empty list to contain filtered lists
                 filtered_posts = list()
 
                 # Loop through each post
                 for post in posts:
 
                     # If the search term is within title or description of post
-                    if (search_filter in post["title"] or
-                            search_filter in post["description"]):
+                    if (search_filter.lower() in post["title"].lower() or
+                            search_filter.lower() in post["description"].lower()):
 
                         # Add post to the filtered post list
                         filtered_posts.append(post)
