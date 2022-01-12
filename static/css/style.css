@@ -308,6 +308,10 @@ header.has-background-info {
 
 /* Form styling */
 
+progress.progress {
+    -webkit-appearance: none; /* Needed for WebKit/Blink */
+}
+
 /* Was taken from https://codepen.io/AKGD/pen/Bmxpdb */
 .progress::-webkit-progress-value {
     transition: width 0.5s ease;
