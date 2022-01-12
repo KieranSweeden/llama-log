@@ -415,11 +415,48 @@ def edit_post(post_id):
                     {"$set": updated_work_order})
 
                 # Inform user that post has been updated
-                flash("Your post has been updated", "success")
+                flash("Your work order has been updated", "success")
 
                 return redirect(url_for("user.view_post", post_id=post_id))
 
-        # Using post ObjectId, get full post from db
+            # If not, it'll be an incident
+            else:
+
+                # If a customer was involved
+                if ("customer_name" in request.form):
+
+                    # Gather updated data with customer info nto dict
+                    updated_work_order = {
+                        "title": request.form.get("title"),
+                        "customer_name": request.form.get("customer_name"),
+                        "customer_phone": request.form.get("customer_phone"),
+                        "description": request.form.get("description"),
+                        "date_created": datetime.datetime.now(),
+                        "author": ObjectId(session["user_id"])
+                    }
+
+                # If customer was not involved
+                else:
+
+                    # Gather data with customer data
+                    updated_work_order = {
+                        "title": request.form.get("title"),
+                        "description": request.form.get("description"),
+                        "date_created": datetime.datetime.now(),
+                        "author": ObjectId(session["user_id"])
+                    }
+
+                # Update original document in work order db
+                app.mongo.db.incidents.update_one(
+                    {"_id": ObjectId(post_id)},
+                    {"$set": updated_work_order})
+
+                # Inform user that post has been updated
+                flash("Your incident has been updated", "success")
+
+                return redirect(url_for("user.view_post", post_id=post_id))
+
+        # Using post ObjectId, get full post from work order db
         current_post = app.mongo.db.work_orders.find_one(
             {"_id": ObjectId(post_id)}
         )
