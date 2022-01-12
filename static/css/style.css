@@ -313,13 +313,10 @@ header.has-background-info {
     transition: width 0.5s ease;
 }
 
-progress[value]::-webkit-progress-value {
-    background: var(--primary-color);
-
-}
-
+progress[value]::-webkit-progress-value,
 progress.progress::-moz-progress-bar {
     background: var(--primary-color);
+
 }
 
 .is-danger.input {

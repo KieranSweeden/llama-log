@@ -175,7 +175,7 @@ function updateProgressBar(){
         inputFields.push([...document.getElementsByTagName("textarea")][0]);
     }
 
-    if(inputFields.at(-1).type === "checkbox"){
+    if(inputFields[inputFields.length - 1] === "checkbox"){
         // Filter out checkbox
         inputFields.pop();
     }
