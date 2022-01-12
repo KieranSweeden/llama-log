@@ -89,8 +89,10 @@ def feed(user_email):
                 for post in posts:
 
                     # If the search term is within title or description of post
-                    if (search_filter.lower() in post["title"].lower() or
-                            search_filter.lower() in post["description"].lower()):
+                    if (search_filter.lower() in
+                        post["title"].lower() or
+                            search_filter.lower() in
+                            post["description"].lower()):
 
                         # Add post to the filtered post list
                         filtered_posts.append(post)

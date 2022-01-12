@@ -236,8 +236,8 @@ function testPhone(inputField){
         inputField.setCustomValidity("");
         updateFieldDesignToSuccess(inputField);
     } else if (!isValid){
-        inputField.setCustomValidity("Please enter a UK based number containing 11 digits.");
-        updateFieldDesignToError(inputField, "Please enter a UK based number containing 11 digits.");
+        inputField.setCustomValidity("Enter a UK number starting with 07 & containing 11 digits.");
+        updateFieldDesignToError(inputField, "Enter a UK number starting with 07 & containing 11 digits.");
     }
 
     // If a progress bar exists on the page
