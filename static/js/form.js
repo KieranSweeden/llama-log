@@ -177,7 +177,7 @@ function updateProgressBar(){
 
     // Did originally use .at(), reverted to older method for compatability reasons
     // If checkbox is the last one within the array
-    if(inputFields[inputFields.length - 1] === "checkbox"){
+    if(inputFields[inputFields.length - 1].type === "checkbox"){
         // Filter out checkbox
         inputFields.pop();
     }
@@ -198,6 +198,9 @@ function updateProgressBar(){
             validFields.pop(inputField);
         }
     });
+
+    console.log(inputFields)
+    console.log(validFields)
     
     // Determine the percentage of valid fields
     let percentageOfValidFields = (validFields.length / inputFields.length) * 100;

@@ -136,7 +136,6 @@ function displayConfirmResetModal(resetCommentButton){
   addCloseModalListeners([...targettedModal.getElementsByClassName("close-modal")], targettedModal);
 }
 
-
 function displayConfirmDeleteModal(deleteCommentButton){
   // Get id of comment using data modal attribute
   let commentID = deleteCommentButton.dataset.modal;
