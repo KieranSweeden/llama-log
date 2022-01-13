@@ -136,12 +136,16 @@ function getTooltipDescription(type, currentPage){
             "Comment": "Insert a comment to the post currently being viewed. (Limit: 250 Characters)",
             "Viewing Incident": "You're currently viewing an incident, which can sometimes involve a customer. If so, the customer's info should be displayed.",
             "Viewing Work Order": "You're currently viewing a work order. This involves a piece of equipment which should be displayed within the post.",
-            "Editing Comment": "This is where you can edit & update a comment you've already posted."
+            "Editing Comment": "This is where you can edit & update a comment you've already posted.",
+            "Work Order": "Work orders hold information regarding how a piece of equipment or hardware is broken.",
+            "Incident": "Incidents hold information about staff or customer related problems in the workplace."
         };
     } else if (currentPage.includes("feed")) {
         // For feed page
         tooltipDescriptions = {
-            "Feed": "This is your feed, a place where stored work order & incident posts can be viewed & filtered."
+            "Feed": "This is your feed, a place where stored work order & incident posts can be viewed & filtered.",
+            "Work Order": "Work orders hold information regarding how a piece of equipment or hardware is broken.",
+            "Incident": "Incidents hold information about staff or customer related problems in the workplace."
         };
     } else if (currentPage.includes("manage")) {
         // For manage users page
