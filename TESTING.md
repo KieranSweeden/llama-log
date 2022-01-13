@@ -723,11 +723,26 @@ The validator used in order to validate Llama Log's HTML template files was the 
 
 #### Error Pages
 
-- 403.html
+All of the error pages provided successful validation results.
 
-- 404.html
+<details>
 
-- 500.html
+<summary>View Error HTML Validation Results</summary>
+
+
+- 403.html 🗸
+
+    <img src="readme/testing/validator-403.png">
+
+- 404.html 🗸
+
+    <img src="readme/testing/validator-404.png">
+
+- 500.html 🗸
+
+    <img src="readme/testing/validator-500.png">
+
+</details>
 
 ## Defensive Programming
 
@@ -744,6 +759,8 @@ The test procedure undertaken mainly focused on the CRUD functionalities & user 
 The testing spreadsheet used to test Llama Log can be found [here](https://docs.google.com/spreadsheets/d/1SXklniT6aiyQOdub6iv8LPJcEH9exj1sZnazYNQNC1U/edit?usp=sharing).
 
 Llama was developed using Google Chrome & it's Dev Tools. Despite using this browser for development, I thought it was safe to apply the same test methodologies used on other browsers to Google Chrome, to solidify it's functionality.
+
+The results were almost entirely positive. The only problem that was presented was a visual one, that being the progress bar of the forms not animating as intended.
 
 ### Software
 
