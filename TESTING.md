@@ -34,6 +34,7 @@ To navigate back to the README file, [click here](README.md)
         - [Error Pages](#error-pages)
 * [Defensive Programming](#defensive-programming)
 * [Testing Functionality](#testing-functionality)
+    + [Responsiveness](#responsiveness)
     + [Software](#software)
     + [Hardware](#hardware)
 * [Accessibility & Performance](#accessibility---performance)
@@ -808,6 +809,14 @@ Llama was developed using Google Chrome & it's Dev Tools. Despite using this bro
 The results were almost entirely positive. The only problem that was presented was a visual one, that being the progress bar of the forms not animating as intended.
 
 A problem that has surfaced however is the warnings within the console of developer tools. The warnings relate to popper.js in that two files could not be fetched. This is beyond my understanding as a developer so in the interest of time I've decided to put it within the backlog. Considering it's not impactful to the user's experience both visually and functionally, this is a low priority task and should be tackled when time presents itself. 
+
+### Responsiveness
+
+Llama Log responds to various screen sizes well and a few pages within the application adapts it's contents to fit the screen better as intended.
+
+The navbar icons within the dropdown for mobile work and are displayed as intended.
+
+The footer transitions from a row direction on desktop to a column direction on mobile as intended.
 
 ### Software
 
