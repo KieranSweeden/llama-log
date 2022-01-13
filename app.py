@@ -167,6 +167,10 @@ def password(user_email):
 
                     session["user_id"] = str(existing_user["_id"])
 
+                    # Inform user password has been created
+                    flash("Your new password has been saved successfully",
+                          "success")
+
                     # Redirect logged in user to feed page
                     return redirect(url_for(
                         "user.feed", user_email=session["user_email"]))
