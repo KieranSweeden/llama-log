@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Llama Log helps it's users make logging work orders and incidents easier in the workplace with social media influenced design.">
+    <meta name="description"
+        content="Llama Log helps it's users make logging work orders and incidents easier in the workplace with social media influenced design.">
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>    
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -23,8 +24,10 @@
 
     <nav class="navbar is-fixed-top" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{{ url_for('user.feed', user_email=session['user_email']) if session['user_id'] else url_for('log_in') }}">
-                <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}" alt="The Llama Log logo" height="25" width="25">
+            <a class="navbar-item"
+                href="{{ url_for('user.feed', user_email=session['user_email']) if session['user_id'] else url_for('log_in') }}">
+                <img src="{{ url_for('static', filename='images/llama-log-logo-no-text.png')}}" alt="The Llama Log logo"
+                    height="25" width="25">
                 <h1 class="nav-logo-text is-size-4">Llama Log</h1>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -39,24 +42,24 @@
             <div class="navbar-end mr-2">
                 {% if not session.user_email %}
                     <a href="{{ url_for('log_in') }}" class="navbar-item 
-                    {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">
+                        {% if request.url_rule.endpoint == 'log_in' %} is-active {% endif %} has-text-right">
                         Log In
                     </a>
                 {% endif %}
                 {% if session.user_email %}
                     <a href="{{ url_for('user.feed', user_email=session['user_email'], search_filter='none') }}" class="navbar-item 
-                    {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">
+                        {% if request.url_rule.endpoint == 'user.feed' %} is-active {% endif %} has-text-right">
                         Feed
                     </a>
                     {% if session.user_is_admin %}
                         <a href="{{ url_for('admin.manage') }}" class="navbar-item 
-                        {% if request.url_rule.endpoint == 'admin.manage' %} is-active {% endif %} has-text-right">
-                        Manage Users
-                    </a>
+                                {% if request.url_rule.endpoint == 'admin.manage' %} is-active {% endif %} has-text-right">
+                            Manage Users
+                        </a>
                     {% endif %}
 
                     <a href="{{ url_for('user.account', user_email=session['user_email']) }}" class="navbar-item has-text-right
-                          {% if request.url_rule.endpoint == 'user.account' %} is-active {% endif %} px-3">
+                            {% if request.url_rule.endpoint == 'user.account' %} is-active {% endif %} px-3">
                         Account
                     </a>
 
@@ -66,26 +69,30 @@
 
                     <div class="columns my-1 mx-0 is-hidden-tablet">
                         <div class="column is-half is-flex is-justify-content-center is-align-items-center">
-                                <div class="mx-5">
-                                    <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                </div>
-                                <div class="mx-5">
-                                    <a href="https://twitter.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </div>
-                                <div class="mx-5">
-                                    <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="has-text-white">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                </div>
-                                <div class="mx-5">
-                                    <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer" target="_blank" class="has-text-white">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
+                            <div class="mx-5">
+                                <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank"
+                                    class="has-text-white">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </div>
+                            <div class="mx-5">
+                                <a href="https://twitter.com/" rel="noopener noreferrer" target="_blank"
+                                    class="has-text-white">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                            <div class="mx-5">
+                                <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank"
+                                    class="has-text-white">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                            <div class="mx-5">
+                                <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer"
+                                    target="_blank" class="has-text-white">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 {% endif %}
@@ -96,13 +103,13 @@
 
     <header class="container is-max-desktop">
         {% block header %}
-        
+
         {% endblock %}
     </header>
 
 
     {% block content %}
-    
+
     {% endblock %}
 
 
@@ -111,8 +118,10 @@
             <div class="columns">
                 <div class="column is-flex is-flex-direction-column">
                     <h4 class="is-size-4 has-text-white has-text-centered has-text-left-tablet">About</h4>
-                    <p class="has-text-centered has-text-left-tablet">Llama Log allows it's users to efficiently communicate with eachother regarding work orders and incidents within the workplace.</p>
-                    <p class="has-text-centered has-text-left-tablet">Be more productive, efficient & together using Llama Log.</p>
+                    <p class="has-text-centered has-text-left-tablet">Llama Log allows it's users to efficiently
+                        communicate with eachother regarding work orders and incidents within the workplace.</p>
+                    <p class="has-text-centered has-text-left-tablet">Be more productive, efficient & together using
+                        Llama Log.</p>
                 </div>
                 <hr class="is-hidden-tablet">
                 <div class="column is-flex is-flex-direction-column is-justify-content-center">
@@ -120,26 +129,27 @@
                     <p class="has-text-centered">Keep up to date with Llama Log</p>
                     <div class="is-flex is-justify-content-center">
                         <div class="mx-4">
-                            <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank" class="has-text-white"
-                            aria-label="Check out our facebook page">
+                            <a href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank"
+                                class="has-text-white" aria-label="Check out our facebook page">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </div>
                         <div class="mx-4">
-                            <a href="https://twitter.com/" rel="noopener noreferrer" target="_blank" class="has-text-white"
-                            aria-label="Check out our twitter page">
+                            <a href="https://twitter.com/" rel="noopener noreferrer" target="_blank"
+                                class="has-text-white" aria-label="Check out our twitter page">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </div>
                         <div class="mx-4">
-                            <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank" class="has-text-white"
-                            aria-label="Check out our linkedin page">
+                            <a href="https://www.linkedin.com/" rel="noopener noreferrer" target="_blank"
+                                class="has-text-white" aria-label="Check out our linkedin page">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
                         <div class="mx-4">
-                            <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer" target="_blank" class="has-text-white"
-                            aria-label="Check out the github repo for this page">
+                            <a href="https://github.com/KieranSweeden/llama-log" rel="noopener noreferrer"
+                                target="_blank" class="has-text-white"
+                                aria-label="Check out the github repo for this page">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
@@ -147,11 +157,12 @@
                 </div>
                 <hr class="is-hidden-tablet">
                 <div class="column is-flex is-flex-direction-column is-justify-content-center">
-                        <figure class="image is-32x32 is-rounded mx-0 mb-4">
-                            <img src="{{ url_for('static', filename='images/llama-log-logo-white-transparent.png')}}" alt="The Llama Log logo" height="20" width="20">
-                        </figure>
-                        <p>Copyright &copy; 2022</p>
-                        <p>All Rights Reserved</p>
+                    <figure class="image is-32x32 is-rounded mx-0 mb-4">
+                        <img src="{{ url_for('static', filename='images/llama-log-logo-white-transparent.png')}}"
+                            alt="The Llama Log logo" height="20" width="20">
+                    </figure>
+                    <p>Copyright &copy; 2022</p>
+                    <p>All Rights Reserved</p>
                 </div>
             </div>
         </div>
@@ -161,11 +172,13 @@
 
     {% endblock %}
 
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        <!-- General Custom JavaScript -->
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
     {% block js %}
 
     {% endblock %}
+    
 </body>
 
 </html>
