@@ -807,6 +807,8 @@ Llama was developed using Google Chrome & it's Dev Tools. Despite using this bro
 
 The results were almost entirely positive. The only problem that was presented was a visual one, that being the progress bar of the forms not animating as intended.
 
+A problem that has surfaced however is the warnings within the console of developer tools. The warnings relate to popper.js in that two files could not be fetched. This is beyond my understanding as a developer so in the interest of time I've decided to put it within the backlog. Considering it's not impactful to the user's experience both visually and functionally, this is a low priority task and should be tackled when time presents itself. 
+
 ### Software
 
 The following browsers were used to test Llama Log:
@@ -904,6 +906,8 @@ After completing some of these tasks, I ended up with a promising Lighthouse res
 ## Known Bugs
 
 - Progress bar does not smoothly transition, nor does it sport the intended color on Firefox browsers.
+
+- There are two warnings within the console relating to the popper.js library in that two files requested could not be found.
 
 [Return to Contents &#8679;](#Contents)
 
