@@ -1,4 +1,4 @@
-# Llama Log Testing
+# <img src="static/images/llama-log-logo-no-text.png" height="20"> Llama Log Testing
 
 This file contains all of the testing procedures undertaken during the development of Llama Log.
 
