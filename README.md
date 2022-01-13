@@ -1,4 +1,4 @@
-# <img src="static/images/llama-log-logo-no-text.png" height="20"> Llama Log
+# <img src="static/images/llama-log-logo-no-text.png" height="25"> Llama Log
 
 Llama Log is a CRUD web application that provides colleague's the ability to keep a log of equipment work orders & staff/customer related incidents within the workplace. Llama Log's goal is to help colleague's tackle these issues, enabling them to be more productive & efficient when on shift, decreasing various costs the business may have in the long run.
 
