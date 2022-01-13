@@ -3,14 +3,15 @@
 {% block title %}View Post | Llama Log{% endblock %}
 
 {% block header %}
+
   <div class="columns is-marginless pt-3">
     <div class="column is-12">
       <h2 class="title is-size-4 has-text-centered">
-        Viewing 
+        Viewing
         {% if "equipment" in post %}
-          Work Order<i class="fas fa-question-circle is-size-5"></i>
+        Work Order<i class="fas fa-question-circle is-size-5"></i>
         {% else %}
-          Incident<i class="fas fa-question-circle is-size-5"></i>
+        Incident<i class="fas fa-question-circle is-size-5"></i>
         {% endif %}
       </h2>
     </div>
@@ -18,32 +19,35 @@
 
   <div class="columns is-marginless pt-3">
     <div class="column is-12">
-        <div class="buttons is-centered">
-            <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
-        </div>
+      <div class="buttons is-centered">
+        <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To
+          Feed<i class="fas fa-undo"></i></a>
+      </div>
     </div>
   </div>
+
 {% endblock %}
 
 {% block content %}
-<main class="container is-max-desktop">
-  <div class="columns is-marginless animate__animated animate__fadeIn">
-    <div class="column is-8 is-offset-2">
-      <article class="card">
-        <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-incident {% endif %}">
+  <main class="container is-max-desktop">
+    <div class="columns is-marginless animate__animated animate__fadeIn">
+      <div class="column is-8 is-offset-2">
+        <article class="card">
+          <header
+            class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-incident {% endif %}">
             <h3 class="card-header-title has-text-white-bis">
               {% if "equipment" in post %}
-                  <i class="fas fa-tools ml-0 mr-2"></i>
-                {% else %}
-                <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
+              <i class="fas fa-tools ml-0 mr-2"></i>
+              {% else %}
+              <i class="fas fa-exclamation-circle ml-0 mr-2"></i>
               {% endif %}
               {{ post.title }}
             </h3>
             {% if post.author_id == session["user_id"] %}
             <div class="dropdown is-right card-header-icon">
               <div class="dropdown-trigger">
-                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu-{{ post._id }}"
-                aria-label="Open extra post options">
+                <button class="button is-ghost has-text-right" aria-haspopup="true"
+                  aria-controls="dropdown-menu-{{ post._id }}" aria-label="Open extra post options">
                   <span class="icon has-text-white-bis">
                     <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
                   </span>
@@ -51,121 +55,121 @@
               </div>
               <div class="dropdown-menu" id="dropdown-menu-{{ post._id }}" role="menu">
                 <div class="dropdown-content">
-                    <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
-                      Edit Post
-                      <i class="fas fa-edit" aria-hidden="true"></i>
-                    </a>
-                    <hr class="dropdown-divider">
-                    <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
-                      Delete Post
-                      <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            {% elif session["user_is_admin"] == True %}
-              <div class="dropdown is-right card-header-icon">
-                <div class="dropdown-trigger">
-                  <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span class="icon has-text-white-bis">
-                      <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
-                    </span>
+                  <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
+                    Edit Post
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                  </a>
+                  <hr class="dropdown-divider">
+                  <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
+                    Delete Post
+                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
                   </button>
                 </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content">
-                      <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
-                        Delete Post
-                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                  </div>
+              </div>
+            </div>
+            {% elif session["user_is_admin"] == True %}
+            <div class="dropdown is-right card-header-icon">
+              <div class="dropdown-trigger">
+                <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span class="icon has-text-white-bis">
+                    <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
+                    Delete Post
+                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                  </button>
                 </div>
+              </div>
+            </div>
             {% endif %}
-        </header>
-        <section class="card-content p-4">
-          <div class="content">
-            <h4 class="is-size-7 mb-1 has-text-right">
-              <i>
-                {% if "equipment" in post %}
-                  Work Order<i class="fas fa-question-circle is-size-7"></i>
+          </header>
+          <section class="card-content p-4">
+            <div class="content">
+              <h4 class="is-size-7 mb-1 has-text-right">
+                <i>
+                  {% if "equipment" in post %}
+                    Work Order<i class="fas fa-question-circle is-size-7"></i>
+                  {% else %}
+                    Incident<i class="fas fa-question-circle is-size-7"></i>
+                  {% endif %}
+                </i>
+              </h4>
+              {% if "equipment" in post %}
+                <p class="is-size-7 mb-0">
+                  <i>
+                    Equipment:
+                  </i>
+                </p>
+                <p class="mb-2">
+                  {{ post.equipment }}
+                </p>
+              {% else %}
+                {% if post["customer_name"] != "" %}
+                  <p class="is-size-7 mb-0">
+                    <i>
+                      Customer:
+                    </i>
+                  </p>
+                  <p class="mb-2">
+                    {{ post.customer_name }}
+                  </p>
+                  <p class="is-size-7 mb-0">
+                    <i>
+                      Phone:
+                    </i>
+                  </p>
+                  <p class="mb-2">
+                    {{post.customer_phone}}
+                  </p>
                 {% else %}
-                  Incident<i class="fas fa-question-circle is-size-7"></i>
+                  <p class="is-size-7 mb-0">
+                    <i>
+                      No Customers Involved
+                    </i>
+                  </p>
                 {% endif %}
-              </i>
-            </h4>
-            {% if "equipment" in post %}
+              {% endif %}
+              <hr>
               <p class="is-size-7 mb-0">
                 <i>
-                    Equipment:
+                  Description:
                 </i>
               </p>
-              <p class="mb-2">
-                {{ post.equipment }}
-              </p>
-            {% else %}
-              {% if post["customer_name"] != "" %}
-                <p class="is-size-7 mb-0">
-                  <i>
-                    Customer:
-                  </i>
-                </p>
-                <p class="mb-2">
-                    {{ post.customer_name }}
-                </p>
-                <p class="is-size-7 mb-0">
-                  <i>
-                    Phone:
-                  </i>
-                </p>
-                <p class="mb-2">
-                  {{post.customer_phone}}
-                </p>
+              <p class="add-text-overflow-cutoff">{{ post.description }}</p>
+            </div>
+          </section>
+          <footer class="card-footer">
+            <div class="card-footer-item is-justify-content-center is-align-items-center">
+              <p class="is-size-7">
+                {% if post["amount_of_comments"] == 1 %}
+                  1 Comment
+                {% elif post["amount_of_comments"] > 1 %}
+                  {{ post["amount_of_comments"] }} Comments
                 {% else %}
-                <p class="is-size-7 mb-0">
-                  <i>
-                    No Customers Involved
-                  </i>
-                </p>
-              {% endif %}
-            {% endif %}
-            <hr>
-            <p class="is-size-7 mb-0">
-              <i>
-                Description:
-              </i>
-            </p>
-            <p class="add-text-overflow-cutoff">{{ post.description }}</p>
-          </div>
-        </section>
-        <footer class="card-footer">
-          <div class="card-footer-item is-justify-content-center is-align-items-center">
-            <p class="is-size-7">
-              {% if post["amount_of_comments"] == 1 %}
-                1 Comment
-              {% elif post["amount_of_comments"] > 1 %}
-                {{ post["amount_of_comments"] }} Comments
-              {% else %}
-                No Comments
-              {% endif %}
-            </p>
-          </div>
-          <div class="card-footer-item is-justify-content-center is-align-items-center">
-            <p class="is-size-7">By: {{ post.author_name }}</p>
-          </div>
-          <div class="card-footer-item column-mobile">
-            <p class="mr-2 is-size-7">
-              {{ post.date_created.strftime("%I:%M%p") }}
-            </p>
-            <p class="is-size-7">
-              {{ post.date_created.strftime("%d %b %Y") }}
-            </p>
-          </div>
-        </footer>
-      </article>
+                  No Comments
+                {% endif %}
+              </p>
+            </div>
+            <div class="card-footer-item is-justify-content-center is-align-items-center">
+              <p class="is-size-7">By: {{ post.author_name }}</p>
+            </div>
+            <div class="card-footer-item column-mobile">
+              <p class="mr-2 is-size-7">
+                {{ post.date_created.strftime("%I:%M%p") }}
+              </p>
+              <p class="is-size-7">
+                {{ post.date_created.strftime("%d %b %Y") }}
+              </p>
+            </div>
+          </footer>
+        </article>
+      </div>
     </div>
-  </div>
-  
+
     <div class="modal" data-modal="{{ post._id }}">
       <div class="modal-background"></div>
       <div class="modal-card">
@@ -177,49 +181,52 @@
           <h4>The content within this post could be valuable to you or colleague's during future workplace problems.</h4>
           <hr>
           <div class="message-body message-danger has-text-white">
-            <p><i class="fas fa-exclamation-triangle"></i>Deleting a post will also remove the comments associated with it.</p>
+            <p><i class="fas fa-exclamation-triangle"></i>Deleting a post will also remove the comments associated with
+              it.</p>
           </div>
         </section>
         <footer class="modal-card-foot is-justify-content-end">
           <div class="buttons">
             <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
-            <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-danger my-0">Delete Post<i class="fas fa-trash-alt"></i></a>
+            <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-danger my-0">Delete Post<i
+                class="fas fa-trash-alt"></i></a>
           </div>
         </footer>
       </div>
     </div>
 
     {% for comment in post_comments %}
-    <div class="columns is-marginless animate__animated animate__fadeIn">
-      <div class="column is-8 is-offset-2">
-        <article class="card">
-          <section class="card-content p-3">
-            <div class="content">
-              <p class="has-text-grey m-0 has-text-right">
-                <small class="is-size-7">
-                  {{ comment.date_created.strftime("%I:%M%p") }}
-                  {{ comment.date_created.strftime("%d %b %Y") }}
-                </small>
-              </p>
-              <hr class="my-2">
-              <p class="is-size-7 mb-1">
-                <i>
-                  Comment:
-                </i>
-              </p>
-              <p>
-                {{ comment.content }}
-              </p>
-            </div>
-          </section>
-          <footer class="card-footer has-background-light">
-            <div class="card-footer-item has-text-left py-0 ">
-              <p class="py-2">
-                <strong>{{ comment.author_name }}</strong>
-              </p>
-                <div class="buttons" >
+      <div class="columns is-marginless animate__animated animate__fadeIn">
+        <div class="column is-8 is-offset-2">
+          <article class="card">
+            <section class="card-content p-3">
+              <div class="content">
+                <p class="has-text-grey m-0 has-text-right">
+                  <small class="is-size-7">
+                    {{ comment.date_created.strftime("%I:%M%p") }}
+                    {{ comment.date_created.strftime("%d %b %Y") }}
+                  </small>
+                </p>
+                <hr class="my-2">
+                <p class="is-size-7 mb-1">
+                  <i>
+                    Comment:
+                  </i>
+                </p>
+                <p>
+                  {{ comment.content }}
+                </p>
+              </div>
+            </section>
+            <footer class="card-footer has-background-light">
+              <div class="card-footer-item has-text-left py-0 ">
+                <p class="py-2">
+                  <strong>{{ comment.author_name }}</strong>
+                </p>
+                <div class="buttons">
                   {% if comment.author == session["user_id"] %}
-                    <a href="{{ url_for('user.update_comment', comment_id=comment._id) }}" class="button is-ghost edit-btn m-0 px-2">
+                    <a href="{{ url_for('user.update_comment', comment_id=comment._id) }}"
+                      class="button is-ghost edit-btn m-0 px-2">
                       Edit
                     </a>
                     <button class="button delete-btn has-text-danger-dark is-ghost m-0 px-2" data-modal="{{ comment._id }}">
@@ -229,33 +236,34 @@
                       Delete</button>
                   {% endif %}
                 </div>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
+
+      <div class="modal" data-modal="{{ comment._id }}">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title"><i class="fas fa-exclamation-triangle"></i>Are you sure?</p>
+            <button class="delete close-modal" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <h4>The content within your comment could be useful to you or your colleague's in the future.</h4>
+          </section>
+          <footer class="modal-card-foot is-justify-content-end">
+            <div class="buttons">
+              <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
+              <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" class="button is-danger my-0">Delete
+                Comment<i class="fas fa-trash-alt"></i></a>
             </div>
           </footer>
-        </article>
+        </div>
       </div>
-    </div>
-    
-    <div class="modal" data-modal="{{ comment._id }}">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title"><i class="fas fa-exclamation-triangle"></i>Are you sure?</p>
-          <button class="delete close-modal" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <h4>The content within your comment could be useful to you or your colleague's in the future.</h4>
-        </section>
-        <footer class="modal-card-foot is-justify-content-end">
-          <div class="buttons">
-            <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
-            <a href="{{ url_for('user.delete_comment', comment_id=comment._id) }}" class="button is-danger my-0">Delete Comment<i class="fas fa-trash-alt"></i></a>
-          </div>
-        </footer>
-      </div>
-    </div>
-    
+
     {% endfor %}
-    
+
     <div class="columns is-marginless animate__animated animate__fadeIn">
       <div class="column is-8 is-offset-2">
         <div class="card">
@@ -270,18 +278,18 @@
               <div class="field">
                 <label for="content" class="label">Comment<i class="fas fa-question-circle"></i></label>
                 <div class="control">
-                  <textarea class="textarea" placeholder="Write your comment here..." 
-                  minlength="5" maxlength="250" rows="2" id="content" name="content" required></textarea>
+                  <textarea class="textarea" placeholder="Write your comment here..." minlength="5" maxlength="250"
+                    rows="2" id="content" name="content" required></textarea>
                 </div>
                 <p class="help is-danger has-text-right"></p>
               </div>
-    
+
               <div class="field">
                 <div class="control">
                   <div class="buttons is-centered">
                     <button type="submit" class="button is-link my-1 mx-0" disabled>
-                        Post Comment
-                        <i class="fas fa-paper-plane"></i>
+                      Post Comment
+                      <i class="fas fa-paper-plane"></i>
                     </button>
                   </div>
                 </div>
@@ -291,51 +299,51 @@
         </div>
       </div>
     </div>
-</main>
-
+  </main>
 
 {% endblock %}
 
 {% block flashes %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
       {% for category, message in messages %}
-      <article class="message {{ 'is-success' if category == 'success' else 'is-danger' }} animate__animated animate__fadeInUp">
+        <article
+          class="message {{ 'is-success' if category == 'success' else 'is-danger' }} animate__animated animate__fadeInUp">
           <div class="message-header">
-                  {% if category == "success" %}
-                  <i class="fas fa-thumbs-up"></i>
-                  <p>Success!</p>
-                  {% else %}
-                  <i class="fas fa-exclamation-triangle"></i>
-                  <p>Error!</p>
-                  {% endif %}
-                  <button class="delete flash-delete" aria-label="delete"></button>
-              </div>
-              <div class="message-body">
-                  <p>{{ message }}</p>
-              </div>
-          </article>
+            {% if category == "success" %}
+              <i class="fas fa-thumbs-up"></i>
+              <p>Success!</p>
+            {% else %}
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>Error!</p>
+            {% endif %}
+              <button class="delete flash-delete" aria-label="delete"></button>
+          </div>
+          <div class="message-body">
+            <h4>{{ message }}</h4>
+          </div>
+        </article>
       {% endfor %}
-  {% endif %}
-{% endwith %}
+    {% endif %}
+  {% endwith %}
 
 {% endblock %}
 
 {% block js %}
 
-    <!-- Development -->
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+  <!-- Development -->
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 
-    <!-- Production -->
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
+  <!-- Production -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 
-    <!-- Tooltips -->
-    <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
+  <!-- Tooltips -->
+  <script src="{{ url_for('static', filename='js/tooltips.js') }}"></script>
 
-    <!-- Form -->
-    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+  <!-- Form -->
+  <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 
 {% endblock %}

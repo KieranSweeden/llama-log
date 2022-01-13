@@ -13,25 +13,28 @@
 
   <div class="columns is-marginless pt-3">
     <div class="column is-12">
-        <div class="buttons is-centered">
-          <div class="dropdown">
-            <div class="dropdown-trigger">
-              <button class="button is-primary" aria-haspopup="true" aria-controls="create-post-option">
-                <span>Create New Post</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="create-post-option" role="menu">
-              <div class="dropdown-content">
-                <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work Order<i class="fas fa-tools"></i><span class="has-text-grey"> (Equipment)</span></a>
-                <hr class="dropdown-divider">
-                <a href="{{ url_for('user.create_post', category='incident') }}" class="dropdown-item has-text-left">Incident<i class="fas fa-exclamation-circle"></i><span class="has-text-grey"> (Staff, Customers)</span></a>
-              </div>
+      <div class="buttons is-centered">
+        <div class="dropdown">
+          <div class="dropdown-trigger">
+            <button class="button is-primary" aria-haspopup="true" aria-controls="create-post-option">
+              <span>Create New Post</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="create-post-option" role="menu">
+            <div class="dropdown-content">
+              <a href="{{ url_for('user.create_post', category='work_order') }}" class="dropdown-item has-text-left">Work
+                Order<i class="fas fa-tools"></i><span class="has-text-grey"> (Equipment)</span></a>
+              <hr class="dropdown-divider">
+              <a href="{{ url_for('user.create_post', category='incident') }}"
+                class="dropdown-item has-text-left">Incident<i class="fas fa-exclamation-circle"></i><span
+                  class="has-text-grey"> (Staff, Customers)</span></a>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 
@@ -40,8 +43,8 @@
       <form method="GET" action="{{ url_for('user.feed', user_email=session['user_email']) }}">
         <div class="field has-addons">
           <div class="control is-expanded has-icons-left">
-            <input class="input is-rounded" type="text" id="filter" name="filter" 
-            placeholder="Search posts and comments..." value="{{ search_filter }}">
+            <input class="input is-rounded" type="text" id="filter" name="filter"
+              placeholder="Search posts and comments..." value="{{ search_filter }}">
             <span class="icon is-small is-left">
               <i class="fas fa-search is-text-primary"></i>
             </span>
@@ -55,19 +58,21 @@
       </form>
     </div>
   </div>
+
 {% endblock %}
 
 {% block content %}
 
   <main class="container is-max-desktop">
-    
+
     {% if posts|length > 0 %}
-  
+
       {% for post in posts %}
         <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
           <div class="column is-8 is-offset-2">
             <article class="card">
-              <header class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-incident {% endif %}">
+              <header
+                class="card-header {% if 'equipment' in post %} has-background-work-order {% else %} has-background-incident {% endif %}">
                 <a class="header-link is-flex" href="{{ url_for('user.view_post', post_id=post['_id'])}}">
                   <h3 class="card-header-title has-text-white">
                     {% if "equipment" in post %}
@@ -78,43 +83,43 @@
                     <span class="add-text-overflow-cutoff">
                       {{ post.title }}
                     </span>
-                    </h3>
+                  </h3>
                 </a>
-                  <div class="dropdown is-right card-header-icon">
-                    <div class="dropdown-trigger">
-                      <button class="button is-ghost has-text-right" aria-haspopup="true" aria-controls="dropdown-menu-{{ post._id }}"
-                      aria-label="Open extra post options">
-                        <span class="icon has-text-white-bis">
-                          <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu-{{ post._id }}" role="menu">
-                      <div class="dropdown-content">
-                        <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
-                          View Post
-                          <i class="fas fa-eye" aria-hidden="true"></i>
+                <div class="dropdown is-right card-header-icon">
+                  <div class="dropdown-trigger">
+                    <button class="button is-ghost has-text-right" aria-haspopup="true"
+                      aria-controls="dropdown-menu-{{ post._id }}" aria-label="Open extra post options">
+                      <span class="icon has-text-white-bis">
+                        <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu-{{ post._id }}" role="menu">
+                    <div class="dropdown-content">
+                      <a href="{{ url_for('user.view_post', post_id=post['_id'])}}" class="dropdown-item">
+                        View Post
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                      </a>
+                      {% if post.author_id == session["user_id"] %}
+                        <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
+                          Edit Post
+                          <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>
-                        {% if post.author_id == session["user_id"] %}
-                          <a href="{{ url_for('user.edit_post', post_id=post['_id'])}}" class="dropdown-item">
-                            Edit Post
-                            <i class="fas fa-edit" aria-hidden="true"></i>
-                          </a>
-                          <hr class="dropdown-divider">
-                          <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
-                            Delete Post
-                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                          </button>
-                        {% elif session["user_is_admin"] == True %}
-                          <hr class="dropdown-divider">
-                          <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
-                            Delete Post
-                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                          </button>
-                        {% endif %}
-                      </div>
+                        <hr class="dropdown-divider">
+                        <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
+                          Delete Post
+                          <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                      {% elif session["user_is_admin"] == True %}
+                        <hr class="dropdown-divider">
+                        <button class="dropdown-item is-ghost delete-btn" data-modal="{{ post._id }}">
+                          Delete Post
+                          <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                      {% endif %}
                     </div>
                   </div>
+                </div>
               </header>
               <section class="card-content p-4">
                 <div class="content">
@@ -157,7 +162,7 @@
             </article>
           </div>
         </div>
-    
+
         <div class="modal" data-modal="{{ post._id }}">
           <div class="modal-background"></div>
           <div class="modal-card">
@@ -169,29 +174,31 @@
               <h4>The content within this post could be valuable to you or colleague's during future workplace problems.</h4>
               <hr>
               <div class="message-body message-danger has-text-white">
-                <p><i class="fas fa-exclamation-triangle"></i>Deleting a post will also remove the comments associated with it.</p>
+                <p><i class="fas fa-exclamation-triangle"></i>Deleting a post will also remove the comments associated with
+                  it.</p>
               </div>
             </section>
             <footer class="modal-card-foot is-justify-content-end">
               <div class="buttons">
                 <button class="button close-modal is-warning my-0">Cancel<i class="fas fa-undo"></i></button>
-                <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-danger my-0">Delete Post<i class="fas fa-trash-alt"></i></a>
+                <a href="{{ url_for('user.delete_post', post_id=post['_id'])}}" class="button is-danger my-0">Delete Post<i
+                    class="fas fa-trash-alt"></i></a>
               </div>
             </footer>
           </div>
         </div>
-    
+
       {% endfor %}
-  
+
     {% else %}
-  
+
       <div class="columns is-marginless pt-2 animate__animated animate__fadeIn">
         <div class="column is-8 is-offset-2 has-text-centered">
-            <p>Oops, it seems you have no results.</p>
-            <p>Try simplifying your searches.</p>
+          <p>Oops, it seems you have no results.</p>
+          <p>Try simplifying your searches.</p>
         </div>
       </div>
-  
+
     {% endif %}
 
   </main>
@@ -200,31 +207,34 @@
 
 {% block flashes %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        {% for category, message in messages %}
-        <article class="message {{ 'is-success' if category == 'success' else 'is-danger' }} animate__animated animate__fadeInUp">
-            <div class="message-header">
-                    {% if category == "success" %}
-                    <i class="fas fa-thumbs-up"></i>
-                    <p>Success!</p>
-                    {% else %}
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <p>Error!</p>
-                    {% endif %}
-                    <button class="delete flash-delete" aria-label="delete"></button>
-                </div>
-                <div class="message-body">
-                    <p>{{ message }}</p>
-                </div>
-            </article>
-        {% endfor %}
+      {% for category, message in messages %}
+        <article
+          class="message {{ 'is-success' if category == 'success' else 'is-danger' }} animate__animated animate__fadeInUp">
+          <div class="message-header">
+            {% if category == "success" %}
+              <i class="fas fa-thumbs-up"></i>
+              <p>Success!</p>
+            {% else %}
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>Error!</p>
+            {% endif %}
+              <button class="delete flash-delete" aria-label="delete"></button>
+          </div>
+          <div class="message-body">
+            <h4>{{ message }}</h4>
+          </div>
+        </article>
+      {% endfor %}
     {% endif %}
-{% endwith %}
+  {% endwith %}
 
 {% endblock %}
 
 {% block js %}
+
+  <!-- Clamp js -->
   <script src="{{ url_for('static', filename='js/clamp.min.js') }}"></script>
 
   <!-- Development -->

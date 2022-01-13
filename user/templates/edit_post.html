@@ -3,6 +3,7 @@
 {% block title %}Edit Post | Llama Log{% endblock %}
 
 {% block header %}
+
     <div class="columns is-marginless pt-3">
         <div class="column is-12">
             <h2 class="title is-size-4 has-text-centered">
@@ -15,43 +16,31 @@
             </h2>
         </div>
     </div>
+
     <div class="columns is-marginless pt-3">
         <div class="column is-12">
             <div class="buttons is-centered">
-                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
+                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To
+                    Feed<i class="fas fa-undo"></i></a>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block content %}
-<main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
-    <div class="columns is-marginless pt-3 animate__animated animate__fadeIn">
-        <div class="column is-8 is-offset-2">
-            <div class="box">
-                <form method="POST" action="{{ url_for('user.edit_post', post_id=post['_id'])}}">
-                    <div class="field">
-                        <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="title" name="title" type="text" 
-                            placeholder="Enter Work Order Title" value="{{ post.title }}" minlength="5" maxlength="30" required>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-    
-                    {% if "equipment" in post %}
-    
+
+    <main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
+        <div class="columns is-marginless pt-3 animate__animated animate__fadeIn">
+            <div class="column is-8 is-offset-2">
+                <div class="box">
+                    <form method="POST" action="{{ url_for('user.edit_post', post_id=post['_id'])}}">
                         <div class="field">
-                            <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
+                            <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
                             <div class="control has-icons-left has-icons-right">
-                                <input class="input" id="equipment" name="equipment" type="text" 
-                                placeholder="Enter equipment" value="{{ post.equipment }}" minlength="5" maxlength="30" required>
+                                <input class="input" id="title" name="title" type="text"
+                                    placeholder="Enter Work Order Title" value="{{ post.title }}" minlength="5"
+                                    maxlength="30" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-user"></i>
                                 </span>
@@ -61,18 +50,17 @@
                             </div>
                             <p class="help is-danger has-text-right"></p>
                         </div>
-    
-                    {% else %}
-                        
-                        {% if post["customer_name"] %}
-                        
+
+                        {% if "equipment" in post %}
+
                             <div class="field">
-                                <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
+                                <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
                                 <div class="control has-icons-left has-icons-right">
-                                    <input class="input" id="customer_name" name="customer_name" type="text" 
-                                    placeholder="Enter customer's full name" value="{{ post.customer_name }}" required>
+                                    <input class="input" id="equipment" name="equipment" type="text"
+                                        placeholder="Enter equipment" value="{{ post.equipment }}" minlength="5" maxlength="30"
+                                        required>
                                     <span class="icon is-small is-left">
-                                    <i class="fas fa-user-tag"></i>
+                                        <i class="fas fa-user"></i>
                                     </span>
                                     <span class="icon is-small is-right">
                                         <i></i>
@@ -80,57 +68,79 @@
                                 </div>
                                 <p class="help is-danger has-text-right"></p>
                             </div>
-            
-                            <div class="field">
-                                <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
-                                <div class="control has-icons-left has-icons-right">
-                                    <input class="input" id="customer_phone" name="customer_phone" type="tel" 
-                                    placeholder="Enter customer's phone number" value="{{ post.customer_phone }}" required>
-                                    <span class="icon is-small is-left">
-                                    <i class="fas fa-phone"></i>
-                                    </span>
-                                    <span class="icon is-small is-right">
-                                        <i></i>
-                                    </span>
+
+                        {% else %}
+
+                            {% if post["customer_name"] %}
+
+                                <div class="field">
+                                    <label for="customer_name" class="label customer">Customer Name<i
+                                            class="fas fa-question-circle"></i></label>
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input class="input" id="customer_name" name="customer_name" type="text"
+                                            placeholder="Enter customer's full name" value="{{ post.customer_name }}" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-user-tag"></i>
+                                        </span>
+                                        <span class="icon is-small is-right">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <p class="help is-danger has-text-right"></p>
                                 </div>
-                                <p class="help is-danger has-text-right"></p>
-                            </div>
+
+                                <div class="field">
+                                    <label for="customer_phone" class="label customer">Customer Phone<i
+                                            class="fas fa-question-circle"></i></label>
+                                    <div class="control has-icons-left has-icons-right">
+                                        <input class="input" id="customer_phone" name="customer_phone" type="tel"
+                                            placeholder="Enter customer's phone number" value="{{ post.customer_phone }}" required>
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-phone"></i>
+                                        </span>
+                                        <span class="icon is-small is-right">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <p class="help is-danger has-text-right"></p>
+                                </div>
+
+                            {% endif %}
 
                         {% endif %}
-    
-                    {% endif %}
-    
-                    <div class="field">
-                        <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
-                        <div class="control">
-                        <textarea class="textarea" name="description" id="description" 
-                            placeholder="Provide a description of the problem" 
-                            minlength="10" maxlength="500" rows="3" required>{{ post.description }}</textarea>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
 
-                    <progress class="progress" value="0" max="100"></progress>
-    
-                    <div class="field">
-                        <div class="control">
-                            <div class="buttons is-centered">
-                                <button type="submit" class="button is-link my-1 mx-0">Update
-                                    {% if "equipment" in post %}
-                                        Work Order
-                                    {% else %}
-                                        Incident 
-                                    {% endif %}
-                                    <i class="fas fa-save"></i>
-                                </button>
+                        <div class="field">
+                            <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
+                            <div class="control">
+                                <textarea class="textarea" name="description" id="description"
+                                    placeholder="Provide a description of the problem" minlength="10" maxlength="500"
+                                    rows="3" required>{{ post.description }}</textarea>
+                            </div>
+                            <p class="help is-danger has-text-right"></p>
+                        </div>
+
+                        <progress class="progress" value="0" max="100"></progress>
+
+                        <div class="field">
+                            <div class="control">
+                                <div class="buttons is-centered">
+                                    <button type="submit" class="button is-link my-1 mx-0">Update
+                                        {% if "equipment" in post %}
+                                            Work Order
+                                        {% else %}
+                                            Incident
+                                        {% endif %}
+                                        <i class="fas fa-save"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
 {% endblock %}
 
 {% block js %}

@@ -3,54 +3,45 @@
 {% block title %}Create New Post | Llama Log{% endblock %}
 
 {% block header %}
+
     <div class="columns is-marginless pt-3">
         <div class="column is-12">
-          <h2 class="title is-size-4 has-text-centered">
-            {% if category == "work_order" %}
+            <h2 class="title is-size-4 has-text-centered">
+                {% if category == "work_order" %}
                 Create Work Order Post<i class="fas fa-question-circle is-size-5"></i>
-            {% else %}
+                {% else %}
                 Create Incident Post<i class="fas fa-question-circle is-size-5"></i>
-            {% endif %}
-          </h2>
+                {% endif %}
+            </h2>
         </div>
-      </div>
-      <div class="columns is-marginless pt-3">
+    </div>
+
+    <div class="columns is-marginless pt-3">
         <div class="column is-12">
             <div class="buttons is-centered">
-                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To Feed<i class="fas fa-undo"></i></a>
+                <a class="button is-warning m-0" href="{{ url_for('user.feed', user_email=session['user_email']) }}">Back To
+                    Feed<i class="fas fa-undo"></i></a>
             </div>
         </div>
-      </div>
+    </div>
+
 {% endblock %}
 
 {% block content %}
-<main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
-    <div class="columns is-centered animate__animated animate__fadeIn">
-        <div class="column is-flex is-justify-content-center">
-            <div id="center-box" class="box">
-                <div class="columns is-multiline">
-                    <div class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
-                        <form method="POST" action="{{ url_for('user.create_post', category=category)}}">
-                            <div class="field">
-                                <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
-                                <div class="control has-icons-left has-icons-right">
-                                    <input class="input" id="title" name="title" type="text" placeholder="Enter title" minlength="10" maxlength="50" required>
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <span class="icon is-small is-right">
-                                        <i></i>
-                                    </span>
-                                </div>
-                                <p class="help is-danger has-text-right"></p>
-                            </div>
-            
-                            {% if category == "work_order" %}
-            
+
+    <main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
+        <div class="columns is-centered animate__animated animate__fadeIn">
+            <div class="column is-flex is-justify-content-center">
+                <div id="center-box" class="box">
+                    <div class="columns is-multiline">
+                        <div
+                            class="column is-12 is-flex is-justify-content-center is-align-items-center is-flex-direction-column">
+                            <form method="POST" action="{{ url_for('user.create_post', category=category)}}">
                                 <div class="field">
-                                    <label for="equipment" class="label">Equipment<i class="fas fa-question-circle"></i></label>
+                                    <label for="title" class="label">Title<i class="fas fa-question-circle"></i></label>
                                     <div class="control has-icons-left has-icons-right">
-                                        <input class="input" id="equipment" name="equipment" type="text" placeholder="Enter equipment" minlength="5" maxlength="30" required>
+                                        <input class="input" id="title" name="title" type="text" placeholder="Enter title"
+                                            minlength="10" maxlength="50" required>
                                         <span class="icon is-small is-left">
                                             <i class="fas fa-user"></i>
                                         </span>
@@ -60,91 +51,116 @@
                                     </div>
                                     <p class="help is-danger has-text-right"></p>
                                 </div>
-            
-                            {% else %}
-                            
-                            <div class="field">
-                                <div class="control">
-                                    <label for="was_customer_involved" class="label">Was A Customer Involved?<i class="fas fa-question-circle"></i></label>
-                                    <label class="radio">
-                                        <input type="radio" id="was_customer_involved" name="was_customer_involved" checked>No
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" id="was_customer_involved" name="was_customer_involved">Yes
-                                    </label>
-                                </div>
-                            </div>
 
-                            <div id="customer-involved-fields" class="is-hidden">
-                                <div class="field">
-                                    <div class="control">
-                                        <label for="customer_name" class="label customer">Customer Name<i class="fas fa-question-circle"></i></label>
-                                         <div class="control has-icons-left has-icons-right">
-                                             <input class="input" id="customer_name" name="customer_name" type="text" placeholder="Enter customer's full name">
-                                             <span class="icon is-small is-left">
-                                               <i class="fas fa-user-tag"></i>
-                                             </span>
-                                             <span class="icon is-small is-right">
-                                                 <i></i>
-                                             </span>
-                                         </div>
-                                    </div>
-                                    <p class="help is-danger has-text-right"></p>
-                                </div>
-    
-                                <div class="field mb-3">
-                                    <div class="control">
-                                        <label for="customer_phone" class="label customer">Customer Phone<i class="fas fa-question-circle"></i></label>
+                                {% if category == "work_order" %}
+
+                                    <div class="field">
+                                        <label for="equipment" class="label">Equipment<i
+                                                class="fas fa-question-circle"></i></label>
                                         <div class="control has-icons-left has-icons-right">
-                                            <input class="input" id="customer_phone" name="customer_phone" type="tel" placeholder="Enter customer's phone number">
+                                            <input class="input" id="equipment" name="equipment" type="text"
+                                                placeholder="Enter equipment" minlength="5" maxlength="30" required>
                                             <span class="icon is-small is-left">
-                                            <i class="fas fa-phone"></i>
+                                                <i class="fas fa-user"></i>
                                             </span>
                                             <span class="icon is-small is-right">
                                                 <i></i>
                                             </span>
                                         </div>
+                                        <p class="help is-danger has-text-right"></p>
+                                    </div>
+
+                                {% else %}
+
+                                    <div class="field">
+                                        <div class="control">
+                                            <label for="was_customer_involved" class="label">Was A Customer Involved?<i
+                                                    class="fas fa-question-circle"></i></label>
+                                            <label class="radio">
+                                                <input type="radio" id="was_customer_involved" name="was_customer_involved"
+                                                    checked>No
+                                            </label>
+                                            <label class="radio">
+                                                <input type="radio" id="was_customer_involved" name="was_customer_involved">Yes
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div id="customer-involved-fields" class="is-hidden">
+                                        <div class="field">
+                                            <div class="control">
+                                                <label for="customer_name" class="label customer">Customer Name<i
+                                                        class="fas fa-question-circle"></i></label>
+                                                <div class="control has-icons-left has-icons-right">
+                                                    <input class="input" id="customer_name" name="customer_name" type="text"
+                                                        placeholder="Enter customer's full name">
+                                                    <span class="icon is-small is-left">
+                                                        <i class="fas fa-user-tag"></i>
+                                                    </span>
+                                                    <span class="icon is-small is-right">
+                                                        <i></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <p class="help is-danger has-text-right"></p>
+                                        </div>
+
+                                        <div class="field mb-3">
+                                            <div class="control">
+                                                <label for="customer_phone" class="label customer">Customer Phone<i
+                                                        class="fas fa-question-circle"></i></label>
+                                                <div class="control has-icons-left has-icons-right">
+                                                    <input class="input" id="customer_phone" name="customer_phone" type="tel"
+                                                        placeholder="Enter customer's phone number">
+                                                    <span class="icon is-small is-left">
+                                                        <i class="fas fa-phone"></i>
+                                                    </span>
+                                                    <span class="icon is-small is-right">
+                                                        <i></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <p class="help is-danger has-text-right"></p>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+
+                                <div class="field">
+                                    <label for="description" class="label">Description<i
+                                            class="fas fa-question-circle"></i></label>
+                                    <div class="control">
+                                        <textarea class="textarea" name="description" id="description"
+                                            placeholder="Provide a description of the problem" minlength="10"
+                                            maxlength="500" rows="3" required></textarea>
                                     </div>
                                     <p class="help is-danger has-text-right"></p>
                                 </div>
-                            </div>
 
-            
-                            {% endif %}
-            
-                            <div class="field">
-                                <label for="description" class="label">Description<i class="fas fa-question-circle"></i></label>
-                                <div class="control">
-                                    <textarea class="textarea" name="description" id="description" 
-                                    placeholder="Provide a description of the problem" minlength="10" maxlength="500" rows="3" required></textarea>
-                                </div>
-                                <p class="help is-danger has-text-right"></p>
-                            </div>
+                                <progress class="progress" value="0" max="100"></progress>
 
-                            <progress class="progress" value="0" max="100"></progress>
-
-                            <div class="field">
-                                <div class="control">
-                                    <div class="buttons is-centered">
-                                        <button type="submit" class="button is-link my-1 mx-0">
-                                            {% if category == "work_order" %}
-                                                Submit Work Order
-                                            {% else %}
-                                                Submit Incident 
-                                            {% endif %}
-                                            <i class="fas fa-paper-plane"></i>
-                                        </button>
+                                <div class="field">
+                                    <div class="control">
+                                        <div class="buttons is-centered">
+                                            <button type="submit" class="button is-link my-1 mx-0">
+                                                {% if category == "work_order" %}
+                                                    Submit Work Order
+                                                {% else %}
+                                                    Submit Incident
+                                                {% endif %}
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-            
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
 {% endblock %}
 
 {% block js %}
