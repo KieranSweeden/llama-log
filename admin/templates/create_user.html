@@ -3,6 +3,7 @@
 {% block title %}Create User | Llama Log{% endblock %}
 
 {% block header %}
+
     <div class="columns is-marginless pt-3">
         <div class="column is-12">
             <h2 class="title is-size-4 has-text-centered">
@@ -13,153 +14,165 @@
     <div class="columns is-marginless pt-3">
         <div class="column is-12">
             <div class="buttons is-centered">
-                <a class="button is-warning m-0" href="{{ url_for('admin.manage', user_email=session['user_email'])}}">Manage<i class="fas fa-undo"></i></a>
+                <a class="button is-warning m-0"
+                    href="{{ url_for('admin.manage', user_email=session['user_email'])}}">Manage<i
+                        class="fas fa-undo"></i></a>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block content %}
-<main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
-    <div class="columns is-marginless">
-        <div class="column is-8 is-offset-2">
-            <div class="box">
-                <form method="POST" action="{{ url_for('admin.create_user') }}">
-                    <div class="field">
-                        <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
-                        </label>
-                        <div class="control has-icons-left has-icons-right">
-                                <input class="input" id="first_name" name="first_name" 
-                                type="text" placeholder="Enter First Name" required value="{{ previous['first_name']|default('') }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-        
-                    <div class="field">
-                        <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
-                        </label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="last_name" name="last_name" 
-                            type="text" placeholder="Enter Last Name" required value="{{ previous['last_name']|default('') }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-        
-                    <div class="field">
-                        <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
-                        </label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input has-text-left" id="dob" name="dob" type="date" required value="{{ previous['dob']|default('') }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-calendar-alt"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-        
-                    <div class="field">
-                        <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
-                        </label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="phone" name="phone" type="tel" placeholder="Enter Phone Number" required value="{{ previous['phone']|default('') }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-phone"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-        
-                    <div class="field">
-                        <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
-                        </label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" id="email" name="email" type="email" placeholder="Enter Your Email" required>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
-                                <i></i>
-                            </span>
-                        </div>
-                        <p class="help is-danger has-text-right"></p>
-                    </div>
-        
-                    <div class="field">
-                        <div class="control">
-                            <label for="is_admin" class="checkbox">
-                                {% if previous is undefined %}
-                                    <input id="is_admin" name="is_admin" 
-                                    type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
-                                {% elif previous is defined %}
-                                    {% if previous["is_admin"] is true %}
-                                        <input id="is_admin" name="is_admin" 
-                                        type="checkbox" class="mr-1" checked>Provide this user with admin credentials<i class="fas fa-question-circle"></i>
-                                    {% else %}
-                                        <input id="is_admin" name="is_admin" 
-                                        type="checkbox" class="mr-1">Provide this user with admin credentials<i class="fas fa-question-circle"></i>
-                                    {% endif %}
-                                {% endif %}
+
+    <main class="container is-max-desktop is-flex is-justify-content-center is-align-items-center">
+        <div class="columns is-marginless">
+            <div class="column is-8 is-offset-2">
+                <div class="box">
+                    <form method="POST" action="{{ url_for('admin.create_user') }}">
+                        <div class="field">
+                            <label for="first_name" class="label">First Name<i class="fas fa-question-circle"></i>
                             </label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" id="first_name" name="first_name" type="text"
+                                    placeholder="Enter First Name" required
+                                    value="{{ previous['first_name']|default('') }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger has-text-right"></p>
                         </div>
-                    </div>
-        
-                    <progress class="progress" value="0" max="100"></progress>
-        
-                    <div class="field">
-                        <div class="control">
-                            <div class="buttons is-centered">
-                                <button type="submit" class="button is-link my-1 mx-0" disabled>Create User<i class="fas fa-user-plus"></i></button>
+
+                        <div class="field">
+                            <label for="last_name" class="label">Last Name<i class="fas fa-question-circle"></i>
+                            </label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" id="last_name" name="last_name" type="text"
+                                    placeholder="Enter Last Name" required value="{{ previous['last_name']|default('') }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger has-text-right"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="dob" class="label">Date of Birth<i class="fas fa-question-circle"></i>
+                            </label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input has-text-left" id="dob" name="dob" type="date" required
+                                    value="{{ previous['dob']|default('') }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger has-text-right"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="phone" class="label">Phone<i class="fas fa-question-circle"></i>
+                            </label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" id="phone" name="phone" type="tel" placeholder="Enter Phone Number"
+                                    required value="{{ previous['phone']|default('') }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger has-text-right"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="email" class="label">Email<i class="fas fa-question-circle"></i>
+                            </label>
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" id="email" name="email" type="email" placeholder="Enter Your Email"
+                                    required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                    <i></i>
+                                </span>
+                            </div>
+                            <p class="help is-danger has-text-right"></p>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label for="is_admin" class="checkbox">
+                                    {% if previous is undefined %}
+                                        <input id="is_admin" name="is_admin" type="checkbox" class="mr-1">Provide this user with
+                                        admin credentials<i class="fas fa-question-circle"></i>
+                                    {% elif previous is defined %}
+                                        {% if previous["is_admin"] is true %}
+                                            <input id="is_admin" name="is_admin" type="checkbox" class="mr-1" checked>Provide this
+                                            user with admin credentials<i class="fas fa-question-circle"></i>
+                                            {% else %}
+                                            <input id="is_admin" name="is_admin" type="checkbox" class="mr-1">Provide this user with
+                                            admin credentials<i class="fas fa-question-circle"></i>
+                                        {% endif %}
+                                    {% endif %}
+                                </label>
                             </div>
                         </div>
-                    </div>
-                </form>
+
+                        <progress class="progress" value="0" max="100"></progress>
+
+                        <div class="field">
+                            <div class="control">
+                                <div class="buttons is-centered">
+                                    <button type="submit" class="button is-link my-1 mx-0" disabled>Create User<i
+                                            class="fas fa-user-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
 {% endblock %}
 
 {% block flashes %}
+
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-            <article class="message {{ 'is-success' if category == 'success' else 'is-danger' }} animate__animated animate__fadeInUp">
-                <div class="message-header">
+                <article
+                    class="message {{ 'is-success' if category == 'success' else 'is-danger' }} animate__animated animate__fadeInUp">
+                    <div class="message-header">
                         {% if category == "success" %}
-                        <i class="fas fa-thumbs-up"></i>
-                        <p>Success!</p>
+                            <i class="fas fa-thumbs-up"></i>
+                            <p>Success!</p>
                         {% else %}
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p>Error!</p>
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>Error!</p>
                         {% endif %}
-                        <button class="delete flash-delete" aria-label="delete"></button>
+                            <button class="delete flash-delete" aria-label="delete"></button>
                     </div>
                     <div class="message-body">
-                        <p>{{ message }}</p>
+                        <h4>{{ message }}</h4>
                     </div>
                 </article>
             {% endfor %}
         {% endif %}
     {% endwith %}
+
 {% endblock %}
 
 {% block js %}
