@@ -10,6 +10,35 @@ To navigate back to the README file, [click here](README.md)
 
 ## Contents
 
+* [User Stories](#user-stories)
+* [Bugs](#bugs)
++ [Fixed](#fixed)
+    - [Circular Imports with Python Files](#circular-imports-with-python-files)
+    - [AttributeError: ‘str’ object has no attribute ‘password’](#attributeerror---str--object-has-no-attribute--password-)
+    - [Logo image was not loading on blueprint template pages](#logo-image-was-not-loading-on-blueprint-template-pages)
+    - [TypeError: ObjectId('') is not JSON serializable](#typeerror--objectid-----is-not-json-serializable)
+    - [Variables sent within render_template were not being displayed](#variables-sent-within-render-template-were-not-being-displayed)
+    - [TypeError index 'author' cannot be applied to Cursor instances](#typeerror-index--author--cannot-be-applied-to-cursor-instances)
+    - [An invalid form control with name='' is not focusable](#an-invalid-form-control-with-name----is-not-focusable)
+    - [Bulma dropdown menu sizing issue](#bulma-dropdown-menu-sizing-issue)
+    - [Progress bar was not increasing in value within Safari & Mobile browsers](#progress-bar-was-not-increasing-in-value-within-safari---mobile-browsers)
+* [User Testing](#user-testing)
+* [File Validation](#file-validation)
++ [Python Files](#python-files)
++ [JavaScript Files](#javascript-files)
++ [CSS File](#css-file)
++ [HTML Template Files](#html-template-files)
+    - [External Pages](#external-pages)
+    - [Internal Pages](#internal-pages)
+    - [Admin Oriented Pages](#admin-oriented-pages)
+    - [Error Pages](#error-pages)
+* [Defensive Programming](#defensive-programming)
+* [Testing Functionality](#testing-functionality)
++ [Software](#software)
++ [Hardware](#hardware)
+* [Accessibility & Performance](#accessibility---performance)
+* [Known Bugs](#known-bugs)
+
 <hr>
 
 ## User Stories
@@ -334,6 +363,10 @@ To navigate back to the README file, [click here](README.md)
 
 </details>
 
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
 ## Bugs
 
 ### Fixed
@@ -488,6 +521,8 @@ In this particular instance, I was trying to get the last element within the inp
 
 Given that the newer method didn't work, I reverted back to the older method using .length which solved the problem.
 
+[Return to Contents &#8679;](#Contents)
+
 <hr>
 
 ## User Testing
@@ -520,6 +555,10 @@ I was pleased to find that in terms of completing these tasks, the tester had no
 - A feature the tester assumed that would be integrated was an archive, where posts can be put away and looked at when needed in the future. This was on the agenda for future releases and their assumption is a clear indicator that this feature is worth integrating within a future release of Llama Log.
 
 To conclude, despite the tester not being involved within the industry that Llama Log is targetting, their advice & experience with Llama Log was tremendously useful. It made clear that some of my assumptions regarding how comfortable the end user would be in interacting with Llama Log were wrong. This meant adding further guidance with the use of tooltips & error messages would be vital in providing confidence for the end user when using Llama Log.
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
 
 ## File Validation
 
@@ -744,6 +783,8 @@ All of the error pages provided successful validation results.
 
 </details>
 
+[Return to Contents &#8679;](#Contents)
+
 ## Defensive Programming
 
 Following standard security conventions, a python file containing sensitive environment variables is hidden from this repository. This is achieved by adding the file name to the .gitignore file.
@@ -751,6 +792,10 @@ Following standard security conventions, a python file containing sensitive envi
 Interal pages within the web application require a session within the web browser. Without this, the user is considered forbidden from accessing the web application and is redirected to the appropriate error message informing them of this. Within this error message, there's a link to redirect the user to the log in page.
 
 This functionality is also applied to users who are not administrators. Any attempt to access the admin oriented pages whilst not being an admin will produce a forbidden error.
+
+[Return to Contents &#8679;](#Contents)
+
+<hr>
 
 ## Testing Functionality
 
@@ -852,10 +897,17 @@ After completing some of these tasks, I ended up with a promising Lighthouse res
 
 </details>
 
+[Return to Contents &#8679;](#Contents)
+
+<hr>
+
 ## Known Bugs
 
 - Progress bar does not smoothly transition, nor does it sport the intended color on Firefox browsers.
 
+[Return to Contents &#8679;](#Contents)
+
+<hr>
 
 
 

@@ -802,6 +802,9 @@ The following applications were utilised during the development of Llama Log:
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
     - Google Chrome's in-built Lighthouse tool was utilised to test the accessibility of Llama Log.
 
+- [LambdaTest](https://www.lambdatest.com/)
+    - LambdaTest was utilised to test how the application looks & works on Safari whilst on a windows laptop.
+
 [Return to Contents &#8679;](#Contents)
 
 <hr>
